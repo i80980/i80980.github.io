@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day06之Python中的函数 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、作业回顾需求：编写一段Python代码，生成一个随机的4位验证码 提前：定义一个字符串 str1 &#x3D; &quot;23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ&quot;  编写Python代码： ① 思考：如果只生成4个字符的验证码，如何只保证从字符串中读取4次（while循环、for循环） ② 思考：如果随机的从str1字符串中读取4个字符？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day06之Python中的函数">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/021-python-ji-chu-06/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、作业回顾需求：编写一段Python代码，生成一个随机的4位验证码 提前：定义一个字符串 str1 &#x3D; &quot;23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ&quot;  编写Python代码： ① 思考：如果只生成4个字符的验证码，如何只保证从字符串中读取4次（while循环、for循环） ② 思考：如果随机的从str1字符串中读取4个字符？">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107813.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107209.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107244.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107249.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107783.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107128.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107492.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107740.png">
+<meta property="article:published_time" content="2022-03-02T21:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:07:36.535Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107813.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">1、为什么需要函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">2、什么是函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">3、函数的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">4、函数的调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E9%80%9A%E8%BF%87%E4%B8%80%E4%B8%AA%E6%A0%97%E5%AD%90%E5%BC%95%E5%85%A5%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">5、通过一个栗子引入函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E8%81%8A%E8%81%8Areturn%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">6.</span> <span class="toc-text">6、聊聊return返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3"><span class="toc-number">7.</span> <span class="toc-text">1、什么是说明文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%E7%9A%84%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3"><span class="toc-number">8.</span> <span class="toc-text">2、定义函数的说明文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%B0%81%E8%A3%85%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%EF%BC%8C%E7%94%A8%E4%BA%8E%E7%94%9F%E6%88%90%E6%8C%87%E5%AE%9A%E9%95%BF%E5%BA%A6%E7%9A%84%E9%AA%8C%E8%AF%81%E7%A0%81"><span class="toc-number">9.</span> <span class="toc-text">3、封装一个函数，用于生成指定长度的验证码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%87%BD%E6%95%B0%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">10.</span> <span class="toc-text">1、什么是函数的嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%87%BD%E6%95%B0%E5%B5%8C%E5%A5%97%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">11.</span> <span class="toc-text">2、函数嵌套的基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81PyCharm%E8%B0%83%E8%AF%95%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">12.</span> <span class="toc-text">3、PyCharm调试小技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E9%80%9A%E8%BF%87%E4%B8%80%E4%B8%AA%E6%A1%88%E4%BE%8B%E6%8F%8F%E8%BF%B0%E5%87%BD%E6%95%B0%E5%B5%8C%E5%A5%97"><span class="toc-number">13.</span> <span class="toc-text">4、通过一个案例描述函数嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">14.</span> <span class="toc-text">1、什么是变量的作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E4%B8%8E%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="toc-number">15.</span> <span class="toc-text">2、局部变量与全局变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E4%BD%9C%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-number">16.</span> <span class="toc-text">3、变量作用域的作用范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81global%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">17.</span> <span class="toc-text">4、global关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%A4%9A%E5%87%BD%E6%95%B0%E4%B9%8B%E9%97%B4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B1%E4%BA%AB"><span class="toc-number">18.</span> <span class="toc-text">5、多函数之间数据的共享</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E6%8A%8A%E5%87%BD%E6%95%B0%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BD%9C%E4%B8%BA%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">19.</span> <span class="toc-text">6、把函数的返回值作为另外一个函数的参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0"><span class="toc-number">20.</span> <span class="toc-text">1、函数的参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B"><span class="toc-number">21.</span> <span class="toc-text">2、函数的参数类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">21.1.</span> <span class="toc-text">☆ 位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%85%B3%E9%94%AE%E8%AF%8D%E5%8F%82%E6%95%B0%EF%BC%88Python%E7%89%B9%E6%9C%89%EF%BC%89"><span class="toc-number">21.2.</span> <span class="toc-text">☆ 关键词参数（Python特有）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E6%97%B6%E7%BC%BA%E7%9C%81%E5%8F%82%E6%95%B0%EF%BC%88%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC%EF%BC%89"><span class="toc-number">22.</span> <span class="toc-text">3、函数定义时缺省参数（参数默认值）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%B8%8D%E5%AE%9A%E9%95%BF%E5%8F%82%E6%95%B0"><span class="toc-number">23.</span> <span class="toc-text">4、不定长参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%8C%85%E8%A3%B9-packing-%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">23.1.</span> <span class="toc-text">☆ 包裹(packing)位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%8C%85%E8%A3%B9%E5%85%B3%E9%94%AE%E5%AD%97%E5%8F%82%E6%95%B0"><span class="toc-number">23.2.</span> <span class="toc-text">☆ 包裹关键字参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%8B%86%E5%8C%85"><span class="toc-number">24.</span> <span class="toc-text">1、什么是拆包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%85%83%E7%BB%84%E7%9A%84%E6%8B%86%E5%8C%85%E8%BF%87%E7%A8%8B"><span class="toc-number">25.</span> <span class="toc-text">2、元组的拆包过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AD%97%E5%85%B8%E7%9A%84%E6%8B%86%E5%8C%85%E8%BF%87%E7%A8%8B"><span class="toc-number">26.</span> <span class="toc-text">3、字典的拆包过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%8B%86%E5%8C%85%E7%9A%84%E5%BA%94%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">27.</span> <span class="toc-text">4、拆包的应用案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%9F%A5%E7%9C%8B%E9%80%9A%E8%AE%AF%E5%BD%95%E7%B3%BB%E7%BB%9F%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="toc-number">28.</span> <span class="toc-text">1、查看通讯录系统最终效果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">29.</span> <span class="toc-text">2、需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">30.</span> <span class="toc-text">3、功能实现步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3"><span class="toc-number">31.</span> <span class="toc-text">4、模块化的编程思想</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E4%BD%BF%E7%94%A8Python%E5%BC%80%E5%8F%91%E9%80%9A%E8%AE%AF%E5%BD%95%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F"><span class="toc-number">32.</span> <span class="toc-text">5、使用Python开发通讯录管理系统</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-02T21:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day06之Python中的函数</span></h1>
+<h1 id="一、作业回顾"><a href="#一、作业回顾" class="headerlink" title="一、作业回顾"></a>一、作业回顾</h1><p>需求：编写一段Python代码，生成一个随机的4位验证码</p>
+<p>提前：定义一个字符串</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">"23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"</span>
+</code></pre>
+<p>编写Python代码：</p>
+<p>① 思考：如果只生成4个字符的验证码，如何只保证从字符串中读取4次（while循环、for循环）</p>
+<p>② 思考：如果随机的从str1字符串中读取4个字符？random.randint()生成随机数</p>
+<p>③ 思考：如果从字符串提取出某个字符？答：使用索引下标，str1[索引下标]</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> random
+
+
+<span class="token comment" spellcheck="true"># 1、定义一个字符串</span>
+str1 <span class="token operator">=</span> <span class="token string">"23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"</span>
+code <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token comment" spellcheck="true"># 2、编写循环，只循环4次</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>   <span class="token comment" spellcheck="true"># 0 1 2 3</span>
+    <span class="token comment" spellcheck="true"># 3、随机获取str1中的某个字符</span>
+    index <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>str1<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    code <span class="token operator">+=</span> str1<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 4、打印4位随机验证码</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span>
+</code></pre>
+<h1 id="二、Python中函数的作用与使用步骤"><a href="#二、Python中函数的作用与使用步骤" class="headerlink" title="二、Python中函数的作用与使用步骤"></a>二、Python中函数的作用与使用步骤</h1><h2 id="1、为什么需要函数"><a href="#1、为什么需要函数" class="headerlink" title="1、为什么需要函数"></a>1、为什么需要函数</h2><p>在Python实际开发中，我们使用函数的目的只有一个“让我们的代码可以被重复使用”</p>
+<p>函数的作用有两个：</p>
+<p>① 模块化编程</p>
+<p>② 代码重用</p>
+<blockquote>
+<p>在编程领域，编程可以分为两大类：① 模块化编程 ② 面向对象编程</p>
+</blockquote>
+<h2 id="2、什么是函数"><a href="#2、什么是函数" class="headerlink" title="2、什么是函数"></a>2、什么是函数</h2><p>所谓的函数就是一个==被命名的==、==独立的、完成特定功能的代码段（一段连续的代码）==，并可能给调用它的程序一个==返回值==。</p>
+<p>被命名的：在Python中，函数大多数是有名函数。当然Python中也存在没有名字的函数叫做匿名函数。</p>
+<p>独立的、完成特定功能的代码段：在实际项目开发中，定义函数前一定要先思考一下，这个函数是为了完成某个操作或某个功能而定义的。（函数的功能一定要专一）</p>
+<p>返回值：很多函数在执行完毕后，会通过return关键字返回一个结果给调用它的位置。</p>
+<h2 id="3、函数的定义"><a href="#3、函数的定义" class="headerlink" title="3、函数的定义"></a>3、函数的定义</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> 函数名称<span class="token punctuation">(</span><span class="token punctuation">[</span>参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    函数体
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">[</span><span class="token keyword">return</span> 返回值<span class="token punctuation">]</span>
+</code></pre>
+<h2 id="4、函数的调用"><a href="#4、函数的调用" class="headerlink" title="4、函数的调用"></a>4、函数的调用</h2><p>在Python中，函数和变量一样，都是先定义后使用。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义函数</span>
+<span class="token keyword">def</span> 函数名称<span class="token punctuation">(</span><span class="token punctuation">[</span>参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    函数体
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">[</span><span class="token keyword">return</span> 返回值<span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+函数名称<span class="token punctuation">(</span>参数<span class="token number">1</span><span class="token punctuation">,</span> 参数<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、通过一个栗子引入函数"><a href="#5、通过一个栗子引入函数" class="headerlink" title="5、通过一个栗子引入函数"></a>5、通过一个栗子引入函数</h2><p>① 使用Python代码，编写一个打招呼程序</p>
+<pre class=" language-python"><code class="language-python">第一步：见到一个老师，打一声招呼
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您好'</span><span class="token punctuation">)</span>
+第二步：见到一个老师，打一声招呼
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您好'</span><span class="token punctuation">)</span>
+第二步：见到一个老师，打一声招呼
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您好'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>虽然以上程序可以满足程序的需求，但是我们发现，我们的代码做了很多重复性的工作。我们能不能对以上代码进行进一步的优化，避免代码的重复性编写。</p>
+<p>② 升级：使用Python代码，编写一个打招呼程序（函数——一次编写，多次利用）</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义函数（封装函数）</span>
+<span class="token keyword">def</span> <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您好'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token comment" spellcheck="true"># 见到一个老师，打一声招呼</span>
+greet<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 见到一个老师，打一声招呼</span>
+greet<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 见到一个老师，打一声招呼</span>
+greet<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>③ 升级：使用Python代码编写一个打招呼程序，可以实现向不同的人打不同的招呼</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个函数，同时为其定义一个参数</span>
+<span class="token keyword">def</span> <span class="token function">greet</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'{name}，您好'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token comment" spellcheck="true"># 见到了张老师，打一声招呼</span>
+greet<span class="token punctuation">(</span><span class="token string">'老张'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 见到了李老师，打一声招呼</span>
+greet<span class="token punctuation">(</span><span class="token string">'老李'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 见到了王老师，打一声招呼</span>
+greet<span class="token punctuation">(</span><span class="token string">'老王'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>④ 函数的设计原则“高内聚、低耦合”，函数执行完毕后，应该主动把数返回给调用处，而不应该都交由print()等函数直接输出。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个函数，拥有name参数，同时函数执行完毕后，拥有一个return返回值</span>
+<span class="token keyword">def</span> <span class="token function">greet</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 执行一系列相关操作</span>
+    <span class="token keyword">return</span> name <span class="token operator">+</span> <span class="token string">'，您好'</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token comment" spellcheck="true"># 见到了张老师，打一声招呼</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>greet<span class="token punctuation">(</span><span class="token string">'老张'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 老张，您好</span>
+<span class="token comment" spellcheck="true"># 见到了李老师，打一声招呼</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\033[0;31;40m\t"</span> <span class="token operator">+</span> greet<span class="token punctuation">(</span><span class="token string">'老李'</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\033[0m"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 见到了王老师，打一声招呼</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"\033[0;36;40m\t"</span> <span class="token operator">+</span> greet<span class="token punctuation">(</span><span class="token string">'老王'</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\033[0m"</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>终端颜色参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhuminghui/p/9457185.html">https://www.cnblogs.com/zhuminghui/p/9457185.html</a></p>
+</blockquote>
+<h2 id="6、聊聊return返回值"><a href="#6、聊聊return返回值" class="headerlink" title="6、聊聊return返回值"></a>6、聊聊return返回值</h2><p>思考1：如果一个函数如些两个return (如下所示)，程序如何执行？</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">return_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token number">2</span>
+
+
+result <span class="token operator">=</span> return_num<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 1</span>
+</code></pre>
+<p>答：只执行了第一个return，原因是因为return可以退出当前函数，导致return下方的代码不执行。</p>
+<p>思考2：如果一个函数要有多个返回值，该如何书写代码？</p>
+<p>答：在Python中，理论上一个函数只能返回一个结果。但是如果我们向让一个函数可以同时返回多个结果，我们可以使用<code>return 元组</code>的形式。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">return_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span>
+
+
+result <span class="token operator">=</span> return_num<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># &lt;class 'tuple'></span>
+</code></pre>
+<p>思考3：封装一个函数，参数有两个num1，num2，求两个数的四则运算结果</p>
+<p>四则运算：加、减、乘、除</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">size</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    jia <span class="token operator">=</span> num1 <span class="token operator">+</span> num2
+    jian <span class="token operator">=</span> num1 <span class="token operator">-</span> num2
+    cheng <span class="token operator">=</span> num1 <span class="token operator">*</span> num2
+    chu <span class="token operator">=</span> num1 <span class="token operator">/</span> num2
+    <span class="token keyword">return</span> jia<span class="token punctuation">,</span> jian<span class="token punctuation">,</span> cheng<span class="token punctuation">,</span> chu
+
+
+<span class="token comment" spellcheck="true"># 调用size方法</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>size<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="三、Python函数中的说明文档"><a href="#三、Python函数中的说明文档" class="headerlink" title="三、Python函数中的说明文档"></a>三、Python函数中的说明文档</h1><h2 id="1、什么是说明文档"><a href="#1、什么是说明文档" class="headerlink" title="1、什么是说明文档"></a>1、什么是说明文档</h2><p>思考：定义一个函数后，程序员如何书写程序能够快速提示这个函数的作用？</p>
+<p>答：注释</p>
+<p>思考：如果代码多，我们是不是需要在很多代码中找到这个函数定义的位置才能看到注释？如果想更方便的查看函数的作用怎么办？</p>
+<p>答：==函数的说明文档（函数的说明文档也叫函数的文档说明）==</p>
+<h2 id="2、定义函数的说明文档"><a href="#2、定义函数的说明文档" class="headerlink" title="2、定义函数的说明文档"></a>2、定义函数的说明文档</h2><p>① 定义函数的说明文档</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义一个menu菜单函数</span>
+<span class="token keyword">def</span> <span class="token function">menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token comment" spellcheck="true"># 2、定义通讯录增加操作方法</span>
+<span class="token keyword">def</span> <span class="token function">add_student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""" 函数的说明文档：add_student方法不需要传递任何参数，其功能就是实现对通讯录的增加操作 """</span>
+    <span class="token keyword">pass</span>
+
+<span class="token comment" spellcheck="true"># 3、定义通讯录删除操作方法</span>
+<span class="token keyword">def</span> <span class="token function">del_student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token comment" spellcheck="true"># 4、定义通讯录修改操作方法</span>
+<span class="token keyword">def</span> <span class="token function">modify_student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token comment" spellcheck="true"># 5、定义通讯录查询操作方法</span>
+<span class="token keyword">def</span> <span class="token function">find_student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+</code></pre>
+<p>② 调用函数的说明文档</p>
+<pre class=" language-python"><code class="language-python">help<span class="token punctuation">(</span>函数名称<span class="token punctuation">)</span>
+</code></pre>
+<p>案例：调用add_student()方法</p>
+<pre class=" language-python"><code class="language-python">help<span class="token punctuation">(</span>add_student<span class="token punctuation">)</span>
+</code></pre>
+<p>运行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107813.png" alt="image-20210313112721575"></p>
+<h2 id="3、封装一个函数，用于生成指定长度的验证码"><a href="#3、封装一个函数，用于生成指定长度的验证码" class="headerlink" title="3、封装一个函数，用于生成指定长度的验证码"></a>3、封装一个函数，用于生成指定长度的验证码</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个generate_code()函数</span>
+<span class="token keyword">def</span> <span class="token function">generate_code</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""" generate_code方法主要用于生成指定长度的验证码，有一个num参数，需要传递一个int类型的数值，其return返回结果为num长度的随机验证码 """</span>
+    <span class="token keyword">import</span> random
+    <span class="token comment" spellcheck="true"># 第一步：定义一个字符串</span>
+    str1 <span class="token operator">=</span> <span class="token string">"23456789abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ"</span>
+    <span class="token comment" spellcheck="true"># 第二步：循环num次，代表生成num长度的字符串</span>
+    code <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 第三步：从字符串中随机抽取num个字符</span>
+        index <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> len<span class="token punctuation">(</span>str1<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        code <span class="token operator">+=</span> str1<span class="token punctuation">[</span>index<span class="token punctuation">]</span>
+    <span class="token comment" spellcheck="true"># 第四步：使用return返回验证码</span>
+    <span class="token keyword">return</span> code
+
+<span class="token comment" spellcheck="true"># 求帮助（查看generate_code函数的作用以及需要传递的参数）</span>
+<span class="token comment" spellcheck="true"># help(generate_code)</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>generate_code<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="四、函数的嵌套"><a href="#四、函数的嵌套" class="headerlink" title="四、函数的嵌套"></a>四、函数的嵌套</h1><h2 id="1、什么是函数的嵌套"><a href="#1、什么是函数的嵌套" class="headerlink" title="1、什么是函数的嵌套"></a>1、什么是函数的嵌套</h2><p>所谓函数嵌套调用指的是==一个函数里面又调用了另外一个函数==。</p>
+<h2 id="2、函数嵌套的基本语法"><a href="#2、函数嵌套的基本语法" class="headerlink" title="2、函数嵌套的基本语法"></a>2、函数嵌套的基本语法</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107209.png" alt="image-20210313120335429"></p>
+<p>嵌套函数的执行流程：</p>
+<p>第一步：Python代码遵循一个“顺序原则”，从上往下，从左往右一行一行执行</p>
+<p>当代码执行到第1行时，则在计算机内存中定义一个funcB函数。但是其内部的代码并没有真正的执行，跳过第2行继续向下运行。</p>
+<p>第二步：执行到第5行，发现又声明了一个funcA的函数，根据函数的定义原则，定义就是在内存中声明有这样一个函数，但是没有真正的调用和执行。</p>
+<p>第三步：代码继续向下执行，到第14行，发现funcA()，函数体()就代表调用funcA函数并执行其内部的代码。程序返回到第6行，然后一步一步向下执行，输出40个横杠，然后打印这是funcA函数的函数体部分…，然后继续向下执行，遇到funcB函数，后边有一个圆括号代表执行funcB函数，原程序处于等待状态。</p>
+<p>第四步：进入funcB函数，执行输出这是funcB函数的函数体部分…，当代码完毕后，返回funcA函数中funcB()的位置，继续向下执行，打印40个横杠。</p>
+<p>最终程序就执行结束了。</p>
+<h2 id="3、PyCharm调试小技巧"><a href="#3、PyCharm调试小技巧" class="headerlink" title="3、PyCharm调试小技巧"></a>3、PyCharm调试小技巧</h2><p>Step over（F8）：代码一步一步向下执行，但是遇到了函数以后，不进入函数体内部，直接返回函数的最终的执行结果。</p>
+<p>Step into（F7）：代码一步一步向下执行，但是遇到了函数以后，进入到函数体内部，一步一步向下执行，直到函数体的代码全部执行完毕。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107244.png" alt="image-20210313121451376"></p>
+<h2 id="4、通过一个案例描述函数嵌套"><a href="#4、通过一个案例描述函数嵌套" class="headerlink" title="4、通过一个案例描述函数嵌套"></a>4、通过一个案例描述函数嵌套</h2><p>百度百科，搜索Python语言词条</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107249.png" alt="image-20210313122008684"></p>
+<p>嵌套函数funcB和funcC</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107783.png" alt="image-20210313122120183"></p>
+<p>在funcA函数执行过程中，如果遇到了funcB则跳入funcB函数继续执行，当funcB执行完毕后，会自动返回funcA函数，继续向下运行，依次类推，直到funcA函数执行完毕。</p>
+<h1 id="五、函数的应用案例"><a href="#五、函数的应用案例" class="headerlink" title="五、函数的应用案例"></a>五、函数的应用案例</h1><p>案例1：使用print方法打印一条横线</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span> <span class="token operator">*</span> <span class="token number">40</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例2：对案例1进行升级，可以根据输入的num数值，生成指定数量的横线</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">print_lines</span><span class="token punctuation">(</span>num<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""" print_lines函数主要作用用于生成多条指定长度的横线，拥有两个参数num和length，都是int整型数据，num用于控制生成的横线数量，length用于控制生成横线的长度 """</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span> <span class="token operator">*</span> length<span class="token punctuation">)</span>
+        
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token comment" spellcheck="true"># help(print_lines)</span>
+print_lines<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例3：封装一个函数，用于求3个数的平均值</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">average_num</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">,</span> num3<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""" average_num函数主要用于生成3个数的平均值，一共有3个参数，num1、num2、num3，要求是整型或浮点类型的数据，其返回结果就是三个数的平均值 """</span>
+    sum <span class="token operator">=</span> num1 <span class="token operator">+</span> num2 <span class="token operator">+</span> num3
+    <span class="token comment" spellcheck="true"># 求平均值</span>
+    <span class="token keyword">return</span> sum<span class="token operator">/</span><span class="token number">3</span>
+
+<span class="token comment" spellcheck="true"># 调用average_num方法</span>
+<span class="token comment" spellcheck="true"># help(average_num)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>average_num<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>练习题：编写一个函数，有一个参数str1，输入信息如’1.2.3.4.5’，使用函数对齐进行处理，要求最终的返回结果为’5-4-3-2-1’</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>str1<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 方法一：对字符串进行翻转操作(切片)</span>
+    str1 <span class="token operator">=</span> str1<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> str1<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 方法二：使用split切割，然后reverse进行翻转</span>
+    <span class="token comment" spellcheck="true"># list1 = str1.split('.')</span>
+    <span class="token comment" spellcheck="true"># list1.reverse()</span>
+    <span class="token comment" spellcheck="true"># return '-'.join(list1)</span>
+
+
+<span class="token comment" spellcheck="true"># 调用函数实现字符串翻转拼接</span>
+str1 <span class="token operator">=</span> <span class="token string">'1.2.3.4.5'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>func<span class="token punctuation">(</span>str1<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 5-4-3-2-1</span>
+</code></pre>
+<h1 id="六、变量的作用域"><a href="#六、变量的作用域" class="headerlink" title="六、变量的作用域"></a>六、变量的作用域</h1><h2 id="1、什么是变量的作用域"><a href="#1、什么是变量的作用域" class="headerlink" title="1、什么是变量的作用域"></a>1、什么是变量的作用域</h2><p>变量作用域指的是变量的作用范围（变量在哪里可用，在哪里不可用），主要分为两类：局部变量和全局变量。</p>
+<h2 id="2、局部变量与全局变量"><a href="#2、局部变量与全局变量" class="headerlink" title="2、局部变量与全局变量"></a>2、局部变量与全局变量</h2><p>在Python中，定义在函数外部的变量就称之为全局变量；定义在函数内部变量就称之为局部变量。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义在函数外部的变量（全局变量）</span>
+num <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token comment" spellcheck="true"># 定义一个函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 函数体代码</span>
+    <span class="token comment" spellcheck="true"># 定义在函数内部的变量（局部变量）</span>
+    i <span class="token operator">=</span> <span class="token number">1</span>
+</code></pre>
+<h2 id="3、变量作用域的作用范围"><a href="#3、变量作用域的作用范围" class="headerlink" title="3、变量作用域的作用范围"></a>3、变量作用域的作用范围</h2><p>全局变量：在整个程序范围内都可以直接使用</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'hello'</span>
+<span class="token comment" spellcheck="true"># 定义一个函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 在函数内部调用全局变量str1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'在局部作用域中调用str1变量：{str1}'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 直接调用全局变量str1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'在全局作用域中调用str1变量：{str1}'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 调用func函数</span>
+func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>局部变量：在函数的调用过程中，开始定义，函数运行过程中生效，函数执行完毕后，销毁</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 在函数内部定义一个局部变量</span>
+    num <span class="token operator">=</span> <span class="token number">10</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'在局部作用域中调用num局部变量：{num}'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 调用func函数</span>
+func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 在全局作用域中调用num局部变量</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'在全局作用域中调用num局部变量：{num}'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>运行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107128.png" alt="image-20210313145728886"></p>
+<blockquote>
+<p>普及小知识：计算机的垃圾回收机制</p>
+</blockquote>
+<h2 id="4、global关键字"><a href="#4、global关键字" class="headerlink" title="4、global关键字"></a>4、global关键字</h2><p>思考：如果有一个数据，在函数A和函数B中都要使用，该怎么办？</p>
+<p>答：将这个数据存储在一个全局变量里面。</p>
+<p>案例：如果把通讯录管理系统更改为模块化编程模式（程序 =&gt; 函数），面临问题：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义全局变量</span>
+info <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 定义funcA函数</span>
+<span class="token keyword">def</span> <span class="token function">funcA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 使用global声明全局变量</span>
+    <span class="token keyword">global</span> info
+    <span class="token comment" spellcheck="true"># 向info全局变量中添加数据</span>
+    info<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    
+<span class="token comment" spellcheck="true"># 定义funcB函数</span>
+<span class="token keyword">def</span> <span class="token function">funcB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 共享全局作用域中的全局变量info</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> info<span class="token punctuation">:</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<p>这个会产生一个问题：我们能不能在局部作用域中对全局变量进行修改呢？</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义全局变量num = 10</span>
+num <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token comment" spellcheck="true"># 定义一个函数func</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 尝试在局部作用域中修改全局变量</span>
+    num <span class="token operator">=</span> <span class="token number">20</span>
+
+<span class="token comment" spellcheck="true"># 调用函数func</span>
+func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 尝试访问全局变量num</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+</code></pre>
+<p>最终结果：弹出10，所以由运行结果可知，在函数体内部理论上是没有办法对全局变量进行修改的，所以一定要进行修改，必须使用<code>global</code>关键字。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义全局变量num = 10</span>
+num <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token comment" spellcheck="true"># 定义一个函数func</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 尝试在局部作用域中修改全局变量</span>
+    <span class="token keyword">global</span> num
+    num <span class="token operator">=</span> <span class="token number">20</span>
+
+<span class="token comment" spellcheck="true"># 调用函数func</span>
+func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 尝试访问全局变量num</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、多函数之间数据的共享"><a href="#5、多函数之间数据的共享" class="headerlink" title="5、多函数之间数据的共享"></a>5、多函数之间数据的共享</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义全局变量</span>
+info <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 定义funcA函数:向全局变量中添加信息</span>
+<span class="token keyword">def</span> <span class="token function">funcA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 使用global声明全局变量</span>
+    <span class="token keyword">global</span> info
+    <span class="token comment" spellcheck="true"># 向info全局变量中添加数据</span>
+    info<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+    
+<span class="token comment" spellcheck="true"># 定义funcB函数:查询功能，需要共享全局作用域中的通讯录信息</span>
+<span class="token keyword">def</span> <span class="token function">funcB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 共享全局作用域中的全局变量info</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> info<span class="token punctuation">:</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<h2 id="6、把函数的返回值作为另外一个函数的参数"><a href="#6、把函数的返回值作为另外一个函数的参数" class="headerlink" title="6、把函数的返回值作为另外一个函数的参数"></a>6、把函数的返回值作为另外一个函数的参数</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">50</span>
+
+<span class="token keyword">def</span> <span class="token function">test2</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 1. 保存函数test1的返回值</span>
+result <span class="token operator">=</span> test1<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2.将函数返回值所在变量作为参数传递到test2函数</span>
+test2<span class="token punctuation">(</span>result<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 50</span>
+</code></pre>
+<h1 id="七、函数的参数进阶"><a href="#七、函数的参数进阶" class="headerlink" title="七、函数的参数进阶"></a>七、函数的参数进阶</h1><h2 id="1、函数的参数"><a href="#1、函数的参数" class="headerlink" title="1、函数的参数"></a>1、函数的参数</h2><p>在函数定义与调用时，我们可以根据自己的需求来实现参数的传递。在Python中，函数的参数一共有两种形式：① 形参 ② 实参</p>
+<p>==形参：在函数定义时，所编写的参数就称之为形式参数==</p>
+<p>==实参：在函数调用时，所传递的参数就称之为实际参数==</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">greet</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment" spellcheck="true"># name就是在函数greet定义时，所编写的参数（形参）</span>
+    <span class="token keyword">return</span> name <span class="token operator">+</span> <span class="token string">'，您好'</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+name <span class="token operator">=</span> <span class="token string">'老王'</span>
+greet<span class="token punctuation">(</span>name<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 在函数调用时，所传递的参数就是实际参数</span>
+</code></pre>
+<blockquote>
+<p>注意：虽然我们在函数传递时，喜欢使用相同的名称作为参数名称。但是两者的作用范围是不同的。name = ‘老王’，代表实参。其是一个全局变量，而greet(name)函数中的name实际是在函数定义时才声明的变量，所以其实一个局部变量。</p>
+</blockquote>
+<h2 id="2、函数的参数类型"><a href="#2、函数的参数类型" class="headerlink" title="2、函数的参数类型"></a>2、函数的参数类型</h2><h3 id="☆-位置参数"><a href="#☆-位置参数" class="headerlink" title="☆ 位置参数"></a>☆ 位置参数</h3><p>理论上，在函数定义时，我们可以为其定义多个参数。但是在函数调用时，我们也应该传递多个参数，正常情况，其要一一对应。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">user_info</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> address<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的名字{name}，今年{age}岁了，家里住在{address}'</span><span class="token punctuation">)</span>
+    
+<span class="token comment" spellcheck="true"># 调用函数</span>
+user_info<span class="token punctuation">(</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">'美国纽约'</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>注意事项：位置参数强调的是参数传递的位置必须一一对应，不能颠倒</p>
+</blockquote>
+<h3 id="☆-关键词参数（Python特有）"><a href="#☆-关键词参数（Python特有）" class="headerlink" title="☆ 关键词参数（Python特有）"></a>☆ 关键词参数（Python特有）</h3><p>函数调用，通过“键=值”形式加以指定。可以让函数更加清晰、容易使用，同时也清除了参数的顺序需求。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">user_info</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> address<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的名字{name}，今年{age}岁了，家里住在{address}'</span><span class="token punctuation">)</span>
+    
+<span class="token comment" spellcheck="true"># 调用函数（使用关键词参数）</span>
+user_info<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> age<span class="token operator">=</span><span class="token number">23</span><span class="token punctuation">,</span> address<span class="token operator">=</span><span class="token string">'美国纽约'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、函数定义时缺省参数（参数默认值）"><a href="#3、函数定义时缺省参数（参数默认值）" class="headerlink" title="3、函数定义时缺省参数（参数默认值）"></a>3、函数定义时缺省参数（参数默认值）</h2><p>缺省参数也叫默认参数，用于定义函数，为参数提供默认值，调用函数时可不传该默认参数的值（注意：所有位置参数必须出现在默认参数前，包括函数定义和调用）。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">user_info</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> gender<span class="token operator">=</span><span class="token string">'男'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的名字{name}，今年{age}岁了，我的性别为{gender}'</span><span class="token punctuation">)</span>
+
+
+user_info<span class="token punctuation">(</span><span class="token string">'李林'</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span>
+user_info<span class="token punctuation">(</span><span class="token string">'振华'</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">)</span>
+user_info<span class="token punctuation">(</span><span class="token string">'婉儿'</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token string">'女'</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>谨记：我们在定义缺省参数时，一定要把其写在参数列表的最后侧</p>
+</blockquote>
+<h2 id="4、不定长参数"><a href="#4、不定长参数" class="headerlink" title="4、不定长参数"></a>4、不定长参数</h2><p>不定长参数也叫可变参数。用于不确定调用的时候会传递多少个参数(不传参也可以)的场景。此时，可用==包裹(packing)位置参数==，或者==包裹关键字参数==，来进行参数传递，会显得非常方便。</p>
+<h3 id="☆-包裹-packing-位置参数"><a href="#☆-包裹-packing-位置参数" class="headerlink" title="☆ 包裹(packing)位置参数"></a>☆ 包裹(packing)位置参数</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">user_info</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># print(args)  # 元组类型数据，对传递参数有顺序要求</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的名字{args[0]}，今年{args[1]}岁了，住在{args[2]}'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 调用函数，传递参数</span>
+user_info<span class="token punctuation">(</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">'美国纽约'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-包裹关键字参数"><a href="#☆-包裹关键字参数" class="headerlink" title="☆ 包裹关键字参数"></a>☆ 包裹关键字参数</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">user_info</span><span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># print(kwargs)  # 字典类型数据，对传递参数没有顺序要求，格式要求key = value值</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的名字{kwargs["name"]}，今年{kwargs["age"]}岁了，住在{kwargs["address"]}'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 调用函数，传递参数</span>
+user_info<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> address<span class="token operator">=</span><span class="token string">'美国纽约'</span><span class="token punctuation">,</span> age<span class="token operator">=</span><span class="token number">23</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>kw = keyword + args</p>
+</blockquote>
+<p>综上：无论是包裹位置传递还是包裹关键字传递，都是一个组包的过程。</p>
+<p>Python组包：就是把多个数据组成元组或者字典的过程。</p>
+<h1 id="八、Python拆包（元组和字典）"><a href="#八、Python拆包（元组和字典）" class="headerlink" title="八、Python拆包（元组和字典）"></a>八、Python拆包（元组和字典）</h1><h2 id="1、什么是拆包"><a href="#1、什么是拆包" class="headerlink" title="1、什么是拆包"></a>1、什么是拆包</h2><p>Python拆包：就是把元组或字典中的数据单独的拆分出来，然后赋予给其他的变量。</p>
+<p>拆包: 对于函数中的多个返回数据, 去掉元组, 列表 或者字典直接获取里面数据的过程。</p>
+<h2 id="2、元组的拆包过程"><a href="#2、元组的拆包过程" class="headerlink" title="2、元组的拆包过程"></a>2、元组的拆包过程</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 经过一系列操作返回一个元组</span>
+    <span class="token keyword">return</span> <span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span>     <span class="token comment" spellcheck="true"># tuple元组类型的数据</span>
+
+<span class="token comment" spellcheck="true"># 定义两个变量接收元组中的每个数组（拆包）</span>
+num1<span class="token punctuation">,</span> num2 <span class="token operator">=</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 打印num1和num2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num1<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num2<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、字典的拆包过程"><a href="#3、字典的拆包过程" class="headerlink" title="3、字典的拆包过程"></a>3、字典的拆包过程</h2><p>记住：字典拆包，只能把每个元素的key拆出来</p>
+<pre class=" language-python"><code class="language-python">dict1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span><span class="token string">'小明'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span><span class="token number">18</span><span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true"># 拆包的过程（字典）</span>
+a<span class="token punctuation">,</span> b <span class="token operator">=</span> dict1
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 获取字典中的数据</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dict1<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>dict1<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、拆包的应用案例"><a href="#4、拆包的应用案例" class="headerlink" title="4、拆包的应用案例"></a>4、拆包的应用案例</h2><p>案例1：使用至少<code>3种方式</code>交换两个变量的值</p>
+<p>第一种方式：引入一个临时变量</p>
+<pre class=" language-python"><code class="language-python">c1 <span class="token operator">=</span> <span class="token number">10</span>
+c2 <span class="token operator">=</span> <span class="token number">2</span>
+
+<span class="token comment" spellcheck="true"># 引入临时变量temp</span>
+temp <span class="token operator">=</span> c2
+c2 <span class="token operator">=</span> c1
+c1 <span class="token operator">=</span> temp
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>c1<span class="token punctuation">,</span> c2<span class="token punctuation">)</span>
+</code></pre>
+<p>第二种方式：使用加法与减法运算交换两个变量的值（不需要引入临时变量）</p>
+<pre class=" language-python"><code class="language-python">c1 <span class="token operator">=</span> <span class="token number">10</span>
+c2 <span class="token operator">=</span> <span class="token number">2</span>
+
+c1 <span class="token operator">=</span> c1 <span class="token operator">+</span> c2
+c2 <span class="token operator">=</span> c1 <span class="token operator">-</span> c2
+c1 <span class="token operator">=</span> c1 <span class="token operator">-</span> c2
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>c1<span class="token punctuation">,</span> c2<span class="token punctuation">)</span>
+</code></pre>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107492.png" alt="image-20210313171658120"></p>
+<p>第三种方法：只有Python才具有的特性，叫做拆包</p>
+<pre class=" language-python"><code class="language-python">c1 <span class="token operator">=</span> <span class="token number">10</span>
+c2 <span class="token operator">=</span> <span class="token number">2</span>
+
+c1<span class="token punctuation">,</span> c2 <span class="token operator">=</span> c2<span class="token punctuation">,</span> c1
+</code></pre>
+<p>原理：</p>
+<p>第一步：把c2和c1组成一个元组（c2，c1）</p>
+<p>第二步：使用拆包特性，把元组中的两个元素分别赋值给c1和c2</p>
+<p>案例2：Python中数据的传递案例</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token operator">*</span>args<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>kwargs<span class="token punctuation">)</span>
+
+
+<span class="token comment" spellcheck="true"># 定义一个元组（也可以是列表）</span>
+tuple1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 定义一个字典</span>
+dict1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'first'</span><span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token string">'second'</span><span class="token punctuation">:</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token string">'third'</span><span class="token punctuation">:</span> <span class="token number">60</span><span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true"># 需求：把元组传递给*args参数，字典传递给**kwargs</span>
+<span class="token comment" spellcheck="true"># ① 如果想把元组传递给*args，必须在tuple1的前面加一个*号</span>
+<span class="token comment" spellcheck="true"># ② 如果想把字典传递给**kwargs，必须在dict1的前面加两个**号</span>
+func<span class="token punctuation">(</span><span class="token operator">*</span>tuple1<span class="token punctuation">,</span> <span class="token operator">**</span>dict1<span class="token punctuation">)</span>
+</code></pre>
+<h1 id="九、使用Python函数编写通讯录系统"><a href="#九、使用Python函数编写通讯录系统" class="headerlink" title="九、使用Python函数编写通讯录系统"></a>九、使用Python函数编写通讯录系统</h1><h2 id="1、查看通讯录系统最终效果"><a href="#1、查看通讯录系统最终效果" class="headerlink" title="1、查看通讯录系统最终效果"></a>1、查看通讯录系统最终效果</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107740.png" alt="image-20210313174341286"></p>
+<h2 id="2、需求分析"><a href="#2、需求分析" class="headerlink" title="2、需求分析"></a>2、需求分析</h2><p>需求：进入系统显示系统功能界面，功能如下：</p>
+<p>① 添加学员信息</p>
+<p>② 删除学员信息</p>
+<p>③ 修改学员信息</p>
+<p>④ 查询学员信息</p>
+<p>⑤ 遍历所有学员信息</p>
+<p>⑥ 退出系统</p>
+<p>系统共6个功能，用户根据自己需求选取</p>
+<h2 id="3、功能实现步骤"><a href="#3、功能实现步骤" class="headerlink" title="3、功能实现步骤"></a>3、功能实现步骤</h2><p>① 显示功能界面</p>
+<p>② 用户输入功能序号</p>
+<p>③ 根据用户输入的功能序号，执行不同的功能(函数)</p>
+<p>☆ 定义函数</p>
+<p>☆ 调用函数</p>
+<h2 id="4、模块化的编程思想"><a href="#4、模块化的编程思想" class="headerlink" title="4、模块化的编程思想"></a>4、模块化的编程思想</h2><p>模块化的编程思想是最早期的编程思想，其强调把一个系统分解为若干个功能，每个功能就是一个模块（函数）。当所有功能开发完毕后，则系统就完成了。</p>
+<h2 id="5、使用Python开发通讯录管理系统"><a href="#5、使用Python开发通讯录管理系统" class="headerlink" title="5、使用Python开发通讯录管理系统"></a>5、使用Python开发通讯录管理系统</h2><p>① 显示功能界面</p>
+<p>② 提示用户输入要操作的功能编号</p>
+<p>③ 根据用户输入的序号执行相关功能 =&gt; if…elif…else</p>
+<p>④ 如何让程序一直执行下去，而不是选择某个功能后，程序就退出了 =&gt; while True</p>
+<p>⑤ 根据用户输入的序号，完成系统中的每一个功能</p>
+<p>所有功能都有使用前提：必须共享一套数据 =&gt; info = [{}, {}, {}]</p>
+<p>☆ 学员信息添加功能（add_student()）</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/03/020-python-ji-chu-05/">Day05之Python中的数据序列<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/03/022-python-ji-chu-07/">Day07之Python函数进阶与文件操作<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day10（上）之Python模块、包与面向对象综合案例 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、Python内置模块1、什么是Python模块Python 模块(Module)，是一个&#x3D;&#x3D;Python 文件&#x3D;&#x3D;，以 .py 结尾，包含了 Python 对象定义和Python语句。模块能定义&#x3D;&#x3D;函数，类和变量&#x3D;&#x3D;，模块里也能包含可执行的代码。 2、模块的分类在Python中，模块通常可以分为两大类：&#x3D;&#x3D;内置模块(目前使用的)&#x3D;&#x3D; 和 &#x3D;&#x3D;自定义模块&#x3D;&#x3D; 3、模块的导入方式☆ import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day10（上）之Python模块、包与面向对象综合案例">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/025-python-ji-chu-10-shang/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、Python内置模块1、什么是Python模块Python 模块(Module)，是一个&#x3D;&#x3D;Python 文件&#x3D;&#x3D;，以 .py 结尾，包含了 Python 对象定义和Python语句。模块能定义&#x3D;&#x3D;函数，类和变量&#x3D;&#x3D;，模块里也能包含可执行的代码。 2、模块的分类在Python中，模块通常可以分为两大类：&#x3D;&#x3D;内置模块(目前使用的)&#x3D;&#x3D; 和 &#x3D;&#x3D;自定义模块&#x3D;&#x3D; 3、模块的导入方式☆ import">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111294.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111143.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111006.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111119.png">
+<meta property="article:published_time" content="2022-03-03T01:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:11:21.430Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111294.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFPython%E6%A8%A1%E5%9D%97"><span class="toc-number">1.</span> <span class="toc-text">1、什么是Python模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%A8%A1%E5%9D%97%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">2、模块的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%A8%A1%E5%9D%97%E7%9A%84%E5%AF%BC%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">3、模块的导入方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8import%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97"><span class="toc-number">4.</span> <span class="toc-text">4、使用import导入模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E4%BD%BF%E7%94%A8from-%E6%A8%A1%E5%9D%97%E5%90%8D-import-%E5%8A%9F%E8%83%BD%E5%90%8D"><span class="toc-number">5.</span> <span class="toc-text">5、使用from 模块名 import 功能名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-from-%E6%A8%A1%E5%9D%97%E5%90%8D-import"><span class="toc-number">5.1.</span> <span class="toc-text">☆ from 模块名 import *</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-from-%E6%A8%A1%E5%9D%97%E5%90%8D-import-%E5%8A%9F%E8%83%BD%E5%90%8D%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">☆ from 模块名 import 功能名（推荐）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E4%BD%BF%E7%94%A8as%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%BA%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9D%97%E5%AE%9A%E4%B9%89%E5%88%AB%E5%90%8D"><span class="toc-number">6.</span> <span class="toc-text">6、使用as关键字为导入模块定义别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E4%BD%BF%E7%94%A8as%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%BA%E5%AF%BC%E5%85%A5%E5%8A%9F%E8%83%BD%E5%AE%9A%E4%B9%89%E5%88%AB%E5%90%8D"><span class="toc-number">7.</span> <span class="toc-text">7、使用as关键字为导入功能定义别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E6%89%A9%E5%B1%95%EF%BC%9Atime%E6%A8%A1%E5%9D%97%E4%B8%AD%E7%9A%84time-%E6%96%B9%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">8、扩展：time模块中的time()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97"><span class="toc-number">9.</span> <span class="toc-text">1、什么是自定义模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97"><span class="toc-number">10.</span> <span class="toc-text">2、定义一个自定义模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AF%BC%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97"><span class="toc-number">11.</span> <span class="toc-text">3、导入自定义模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E5%9D%97%E4%B8%AD%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">12.</span> <span class="toc-text">4、自定义模块中功能测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%A4%9A%E6%A8%A1%E5%9D%97%E4%B8%AD%E5%8A%9F%E8%83%BD%E5%91%BD%E5%90%8D%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98"><span class="toc-number">13.</span> <span class="toc-text">5、多模块中功能命名冲突问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%91%BD%E5%90%8D%E5%86%B2%E7%AA%81"><span class="toc-number">13.1.</span> <span class="toc-text">☆ 命名冲突</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">13.2.</span> <span class="toc-text">☆ 解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E6%A8%A1%E5%9D%97%E5%91%BD%E5%90%8D%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">14.</span> <span class="toc-text">6、模块命名的注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81-all-%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-number">15.</span> <span class="toc-text">7、__all__魔术方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%8C%85"><span class="toc-number">16.</span> <span class="toc-text">1、什么是包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%8C%85%E7%9A%84%E5%88%B6%E4%BD%9C"><span class="toc-number">17.</span> <span class="toc-text">2、包的制作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%9C%A8%E5%8C%85%E4%B8%AD%E5%88%9B%E5%BB%BA%E5%A4%9A%E4%B8%AA%E6%A8%A1%E5%9D%97"><span class="toc-number">18.</span> <span class="toc-text">3、在包中创建多个模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%AF%BC%E5%85%A5%E5%8C%85Package"><span class="toc-number">19.</span> <span class="toc-text">4、在项目代码中导入包Package</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-03T01:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day10（上）之Python模块、包与面向对象综合案例</span></h1>
+<h1 id="一、Python内置模块"><a href="#一、Python内置模块" class="headerlink" title="一、Python内置模块"></a>一、Python内置模块</h1><h2 id="1、什么是Python模块"><a href="#1、什么是Python模块" class="headerlink" title="1、什么是Python模块"></a>1、什么是Python模块</h2><p>Python 模块(Module)，是一个==Python 文件==，以 .py 结尾，包含了 Python 对象定义和Python语句。模块能定义==函数，类和变量==，模块里也能包含可执行的代码。</p>
+<h2 id="2、模块的分类"><a href="#2、模块的分类" class="headerlink" title="2、模块的分类"></a>2、模块的分类</h2><p>在Python中，模块通常可以分为两大类：==内置模块(目前使用的)== 和 ==自定义模块==</p>
+<h2 id="3、模块的导入方式"><a href="#3、模块的导入方式" class="headerlink" title="3、模块的导入方式"></a>3、模块的导入方式</h2><p>☆ import 模块名</p>
+<p>☆ from 模块名 import 功能名</p>
+<p>☆ from 模块名 import *</p>
+<p>☆ import 模块名 as 别名</p>
+<p>☆ from 模块名 import 功能名 as 别名</p>
+<h2 id="4、使用import导入模块"><a href="#4、使用import导入模块" class="headerlink" title="4、使用import导入模块"></a>4、使用import导入模块</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> 模块名称
+或
+<span class="token keyword">import</span> 模块名称<span class="token number">1</span><span class="token punctuation">,</span> 模块名称<span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<p>使用模块中封装好的方法：</p>
+<pre class=" language-python"><code class="language-python">模块名称<span class="token punctuation">.</span>方法<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例：使用import导入math模块</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> math
+
+<span class="token comment" spellcheck="true"># 求数字9的平方根 = 3</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例：使用import导入math与random模块</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> math<span class="token punctuation">,</span> random
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>math<span class="token punctuation">.</span>sqrt<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://fanyi.caiyunapp.com/#/web%E5%BD%A9%E4%BA%91%E5%B0%8F%E8%AF%91%E7%BF%BB%E8%AF%91%E6%8F%92%E4%BB%B6">https://fanyi.caiyunapp.com/#/web彩云小译翻译插件</a></p>
+</blockquote>
+<h2 id="5、使用from-模块名-import-功能名"><a href="#5、使用from-模块名-import-功能名" class="headerlink" title="5、使用from 模块名 import 功能名"></a>5、使用from 模块名 import 功能名</h2><p>提问：已经有了import导入模块，为什么还需要使用from 模块名 import 功能名这样的导入方式？</p>
+<p>答：import代表导入某个或多个模块中的所有功能，但是有些情况下，我们只希望使用这个模块下的某些方法，而不需要全部导入。这个时候就建议采用from 模块名 import 功能名</p>
+<h3 id="☆-from-模块名-import"><a href="#☆-from-模块名-import" class="headerlink" title="☆ from 模块名 import *"></a>☆ from 模块名 import *</h3><p>这个导入方式代表导入这个模块的所有功能（等价于import 模块名）</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> <span class="token operator">*</span>
+</code></pre>
+<h3 id="☆-from-模块名-import-功能名（推荐）"><a href="#☆-from-模块名-import-功能名（推荐）" class="headerlink" title="☆ from 模块名 import 功能名（推荐）"></a>☆ from 模块名 import 功能名（推荐）</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> math <span class="token keyword">import</span> sqrt<span class="token punctuation">,</span> floor
+</code></pre>
+<p>注意：以上两种方式都可以用于导入某个模块中的某些方法，但是在调用具体的方法时，我们只需要<code>功能名()</code>即可</p>
+<pre class=" language-python"><code class="language-python">功能名<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># from math import *</span>
+<span class="token comment" spellcheck="true"># 或</span>
+<span class="token keyword">from</span> math <span class="token keyword">import</span> sqrt<span class="token punctuation">,</span> floor
+
+<span class="token comment" spellcheck="true"># 调用方式</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>sqrt<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>floor<span class="token punctuation">(</span><span class="token number">10.88</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="6、使用as关键字为导入模块定义别名"><a href="#6、使用as关键字为导入模块定义别名" class="headerlink" title="6、使用as关键字为导入模块定义别名"></a>6、使用as关键字为导入模块定义别名</h2><p>在有些情况下，如导入的模块名称过长，建议使用as关键字对其重命名操作，以后在调用这个模块时，我们就可以使用别名进行操作。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> time <span class="token keyword">as</span> t
+
+<span class="token comment" spellcheck="true"># 调用方式</span>
+t<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>在Python中，如果给模块定义别名，命名规则建议使用大驼峰。</p>
+</blockquote>
+<h2 id="7、使用as关键字为导入功能定义别名"><a href="#7、使用as关键字为导入功能定义别名" class="headerlink" title="7、使用as关键字为导入功能定义别名"></a>7、使用as关键字为导入功能定义别名</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> 模块 <span class="token keyword">import</span> 功能名 <span class="token keyword">as</span> 功能名别名
+</code></pre>
+<p>案例：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> time <span class="token keyword">import</span> sleep <span class="token keyword">as</span> sl<span class="token punctuation">,</span> time <span class="token keyword">as</span> t
+
+<span class="token comment" spellcheck="true"># 调用方式</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span>
+sl<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello python'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="8、扩展：time模块中的time-方法"><a href="#8、扩展：time模块中的time-方法" class="headerlink" title="8、扩展：time模块中的time()方法"></a>8、扩展：time模块中的time()方法</h2><p>在Python中，time模块除了sleep方法以外，还有一个方法叫做time()方法</p>
+<pre class=" language-python"><code class="language-python">time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>主要功能：就是返回格林制时间到当前时间的秒数（时间戳）</p>
+<p>案例：求运行递归代码的执行时间</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> time
+
+<span class="token comment" spellcheck="true"># 返回：格林制时间到当前时间的秒数</span>
+start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 编写递归函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">10</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>func<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>func<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+end <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'以上代码共执行了{end - start}s'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="二、Python中的自定义模块"><a href="#二、Python中的自定义模块" class="headerlink" title="二、Python中的自定义模块"></a>二、Python中的自定义模块</h1><h2 id="1、什么是自定义模块"><a href="#1、什么是自定义模块" class="headerlink" title="1、什么是自定义模块"></a>1、什么是自定义模块</h2><p>在Python中，模块一共可以分为两大类：内置系统模块  和  自定义模块</p>
+<p>模块的本质：在Python中，模块的本质就是一个Python的独立文件（后缀名.py），里面可以包含==全局变量、函数以及类==。</p>
+<blockquote>
+<p>注：在Python中，每个Python文件都可以作为一个模块，模块的名字就是==文件的名字==。也就是说自定义模块名必须要符合标识符命名规则。</p>
+</blockquote>
+<h2 id="2、定义一个自定义模块"><a href="#2、定义一个自定义模块" class="headerlink" title="2、定义一个自定义模块"></a>2、定义一个自定义模块</h2><p>案例：在Python项目中创建一个自定义文件，如my_module1.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sum_num</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> num1 <span class="token operator">+</span> num2
+</code></pre>
+<h2 id="3、导入自定义模块"><a href="#3、导入自定义模块" class="headerlink" title="3、导入自定义模块"></a>3、导入自定义模块</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> 模块名称
+或
+<span class="token keyword">from</span> 模块名称 <span class="token keyword">import</span> 功能名
+</code></pre>
+<p>案例：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> my_module1
+
+
+<span class="token comment" spellcheck="true"># 调用my_module1模块中自定义的sum_num方法</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>my_module1<span class="token punctuation">.</span>sum_num<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、自定义模块中功能测试"><a href="#4、自定义模块中功能测试" class="headerlink" title="4、自定义模块中功能测试"></a>4、自定义模块中功能测试</h2><p>在我们编写完自定义模块以后，最好在模块中对代码进行提前测试，以防止有任何异常。</p>
+<p>引入一个魔方方法：<code>__name__</code>，其保存的内存就是一个字符串类型的数据。</p>
+<p>随着运行页面的不同，其返回结果也是不同的：</p>
+<p>① 如果<code>__name__</code>是在当前页面运行时，其返回结果为<code>__main__</code></p>
+<p>② 如果<code>__name__</code>在第三方页面导入运行时，其返回结果为模块名称</p>
+<p>基于以上特性，我们可以把<code>__name__</code>编写在自定义模块中，其语法如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 执行测试代码</span>
+</code></pre>
+<p><code>__name__</code>魔术方法除了可以在自定义模块中测试使用，还可以用于编写程序的入口：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个main方法（入口文件）</span>
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 执行我们要执行的功能</span>
+    <span class="token comment" spellcheck="true"># ① 打印选择菜单</span>
+    <span class="token comment" spellcheck="true"># ② 添加学员信息</span>
+    <span class="token comment" spellcheck="true"># ③ 删除学员信息</span>
+    <span class="token comment" spellcheck="true"># ...</span>
+    
+<span class="token comment" spellcheck="true"># 调用执行入口</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、多模块中功能命名冲突问题"><a href="#5、多模块中功能命名冲突问题" class="headerlink" title="5、多模块中功能命名冲突问题"></a>5、多模块中功能命名冲突问题</h2><h3 id="☆-命名冲突"><a href="#☆-命名冲突" class="headerlink" title="☆ 命名冲突"></a>☆ 命名冲突</h3><p>当我们编写了多个模块时，可能在导入到其他页面时，会产生一个问题：全局变量、函数、类出现重名情况，我们把这个情况就称之为“命名冲突”。</p>
+<p>如导入my_module2和my_module3，里面都封装了一个func()方法，其在导入以后，my_module3中的func()方法就会覆盖my_module2中的func()方法。</p>
+<p>my_module2.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'my_module2中的func方法'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>my_module3.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'my_module3中的func方法'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>导入到其他Python文件中，测试效果：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> my_module2 <span class="token keyword">import</span> func
+<span class="token keyword">from</span> my_module3 <span class="token keyword">import</span> func
+
+func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-解决方案"><a href="#☆-解决方案" class="headerlink" title="☆ 解决方案"></a>☆ 解决方案</h3><p>① 把所有模块的导入方式都写入文件的最上面，如果发现命名冲突了，马上和模块的开发人员进行功能核对</p>
+<p>② 给重名的方法进行as重命名</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> my_module2 <span class="token keyword">import</span> func <span class="token keyword">as</span> my_module2_func
+<span class="token keyword">from</span> my_module3 <span class="token keyword">import</span> func <span class="token keyword">as</span> my_module3_func
+</code></pre>
+<h2 id="6、模块命名的注意事项"><a href="#6、模块命名的注意事项" class="headerlink" title="6、模块命名的注意事项"></a>6、模块命名的注意事项</h2><p>在实际项目开发中，一定要特别注意：我们自定义的模块名称一定不能和系统内置的模块名称相同，否则会导致代码无法正常执行。</p>
+<p>举个栗子：定义一个与系统内置模块同名的模块</p>
+<p>random.py</p>
+<pre class=" language-python"><code class="language-python">
+</code></pre>
+<p>08-Python中引入与系统模块同名的自定义模块.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> random
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>以上代码运行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111294.png" alt="image-20210319113537997"></p>
+<p>randint属于random模块的内置方法，不可能存在找不到的情况。之所以出现以上问题的主要原因在于：我们的项目中存在了一个与系统模块同名的模块文件。所以其在引用random模块式，其执行顺序：</p>
+<p><code>引入某个模块 =&gt; 当前项目中寻找是否有同名的文件 =&gt; 如果找到则直接使用，未找到 =&gt; 继续向上寻找 =&gt; Python解析器中</code></p>
+<p>如何证明：模块的引用一定是按照你说的这个顺序呢？</p>
+<p>答：使用<code>__file__</code>魔术方法</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span>__file__<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="7、-all-魔术方法"><a href="#7、-all-魔术方法" class="headerlink" title="7、__all__魔术方法"></a>7、__all__魔术方法</h2><p>如果一个模块文件中有<code>__all__</code>变量，当使用<code>from xxx import *</code>导入时，只能导入这个列表中的元素。</p>
+<p>主要功能：限制使用模块中的某些功能，也就是说你导入后可以使用的方法只能是<code>__all__</code>中封装好的方法。</p>
+<p>案例：</p>
+<p>my_module.py</p>
+<pre class=" language-python"><code class="language-python">__all__ <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'func1'</span><span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'func1方法'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'func2方法'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>09-Python中限制引用模块中的方法.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> my_module <span class="token keyword">import</span> <span class="token operator">*</span>
+
+func1<span class="token punctuation">(</span><span class="token punctuation">)</span>
+func2<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 报错</span>
+</code></pre>
+<h1 id="三、Python中的Package包"><a href="#三、Python中的Package包" class="headerlink" title="三、Python中的Package包"></a>三、Python中的Package包</h1><h2 id="1、什么是包"><a href="#1、什么是包" class="headerlink" title="1、什么是包"></a>1、什么是包</h2><p>包将有联系的模块组织在一起，即放到同一个文件夹下，并且在这个文件夹创建一个名字为<code>__init__.py</code> 文件，那么这个文件夹就称之为包。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111143.png" alt="image-20210319120310830"></p>
+<h2 id="2、包的制作"><a href="#2、包的制作" class="headerlink" title="2、包的制作"></a>2、包的制作</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111006.png" alt="image-20210319120405292"></p>
+<p>新建报名如mypackage：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111119.png" alt="image-20210319120453514"></p>
+<h2 id="3、在包中创建多个模块"><a href="#3、在包中创建多个模块" class="headerlink" title="3、在包中创建多个模块"></a>3、在包中创建多个模块</h2><p>在mypackage包中创建多个模块：my_module1和my_module2</p>
+<p>my_module1.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'my_module1'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'mypackage包中的my_module1模块的func1方法'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>my_module2.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'my_module2'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">func2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'mypackage包中的my_module2模块的func2方法'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、在项目代码中导入包Package"><a href="#4、在项目代码中导入包Package" class="headerlink" title="4、在项目代码中导入包Package"></a>4、在项目代码中导入包Package</h2><p>方法一：使用import导入包</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> 包名<span class="token punctuation">.</span>模块名
+
+<span class="token comment" spellcheck="true"># 调用模块中的方法</span>
+包名<span class="token punctuation">.</span>模块名<span class="token punctuation">.</span>方法名<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>方法二：使用from导入包</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> 包名 <span class="token keyword">import</span> <span class="token operator">*</span>
+
+<span class="token comment" spellcheck="true"># 调用模块方法</span>
+模块名<span class="token punctuation">.</span>方法名<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>注意：必须在<code>__init__.py</code>文件中添加<code>__all__ = []</code>，控制允许导入的模块列表。</p>
+</blockquote>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/03/024-python-ji-chu-09/">Day09之Python面向对象高级与Python的异常、模块以及包管理<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/03/026-python-ji-chu-10-xia/">Day10（下）之Python综合案例<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>

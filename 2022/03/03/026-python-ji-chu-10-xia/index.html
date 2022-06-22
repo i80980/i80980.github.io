@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day10（下）之Python综合案例 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、系统需求分析1、需求分析使用&#x3D;&#x3D;面向对象编程思想&#x3D;&#x3D;完成学员管理系统的开发，具体如下： ① 系统要求：&#x3D;&#x3D;学员数据存储在文件中&#x3D;&#x3D; ② 系统功能：&#x3D;&#x3D;添加学员、删除学员、修改学员信息、查询学员信息、显示所有学员信息、保存学员信息及退出系统&#x3D;&#x3D;等功能。 2、角色分析在面向对象编程思想中，必须找到要具体实现操作的实体。 通过系统实现添加学员操作 通过系统实现删除学员操作 …. 最终可以得出一个结论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day10（下）之Python综合案例">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/026-python-ji-chu-10-xia/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、系统需求分析1、需求分析使用&#x3D;&#x3D;面向对象编程思想&#x3D;&#x3D;完成学员管理系统的开发，具体如下： ① 系统要求：&#x3D;&#x3D;学员数据存储在文件中&#x3D;&#x3D; ② 系统功能：&#x3D;&#x3D;添加学员、删除学员、修改学员信息、查询学员信息、显示所有学员信息、保存学员信息及退出系统&#x3D;&#x3D;等功能。 2、角色分析在面向对象编程思想中，必须找到要具体实现操作的实体。 通过系统实现添加学员操作 通过系统实现删除学员操作 …. 最终可以得出一个结论">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111535.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111002.png">
+<meta property="article:published_time" content="2022-03-03T02:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:11:39.553Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111535.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">1、需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%A7%92%E8%89%B2%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">2、角色分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.</span> <span class="toc-text">3、创建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%AD%A6%E5%91%98%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">1、学员信息存储代码分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81student-py%E7%B1%BB%E6%96%87%E4%BB%B6%E7%BC%96%E5%86%99"><span class="toc-number">5.</span> <span class="toc-text">2、student.py类文件编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%BC%96%E5%86%99studentManager-py%E4%BB%A3%E7%A0%81"><span class="toc-number">6.</span> <span class="toc-text">3、编写studentManager.py代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%AD%A6%E5%91%98%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E5%85%B7%E4%BD%93%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E"><span class="toc-number">7.</span> <span class="toc-text">4、学员管理系统具体功能说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%9F%BA%E7%A1%80%E9%80%BB%E8%BE%91%E4%BB%A3%E7%A0%81"><span class="toc-number">7.1.</span> <span class="toc-text">☆ 基础逻辑代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-main-py%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E5%86%99"><span class="toc-number">7.2.</span> <span class="toc-text">☆ main.py入口文件的编写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%BC%96%E5%86%99add-student-%E5%AD%A6%E5%91%98%E6%B7%BB%E5%8A%A0%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.3.</span> <span class="toc-text">☆ 编写add_student()学员添加方法实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%BC%96%E5%86%99del-student-%E5%AD%A6%E5%91%98%E5%88%A0%E9%99%A4%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.4.</span> <span class="toc-text">☆ 编写del_student()学员删除方法实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%BC%96%E5%86%99mod-student-%E5%AD%A6%E5%91%98%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.5.</span> <span class="toc-text">☆ 编写mod_student()学员修改方法实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%BC%96%E5%86%99show-student-%E5%AD%A6%E5%91%98%E6%9F%A5%E8%AF%A2%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.6.</span> <span class="toc-text">☆ 编写show_student()学员查询方法实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%BC%96%E5%86%99show-all-%E6%96%B9%E6%B3%95%E6%9F%A5%E8%AF%A2%E6%89%80%E6%9C%89%E5%AD%A6%E5%91%98%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.7.</span> <span class="toc-text">☆ 编写show_all()方法查询所有学员实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%BC%96%E5%86%99save-student-%E6%96%B9%E6%B3%95%E5%AD%A6%E5%91%98%E4%BF%A1%E6%81%AF%E4%BF%9D%E5%AD%98%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.8.</span> <span class="toc-text">☆ 编写save_student()方法学员信息保存功能实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%EF%BC%9A%E6%8A%8A%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%8D%A2%E4%B8%BAdict%E5%AD%97%E5%85%B8%E6%A0%BC%E5%BC%8F-gt-dict"><span class="toc-number">7.9.</span> <span class="toc-text">扩展：把对象转换为dict字典格式 &#x3D;&gt; __dict__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%BC%96%E5%86%99load-student-%E6%96%B9%E6%B3%95%E5%AD%A6%E5%91%98%E5%8A%A0%E8%BD%BD%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0"><span class="toc-number">7.10.</span> <span class="toc-text">☆ 编写load_student()方法学员加载功能实现</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-03T02:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day10（下）之Python综合案例</span></h1>
+<h1 id="一、系统需求分析"><a href="#一、系统需求分析" class="headerlink" title="一、系统需求分析"></a>一、系统需求分析</h1><h2 id="1、需求分析"><a href="#1、需求分析" class="headerlink" title="1、需求分析"></a>1、需求分析</h2><p>使用==面向对象编程思想==完成学员管理系统的开发，具体如下：</p>
+<p>① 系统要求：==学员数据存储在文件中==</p>
+<p>② 系统功能：==添加学员、删除学员、修改学员信息、查询学员信息、显示所有学员信息、保存学员信息及退出系统==等功能。</p>
+<h2 id="2、角色分析"><a href="#2、角色分析" class="headerlink" title="2、角色分析"></a>2、角色分析</h2><p>在面向对象编程思想中，必须找到要具体实现操作的实体。</p>
+<p>通过系统实现添加学员操作</p>
+<p>通过系统实现删除学员操作</p>
+<p>….</p>
+<p>最终可以得出一个结论：这个通讯管理系统，其主要的实体就是==通讯录管理系统本身==</p>
+<p>注意事项</p>
+<p>① 为了方便维护代码，一般一个角色一个程序文件</p>
+<p>② 项目要有主程序入口，习惯为<code>main.py</code></p>
+<h2 id="3、创建项目"><a href="#3、创建项目" class="headerlink" title="3、创建项目"></a>3、创建项目</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111535.png" alt="image-20210319144506905"></p>
+<p>创建类文件 =&gt; studentManager.py</p>
+<p>创建项目入口文件 =&gt; main.py</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012111002.png" alt="image-20210319145119665"></p>
+<h1 id="二、系统的代码开发"><a href="#二、系统的代码开发" class="headerlink" title="二、系统的代码开发"></a>二、系统的代码开发</h1><h2 id="1、学员信息存储代码分析"><a href="#1、学员信息存储代码分析" class="headerlink" title="1、学员信息存储代码分析"></a>1、学员信息存储代码分析</h2><p>students = [{}, {}, {}]</p>
+<p>学员姓名</p>
+<p>学员年龄</p>
+<p>学员电话</p>
+<p>学员信息（姓名、年龄、电话），可以使用字典来表示。但是我们已经学习了面向对象，其学员信息可以完全用对象来进行实现。</p>
+<p>学员（主体） =&gt;  属性（姓名、年龄、电话）</p>
+<h2 id="2、student-py类文件编写"><a href="#2、student-py类文件编写" class="headerlink" title="2、student.py类文件编写"></a>2、student.py类文件编写</h2><p>需求：</p>
+<p>学员信息包含：姓名、年龄、电话</p>
+<p>添加<code>__str__</code>魔法方法，方便查看学员对象信息</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个Student类</span>
+<span class="token keyword">class</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 定义魔术方法，用于初始化属性信息</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> mobile<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>age <span class="token operator">=</span> age
+        self<span class="token punctuation">.</span>mobile <span class="token operator">=</span> mobile
+    <span class="token comment" spellcheck="true"># 定义魔术方法，用于打印输出学员信息</span>
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> f<span class="token string">'{self.name}, {self.age}, {self.mobile}'</span>
+</code></pre>
+<h2 id="3、编写studentManager-py代码"><a href="#3、编写studentManager-py代码" class="headerlink" title="3、编写studentManager.py代码"></a>3、编写studentManager.py代码</h2><p>studentManager.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">StudentManager</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 定义__init__魔术方法，用于初始化操作</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 定义一个列表，将来用于保存所有学员信息</span>
+        self<span class="token punctuation">.</span>student_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</code></pre>
+<p>未来数据的存储格式如下：</p>
+<pre class=" language-python"><code class="language-python">self<span class="token punctuation">.</span>student_list <span class="token operator">=</span> <span class="token punctuation">[</span>p1<span class="token punctuation">,</span> p2<span class="token punctuation">,</span> p3<span class="token punctuation">,</span> p4<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+</code></pre>
+<h2 id="4、学员管理系统具体功能说明"><a href="#4、学员管理系统具体功能说明" class="headerlink" title="4、学员管理系统具体功能说明"></a>4、学员管理系统具体功能说明</h2><p>需求：</p>
+<p>存储数据的位置：文件(student.data) </p>
+<ul>
+<li><p>加载文件数据 </p>
+</li>
+<li><p>修改数据后保存到文件</p>
+</li>
+</ul>
+<p>存储数据的形式：列表存储学员对象</p>
+<p>系统功能： </p>
+<p>① 添加学员信息</p>
+<p>② 删除学员信息</p>
+<p>③ 修改学员信息</p>
+<p>④ 查询学员信息</p>
+<p>⑤ 显示所有学员信息</p>
+<p>⑥ 保存学员信息</p>
+<p>⑦ 退出系统</p>
+<p>编写程序代码，用于实现以上的所有功能：</p>
+<h3 id="☆-基础逻辑代码"><a href="#☆-基础逻辑代码" class="headerlink" title="☆ 基础逻辑代码"></a>☆ 基础逻辑代码</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">StudentManager</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 定义一个__init__魔术方法，用于初始化数据</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 初始化一个student_list属性，用于将来保存所有学员对象信息</span>
+        self<span class="token punctuation">.</span>student_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token comment" spellcheck="true"># 定义load_student()方法</span>
+    <span class="token keyword">def</span> <span class="token function">load_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token comment" spellcheck="true"># 定义静态show_help()方法</span>
+    @staticmethod
+    <span class="token keyword">def</span> <span class="token function">show_help</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span> <span class="token operator">*</span> <span class="token number">40</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'传智教育通讯录管理系统V2.0'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'1.添加学员信息'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'2.删除学员信息'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'3.修改学员信息'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'4.查询学员信息'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'5.显示所有学员信息'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># V2.0新增功能</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'6.保存学员信息'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'7.退出系统'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span> <span class="token operator">*</span> <span class="token number">40</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">add_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token keyword">def</span> <span class="token function">del_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token keyword">def</span> <span class="token function">mod_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token keyword">def</span> <span class="token function">show_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token keyword">def</span> <span class="token function">show_all</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token keyword">def</span> <span class="token function">save_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">pass</span>
+
+    <span class="token comment" spellcheck="true"># 定义一个run()方法，专门用于实现对管理系统中各个功能调用</span>
+    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 1、调用一个学员加载方法，用于加载文件中的所有学员信息，加载完成后，把得到的所有学员信息保存在student_list属性中</span>
+        self<span class="token punctuation">.</span>load_student<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 2、显示帮助信息，提示用户输入要实现的功能编号</span>
+        <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 显示帮助信息</span>
+            self<span class="token punctuation">.</span>show_help<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true"># 提示用户输入要操作功能编号</span>
+            user_num <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入要操作功能的编号：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> user_num <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                self<span class="token punctuation">.</span>add_student<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> user_num <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+                self<span class="token punctuation">.</span>del_student<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> user_num <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+                self<span class="token punctuation">.</span>mod_student<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> user_num <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">:</span>
+                self<span class="token punctuation">.</span>show_student<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> user_num <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">:</span>
+                self<span class="token punctuation">.</span>show_all<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> user_num <span class="token operator">==</span> <span class="token number">6</span><span class="token punctuation">:</span>
+                self<span class="token punctuation">.</span>save_student<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">elif</span> user_num <span class="token operator">==</span> <span class="token number">7</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'感谢您使用传智教育通讯录管理系统V2.0，欢迎下次使用！'</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'信息输入错误，请重新输入...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-main-py入口文件的编写"><a href="#☆-main-py入口文件的编写" class="headerlink" title="☆ main.py入口文件的编写"></a>☆ main.py入口文件的编写</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 从studentManager模块中导入StudentManager类功能</span>
+<span class="token keyword">from</span> studentManager <span class="token keyword">import</span> StudentManager
+
+<span class="token comment" spellcheck="true"># 定义入口代码</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    student_manager <span class="token operator">=</span> StudentManager<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    student_manager<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-编写add-student-学员添加方法实现"><a href="#☆-编写add-student-学员添加方法实现" class="headerlink" title="☆ 编写add_student()学员添加方法实现"></a>☆ 编写add_student()学员添加方法实现</h3><p>需求：用户输入学员姓名、年龄、手机号，将学员添加到系统。</p>
+<p>步骤： </p>
+<p>① 用户输入姓名、年龄、手机号</p>
+<p>② 创建该学员对象（真正添加到列表中的是对象）</p>
+<p>③ 将该学员对象添加到列表[] =&gt; append()</p>
+<pre class=" language-python"><code class="language-python">    <span class="token keyword">from</span> student <span class="token keyword">import</span> Student
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>    
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">def</span> <span class="token function">add_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 提示用户输入学员信息</span>
+        name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入学员的姓名：'</span><span class="token punctuation">)</span>
+        age <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入学员的年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        mobile <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入学员的电话：'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 使用Student类实例化对象</span>
+        student <span class="token operator">=</span> Student<span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> mobile<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 调用student_list属性，追加student对象信息</span>
+        self<span class="token punctuation">.</span>student_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>student<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'学员信息已添加成功'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-编写del-student-学员删除方法实现"><a href="#☆-编写del-student-学员删除方法实现" class="headerlink" title="☆ 编写del_student()学员删除方法实现"></a>☆ 编写del_student()学员删除方法实现</h3><p>需求：用户输入目标学员姓名，如果学员存在则删除该学员。</p>
+<p>步骤： </p>
+<p>① 用户输入目标学员姓名</p>
+<p>② 遍历学员数据列表，如果用户输入的学员姓名存在则删除，否则则提示该学员不存在。</p>
+<pre class=" language-python"><code class="language-python">        <span class="token keyword">def</span> <span class="token function">del_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 提示用户输入要删除的学员姓名</span>
+        name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入要删除的学员姓名：'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 对student_list属性（本质列表）进行遍历</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> self<span class="token punctuation">.</span>student_list<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i<span class="token punctuation">.</span>name <span class="token operator">==</span> name<span class="token punctuation">:</span>
+                <span class="token comment" spellcheck="true"># 找到了要删除的学员，删除</span>
+                self<span class="token punctuation">.</span>student_list<span class="token punctuation">.</span>remove<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'学员{name}信息删除成功'</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您要删除的学员不存在...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-编写mod-student-学员修改方法实现"><a href="#☆-编写mod-student-学员修改方法实现" class="headerlink" title="☆ 编写mod_student()学员修改方法实现"></a>☆ 编写mod_student()学员修改方法实现</h3><pre class=" language-python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">mod_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 提示用户输入要修改的学员姓名</span>
+        name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入要修改的学员姓名：'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 对student_list属性进行遍历，判断要修改的学员姓名是否存在</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> self<span class="token punctuation">.</span>student_list<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i<span class="token punctuation">.</span>name <span class="token operator">==</span> name<span class="token punctuation">:</span>
+                i<span class="token punctuation">.</span>name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入修改后的学员姓名：'</span><span class="token punctuation">)</span>
+                i<span class="token punctuation">.</span>age <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入修改后的学员年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                i<span class="token punctuation">.</span>mobile <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入修改后的学员电话：'</span><span class="token punctuation">)</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'学员信息修改成功，修改后信息如下 => 学员姓名：{i.name}，学员年龄：{i.age}，学员电话：{i.mobile}'</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您要修改的学员信息不存在...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-编写show-student-学员查询方法实现"><a href="#☆-编写show-student-学员查询方法实现" class="headerlink" title="☆ 编写show_student()学员查询方法实现"></a>☆ 编写show_student()学员查询方法实现</h3><pre class=" language-python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">show_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 提示用户输入要查询的学员姓名</span>
+        name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入要查询的学员姓名：'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 对student_list属性进行遍历</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> self<span class="token punctuation">.</span>student_list<span class="token punctuation">:</span>
+            <span class="token keyword">if</span> i<span class="token punctuation">.</span>name <span class="token operator">==</span> name<span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您要查找的学员信息不存在...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-编写show-all-方法查询所有学员实现"><a href="#☆-编写show-all-方法查询所有学员实现" class="headerlink" title="☆ 编写show_all()方法查询所有学员实现"></a>☆ 编写show_all()方法查询所有学员实现</h3><pre class=" language-python"><code class="language-python">    <span class="token keyword">def</span> <span class="token function">show_all</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 直接对列表进行遍历</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> self<span class="token punctuation">.</span>student_list<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-编写save-student-方法学员信息保存功能实现"><a href="#☆-编写save-student-方法学员信息保存功能实现" class="headerlink" title="☆ 编写save_student()方法学员信息保存功能实现"></a>☆ 编写save_student()方法学员信息保存功能实现</h3><p>需求：将所有学员信息都保存到存储数据的文件。</p>
+<p>步骤： </p>
+<p>① 打开文件 ② 读写文件 ③ 关闭文件</p>
+<p>思考：</p>
+<p>① 文件写入的数据是学员对象的内存地址吗？</p>
+<p>答：一定不能是对象的内存地址，因为随着系统的运行，内存地址可能会随时改变。</p>
+<p>② 文件内数据要求的数据类型是什么？答：必须是字符串，可以使用str()转换</p>
+<h3 id="扩展：把对象转换为dict字典格式-gt-dict"><a href="#扩展：把对象转换为dict字典格式-gt-dict" class="headerlink" title="扩展：把对象转换为dict字典格式 => __dict__"></a>扩展：把对象转换为dict字典格式 =&gt; <code>__dict__</code></h3><pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    a <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">1</span>
+
+aa <span class="token operator">=</span> A<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 返回实例属性和值组成的字典</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>aa<span class="token punctuation">.</span>__dict__<span class="token punctuation">)</span>
+</code></pre>
+<p>案例：demo.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> student <span class="token keyword">import</span> Student
+
+student_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+student <span class="token operator">=</span> Student<span class="token punctuation">(</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">'10086'</span><span class="token punctuation">)</span>
+student_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>student<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>student<span class="token punctuation">.</span>__dict__<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># {'name': 'Tom', 'age': 23, 'mobile': '10086'}</span>
+</code></pre>
+<p>案例：把[对象1, 对象2, 对象3]中的所有对象都转换为字典</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> student <span class="token keyword">import</span> Student
+
+student_list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+student <span class="token operator">=</span> Student<span class="token punctuation">(</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">'10086'</span><span class="token punctuation">)</span>
+student_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>student<span class="token punctuation">)</span>
+
+student <span class="token operator">=</span> Student<span class="token punctuation">(</span><span class="token string">'Harry'</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token string">'10010'</span><span class="token punctuation">)</span>
+student_list<span class="token punctuation">.</span>append<span class="token punctuation">(</span>student<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># [student1, student2, student3, ...]</span>
+<span class="token comment" spellcheck="true"># list1 = []</span>
+<span class="token comment" spellcheck="true"># for i in student_list:</span>
+<span class="token comment" spellcheck="true">#     list1.append(i.__dict__)</span>
+<span class="token comment" spellcheck="true"># print(list1)</span>
+
+list1 <span class="token operator">=</span> <span class="token punctuation">[</span>i<span class="token punctuation">.</span>__dict__ <span class="token keyword">for</span> i <span class="token keyword">in</span> student_list<span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list1<span class="token punctuation">)</span>
+</code></pre>
+<p>最终代码：</p>
+<pre class=" language-python"><code class="language-python">    <span class="token comment" spellcheck="true"># 把self.student_list转换为字符串保存到student.data文件中</span>
+    <span class="token keyword">def</span> <span class="token function">save_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 打开文件</span>
+        f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'student.data'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 把列表中的对象转换为字典</span>
+        new_list <span class="token operator">=</span> <span class="token punctuation">[</span>i<span class="token punctuation">.</span>__dict__ <span class="token keyword">for</span> i <span class="token keyword">in</span> self<span class="token punctuation">.</span>student_list<span class="token punctuation">]</span>
+        <span class="token comment" spellcheck="true"># 文件读写（写入）</span>
+        f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>str<span class="token punctuation">(</span>new_list<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 关闭文件</span>
+        f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 提示用户数据已经保存成功了</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'学员信息保存成功'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-编写load-student-方法学员加载功能实现"><a href="#☆-编写load-student-方法学员加载功能实现" class="headerlink" title="☆ 编写load_student()方法学员加载功能实现"></a>☆ 编写load_student()方法学员加载功能实现</h3><p>load_student()方法的作用：在系统启动以后，运行run()方法以后，把student.data文件中保存好的学员信息 =&gt; 加载 =&gt; self.student_list列表中</p>
+<p>student.data =&gt; 张三、李四、王五</p>
+<p>下次重新运行系统</p>
+<p>self.student_list = [张三, 李四, 王五]</p>
+<p>添加赵六</p>
+<p>self.student_list = [张三, 李四, 王五, 赵六]</p>
+<p>需求：每次进入系统后，修改的数据是文件里面的数据</p>
+<p>步骤： </p>
+<p>☆ 尝试以<code>"r"</code>模式打开学员数据文件，如果文件不存在则以<code>"w"</code>模式打开文件</p>
+<ul>
+<li><p>如果文件存在则读取数据</p>
+</li>
+<li><p>读取数据 =&gt; str字符串类型 [{}, {}, {}]</p>
+</li>
+<li><p>转换数据类型为列表并转换列表内的字典i[‘name’]为对象i.name</p>
+</li>
+<li><p>存储学员数据到学员列表self.student_list</p>
+</li>
+</ul>
+<p>☆ 关闭文件</p>
+<pre class=" language-python"><code class="language-python">    <span class="token comment" spellcheck="true"># 定义load_student()方法</span>
+    <span class="token keyword">def</span> <span class="token function">load_student</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 捕获异常</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'student.data'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'student.data'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 如果文件存在，没有异常，则执行else语句</span>
+            content <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true"># 把字符串转换为原数据类型[{}, {}, {}]</span>
+            data <span class="token operator">=</span> eval<span class="token punctuation">(</span>content<span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true"># 把列表中的所有字典 => 转换为对象</span>
+            self<span class="token punctuation">.</span>student_list <span class="token operator">=</span> <span class="token punctuation">[</span>Student<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">[</span><span class="token string">'age'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">[</span><span class="token string">'mobile'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> data<span class="token punctuation">]</span>
+
+        <span class="token keyword">finally</span><span class="token punctuation">:</span>
+            f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/03/025-python-ji-chu-10-shang/">Day10（上）之Python模块、包与面向对象综合案例<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/04/11/028-an-zhuang-sketchbook/">SketchBook2021安装及破解教程<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>

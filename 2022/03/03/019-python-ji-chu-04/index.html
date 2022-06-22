@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day04之Python数据序列 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、作业回顾1、面试题有一物，不知其数，三三数之余二，五五数之余三，七七数之余二，问物几何？ 白话文：有一个数字，不知道具体是多少，用3去除剩2，用5去除剩3，用7去除剩2个，问这个数是多少？1 ~ 100以内的整数 while循环： # 初始化计数器 i &#x3D; 1 # 编写循环条件 while i &lt;&#x3D; 100:     # 判断     if i % 3 &#x3D;&#x3D; 2 and i % 5 &#x3D;&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day04之Python数据序列">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/019-python-ji-chu-04/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、作业回顾1、面试题有一物，不知其数，三三数之余二，五五数之余三，七七数之余二，问物几何？ 白话文：有一个数字，不知道具体是多少，用3去除剩2，用5去除剩3，用7去除剩2个，问这个数是多少？1 ~ 100以内的整数 while循环： # 初始化计数器 i &#x3D; 1 # 编写循环条件 while i &lt;&#x3D; 100:     # 判断     if i % 3 &#x3D;&#x3D; 2 and i % 5 &#x3D;&#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105319.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105453.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105523.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105234.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105167.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105668.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105331.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105470.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105100.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105647.png">
+<meta property="article:published_time" content="2022-03-02T19:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:05:59.625Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105319.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">1、面试题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%8A%A5%E6%95%B0%E5%AD%97%EF%BC%88%E6%95%B07%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">2、报数字（数7）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">1、字符串的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">2、字符串输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%BE%93%E5%87%BA"><span class="toc-number">5.</span> <span class="toc-text">3、字符串的输出</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E6%99%AE%E9%80%9A%E8%BE%93%E5%87%BA"><span class="toc-number">5.1.</span> <span class="toc-text">☆ 普通输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">5.2.</span> <span class="toc-text">☆ 格式化输出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%BA%95%E5%B1%82%E7%9A%84%E5%AD%98%E5%82%A8%E5%BD%A2%E5%BC%8F"><span class="toc-number">6.</span> <span class="toc-text">4、字符串在计算机底层的存储形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E8%81%8A%E8%81%8A%E7%B4%A2%E5%BC%95%E4%B8%8B%E6%A0%87"><span class="toc-number">7.</span> <span class="toc-text">5、聊聊索引下标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87"><span class="toc-number">8.</span> <span class="toc-text">1、什么是字符串切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">2、字符串切片基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E5%B0%8F%E5%8F%A3%E8%AF%80"><span class="toc-number">10.</span> <span class="toc-text">3、字符串切片小口诀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87%E7%9A%84%E5%B0%8F%E6%A0%97%E5%AD%90"><span class="toc-number">11.</span> <span class="toc-text">4、字符串切片的小栗子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE%E6%96%B9%E6%B3%95"><span class="toc-number">12.</span> <span class="toc-text">1、字符串中的查找方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-find-%E6%96%B9%E6%B3%95"><span class="toc-number">12.1.</span> <span class="toc-text">☆ find()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-index-%E6%96%B9%E6%B3%95"><span class="toc-number">12.2.</span> <span class="toc-text">☆ index()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-rfind-%E4%B8%8Erindex-%E6%96%B9%E6%B3%95"><span class="toc-number">12.3.</span> <span class="toc-text">☆ rfind()与rindex()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-count-%E6%96%B9%E6%B3%95"><span class="toc-number">12.4.</span> <span class="toc-text">☆ count()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-number">13.</span> <span class="toc-text">2、练习题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E4%BF%AE%E6%94%B9%E6%96%B9%E6%B3%95"><span class="toc-number">14.</span> <span class="toc-text">3、字符串的修改方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-replace-%E6%96%B9%E6%B3%95"><span class="toc-number">14.1.</span> <span class="toc-text">☆ replace()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-split-%E6%96%B9%E6%B3%95"><span class="toc-number">14.2.</span> <span class="toc-text">☆ split()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-capitalize-%E6%96%B9%E6%B3%95"><span class="toc-number">14.3.</span> <span class="toc-text">☆ capitalize() 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-title-%E6%96%B9%E6%B3%95"><span class="toc-number">14.4.</span> <span class="toc-text">☆ title()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-upper-%E4%B8%8Elower-%E6%96%B9%E6%B3%95"><span class="toc-number">14.5.</span> <span class="toc-text">☆ upper()与lower() 方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-lstrip-%E3%80%81rstrip-%E4%B8%8Estrip"><span class="toc-number">14.6.</span> <span class="toc-text">☆ lstrip()、rstrip()与strip()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-ljust-%E3%80%81rjust-%E3%80%81center"><span class="toc-number">14.7.</span> <span class="toc-text">☆ ljust()、rjust()、center()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%88%A4%E6%96%AD%E6%96%B9%E6%B3%95"><span class="toc-number">15.</span> <span class="toc-text">4、字符串的判断方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-startswith"><span class="toc-number">15.1.</span> <span class="toc-text">☆ startswith()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-endswith"><span class="toc-number">15.2.</span> <span class="toc-text">☆ endswith()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-isalpha"><span class="toc-number">15.3.</span> <span class="toc-text">☆ isalpha()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-isdigit"><span class="toc-number">15.4.</span> <span class="toc-text">☆ isdigit()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-isalnum"><span class="toc-number">15.5.</span> <span class="toc-text">☆ isalnum()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-isspace"><span class="toc-number">15.6.</span> <span class="toc-text">☆ isspace()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%88%97%E8%A1%A8"><span class="toc-number">16.</span> <span class="toc-text">1、为什么需要列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%88%97%E8%A1%A8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">17.</span> <span class="toc-text">2、列表的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%88%97%E8%A1%A8%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">18.</span> <span class="toc-text">3、列表的相关操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E6%9F%A5%E6%93%8D%E4%BD%9C"><span class="toc-number">18.1.</span> <span class="toc-text">☆ 查操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%A2%9E%E6%93%8D%E4%BD%9C"><span class="toc-number">18.2.</span> <span class="toc-text">☆ 增操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86-append"><span class="toc-number">18.2.1.</span> <span class="toc-text">☆ append()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86-extend-%E6%96%B9%E6%B3%95"><span class="toc-number">18.2.2.</span> <span class="toc-text">☆ extend()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86-insert-%E6%96%B9%E6%B3%95"><span class="toc-number">18.2.3.</span> <span class="toc-text">☆ insert()方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%88%A0%E6%93%8D%E4%BD%9C"><span class="toc-number">18.3.</span> <span class="toc-text">☆ 删操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86-del%E5%88%A0%E9%99%A4%E6%8C%87%E5%AE%9A%E7%9A%84%E5%88%97%E8%A1%A8%E5%85%83%E7%B4%A0"><span class="toc-number">18.3.1.</span> <span class="toc-text">☆ del删除指定的列表元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86-pop-%E6%96%B9%E6%B3%95"><span class="toc-number">18.3.2.</span> <span class="toc-text">☆ pop()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86-remove-%E6%96%B9%E6%B3%95"><span class="toc-number">18.3.3.</span> <span class="toc-text">☆ remove()方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%98%86-clear-%E6%96%B9%E6%B3%95"><span class="toc-number">18.3.4.</span> <span class="toc-text">☆ clear()方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E6%94%B9%E6%93%8D%E4%BD%9C"><span class="toc-number">18.4.</span> <span class="toc-text">☆ 改操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%88%97%E8%A1%A8%E7%9A%84%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86"><span class="toc-number">19.</span> <span class="toc-text">4、列表的循环遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%88%97%E8%A1%A8%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">20.</span> <span class="toc-text">5、列表的嵌套</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-02T19:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day04之Python数据序列</span></h1>
+<h1 id="一、作业回顾"><a href="#一、作业回顾" class="headerlink" title="一、作业回顾"></a>一、作业回顾</h1><h2 id="1、面试题"><a href="#1、面试题" class="headerlink" title="1、面试题"></a>1、面试题</h2><p>有一物，不知其数，三三数之余二，五五数之余三，七七数之余二，问物几何？</p>
+<p>白话文：有一个数字，不知道具体是多少，用3去除剩2，用5去除剩3，用7去除剩2个，问这个数是多少？1 ~ 100以内的整数</p>
+<p>while循环：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 判断</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">and</span> i <span class="token operator">%</span> <span class="token number">5</span> <span class="token operator">==</span> <span class="token number">3</span> <span class="token operator">and</span> i <span class="token operator">%</span> <span class="token number">7</span> <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>for循环：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 判断</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">2</span> <span class="token operator">and</span> i <span class="token operator">%</span> <span class="token number">5</span> <span class="token operator">==</span> <span class="token number">3</span> <span class="token operator">and</span> i <span class="token operator">%</span> <span class="token number">7</span> <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="2、报数字（数7）"><a href="#2、报数字（数7）" class="headerlink" title="2、报数字（数7）"></a>2、报数字（数7）</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105319.png" alt="image-20210310091709238"></p>
+<p>一些同学从1开始报数，当需要报出的数字尾数是7或者该数字是7的倍数时，则该同学跳过这个数字，不进行报数。所有同学都参与游戏后，游戏结束。如输入学生数量为50，游戏结束后，报数的同学数量为39。</p>
+<p>分析：如何判断某个数字尾数为7以及如何判断某个数字是7的倍数</p>
+<p>① 如何判断数字尾数为7，i % 10 == 7      17  %  10 =  1 余 7     27  %  10  =  2  余 7</p>
+<p>② 如何判断数字是7的倍数，i % 7 == 0</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个变量n，用于获取学生数量</span>
+n <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入学生的数量：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 定义一个变量，用于统计有多少人报数了</span>
+count <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 开始循环</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 判断数字尾数为7</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">10</span> <span class="token operator">==</span> <span class="token number">7</span><span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    <span class="token comment" spellcheck="true"># 判断数值是7的倍数</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">7</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    <span class="token comment" spellcheck="true"># 如果不满足以上if条件，则对count进行+1操作</span>
+    count <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'{n}个同学，共报数{count}人'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="二、了解字符串"><a href="#二、了解字符串" class="headerlink" title="二、了解字符串"></a>二、了解字符串</h1><h2 id="1、字符串的定义"><a href="#1、字符串的定义" class="headerlink" title="1、字符串的定义"></a>1、字符串的定义</h2><p>字符串是 Python 中最常用的数据类型。我们一般使用引号来创建字符串。创建字符串很简单，只要为变量分配一个值即可。</p>
+<p>案例1：使用单引号或双引号定义字符串变量</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'abcdefg'</span>
+str2 <span class="token operator">=</span> <span class="token string">"hello world"</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>str1<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># &lt;class 'str'></span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># &lt;class 'str'></span>
+</code></pre>
+<p>案例2：使用3个引号定义字符串变量</p>
+<pre class=" language-python"><code class="language-python">name1 <span class="token operator">=</span> <span class="token triple-quoted-string string">'''I am Tom, Nice to meet you!'''</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>name1<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>name1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">)</span>
+
+name2 <span class="token operator">=</span> <span class="token triple-quoted-string string">"""I am Jennify,
+           Nice to meet you!"""</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>name2<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>name2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>注意：三引号形式的字符串支持换行操作</p>
+</blockquote>
+<p>案例3：思考如何使用字符串定义”I’m Tom”</p>
+<p>使用单引号情况</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'I'</span>m Tom'
+</code></pre>
+<p>运行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105453.png" alt="image-20210310101123953"></p>
+<p>出现以上问题的主要原因在于，以上字符串的定义代码出现了(syntax)语法错误。==单引号在字符串定义中必须成对出现，而且Python解析器在解析代码时，会自动认为第一个单引号和最近的一个单引号是一对！==</p>
+<p>如果一定要在单引号中在放入一个单引号，必须使用==反斜杠==进行转义。</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'I\'am Tom'</span>
+</code></pre>
+<p>使用双引号情况</p>
+<pre class=" language-python"><code class="language-python">str2 <span class="token operator">=</span> <span class="token string">"I'm Tom"</span>
+</code></pre>
+<blockquote>
+<p>注：在Python中，如果存在多个引号，建议① 单引号放在双引号中 ② 双引号放在单引号中。</p>
+</blockquote>
+<h2 id="2、字符串输入"><a href="#2、字符串输入" class="headerlink" title="2、字符串输入"></a>2、字符串输入</h2><p>在Python代码中，我们可以使用<code>input()</code>方法来接收用户的输入信息。记住：在Python中，input()方法返回的结果是一个<code>字符串类型</code>的数据。</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的姓名：'</span><span class="token punctuation">)</span>
+age <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span>
+address <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的住址：'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> address<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、字符串的输出"><a href="#3、字符串的输出" class="headerlink" title="3、字符串的输出"></a>3、字符串的输出</h2><h3 id="☆-普通输出"><a href="#☆-普通输出" class="headerlink" title="☆ 普通输出"></a>☆ 普通输出</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>变量名称<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>变量名称<span class="token number">1</span><span class="token punctuation">,</span> 变量名称<span class="token number">2</span><span class="token punctuation">,</span> 变量名称<span class="token number">3</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-格式化输出"><a href="#☆-格式化输出" class="headerlink" title="☆ 格式化输出"></a>☆ 格式化输出</h3><p>① 百分号（Python2和Python3）</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的姓名：'</span><span class="token punctuation">)</span>
+age <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span>
+address <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的住址：'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我的名字是%s，今年%d岁了，家里住在%s...'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> address<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>② format方法（Python3）</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的姓名：'</span><span class="token punctuation">)</span>
+age <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span>
+address <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的住址：'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我的名字是{}，今年{}岁了，家里住在{}...'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> address<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>③ f形式（Python3）</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的姓名：'</span><span class="token punctuation">)</span>
+age <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span>
+address <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的住址：'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的名字是{name}，今年{age}岁了，家里住在{address}...'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>延伸：</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您购买商品的名称：'</span><span class="token punctuation">)</span>
+price <span class="token operator">=</span> float<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您购买商品的价格：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 18.5</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'购买商品名称：{name}，商品价格：{price:.2f}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、字符串在计算机底层的存储形式"><a href="#4、字符串在计算机底层的存储形式" class="headerlink" title="4、字符串在计算机底层的存储形式"></a>4、字符串在计算机底层的存储形式</h2><p>在计算机中，Python中的字符串属于序列结构。所以其底层存储占用一段连续的内存空间。</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'itheima'</span>
+</code></pre>
+<p>结构原理图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105523.png" alt="image-20210310104348286"></p>
+<blockquote>
+<p>注意：索引下标从0开始。</p>
+</blockquote>
+<h2 id="5、聊聊索引下标"><a href="#5、聊聊索引下标" class="headerlink" title="5、聊聊索引下标"></a>5、聊聊索引下标</h2><p><code>索引下标</code>，就是编号。比如火车座位号，座位号的作用：按照编号快速找到对应的座位。同理，下标的作用即是通过下标快速找到对应的数据。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105234.png" alt="image-20210310104901506"></p>
+<p>举个例子：</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> <span class="token string">'abcdef'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># a</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># d</span>
+</code></pre>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105167.png" alt="image-20210310104907464"></p>
+<h1 id="三、字符串切片"><a href="#三、字符串切片" class="headerlink" title="三、字符串切片"></a>三、字符串切片</h1><h2 id="1、什么是字符串切片"><a href="#1、什么是字符串切片" class="headerlink" title="1、什么是字符串切片"></a>1、什么是字符串切片</h2><p>所谓的切片是指对操作的对象==截取==其中一部分的操作。字符串、列表、元组都支持切片操作。</p>
+<h2 id="2、字符串切片基本语法"><a href="#2、字符串切片基本语法" class="headerlink" title="2、字符串切片基本语法"></a>2、字符串切片基本语法</h2><p>顾头不顾尾：</p>
+<pre class=" language-python"><code class="language-python">序列名称<span class="token punctuation">[</span>开始位置下标<span class="token punctuation">:</span>结束位置下标<span class="token punctuation">:</span>步长<span class="token punctuation">]</span>
+</code></pre>
+<p>① 不包含结束位置下标对应的数据， 正负整数均可；</p>
+<p>② 步长是选取间隔，正负整数均可，正数从左向右，负数从右向左。默认步长为1。</p>
+<p>还是有点陌生，没关系，给你举个栗子：</p>
+<pre class=" language-python"><code class="language-python">numstr <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+</code></pre>
+<p>如果想对numstr字符串进行切片，如下图所示：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105668.png" alt="image-20210310110051093"></p>
+<h2 id="3、字符串切片小口诀"><a href="#3、字符串切片小口诀" class="headerlink" title="3、字符串切片小口诀"></a>3、字符串切片小口诀</h2><p>记口诀：==切片其实很简单，只顾头来尾不管，步长为正正向移，步长为负则逆向移==</p>
+<p>如果还是有点不太清楚这个原理，建议大家对字符串进行画图</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105331.png" alt="image-20210310111904137"></p>
+<h2 id="4、字符串切片的小栗子"><a href="#4、字符串切片的小栗子" class="headerlink" title="4、字符串切片的小栗子"></a>4、字符串切片的小栗子</h2><p>案例1：</p>
+<pre class=" language-python"><code class="language-python">numstr <span class="token operator">=</span> <span class="token string">'0123456789'</span>
+<span class="token comment" spellcheck="true"># 1、从2到5开始切片，步长为1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 2、只有结尾的字符串切片：代表从索引为0开始，截取到结尾字符-1的位置</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、只有开头的字符串切片：代表从起始位置开始，已知截取到字符串的结尾</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 4、获取或拷贝整个字符串</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 5、调整步阶：类似求偶数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 6、把步阶设置为负整数：类似字符串翻转</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 7、起始位置与结束位置都是负数（遵循一个原则：必须是从左向右截取）</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 8、结束字符为负数，如截取012345678</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>numstr<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例2：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105470.png" alt="image-20210310110334889"></p>
+<p>案例3：给定一个图片的名称为”avatar.png”，使用Python方法获取这个图片的名称(avatar)以及这个图片的后缀(.png)。</p>
+<p>分析：</p>
+<p>① 建议先获取点号的位置（目前还未学习，只能一个一个数）</p>
+<p>② 从开头切片到点号位置，得到的就是文件的名称</p>
+<p>③ 从点号开始切片，一直到文件的结尾，则得到的就是文件的后缀</p>
+<pre class=" language-python"><code class="language-python">filename <span class="token operator">=</span> <span class="token string">'avatar.png'</span>
+<span class="token comment" spellcheck="true"># 获取点号的索引下标</span>
+index <span class="token operator">=</span> <span class="token number">6</span>
+<span class="token comment" spellcheck="true"># 使用切片截取文件的文件</span>
+name <span class="token operator">=</span> filename<span class="token punctuation">[</span><span class="token punctuation">:</span>index<span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'上传文件的名称：{name}'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 使用切片截取文件的后缀</span>
+postfix <span class="token operator">=</span> filename<span class="token punctuation">[</span>index<span class="token punctuation">:</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'上传文件的后缀：{postfix}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="四、字符串的操作方法（内置）"><a href="#四、字符串的操作方法（内置）" class="headerlink" title="四、字符串的操作方法（内置）"></a>四、字符串的操作方法（内置）</h1><h2 id="1、字符串中的查找方法"><a href="#1、字符串中的查找方法" class="headerlink" title="1、字符串中的查找方法"></a>1、字符串中的查找方法</h2><p>所谓字符串查找方法即是==查找子串在字符串中的位置或出现的次数==。</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">字符串<span class="token punctuation">.</span>find<span class="token punctuation">(</span>要查找的字符或者子串<span class="token punctuation">)</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>find()</td>
+<td>检测某个子串是否包含在这个字符串中，如果在返回这个子串开始的位置下标，否则则返回-1。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>index()</td>
+<td>检测某个子串是否包含在这个字符串中，如果在返回这个子串开始的位置下标，否则则报异常。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>rfind()</td>
+<td>和find()功能相同，但查找方向为右侧开始。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>rindex()</td>
+<td>和index()功能相同，但查找方向为右侧开始。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>count()</td>
+<td>返回某个子串在字符串中出现的次数</td>
+</tr>
+</tbody></table>
+<h3 id="☆-find-方法"><a href="#☆-find-方法" class="headerlink" title="☆ find()方法"></a>☆ find()方法</h3><p>作用：检测某个子串是否包含在这个字符串中，如果在返回这个子串开始的位置下标，否则则返回-1。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个字符串</span>
+str1 <span class="token operator">=</span> <span class="token string">'hello world hello linux hello python'</span>
+<span class="token comment" spellcheck="true"># 查找linux子串是否出现在字符串中</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'linux'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 在str1中查找不存在的子串</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'and'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例：使用input方法输入任意一个文件名称，求点号的索引下标</p>
+<pre class=" language-python"><code class="language-python">filename <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您要上传文件的名称：'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 获取点号的索引下标</span>
+index <span class="token operator">=</span> filename<span class="token punctuation">.</span>find<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 求文件名称</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>filename<span class="token punctuation">[</span><span class="token punctuation">:</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 求文件后缀</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>filename<span class="token punctuation">[</span>index<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-index-方法"><a href="#☆-index-方法" class="headerlink" title="☆ index()方法"></a>☆ index()方法</h3><p>index()方法其功能与find()方法完全一致，唯一的区别在于当要查找的子串没有出现在字符串中时，find()方法返回-1，而index()方法则直接报错。</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'apple, banana, orange'</span>
+<span class="token comment" spellcheck="true"># 判断apple是否出现在字符串str1中</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">'apple'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">'pineapple'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>运行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105100.png" alt="image-20210310120906839"></p>
+<h3 id="☆-rfind-与rindex-方法"><a href="#☆-rfind-与rindex-方法" class="headerlink" title="☆ rfind()与rindex()方法"></a>☆ rfind()与rindex()方法</h3><p>r = right，代表从右开始查找</p>
+<pre class=" language-python"><code class="language-python">字符串序列<span class="token punctuation">.</span>rfind<span class="token punctuation">(</span>子串<span class="token punctuation">)</span>
+字符串序列<span class="token punctuation">.</span>rindex<span class="token punctuation">(</span>子串<span class="token punctuation">)</span>
+</code></pre>
+<p>强调：rfind()方法与rindex()方法适合于查找子串在字符串中出现了多次的情况</p>
+<p>案例：有一个文件名称叫20210310axvu.avatar.png，其中点号出现了2次，这个时候，如果我想获取文件的后缀.png，代码应该如何编写？</p>
+<pre class=" language-python"><code class="language-python">filename <span class="token operator">=</span> <span class="token string">'20210310axvu.avatar.png'</span>
+<span class="token comment" spellcheck="true"># 求出点号在字符串中第一次出现的位置</span>
+<span class="token comment" spellcheck="true"># index = filename.find('.')</span>
+<span class="token comment" spellcheck="true"># print(index)</span>
+<span class="token comment" spellcheck="true"># 求出点号在字符串中最后一次出现的位置</span>
+index <span class="token operator">=</span> filename<span class="token punctuation">.</span>rfind<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+</code></pre>
+<p>rfind()方法和rindex()方法语法上完全一致，唯一的区别就是对子串没有出现在字符串的中的情况，rfind()返回-1，rindex()返回错误。</p>
+<h3 id="☆-count-方法"><a href="#☆-count-方法" class="headerlink" title="☆ count()方法"></a>☆ count()方法</h3><p>主要功能：求子串在字符串中出现的次数</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">字符串<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">'子串'</span><span class="token punctuation">,</span> 开始位置下标<span class="token punctuation">,</span> 结束位置下标<span class="token punctuation">)</span>
+</code></pre>
+<p>案例：获取字符串中and关键字出现的次数</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'hello world and hello linux and hello python'</span>
+<span class="token comment" spellcheck="true"># 不限定字符串长度</span>
+ands <span class="token operator">=</span> str1<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">'and'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 限定开始查找的位置和结束位置</span>
+<span class="token comment" spellcheck="true"># ands = str1.count('and', 10, 30)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'and字符串出现的次数为：{ands}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="2、练习题"><a href="#2、练习题" class="headerlink" title="2、练习题"></a>2、练习题</h2><p>问题：使用循环嵌套打印正等腰三角形</p>
+<pre class=" language-python"><code class="language-python">     <span class="token operator">*</span> 
+    <span class="token operator">**</span><span class="token operator">*</span>
+   <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+  <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+ <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+
+分析：
+① 每一行的星星数，是有规律的。
+<span class="token number">1</span>  <span class="token number">1</span>   <span class="token number">1</span><span class="token operator">*</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token number">2</span>  <span class="token number">3</span>   <span class="token number">2</span><span class="token operator">*</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token number">3</span>  <span class="token number">5</span>   <span class="token number">3</span><span class="token operator">*</span><span class="token number">2</span> <span class="token operator">-</span> <span class="token number">1</span>
+<span class="token number">4</span>  <span class="token number">7</span>
+<span class="token number">5</span>  <span class="token number">9</span>
+<span class="token number">6</span>  <span class="token number">11</span>
+<span class="token operator">*</span>
+<span class="token operator">**</span><span class="token operator">*</span>
+<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+② 每一行星星的前面，都是有空格的
+<span class="token number">1</span>  <span class="token number">5</span>
+<span class="token number">2</span>  <span class="token number">4</span>
+<span class="token number">3</span>  <span class="token number">3</span>
+<span class="token number">4</span>  <span class="token number">2</span>
+<span class="token number">5</span>  <span class="token number">1</span>
+<span class="token number">6</span>  <span class="token number">0</span>
+     <span class="token operator">*</span> 
+    <span class="token operator">**</span><span class="token operator">*</span>
+   <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+  <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+ <span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+<span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">**</span><span class="token operator">*</span>
+</code></pre>
+<p>最终代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">6</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 打印空行</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">' '</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 初始化计数器</span>
+    j <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 编写循环条件</span>
+    <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'*'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 更新计数器</span>
+        j <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<h2 id="3、字符串的修改方法"><a href="#3、字符串的修改方法" class="headerlink" title="3、字符串的修改方法"></a>3、字符串的修改方法</h2><p>所谓修改字符串，指的就是通过函数（方法）的形式修改字符串中的数据。</p>
+<table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>replace()</td>
+<td>返回替换后的字符串</td>
+</tr>
+<tr>
+<td>2</td>
+<td>split()</td>
+<td>返回切割后的列表序列</td>
+</tr>
+<tr>
+<td>3</td>
+<td>capitalize()</td>
+<td>首字母大写</td>
+</tr>
+<tr>
+<td>4</td>
+<td>title()</td>
+<td>所有单词首字母大写</td>
+</tr>
+<tr>
+<td>5</td>
+<td>upper()与lower()</td>
+<td>返回全部大写或小写的字符串</td>
+</tr>
+<tr>
+<td>6</td>
+<td>lstrip()、rstrip()与strip()</td>
+<td>去除左边、右边以及两边的空白字符</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ljust()、rjust()与center()</td>
+<td>返回原字符串左对齐、右对齐以及居中对齐</td>
+</tr>
+</tbody></table>
+<h3 id="☆-replace-方法"><a href="#☆-replace-方法" class="headerlink" title="☆ replace()方法"></a>☆ replace()方法</h3><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">字符串<span class="token punctuation">.</span>replace<span class="token punctuation">(</span>要替换的内容<span class="token punctuation">,</span> 替换后的内容<span class="token punctuation">,</span> 替换的次数<span class="token operator">-</span>可以省略<span class="token punctuation">)</span>
+</code></pre>
+<p>案例：编写一个字符串，然后把字符串中的linux替换为python</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'hello linux and hello linux'</span>
+<span class="token comment" spellcheck="true"># 把字符串中所有linux字符替换为python</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'linux'</span><span class="token punctuation">,</span> <span class="token string">'python'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 把字符串中的第一个linux进行替换为python</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'linux'</span><span class="token punctuation">,</span> <span class="token string">'python'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 把and字符串替换为&amp;&amp;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'and'</span><span class="token punctuation">,</span> <span class="token string">'&amp;&amp;'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>目前在工作中，replace主要用于实现关键字替换或过滤功能。北京 ==&gt; BJ，论坛关键字过滤，共产党 =&gt; ***</p>
+<h3 id="☆-split-方法"><a href="#☆-split-方法" class="headerlink" title="☆ split()方法"></a>☆ split()方法</h3><p>作用：对字符串进行切割操作，返回一个list()列表类型的数据</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'apple-banana-orange'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'-'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-capitalize-方法"><a href="#☆-capitalize-方法" class="headerlink" title="☆ capitalize() 方法"></a>☆ capitalize() 方法</h3><p>作用：把字符串的首字母大写，其他字符全部小写</p>
+<h3 id="☆-title-方法"><a href="#☆-title-方法" class="headerlink" title="☆ title()方法"></a>☆ title()方法</h3><p>作用：把字符串中的所有单词的首字母大写，组成大驼峰</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'myName'</span>
+<span class="token comment" spellcheck="true"># 把str1变成首字母大写字符串</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>capitalize<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+str2 <span class="token operator">=</span> <span class="token string">'student_manager'</span>
+<span class="token comment" spellcheck="true"># 把str2变成大驼峰</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str2<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'_'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-upper-与lower-方法"><a href="#☆-upper-与lower-方法" class="headerlink" title="☆ upper()与lower() 方法"></a>☆ upper()与lower() 方法</h3><p>upper()：把字符串全部转换为大写形式</p>
+<p>lower()：把字符串全部转换为小写形式</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 用户名以及密码验证案例</span>
+username <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的账号：'</span><span class="token punctuation">)</span>
+password <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的密码：'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 把username和password全部转换为大写或小写</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>username<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>password<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-lstrip-、rstrip-与strip"><a href="#☆-lstrip-、rstrip-与strip" class="headerlink" title="☆ lstrip()、rstrip()与strip()"></a>☆ lstrip()、rstrip()与strip()</h3><p>strip() 方法主要作用：删除字符串两边的空白字符（如空格）</p>
+<p>lstrip() 方法 == left + strip，作用：只删除字符串左边的空白字符</p>
+<p>rstrip() 方法，作用：只删除字符串右边的空白字符</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 用户名验证案例</span>
+username <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的账号：'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 去除username两边的空白字符</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>len<span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>username<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>len<span class="token punctuation">(</span>username<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-ljust-、rjust-、center"><a href="#☆-ljust-、rjust-、center" class="headerlink" title="☆ ljust()、rjust()、center()"></a>☆ ljust()、rjust()、center()</h3><p>作用：返回原字符串左对齐、右对齐以及居中对齐  </p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">字符串序列<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span>长度<span class="token punctuation">,</span> 填充字符<span class="token punctuation">)</span>
+</code></pre>
+<p>案例：定义一个字符串，要求返回长度为10个字符，不足的使用.点号进行填充</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'python'</span>
+<span class="token comment" spellcheck="true"># 左对齐</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>ljust<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 右对齐</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>rjust<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'#'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 居中对齐</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>center<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token string">'@'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、字符串的判断方法"><a href="#4、字符串的判断方法" class="headerlink" title="4、字符串的判断方法"></a>4、字符串的判断方法</h2><p>所谓判断即是判断真假，返回的结果是布尔型数据类型：True 或 False。</p>
+<table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>startswith()</td>
+<td>检查字符串是否是以指定子串开头，是则返回 True，否则返回 False。如果设置开始和结束位置下标，则在指定范围内检查。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>endswith()</td>
+<td>检查字符串是否是以指定子串结尾，是则返回 True，否则返回 False。如果设置开始和结束位置下标，则在指定范围内检查。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>isalpha()</td>
+<td>如果字符串所有字符(至少有一个字符)都是字母则返回 True, 否则返回 False。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>isdigit()</td>
+<td>如果字符串只包含数字则返回 True 否则返回 False。</td>
+</tr>
+<tr>
+<td>5</td>
+<td>isalnum()</td>
+<td>Python isalnum() 方法检测字符串是否由字母和数字组成。如果字符串所有字符(至少有一个字符)都是字母或数字则返 回 True,否则返回 False。</td>
+</tr>
+<tr>
+<td>6</td>
+<td>isspace()</td>
+<td>如果字符串中只包含空白，则返回 True，否则返回 False</td>
+</tr>
+</tbody></table>
+<h3 id="☆-startswith"><a href="#☆-startswith" class="headerlink" title="☆ startswith()"></a>☆ startswith()</h3><p>作用：检查字符串是否是以指定子串开头，是则返回 True，否则返回 False。如果设置开始和结束位置下标，则在指定范围内检查。</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'python program'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'python'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-endswith"><a href="#☆-endswith" class="headerlink" title="☆ endswith()"></a>☆ endswith()</h3><p>作用：检查字符串是否是以指定子串结尾，是则返回 True，否则返回 False。如果设置开始和结束位置下标，则在指定范围内检查。  </p>
+<pre class=" language-python"><code class="language-python">str2 <span class="token operator">=</span> <span class="token string">'avatar.png'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str2<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.png'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> str2<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.png'</span><span class="token punctuation">)</span> <span class="token operator">or</span> str2<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.jpg'</span><span class="token punctuation">)</span> <span class="token operator">or</span> str2<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.gif'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'是一张图片格式的图片'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您上传的文件格式异常'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-isalpha"><a href="#☆-isalpha" class="headerlink" title="☆ isalpha()"></a>☆ isalpha()</h3><p>作用：如果字符串所有字符(至少有一个字符)都是==字母==则返回 True, 否则返回 False。</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'admin'</span>
+str2 <span class="token operator">=</span> <span class="token string">'admin123'</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str2<span class="token punctuation">.</span>isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># False</span>
+</code></pre>
+<h3 id="☆-isdigit"><a href="#☆-isdigit" class="headerlink" title="☆ isdigit()"></a>☆ isdigit()</h3><p>作用：如果字符串只包含==数字==则返回 True 否则返回 False。  </p>
+<pre class=" language-python"><code class="language-python">password <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的银行卡密码：'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> len<span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">6</span> <span class="token operator">and</span> password<span class="token punctuation">.</span>isdigit<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'输入密码成功，正在验证...'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'密码输入错误，请重新输入'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-isalnum"><a href="#☆-isalnum" class="headerlink" title="☆ isalnum()"></a>☆ isalnum()</h3><p>作用：Python isalnum() 方法检测字符串是否由==字母和数字==组成。如果字符串所有字符(至少有一个字符)都是字母或数字则返 回 True,否则返回 False。  </p>
+<pre class=" language-python"><code class="language-python">username <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入的您的用户名（只能为字母+数字形式）：'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> username<span class="token punctuation">.</span>isalnum<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'合理的用户名，正在录入系统...'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'输入的用户名有误，请重新输入...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-isspace"><a href="#☆-isspace" class="headerlink" title="☆ isspace()"></a>☆ isspace()</h3><p>作用：如果字符串中只包含空白，则返回 True，否则返回 False（逆向思维）</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">' '</span>  <span class="token comment" spellcheck="true"># 最少要包含一个空白字符</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span>isspace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+username <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入的您的用户名：'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> len<span class="token punctuation">(</span>username<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">or</span> username<span class="token punctuation">.</span>isspace<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您没有输入任何字符...'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'您的输入的字符{username}'</span><span class="token punctuation">)</span>    
+</code></pre>
+<h1 id="五、列表及其应用场景"><a href="#五、列表及其应用场景" class="headerlink" title="五、列表及其应用场景"></a>五、列表及其应用场景</h1><h2 id="1、为什么需要列表"><a href="#1、为什么需要列表" class="headerlink" title="1、为什么需要列表"></a>1、为什么需要列表</h2><p>思考：有一个人的姓名(TOM)怎么书写存储程序？</p>
+<p>答：变量。</p>
+<p>思考：如果一个班级100位学生，每个人的姓名都要存储，应该如何书写程序？声明100个变量吗？</p>
+<p>答：No，我们使用列表就可以了， 列表一次可以存储多个数据。</p>
+<blockquote>
+<p>在Python中，我们把这种数据类型称之为列表。但是在其他的编程语言中，如Java、PHP、Go等等中其被称之为数组。</p>
+</blockquote>
+<h2 id="2、列表的定义"><a href="#2、列表的定义" class="headerlink" title="2、列表的定义"></a>2、列表的定义</h2><pre class=" language-python"><code class="language-python">列表序列名称 <span class="token operator">=</span> <span class="token punctuation">[</span>列表中的元素<span class="token number">1</span><span class="token punctuation">,</span> 列表中的元素<span class="token number">2</span><span class="token punctuation">,</span> 列表中的元素<span class="token number">3</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span>
+</code></pre>
+<p>案例演示：定义一个列表，用于保存苹果、香蕉以及菠萝</p>
+<pre class=" language-python"><code class="language-python">list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'banana'</span><span class="token punctuation">,</span> <span class="token string">'pineapple'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># list列表类型支持直接打印</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list1<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 打印列表的数据类型</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>list1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>注意：列表可以一次存储多个数据且可以为不同的数据类型</p>
+</blockquote>
+<h2 id="3、列表的相关操作"><a href="#3、列表的相关操作" class="headerlink" title="3、列表的相关操作"></a>3、列表的相关操作</h2><p>列表的作用是一次性存储多个数据，程序员可以对这些数据进行的操作有：</p>
+<p>==增、删、改、查==。</p>
+<h3 id="☆-查操作"><a href="#☆-查操作" class="headerlink" title="☆ 查操作"></a>☆ 查操作</h3><p>列表在计算机中的底层存储形式，列表和字符串一样，在计算机内存中都占用一段连续的内存地址，我们向访问列表中的每个元素，都可以通过”索引下标”的方式进行获取。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012105647.png" alt="image-20210310170752234"></p>
+<p>如果我们想获取列表中的某个元素，非常简单，直接使用索引下标：</p>
+<pre class=" language-python"><code class="language-python">list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'banana'</span><span class="token punctuation">,</span> <span class="token string">'pineapple'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 获取列表中的banana</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list1<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<p>查操作的相关方法：</p>
+<table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>index()</td>
+<td>指定数据所在位置的下标</td>
+</tr>
+<tr>
+<td>2</td>
+<td>count()</td>
+<td>统计指定数据在当前列表中出现的次数</td>
+</tr>
+<tr>
+<td>3</td>
+<td>in</td>
+<td>判断指定数据在某个列表序列，如果在返回True，否则返回False</td>
+</tr>
+<tr>
+<td>4</td>
+<td>not in</td>
+<td>判断指定数据不在某个列表序列，如果不在返回True，否则返回False</td>
+</tr>
+</tbody></table>
+<p>举个栗子：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、查找某个元素在列表中出现的位置（索引下标）</span>
+list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'banana'</span><span class="token punctuation">,</span> <span class="token string">'pineapple'</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list1<span class="token punctuation">.</span>index<span class="token punctuation">(</span><span class="token string">'apple'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 0</span>
+<span class="token comment" spellcheck="true"># print(list1.index('peach'))  # 报错</span>
+
+<span class="token comment" spellcheck="true"># 2、count()方法：统计元素在列表中出现的次数</span>
+list2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'刘备'</span><span class="token punctuation">,</span> <span class="token string">'关羽'</span><span class="token punctuation">,</span> <span class="token string">'张飞'</span><span class="token punctuation">,</span> <span class="token string">'关羽'</span><span class="token punctuation">,</span> <span class="token string">'赵云'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 统计一下关羽这个元素在列表中出现的次数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list2<span class="token punctuation">.</span>count<span class="token punctuation">(</span><span class="token string">'关羽'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 3、in方法和not in方法（黑名单系统）</span>
+list3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'192.168.1.15'</span><span class="token punctuation">,</span> <span class="token string">'10.1.1.100'</span><span class="token punctuation">,</span> <span class="token string">'172.35.46.128'</span><span class="token punctuation">]</span>
+<span class="token keyword">if</span> <span class="token string">'10.1.1.100'</span> <span class="token keyword">in</span> list3<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'黑名单IP，禁止访问'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'正常IP，访问站点信息'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-增操作"><a href="#☆-增操作" class="headerlink" title="☆ 增操作"></a>☆ 增操作</h3><table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>append()</td>
+<td>增加指定数据到列表中</td>
+</tr>
+<tr>
+<td>2</td>
+<td>extend()</td>
+<td>列表结尾追加数据，如果数据是一个序列，则将这个序列的数据逐一添加到列表</td>
+</tr>
+<tr>
+<td>3</td>
+<td>insert()</td>
+<td>指定位置新增数据</td>
+</tr>
+</tbody></table>
+<h4 id="☆-append"><a href="#☆-append" class="headerlink" title="☆ append()"></a>☆ append()</h4><p>append() ：在列表的尾部追加元素</p>
+<pre class=" language-python"><code class="language-python">names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'孙悟空'</span><span class="token punctuation">,</span> <span class="token string">'唐僧'</span><span class="token punctuation">,</span> <span class="token string">'猪八戒'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 在列表的尾部追加一个元素"沙僧"</span>
+names<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">'沙僧'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 打印列表</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>注意：列表追加数据的时候，直接在原列表里面追加了指定数据，即修改了原列表，故列表为可变类型数据。</p>
+</blockquote>
+<h4 id="☆-extend-方法"><a href="#☆-extend-方法" class="headerlink" title="☆ extend()方法"></a>☆ extend()方法</h4><p>列表结尾追加数据，如果数据是一个序列，则将这个序列的数据逐一添加到列表</p>
+<p>案例：</p>
+<pre class=" language-python"><code class="language-python">list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token string">'Rose'</span><span class="token punctuation">,</span> <span class="token string">'Jack'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 1、使用extend方法追加元素"Jennify"</span>
+<span class="token comment" spellcheck="true"># names.extend("Jennify")</span>
+<span class="token comment" spellcheck="true"># print(names)</span>
+
+<span class="token comment" spellcheck="true"># 2、建议：使用extend方法两个列表进行合并</span>
+list2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Hack'</span><span class="token punctuation">,</span> <span class="token string">'Jennify'</span><span class="token punctuation">]</span>
+list1<span class="token punctuation">.</span>extend<span class="token punctuation">(</span>list2<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>list1<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>总结：extend方法比较适合于两个列表进行元素的合并操作</p>
+</blockquote>
+<h4 id="☆-insert-方法"><a href="#☆-insert-方法" class="headerlink" title="☆ insert()方法"></a>☆ insert()方法</h4><p>作用：在指定的位置增加元素</p>
+<pre class=" language-python"><code class="language-python">names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'薛宝钗'</span><span class="token punctuation">,</span> <span class="token string">'林黛玉'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 在薛宝钗和林黛玉之间，插入一个新元素"贾宝玉"</span>
+names<span class="token punctuation">.</span>insert<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'贾宝玉'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-删操作"><a href="#☆-删操作" class="headerlink" title="☆ 删操作"></a>☆ 删操作</h3><table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>del 列表[索引]</td>
+<td>删除列表中的某个元素</td>
+</tr>
+<tr>
+<td>2</td>
+<td>pop()</td>
+<td>删除指定下标的数据(默认为最后一个)，并返回该数据</td>
+</tr>
+<tr>
+<td>3</td>
+<td>remove()</td>
+<td>移除列表中某个数据的第一个匹配项。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>clear()</td>
+<td>清空列表，删除列表中的所有元素，返回空列表。</td>
+</tr>
+</tbody></table>
+<h4 id="☆-del删除指定的列表元素"><a href="#☆-del删除指定的列表元素" class="headerlink" title="☆ del删除指定的列表元素"></a>☆ del删除指定的列表元素</h4><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token string">'Rose'</span><span class="token punctuation">,</span> <span class="token string">'Jack'</span><span class="token punctuation">,</span> <span class="token string">'Jennify'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 删除Rose</span>
+<span class="token keyword">del</span> names<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 打印列表</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="☆-pop-方法"><a href="#☆-pop-方法" class="headerlink" title="☆ pop()方法"></a>☆ pop()方法</h4><p>作用：删除指定下标的元素，如果不填写下标，默认删除最后一个。其返回结果：就是删除的这个元素</p>
+<pre class=" language-python"><code class="language-python">names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'貂蝉'</span><span class="token punctuation">,</span> <span class="token string">'吕布'</span><span class="token punctuation">,</span> <span class="token string">'董卓'</span><span class="token punctuation">]</span>
+del_name <span class="token operator">=</span> names<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 或</span>
+<span class="token comment" spellcheck="true"># del_name = names.pop(1)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>del_name<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="☆-remove-方法"><a href="#☆-remove-方法" class="headerlink" title="☆ remove()方法"></a>☆ remove()方法</h4><p>作用：删除匹配的元素</p>
+<pre class=" language-python"><code class="language-python">fruit <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'banana'</span><span class="token punctuation">,</span> <span class="token string">'pineapple'</span><span class="token punctuation">]</span>
+fruit<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token string">'banana'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>fruit<span class="token punctuation">)</span>
+</code></pre>
+<h4 id="☆-clear-方法"><a href="#☆-clear-方法" class="headerlink" title="☆ clear()方法"></a>☆ clear()方法</h4><p>清空列表</p>
+<pre class=" language-python"><code class="language-python">names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'貂蝉'</span><span class="token punctuation">,</span> <span class="token string">'吕布'</span><span class="token punctuation">,</span> <span class="token string">'董卓'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 随着故事的发展，人物都game over</span>
+names<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 打印列表</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-改操作"><a href="#☆-改操作" class="headerlink" title="☆ 改操作"></a>☆ 改操作</h3><table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>列表[索引] = 修改后的值</td>
+<td>修改列表中的某个元素</td>
+</tr>
+<tr>
+<td>2</td>
+<td>reverse()</td>
+<td>将数据序列进行倒叙排列</td>
+</tr>
+<tr>
+<td>3</td>
+<td>sort()</td>
+<td>对列表序列进行排序</td>
+</tr>
+<tr>
+<td>4</td>
+<td>copy()</td>
+<td>对列表序列进行拷贝</td>
+</tr>
+</tbody></table>
+<pre class=" language-python"><code class="language-python">list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'貂蝉'</span><span class="token punctuation">,</span> <span class="token string">'大乔'</span><span class="token punctuation">,</span> <span class="token string">'小乔'</span><span class="token punctuation">,</span> <span class="token string">'八戒'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 修改列表中的元素</span>
+list1<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'周瑜'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list1<span class="token punctuation">)</span>
+
+list2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">]</span>
+list2<span class="token punctuation">.</span>reverse<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list2<span class="token punctuation">)</span>
+
+list3 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+list3<span class="token punctuation">.</span>sort<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 升序(从小到大)</span>
+<span class="token comment" spellcheck="true"># 或</span>
+<span class="token comment" spellcheck="true"># list3.sort(reverse=True)  # 降序(从大到小)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list3<span class="token punctuation">)</span>
+
+list4 <span class="token operator">=</span> list3<span class="token punctuation">.</span>copy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list4<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、列表的循环遍历"><a href="#4、列表的循环遍历" class="headerlink" title="4、列表的循环遍历"></a>4、列表的循环遍历</h2><p>什么是循环遍历？答：循环遍历就是使用while或for循环对列表中的每个数据进行打印输出</p>
+<p>while循环：</p>
+<pre class=" language-python"><code class="language-python">list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'貂蝉'</span><span class="token punctuation">,</span> <span class="token string">'大乔'</span><span class="token punctuation">,</span> <span class="token string">'小乔'</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 定义计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">(</span>list1<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>list1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>for循环（个人比较推荐）：</p>
+<pre class=" language-python"><code class="language-python">list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'貂蝉'</span><span class="token punctuation">,</span> <span class="token string">'大乔'</span><span class="token punctuation">,</span> <span class="token string">'小乔'</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> list1<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、列表的嵌套"><a href="#5、列表的嵌套" class="headerlink" title="5、列表的嵌套"></a>5、列表的嵌套</h2><p>列表的嵌套：列表中又有一个列表，我们把这种情况就称之为列表嵌套</p>
+<blockquote>
+<p>在其他编程语言中，称之为叫做二维数组或多维数组</p>
+</blockquote>
+<p>应用场景：要存储班级一、二、三  =&gt; 三个班级学生姓名，且每个班级的学生姓名在一个列表。</p>
+<pre class=" language-python"><code class="language-python">classes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'第一个班级'</span><span class="token punctuation">,</span><span class="token string">'第二个班级'</span><span class="token punctuation">,</span><span class="token string">'第三个班级'</span><span class="token punctuation">]</span>
+
+一班：<span class="token punctuation">[</span><span class="token string">'张三'</span><span class="token punctuation">,</span> <span class="token string">'李四'</span><span class="token punctuation">]</span>
+二班：<span class="token punctuation">[</span><span class="token string">'王五'</span><span class="token punctuation">,</span> <span class="token string">'赵六'</span><span class="token punctuation">]</span>
+三班：<span class="token punctuation">[</span><span class="token string">'田七'</span><span class="token punctuation">,</span> <span class="token string">'孙八'</span><span class="token punctuation">]</span>
+
+把班级和学员信息合并在一起，组成一个嵌套列表
+students <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'张三'</span><span class="token punctuation">,</span> <span class="token string">'李四'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'王五'</span><span class="token punctuation">,</span> <span class="token string">'赵六'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'田七'</span><span class="token punctuation">,</span> <span class="token string">'孙八'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+students <span class="token operator">=</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span>y<span class="token punctuation">,</span>z<span class="token punctuation">]</span>
+students<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token punctuation">[</span><span class="token string">'张三'</span><span class="token punctuation">,</span> <span class="token string">'李四'</span><span class="token punctuation">]</span>
+students<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+</code></pre>
+<p>问题：嵌套后的列表，我们应该如何访问呢？</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 访问李四</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>students<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 嵌套列表进行遍历，获取每个班级的学员信息</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> students<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/03/018-python-ji-chu-03/">Day03之Python中的循环结构<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/03/020-python-ji-chu-05/">Day05之Python中的数据序列<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day02之Python运算符与if结构 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、昨日回顾1、回顾昨天的课程内容略 2、回顾昨天的作业定义变量，c1 &#x3D; ‘可乐’，c2 &#x3D; ‘牛奶’，通过Python代码把c1内容调整为牛奶，c2调整为可乐。 # 1、定义两个变量 c1 &#x3D; &#39;可乐&#39; c2 &#x3D; &#39;牛奶&#39;  # 2、使用python将c1和c2的值进行交换（引入第三方变量，如temp） # 第一步：首先把c2杯中的牛奶放入临时temp杯子中 temp &#x3D; c2 # 第二步：把">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day02之Python运算符与if结构">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/017-python-ji-chu-02/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、昨日回顾1、回顾昨天的课程内容略 2、回顾昨天的作业定义变量，c1 &#x3D; ‘可乐’，c2 &#x3D; ‘牛奶’，通过Python代码把c1内容调整为牛奶，c2调整为可乐。 # 1、定义两个变量 c1 &#x3D; &#39;可乐&#39; c2 &#x3D; &#39;牛奶&#39;  # 2、使用python将c1和c2的值进行交换（引入第三方变量，如temp） # 第一步：首先把c2杯中的牛奶放入临时temp杯子中 temp &#x3D; c2 # 第二步：把">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102034.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102905.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102767.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102641.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102466.png">
+<meta property="article:published_time" content="2022-03-02T17:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:03:59.575Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102034.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%9B%9E%E9%A1%BE%E6%98%A8%E5%A4%A9%E7%9A%84%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">1、回顾昨天的课程内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%9B%9E%E9%A1%BE%E6%98%A8%E5%A4%A9%E7%9A%84%E4%BD%9C%E4%B8%9A"><span class="toc-number">2.</span> <span class="toc-text">2、回顾昨天的作业</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BD%BF%E7%94%A8Python%E5%AE%9E%E7%8E%B0%E8%B6%85%E5%B8%82%E7%9A%84%E6%94%B6%E9%93%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">3.</span> <span class="toc-text">1、使用Python实现超市的收银系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%BA%86%E8%A7%A3Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">2、了解Python数据类型的转换方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">3、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E8%BF%90%E7%AE%97%E6%A1%88%E4%BE%8B"><span class="toc-number">6.</span> <span class="toc-text">1、运算案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">7.</span> <span class="toc-text">2、算术运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%B1%82%E6%A2%AF%E5%BD%A2%E7%9A%84%E9%9D%A2%E7%A7%AF"><span class="toc-number">8.</span> <span class="toc-text">3、算术运算符案例：求梯形的面积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">9.</span> <span class="toc-text">4、赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%A4%8D%E5%90%88%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">10.</span> <span class="toc-text">5、复合赋值运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">11.</span> <span class="toc-text">6、比较运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-number">12.</span> <span class="toc-text">7、练习题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88%E4%B8%8E%E6%88%96%E9%9D%9E%EF%BC%89"><span class="toc-number">13.</span> <span class="toc-text">8、逻辑运算符（与或非）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81%E6%89%A9%E5%B1%95%EF%BC%9A%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97"><span class="toc-number">14.</span> <span class="toc-text">9、扩展：短路运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">15.</span> <span class="toc-text">10、运算符的优先级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81if%E9%80%89%E6%8B%A9%E5%88%A4%E6%96%AD%E7%BB%93%E6%9E%84%E4%BD%9C%E7%94%A8"><span class="toc-number">16.</span> <span class="toc-text">1、if选择判断结构作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81if%E9%80%89%E6%8B%A9%E5%88%A4%E6%96%AD%E7%BB%93%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">17.</span> <span class="toc-text">2、if选择判断结构的基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81if%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84%E6%A1%88%E4%BE%8B"><span class="toc-number">18.</span> <span class="toc-text">3、if选择结构案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81if%E2%80%A6else%E2%80%A6%E7%BB%93%E6%9E%84"><span class="toc-number">19.</span> <span class="toc-text">4、if…else…结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81if%E2%80%A6elif%E2%80%A6else%E5%A4%9A%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E7%BB%93%E6%9E%84"><span class="toc-number">20.</span> <span class="toc-text">5、if…elif…else多条件判断结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81if%E5%B5%8C%E5%A5%97%E7%BB%93%E6%9E%84"><span class="toc-number">21.</span> <span class="toc-text">6、if嵌套结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">22.</span> <span class="toc-text">1、需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">23.</span> <span class="toc-text">2、代码实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E9%9A%8F%E6%9C%BA%E5%87%BA%E6%8B%B3"><span class="toc-number">24.</span> <span class="toc-text">3、随机出拳</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">25.</span> <span class="toc-text">1、什么是三目运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">26.</span> <span class="toc-text">2、基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6%E6%A1%88%E4%BE%8B"><span class="toc-number">27.</span> <span class="toc-text">3、三目运算符案例</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-02T17:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day02之Python运算符与if结构</span></h1>
+<h1 id="一、昨日回顾"><a href="#一、昨日回顾" class="headerlink" title="一、昨日回顾"></a>一、昨日回顾</h1><h2 id="1、回顾昨天的课程内容"><a href="#1、回顾昨天的课程内容" class="headerlink" title="1、回顾昨天的课程内容"></a>1、回顾昨天的课程内容</h2><p>略</p>
+<h2 id="2、回顾昨天的作业"><a href="#2、回顾昨天的作业" class="headerlink" title="2、回顾昨天的作业"></a>2、回顾昨天的作业</h2><p>定义变量，c1 = ‘可乐’，c2 = ‘牛奶’，通过Python代码把c1内容调整为牛奶，c2调整为可乐。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义两个变量</span>
+c1 <span class="token operator">=</span> <span class="token string">'可乐'</span>
+c2 <span class="token operator">=</span> <span class="token string">'牛奶'</span>
+
+<span class="token comment" spellcheck="true"># 2、使用python将c1和c2的值进行交换（引入第三方变量，如temp）</span>
+<span class="token comment" spellcheck="true"># 第一步：首先把c2杯中的牛奶放入临时temp杯子中</span>
+temp <span class="token operator">=</span> c2
+<span class="token comment" spellcheck="true"># 第二步：把c1中值赋值给c2这个变量（相当于把c1中的可乐倒入c2中）</span>
+c2 <span class="token operator">=</span> c1
+<span class="token comment" spellcheck="true"># 第三步：把temp杯子中的牛奶倒入c1种</span>
+c1 <span class="token operator">=</span> temp
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'1号杯中：{c1}'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'2号杯中：{c2}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="二、Python数据类型转换"><a href="#二、Python数据类型转换" class="headerlink" title="二、Python数据类型转换"></a>二、Python数据类型转换</h1><h2 id="1、使用Python实现超市的收银系统"><a href="#1、使用Python实现超市的收银系统" class="headerlink" title="1、使用Python实现超市的收银系统"></a>1、使用Python实现超市的收银系统</h2><p>Python：</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您要购买商品名称：'</span><span class="token punctuation">)</span>
+id <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您要购买商品编号：'</span><span class="token punctuation">)</span>
+price <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您要购买的商品价格：'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'您购买了{name}，商品编号为{id}，商品价格为{price}，欢迎下次光临！'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>以上程序虽然可以按照上图完成程序的正常输出，但是遗留了一个非常严重的问题：这个价格price变量无法参与数学运算（如买了两个奥利奥，应该是18.5 * 2），原因在于input()方法返回的所有的结果都是str字符串类型。</p>
+<p>怎么解决以上问题呢？ 答：使用==数据类型转换==</p>
+<h2 id="2、了解Python数据类型的转换方法"><a href="#2、了解Python数据类型的转换方法" class="headerlink" title="2、了解Python数据类型的转换方法"></a>2、了解Python数据类型的转换方法</h2><table>
+<thead>
+<tr>
+<th><strong>函数</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==int(x [,base ])==</td>
+<td>将x转换为一个整数</td>
+</tr>
+<tr>
+<td>==float(x)==</td>
+<td>将x转换为一个浮点数</td>
+</tr>
+<tr>
+<td>complex(real  [,imag  ])</td>
+<td>创建一个复数，real为实部，imag为虚部</td>
+</tr>
+<tr>
+<td>==str(x)==</td>
+<td>将对象 x  转换为字符串</td>
+</tr>
+<tr>
+<td>repr(x)</td>
+<td>将对象  x  转换为表达式字符串</td>
+</tr>
+<tr>
+<td>==eval(str)==</td>
+<td>用来计算在字符串中的有效Python表达式,并返回一个对象</td>
+</tr>
+<tr>
+<td>tuple(s)</td>
+<td>将序列 s  转换为一个元组</td>
+</tr>
+<tr>
+<td>list(s)</td>
+<td>将序列 s  转换为一个列表</td>
+</tr>
+<tr>
+<td>chr(x)</td>
+<td>将一个整数转换为一个Unicode字符</td>
+</tr>
+<tr>
+<td>ord(x)</td>
+<td>将一个字符转换为它的ASCII整数值</td>
+</tr>
+<tr>
+<td>hex(x)</td>
+<td>将一个整数转换为一个十六进制字符串</td>
+</tr>
+<tr>
+<td>oct(x)</td>
+<td>将一个整数转换为一个八进制字符串</td>
+</tr>
+<tr>
+<td>bin(x)</td>
+<td>将一个整数转换为一个二进制字符串</td>
+</tr>
+</tbody></table>
+<p>案例1：把用户输入的幸运数字，转换为整型</p>
+<pre class=" language-python"><code class="language-python">num <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的幸运数字：'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 数据类型转换，把str字符串类型转换为int类型</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">)</span>
+
+num <span class="token operator">=</span> int<span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>以上代码还可以简写为：</p>
+<pre class=" language-python"><code class="language-python">num <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的幸运数字：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例2：多种数据类型转换</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、整型转浮点类型 int => float</span>
+num1 <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>float<span class="token punctuation">(</span>num1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>float<span class="token punctuation">(</span>num1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2、浮点类型转换为整型 float => int，浮点转整型，其小数点后的数据会丢失！！！</span>
+num2 <span class="token operator">=</span> <span class="token number">18.88</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>int<span class="token punctuation">(</span>num2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'-'</span> <span class="token operator">*</span> <span class="token number">20</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 3、把字符串类型转换为整型或浮点类型</span>
+str1 <span class="token operator">=</span> <span class="token string">'20'</span>
+str2 <span class="token operator">=</span> <span class="token string">'10.88'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>int<span class="token punctuation">(</span>str1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>float<span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例3：eval()方法的使用，把字符串中的数字转换为原数据类型</p>
+<pre class=" language-python"><code class="language-python">price <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您购买商品的价格：'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>eval<span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>eval<span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>str1 = ‘10’   经过eval(str1)   转换为int类型</p>
+<p>str2 = ‘10.88’  经过eval(str1)  转换为float类型</p>
+<h2 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h2><p>数据类型转换方法一共学了4个方法：</p>
+<p>int() ：转整型</p>
+<p>float() ：转浮点类型</p>
+<p>str() ：转字符串类型</p>
+<p>eval() ：把字符串转换为原数据类型</p>
+<p>但是要特别注意：当float浮点类型转换为int整型时，其小数点后面的数据会丢失，一定要记住这个特性。</p>
+<h1 id="三、Python运算符"><a href="#三、Python运算符" class="headerlink" title="三、Python运算符"></a>三、Python运算符</h1><h2 id="1、运算案例"><a href="#1、运算案例" class="headerlink" title="1、运算案例"></a>1、运算案例</h2><p>需求：用户手工输入梯形的上底、下底以及高，能直接通过Python打印出梯形的面积为多少。</p>
+<h2 id="2、算术运算符"><a href="#2、算术运算符" class="headerlink" title="2、算术运算符"></a>2、算术运算符</h2><p>所谓的算数运算符就是我们日常生活中的加减乘除等待。</p>
+<table>
+<thead>
+<tr>
+<th><strong>运算符</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>实例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>加</td>
+<td>1 +  1 输出结果为  2</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减</td>
+<td>1 -  1 输出结果为  0</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘</td>
+<td>2 *  2 输出结果为  4</td>
+</tr>
+<tr>
+<td>/</td>
+<td>除</td>
+<td>10  / 2 输出结果为  5</td>
+</tr>
+<tr>
+<td>//</td>
+<td>整除</td>
+<td>9  // 4 输出结果为 2</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取余（取模）</td>
+<td>9 %  4 输出结果为  1</td>
+</tr>
+<tr>
+<td>**</td>
+<td>幂指数</td>
+<td>2  ** 4 输出结果为  16，即2的4次方，2  * 2 * 2 * 2</td>
+</tr>
+<tr>
+<td>()</td>
+<td>小括号</td>
+<td>小括号用来提高运算优先级，即  (1  + 2) * 3 输出结果为  9</td>
+</tr>
+</tbody></table>
+<p>案例1：了解一下算术运算符</p>
+<pre class=" language-python"><code class="language-python">num1 <span class="token operator">=</span> <span class="token number">10</span>
+num2 <span class="token operator">=</span> <span class="token number">2</span>
+
+<span class="token comment" spellcheck="true"># 四则运算 + - * /</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'加：{num1 + num2}'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'减：{num1 - num2}'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'乘：{num1 * num2}'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'除：{num1 / num2}'</span><span class="token punctuation">)</span>
+</code></pre>
+<p> 案例2：和其他编程语言不太相同的几个算术运算符</p>
+<pre class=" language-python"><code class="language-python">num1 <span class="token operator">=</span> <span class="token number">20</span>
+num2 <span class="token operator">=</span> <span class="token number">6</span>
+num3 <span class="token operator">=</span> <span class="token number">5</span>
+
+<span class="token comment" spellcheck="true"># 1、整除</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'整除：{num1 // num2}'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 2、求余数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'余数：{num1 % num2}'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、幂指数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'幂指数：{num2 ** 3}'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 4、圆括号</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'优先级：{(num1 + num2) * num3}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、算术运算符案例：求梯形的面积"><a href="#3、算术运算符案例：求梯形的面积" class="headerlink" title="3、算术运算符案例：求梯形的面积"></a>3、算术运算符案例：求梯形的面积</h2><p>知识点：用户输入、数据类型转换以及算术运算符</p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> float<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入上底：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> float<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入下底：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+h <span class="token operator">=</span> float<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入高：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+s <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span> <span class="token operator">*</span> h <span class="token operator">/</span> <span class="token number">2</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'梯形的面积：{s}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、赋值运算符"><a href="#4、赋值运算符" class="headerlink" title="4、赋值运算符"></a>4、赋值运算符</h2><table>
+<thead>
+<tr>
+<th><strong>运算符</strong></th>
+<th><strong>描述</strong></th>
+<th><strong>实例</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>赋值</td>
+<td>将=右侧的结果赋值给等号左侧的变量</td>
+</tr>
+</tbody></table>
+<p>案例1：把某个值赋值给某个变量</p>
+<pre class=" language-python"><code class="language-python">num <span class="token operator">=</span> <span class="token number">10</span>
+</code></pre>
+<p>案例2：多个变量同时进行赋值操作</p>
+<pre class=" language-python"><code class="language-python">n <span class="token operator">=</span> <span class="token number">5</span>
+f <span class="token operator">=</span> <span class="token number">10.88</span>
+s <span class="token operator">=</span> <span class="token string">'hello world'</span>
+</code></pre>
+<p>简写为：</p>
+<pre class=" language-python"><code class="language-python">n<span class="token punctuation">,</span> f<span class="token punctuation">,</span> s <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">10.88</span><span class="token punctuation">,</span> <span class="token string">'hello world'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+</code></pre>
+<p>案例3：多个变量赋予相同的值</p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> <span class="token number">10</span>
+b <span class="token operator">=</span> <span class="token number">10</span>
+</code></pre>
+<p>简写为：</p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> b <span class="token operator">=</span> <span class="token number">10</span>
+</code></pre>
+<h2 id="5、复合赋值运算符"><a href="#5、复合赋值运算符" class="headerlink" title="5、复合赋值运算符"></a>5、复合赋值运算符</h2><p>复合赋值运算符 = 算术运算符 结合 赋值运算符</p>
+<blockquote>
+<p>复合赋值运算符的计算顺序 = 先执行算术运算符，执行完毕后，把结果在赋值给左边的变量。</p>
+</blockquote>
+<p>案例：综合案例</p>
+<pre class=" language-python"><code class="language-python">i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 相加并赋值，先加1，然后把结果赋值给左边的变量</span>
+i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'更新后，i的值为：{i}'</span><span class="token punctuation">)</span>
+
+num1 <span class="token operator">=</span> <span class="token number">9</span>
+<span class="token comment" spellcheck="true"># 取模并赋值，先求余数，然后在把结果赋值给左边的变量</span>
+num1 <span class="token operator">%=</span> <span class="token number">2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'更新后，num1的值为：{num1}'</span><span class="token punctuation">)</span>
+
+num2 <span class="token operator">=</span> <span class="token number">2</span>
+<span class="token comment" spellcheck="true"># 幂指数并赋值，先求幂指数，然后把结果赋值给左边的变量</span>
+num2 <span class="token operator">**=</span> <span class="token number">3</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'更新后，num2的值为：{num2}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="6、比较运算符"><a href="#6、比较运算符" class="headerlink" title="6、比较运算符"></a>6、比较运算符</h2><blockquote>
+<p>特别注意：当我们使用比较运算符对两个变量进行比较时，其返回一个布尔类型的值。</p>
+</blockquote>
+<p>案例：两个数大小的比较</p>
+<pre class=" language-python"><code class="language-python">num1 <span class="token operator">=</span> <span class="token number">10</span>
+num2 <span class="token operator">=</span> <span class="token number">20</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>num1 <span class="token operator">></span> num2<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># False</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num1 <span class="token operator">&lt;</span> num2<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num1 <span class="token operator">>=</span> num2<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># False</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num1 <span class="token operator">&lt;=</span> num2<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num1 <span class="token operator">==</span> num2<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># False</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>num1 <span class="token operator">!=</span> num2<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># True</span>
+</code></pre>
+<h2 id="7、练习题"><a href="#7、练习题" class="headerlink" title="7、练习题"></a>7、练习题</h2><p>练习题1：提示用户输入圆的半径，根据公式S = πr2求圆的面积 </p>
+<pre class=" language-python"><code class="language-python">r <span class="token operator">=</span> float<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入要计算圆的半径：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+PI <span class="token operator">=</span> <span class="token number">3.14</span>
+s <span class="token operator">=</span> PI <span class="token operator">*</span> r <span class="token operator">**</span> <span class="token number">2</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'圆的面积为：{s}'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>练习题2：赋值运算 =&gt; 输入身高，体重，求BMI = 体重(kg)/身高(m)的平方。</p>
+<pre class=" language-python"><code class="language-python">height <span class="token operator">=</span> float<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的身高（m）：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+weight <span class="token operator">=</span> float<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的体重（kg）：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+bmi <span class="token operator">=</span> weight <span class="token operator">/</span> height <span class="token operator">**</span> <span class="token number">2</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'您的BMI值为{bmi}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="8、逻辑运算符（与或非）"><a href="#8、逻辑运算符（与或非）" class="headerlink" title="8、逻辑运算符（与或非）"></a>8、逻辑运算符（与或非）</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102034.png" alt="image-20210307144233542"></p>
+<blockquote>
+<p>not就是取反，只有一个表达式<code>not 表达式</code>，如果表达式为True，则not以后就返回False。反之，则返回True。</p>
+</blockquote>
+<p>讲个非诚勿扰的小故事：</p>
+<p>① 女孩子要求比较高，要求男孩子必须要有房且有车</p>
+<pre class=" language-python"><code class="language-python">表达式<span class="token number">1</span> <span class="token operator">and</span> 表达式<span class="token number">2</span>
+当表达式<span class="token number">1</span>为<span class="token boolean">True</span>且表达式<span class="token number">2</span>为<span class="token boolean">True</span>时，则整个表达式返回结果为<span class="token boolean">True</span>
+当表达式<span class="token number">1</span>或表达式<span class="token number">2</span>中有一个表达式为假，则整个表达式返回结果为<span class="token boolean">False</span>
+
+
+有房 <span class="token operator">and</span> 有车  则  牵手成功
+有房 <span class="token operator">and</span> 没车  则  牵手失败
+没房 <span class="token operator">and</span> 有车  则  牵手失败
+</code></pre>
+<p>② 女孩子要求一般，要求男孩子有房或者有车即可</p>
+<pre class=" language-python"><code class="language-python">表达式<span class="token number">1</span> <span class="token operator">or</span> 表达式<span class="token number">2</span>
+当表达式<span class="token number">1</span>为<span class="token boolean">True</span>或表达式<span class="token number">2</span>为<span class="token boolean">True</span>时，则整个表达式返回结果为<span class="token boolean">True</span>
+当表达式<span class="token number">1</span>与表达式<span class="token number">2</span>都为<span class="token boolean">False</span>时，则整个表达式才会返回<span class="token boolean">False</span>
+
+
+有房 <span class="token operator">or</span> 有车  则  牵手成功
+有房 <span class="token operator">or</span> 没车  则  牵手成功
+没房 <span class="token operator">or</span> 有车  则  牵手成功
+没房 <span class="token operator">or</span> 没车  则  牵手失败
+</code></pre>
+<p>案例：</p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> <span class="token number">1</span>
+b <span class="token operator">=</span> <span class="token number">2</span>
+c <span class="token operator">=</span> <span class="token number">3</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a <span class="token operator">></span> b<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token punctuation">(</span>b <span class="token operator">></span> c<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># False</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a <span class="token operator">></span> b<span class="token punctuation">)</span> <span class="token operator">or</span> <span class="token punctuation">(</span>b <span class="token operator">></span> c<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># False</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">(</span>a <span class="token operator">&lt;</span> b<span class="token punctuation">)</span> <span class="token operator">or</span> <span class="token punctuation">(</span>b <span class="token operator">></span> c<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token operator">not</span> <span class="token punctuation">(</span>a <span class="token operator">></span> b<span class="token punctuation">)</span><span class="token punctuation">)</span>          <span class="token comment" spellcheck="true"># True</span>
+</code></pre>
+<h2 id="9、扩展：短路运算"><a href="#9、扩展：短路运算" class="headerlink" title="9、扩展：短路运算"></a>9、扩展：短路运算</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">and</span> <span class="token number">4</span> <span class="token operator">and</span> <span class="token number">5</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 5</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">5</span> <span class="token operator">and</span> <span class="token number">6</span> <span class="token operator">or</span> <span class="token number">7</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true"># 6</span>
+<span class="token number">4</span> <span class="token operator">></span> <span class="token number">3</span> <span class="token operator">and</span> <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 输出hello world</span>
+</code></pre>
+<p>在逻辑运算中，不一定逻辑运算符的两边都是纯表达式。也可以是数值类型的数据。</p>
+<p>==Python把0、空字符串和None看成 False，其他数值和非空字符串都看成 True==，所以：</p>
+<p>① 在计算 a and b 时，如果 a 是 False，则根据与运算法则，整个结果必定为 False，因此返回 a；如果 a 是 True，则整个计算结果必定取决与 b，因此返回 b。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">and</span> <span class="token number">4</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 4</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">and</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 0</span>
+</code></pre>
+<p>② 在计算 a or b 时，如果 a 是 True，则根据或运算法则，整个计算结果必定为 True，因此返回 a；如果 a 是 False，则整个计算结果必定取决于 b，因此返回 b。 所以Python解释器在做布尔运算时，只要能提前确定计算结果，它就不会往后算了，直接返回结果。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">or</span> <span class="token number">7</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 6</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">and</span> <span class="token number">7</span> <span class="token operator">or</span> <span class="token number">8</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 7</span>
+</code></pre>
+<h2 id="10、运算符的优先级"><a href="#10、运算符的优先级" class="headerlink" title="10、运算符的优先级"></a>10、运算符的优先级</h2><p>什么是运算符的优先级？其实我们小学就已经接触过了，就是在一个表达式中，我们先算谁的问题。</p>
+<blockquote>
+<p>先算乘除，后算加减，有括号的先算括号里面的。</p>
+</blockquote>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102905.png" alt="image-20210307153001187"></p>
+<p>个人建议：</p>
+<blockquote>
+<p>① 不要把一个表达式写得过于复杂，如果一个表达式过于复杂，尝试把它拆分来书写</p>
+</blockquote>
+<blockquote>
+<p>② 不要过于依赖运算符的优先级来控制表达式的执行顺序，这样可读性太差，应尽量使用( )来控制表达式的执行顺序</p>
+</blockquote>
+<h1 id="四、if选择判断结构"><a href="#四、if选择判断结构" class="headerlink" title="四、if选择判断结构"></a>四、if选择判断结构</h1><h2 id="1、if选择判断结构作用"><a href="#1、if选择判断结构作用" class="headerlink" title="1、if选择判断结构作用"></a>1、if选择判断结构作用</h2><p>在日常开发中，只要有需要进行条件判断的语句基本上都是选择判断结构。</p>
+<p>应用场景：</p>
+<p>如果年龄大于等于18岁，则可以正常上网。</p>
+<p>如果升级考试成绩大于60分，则可以顺利升级就业班。</p>
+<h2 id="2、if选择判断结构的基本语法"><a href="#2、if选择判断结构的基本语法" class="headerlink" title="2、if选择判断结构的基本语法"></a>2、if选择判断结构的基本语法</h2><p>Java：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> <span class="token punctuation">(</span>条件判断<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    则执行某段代码<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>但是Python中，不需要使用这么多复杂的符号，直接可以编写条件判断及执行某段代码</p>
+<p>Python：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> 条件判断<span class="token punctuation">:</span>
+    则执行某段代码<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+    
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'条件成立执行的代码1'</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'条件成立执行的代码2'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 下方的代码没有缩进到if语句块，所以和if条件无关</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我是无论条件是否成立都要执行的代码'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、if选择结构案例"><a href="#3、if选择结构案例" class="headerlink" title="3、if选择结构案例"></a>3、if选择结构案例</h2><p>需求：定义一个变量age = 18，判断这个变量是否大于等于18岁，如果满足条件，则可以上网。</p>
+<p>案例1：直接定义判断，进行条件判断</p>
+<pre class=" language-python"><code class="language-python">age <span class="token operator">=</span> <span class="token number">18</span>
+<span class="token keyword">if</span> age <span class="token operator">>=</span> <span class="token number">18</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'满足18岁要求，可以正常上网'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例2：上网吧案例升级版</p>
+<pre class=" language-python"><code class="language-python">age <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> age <span class="token operator">>=</span> <span class="token number">18</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'满足18岁要求，可以正常上网'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>if选择原理图：学编程除了会写代码还不行，还要回画图（流程图）</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102767.png" alt="image-20210307161204181"></p>
+<h2 id="4、if…else…结构"><a href="#4、if…else…结构" class="headerlink" title="4、if…else…结构"></a>4、if…else…结构</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> 条件判断<span class="token punctuation">:</span>
+    当条件判断为<span class="token boolean">True</span>时，则执行这个语句段
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    当条件判断为<span class="token boolean">False</span>时，则执行这个语句段
+</code></pre>
+<p>案例3：上网吧案例升级升级版，引入else</p>
+<pre class=" language-python"><code class="language-python">age <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> age <span class="token operator">>=</span> <span class="token number">18</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'满足18岁要求，可以正常上网'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'不满足18岁要求，回家好好学习，天天向上'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>if…else…结构原理图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102641.png" alt="image-20210307162555060"></p>
+<h2 id="5、if…elif…else多条件判断结构"><a href="#5、if…elif…else多条件判断结构" class="headerlink" title="5、if…elif…else多条件判断结构"></a>5、if…elif…else多条件判断结构</h2><p>如果条件1成立，则执行语句段1</p>
+<p>如果条件2成立，则执行语句段2</p>
+<p>…</p>
+<p>当所有条件都不成立时，则执行else语句段中的内容</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> 条件判断<span class="token number">1</span><span class="token punctuation">:</span>
+    如果此条件为<span class="token boolean">True</span>，则执行这个语句段
+<span class="token keyword">elif</span> 条件判断<span class="token number">2</span><span class="token punctuation">:</span>
+    如果此条件为<span class="token boolean">True</span>，则执行这个语句段
+<span class="token keyword">elif</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">:</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    如果以上所有条件判断都不满足时，则执行这个语句段
+</code></pre>
+<p>案例：</p>
+<p>① 中国合法工作年龄为18-60岁，即如果年龄小于18的情况为童工，不合法；</p>
+<p>② 如果年龄在18-60岁之间为合法工龄；</p>
+<p>③ 大于60岁为法定退休年龄。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个变量，接收用户输入的年龄</span>
+age <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> age <span class="token operator">&lt;</span> <span class="token number">18</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'你还是一个童工，回去好好学习'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> age <span class="token operator">>=</span> <span class="token number">18</span> <span class="token operator">and</span> age <span class="token operator">&lt;=</span><span class="token number">60</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'合法工龄，可以正常工作'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> age <span class="token operator">></span> <span class="token number">60</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您已经达到了退休年龄，回家好好休息'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'信息输入有误，请重新输入'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>简写形式：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个变量，接收用户输入的年龄</span>
+age <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> age <span class="token operator">&lt;</span> <span class="token number">18</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'你还是一个童工，回去好好学习'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> <span class="token number">18</span> <span class="token operator">&lt;=</span> age <span class="token operator">&lt;=</span> <span class="token number">60</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'合法工龄，可以正常工作'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> age <span class="token operator">></span> <span class="token number">60</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'您已经达到了退休年龄，回家好好休息'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'信息输入有误，请重新输入'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>if多重条件判断原理图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012102466.png" alt="image-20210307165907589"></p>
+<h2 id="6、if嵌套结构"><a href="#6、if嵌套结构" class="headerlink" title="6、if嵌套结构"></a>6、if嵌套结构</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> 外层条件判断<span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 如果条件为True，则执行以下语句段</span>
+    <span class="token keyword">if</span> 内层条件判断<span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 如果内层条件为True，则执行以下语句段</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 如果条件为False，则执行以下语句段</span>
+</code></pre>
+<p>嵌套结构看起来异常复杂，但是我们在编写时要遵循一个原则：==先编写外层判断，所有语句编写完成后，在编写内层条件判断结构。==</p>
+<p>案例：外层条件①，是否有钱，有钱可以上车。内层条件 ② 判断是否有空座位，如果有，则可以坐下。 </p>
+<pre class=" language-python"><code class="language-python"><span class="token triple-quoted-string string">"""
+根据条件（是否有钱）判断是否可以上车
+money = 0 没钱
+money = 1 有钱
+"""</span>
+money <span class="token operator">=</span> <span class="token number">1</span>
+seat <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">if</span> money <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 有钱，可以上车</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'有钱，可以上车'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># if嵌套（seat = 1代表有空座，seat = 0代表没有空座）</span>
+    <span class="token keyword">if</span> seat <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 有座位，可以坐下</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'有座位，可以坐下'</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 没有座位，只能站着回家了</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'没有座位，只能站着回家了'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 没钱，只能走路回家了</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'没钱，只能走路回家了'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="五、综合案例：石头剪刀布"><a href="#五、综合案例：石头剪刀布" class="headerlink" title="五、综合案例：石头剪刀布"></a>五、综合案例：石头剪刀布</h1><h2 id="1、需求分析"><a href="#1、需求分析" class="headerlink" title="1、需求分析"></a>1、需求分析</h2><p>参与游戏的角色有两个（玩家 与 电脑），玩家手工出拳，电脑随机出拳，根据石头剪刀布判断输赢。</p>
+<p>玩家：player（玩家手工输入石头、剪刀、布）</p>
+<p>电脑：computer（随机出拳）</p>
+<p>输赢结果很重要，有三种情况：</p>
+<p>① 玩家赢</p>
+<p>☆ player：石头  赢 computer：剪刀</p>
+<p>☆ palyer：剪刀  赢 computer：布</p>
+<p>☆ player：布      赢 computer：石头</p>
+<p>② 平局</p>
+<p>只要player 与 computer出拳相等，就代表平局</p>
+<p>③ 电脑赢</p>
+<p>如果不满足以上两个条件，则电脑获胜！</p>
+<blockquote>
+<p>未知知识点：如何让计算机随机出拳 =&gt; 随机</p>
+</blockquote>
+<h2 id="2、代码实现"><a href="#2、代码实现" class="headerlink" title="2、代码实现"></a>2、代码实现</h2><p>确认：if…elif…else多条件分支结构</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 第一步：提示输入输入石头剪刀布，0-代表石头，1代表剪刀，2代表布</span>
+player <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的出拳0-代表石头，1代表剪刀，2代表布：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 第二步：电脑随机出拳(后续解决)</span>
+computer <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 第三步：根据用户以及计算机的出拳判断输赢</span>
+<span class="token comment" spellcheck="true"># 什么情况，玩家会赢</span>
+<span class="token comment" spellcheck="true"># player==0且computer==1 或 palyer==1且computer==2 或 player==2且computer==0</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>player <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">and</span> computer <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">or</span> <span class="token punctuation">(</span>player <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">and</span> computer <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">or</span> <span class="token punctuation">(</span>player<span class="token operator">==</span><span class="token number">2</span> <span class="token operator">and</span> computer <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'玩家获胜'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> player <span class="token operator">==</span> computer<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'平局'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'电脑获胜'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>遗留问题：计算机没办法随机出拳</p>
+<h2 id="3、随机出拳"><a href="#3、随机出拳" class="headerlink" title="3、随机出拳"></a>3、随机出拳</h2><p>Python语言非常的强大，强大之处就在于其拥有很多模块（module），这些模块中拥有很多别人已经开发好的代码，我们可以直接导入到我们的程序中即可使用。</p>
+<p>==① import导入模块==</p>
+<p>==② 通过模块.方法()调用相关功能==</p>
+<p>随机出拳其实就是随机从0,1,2中选出一个数字</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> random
+
+
+<span class="token comment" spellcheck="true"># 调用内部封装的方法</span>
+computer <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+</code></pre>
+<p>改进猜拳代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> random
+
+
+<span class="token comment" spellcheck="true"># 第一步：提示输入输入石头剪刀布，0-代表石头，1代表剪刀，2代表布</span>
+player <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您的出拳0-代表石头，1代表剪刀，2代表布：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 第二步：电脑随机出拳(后续解决)</span>
+computer <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>computer<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 第三步：根据用户以及计算机的出拳判断输赢</span>
+<span class="token comment" spellcheck="true"># 什么情况，玩家会赢</span>
+<span class="token comment" spellcheck="true"># player==0且computer==1 或 palyer==1且computer==2 或 player==2且computer==0</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>player <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">and</span> computer <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">or</span> <span class="token punctuation">(</span>player <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">and</span> computer <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">or</span> <span class="token punctuation">(</span>player<span class="token operator">==</span><span class="token number">2</span> <span class="token operator">and</span> computer <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'玩家获胜'</span><span class="token punctuation">)</span>
+<span class="token keyword">elif</span> player <span class="token operator">==</span> computer<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'平局'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'电脑获胜'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="六、三目运算符"><a href="#六、三目运算符" class="headerlink" title="六、三目运算符"></a>六、三目运算符</h1><h2 id="1、什么是三目运算符"><a href="#1、什么是三目运算符" class="headerlink" title="1、什么是三目运算符"></a>1、什么是三目运算符</h2><p>在Python中三目运算符也叫三元运算符，其主要作用：就是用于简化if…else…语句。</p>
+<h2 id="2、基本语法"><a href="#2、基本语法" class="headerlink" title="2、基本语法"></a>2、基本语法</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">if</span> 条件判断<span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 语句段1</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 语句段2</span>
+</code></pre>
+<p>转换为三目运算符：</p>
+<pre class=" language-python"><code class="language-python">语句段<span class="token number">1</span> <span class="token keyword">if</span> 条件判断 <span class="token keyword">else</span> 语句段<span class="token number">2</span>
+</code></pre>
+<h2 id="3、三目运算符案例"><a href="#3、三目运算符案例" class="headerlink" title="3、三目运算符案例"></a>3、三目运算符案例</h2><p>需求：输入两个数值，返回最大值</p>
+<pre class=" language-python"><code class="language-python">num1 <span class="token operator">=</span> <span class="token number">10</span>
+num2 <span class="token operator">=</span> <span class="token number">20</span>
+
+<span class="token keyword">if</span> num1 <span class="token operator">></span> num2<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'最大值为{num1}'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'最大值为{num2}'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>简化：三目运算符</p>
+<pre class=" language-python"><code class="language-python">num1 <span class="token operator">=</span> <span class="token number">10</span>
+num2 <span class="token operator">=</span> <span class="token number">20</span>
+
+max <span class="token operator">=</span> num1 <span class="token keyword">if</span> num1 <span class="token operator">></span> num2 <span class="token keyword">else</span> num2
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'最大值为{max}'</span><span class="token punctuation">)</span>
+</code></pre>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/03/016-python-ji-chu-01/">Day01之Python环境搭建与输入输出<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/03/018-python-ji-chu-03/">Day03之Python中的循环结构<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>

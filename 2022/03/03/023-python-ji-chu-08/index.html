@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day08之Python文件操作与面向对象 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、文件备份案例1、实例代码# 1、接收用户输入的文件名（要备份的文件名） oldname &#x3D; input(&#39;请输入要备份的文件名称：&#39;)  # python.txt # 2、规划备份文件名（python[备份].txt） # 搜索点号 index &#x3D; oldname.rfind(&#39;.&#39;) # 返回文件名和文件后缀 name &#x3D; oldname[:index] postfix &#x3D; oldname[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day08之Python文件操作与面向对象">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/023-python-ji-chu-08/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、文件备份案例1、实例代码# 1、接收用户输入的文件名（要备份的文件名） oldname &#x3D; input(&#39;请输入要备份的文件名称：&#39;)  # python.txt # 2、规划备份文件名（python[备份].txt） # 搜索点号 index &#x3D; oldname.rfind(&#39;.&#39;) # 返回文件名和文件后缀 name &#x3D; oldname[:index] postfix &#x3D; oldname[">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109365.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109903.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109721.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109263.png">
+<meta property="article:published_time" content="2022-03-02T23:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:10:04.445Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109365.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%AE%9E%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">1、实例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA"><span class="toc-number">2.</span> <span class="toc-text">2、查漏补缺</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81os%E6%A8%A1%E5%9D%97"><span class="toc-number">3.</span> <span class="toc-text">1、os模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%B8%8E%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">2、与文件操作相关方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E4%B8%8E%E6%96%87%E4%BB%B6%E5%A4%B9%E6%93%8D%E4%BD%9C%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-number">5.</span> <span class="toc-text">3、与文件夹操作相关操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E6%96%87%E4%BB%B6%E5%A4%B9%E5%88%A0%E9%99%A4%E8%A1%A5%E5%85%85%EF%BC%88%E9%80%92%E5%BD%92%E5%88%A0%E9%99%A4%E3%80%81%E6%85%8E%E9%87%8D%EF%BC%81%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">4、文件夹删除补充（递归删除、慎重！）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%99%AE%E5%8F%8A%E8%B7%AF%E5%BE%84%E7%9A%84%E5%B0%8F%E7%9F%A5%E8%AF%86"><span class="toc-number">7.</span> <span class="toc-text">5、普及路径的小知识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-number">8.</span> <span class="toc-text">1、需求分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%BC%96%E5%86%99%E5%AE%9E%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">9.</span> <span class="toc-text">2、编写实例代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B"><span class="toc-number">10.</span> <span class="toc-text">1、什么是面向过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">11.</span> <span class="toc-text">2、什么是面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90%EF%BC%9A%E4%BD%BF%E7%94%A8%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AE%9E%E7%8E%B0%E6%8A%A5%E5%90%8D%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91"><span class="toc-number">12.</span> <span class="toc-text">3、举个栗子：使用面向对象实现报名系统开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%88%86%E6%9E%90%E5%93%AA%E4%BA%9B%E5%8A%A8%E4%BD%9C%E6%98%AF%E7%94%B1%E5%93%AA%E4%BA%9B%E5%AE%9E%E4%BD%93%E5%8F%91%E5%87%BA%E7%9A%84"><span class="toc-number">12.1.</span> <span class="toc-text">☆ 第一步：分析哪些动作是由哪些实体发出的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%AE%9A%E4%B9%89%E8%BF%99%E4%BA%9B%E5%AE%9E%E4%BD%93%EF%BC%8C%E4%B8%BA%E5%85%B6%E5%A2%9E%E5%8A%A0%E7%9B%B8%E5%BA%94%E7%9A%84%E5%B1%9E%E6%80%A7%E5%92%8C%E5%8A%9F%E8%83%BD"><span class="toc-number">12.2.</span> <span class="toc-text">☆ 第二步：定义这些实体，为其增加相应的属性和功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E8%AE%A9%E5%AE%9E%E4%BD%93%E5%8E%BB%E6%89%A7%E8%A1%8C%E7%9B%B8%E5%BA%94%E7%9A%84%E5%8A%9F%E8%83%BD%E6%88%96%E5%8A%A8%E4%BD%9C"><span class="toc-number">12.3.</span> <span class="toc-text">☆ 第三步：让实体去执行相应的功能或动作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E8%BF%81%E7%A7%BB"><span class="toc-number">13.</span> <span class="toc-text">4、面向对象编程思想迁移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%A6%81%E6%AF%94%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E5%A5%BD%EF%BC%9F"><span class="toc-number">14.</span> <span class="toc-text">5、面向对象要比面向过程好？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%AD%E4%B8%A4%E4%B8%AA%E6%AF%94%E8%BE%83%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="toc-number">15.</span> <span class="toc-text">1、面向对象中两个比较重要概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%AF%B9%E8%B1%A1"><span class="toc-number">15.1.</span> <span class="toc-text">☆ 对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E7%B1%BB"><span class="toc-number">15.2.</span> <span class="toc-text">☆ 类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">16.</span> <span class="toc-text">2、类的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E7%B1%BB%E7%9A%84%E5%AE%9E%E4%BE%8B%E5%8C%96%EF%BC%88%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%EF%BC%89"><span class="toc-number">17.</span> <span class="toc-text">3、类的实例化（创建对象）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E7%B1%BB%E4%B8%AD%E7%9A%84self%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">18.</span> <span class="toc-text">4、类中的self关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B1%9E%E6%80%A7"><span class="toc-number">19.</span> <span class="toc-text">1、什么是属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%9C%A8%E7%B1%BB%E7%9A%84%E5%A4%96%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%B1%9E%E6%80%A7%E5%92%8C%E8%8E%B7%E5%8F%96%E5%B1%9E%E6%80%A7"><span class="toc-number">20.</span> <span class="toc-text">2、在类的外面添加属性和获取属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E8%AE%BE%E7%BD%AE"><span class="toc-number">20.1.</span> <span class="toc-text">☆ 设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E8%8E%B7%E5%8F%96"><span class="toc-number">20.2.</span> <span class="toc-text">☆ 获取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%9C%A8%E7%B1%BB%E7%9A%84%E5%86%85%E9%83%A8%E8%8E%B7%E5%8F%96%E5%A4%96%E9%83%A8%E5%AE%9A%E4%B9%89%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="toc-number">21.</span> <span class="toc-text">3、在类的内部获取外部定义的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="toc-number">22.</span> <span class="toc-text">1、什么是魔术方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81-init-%E6%96%B9%E6%B3%95-%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%B3%95%E6%88%96%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="toc-number">23.</span> <span class="toc-text">2、_init_()方法(初始化方法或构造方法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81-str-%E6%96%B9%E6%B3%95"><span class="toc-number">24.</span> <span class="toc-text">3、_str_()方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81-del-%E6%96%B9%E6%B3%95%EF%BC%88%E5%88%A0%E9%99%A4%E6%96%B9%E6%B3%95%E6%88%96%E6%9E%90%E6%9E%84%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number">25.</span> <span class="toc-text">4、__del__()方法（删除方法或析构方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">26.</span> <span class="toc-text">5、总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E6%80%A7"><span class="toc-number">27.</span> <span class="toc-text">1、面向对象有哪些特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Python%E4%B8%AD%E7%9A%84%E5%B0%81%E8%A3%85"><span class="toc-number">28.</span> <span class="toc-text">2、Python中的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%B0%81%E8%A3%85%E4%B8%AD%E7%9A%84%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E5%92%8C%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95"><span class="toc-number">29.</span> <span class="toc-text">3、封装中的私有属性和私有方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E7%9A%84%E8%AE%BF%E9%97%AE%E9%99%90%E5%88%B6"><span class="toc-number">30.</span> <span class="toc-text">4、私有属性的访问限制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E4%B8%8E%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3"><span class="toc-number">31.</span> <span class="toc-text">5、私有属性设置与访问接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95"><span class="toc-number">32.</span> <span class="toc-text">6、私有方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E5%B0%81%E8%A3%85%E6%80%A7%E5%88%B0%E5%BA%95%E6%9C%89%E4%BD%95%E6%84%8F%E4%B9%89"><span class="toc-number">33.</span> <span class="toc-text">7、封装性到底有何意义</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-02T23:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day08之Python文件操作与面向对象</span></h1>
+<h1 id="一、文件备份案例"><a href="#一、文件备份案例" class="headerlink" title="一、文件备份案例"></a>一、文件备份案例</h1><h2 id="1、实例代码"><a href="#1、实例代码" class="headerlink" title="1、实例代码"></a>1、实例代码</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、接收用户输入的文件名（要备份的文件名）</span>
+oldname <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入要备份的文件名称：'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># python.txt</span>
+<span class="token comment" spellcheck="true"># 2、规划备份文件名（python[备份].txt）</span>
+<span class="token comment" spellcheck="true"># 搜索点号</span>
+index <span class="token operator">=</span> oldname<span class="token punctuation">.</span>rfind<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 返回文件名和文件后缀</span>
+name <span class="token operator">=</span> oldname<span class="token punctuation">[</span><span class="token punctuation">:</span>index<span class="token punctuation">]</span>
+postfix <span class="token operator">=</span> oldname<span class="token punctuation">[</span>index<span class="token punctuation">:</span><span class="token punctuation">]</span>
+newname <span class="token operator">=</span> name <span class="token operator">+</span> <span class="token string">'[备份]'</span> <span class="token operator">+</span> postfix
+<span class="token comment" spellcheck="true"># 3、对文件进行备份操作</span>
+old_f <span class="token operator">=</span> open<span class="token punctuation">(</span>oldname<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span>
+new_f <span class="token operator">=</span> open<span class="token punctuation">(</span>newname<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 读取源文件内容写入新文件</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    content <span class="token operator">=</span> old_f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> len<span class="token punctuation">(</span>content<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    new_f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>content<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 4、关闭文件</span>
+old_f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+new_f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="2、查漏补缺"><a href="#2、查漏补缺" class="headerlink" title="2、查漏补缺"></a>2、查漏补缺</h2><p>遗留问题：我们要备份的文件名称都是由用户通过input方法输入而来的，但是一定要记住，只要在程序中有人为输入，强烈建议对用户输入的数据进行校检。</p>
+<blockquote>
+<p>所有用户的输入都是不靠谱的！</p>
+</blockquote>
+<p>解决用户输入文件名称异常问题：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、接收用户输入的文件名（要备份的文件名）</span>
+oldname <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入要备份的文件名称：'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># python.txt</span>
+<span class="token comment" spellcheck="true"># 2、规划备份文件名（python[备份].txt）</span>
+<span class="token comment" spellcheck="true"># 搜索点号</span>
+index <span class="token operator">=</span> oldname<span class="token punctuation">.</span>rfind<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 对index进行判断，判断是否合理（index > 0)</span>
+<span class="token keyword">if</span> index <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 返回文件名和文件后缀</span>
+    name <span class="token operator">=</span> oldname<span class="token punctuation">[</span><span class="token punctuation">:</span>index<span class="token punctuation">]</span>
+    postfix <span class="token operator">=</span> oldname<span class="token punctuation">[</span>index<span class="token punctuation">:</span><span class="token punctuation">]</span>
+    newname <span class="token operator">=</span> name <span class="token operator">+</span> <span class="token string">'[备份]'</span> <span class="token operator">+</span> postfix
+    <span class="token comment" spellcheck="true"># 3、对文件进行备份操作</span>
+    old_f <span class="token operator">=</span> open<span class="token punctuation">(</span>oldname<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span>
+    new_f <span class="token operator">=</span> open<span class="token punctuation">(</span>newname<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 读取源文件内容写入新文件</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        content <span class="token operator">=</span> old_f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> len<span class="token punctuation">(</span>content<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        new_f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>content<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 4、关闭文件</span>
+    old_f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    new_f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'请输入正确的文件名称，否则无法进行备份操作...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="二、文件和文件夹操作"><a href="#二、文件和文件夹操作" class="headerlink" title="二、文件和文件夹操作"></a>二、文件和文件夹操作</h1><h2 id="1、os模块"><a href="#1、os模块" class="headerlink" title="1、os模块"></a>1、os模块</h2><p>在Python中文件和文件夹的操作要借助os模块里面的相关功能，具体步骤如下：</p>
+<p>第一步：导入os模块</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+</code></pre>
+<p>第二步：调用os模块中的相关方法</p>
+<pre class=" language-python"><code class="language-python">os<span class="token punctuation">.</span>函数名<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="2、与文件操作相关方法"><a href="#2、与文件操作相关方法" class="headerlink" title="2、与文件操作相关方法"></a>2、与文件操作相关方法</h2><table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>os.rename(目标文件名称，新文件名称)</td>
+<td>对文件进行重命名操作</td>
+</tr>
+<tr>
+<td>2</td>
+<td>os.remove(要删除文件名称)</td>
+<td>对文件进行删除操作</td>
+</tr>
+</tbody></table>
+<p>案例：把Python项目目录下的python.txt文件，更名为linux.txt，休眠20s，刷新后，查看效果，然后对这个文件进行删除操作。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 第一步：导入os模块</span>
+<span class="token keyword">import</span> os
+<span class="token comment" spellcheck="true"># 第三步：引入time模块</span>
+<span class="token keyword">import</span> time
+
+
+<span class="token comment" spellcheck="true"># 第二步：使用os.rename方法对python.txt进行重命名</span>
+os<span class="token punctuation">.</span>rename<span class="token punctuation">(</span><span class="token string">'python.txt'</span><span class="token punctuation">,</span> <span class="token string">'linux.txt'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 第四步：休眠20s</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 第五步：删除文件（linux.txt)</span>
+os<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token string">'linux.txt'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、与文件夹操作相关操作"><a href="#3、与文件夹操作相关操作" class="headerlink" title="3、与文件夹操作相关操作"></a>3、与文件夹操作相关操作</h2><p>前提：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+</code></pre>
+<p>相关方法：</p>
+<table>
+<thead>
+<tr>
+<th><strong>编号</strong></th>
+<th><strong>函数</strong></th>
+<th><strong>功能</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>os.mkdir(新文件夹名称)</td>
+<td>创建一个指定名称的文件夹</td>
+</tr>
+<tr>
+<td>2</td>
+<td>os.getcwd()</td>
+<td>current work   directory，获取当前目录名称</td>
+</tr>
+<tr>
+<td>3</td>
+<td>os.chdir(切换后目录名称)</td>
+<td>change  directory，切换目录</td>
+</tr>
+<tr>
+<td>4</td>
+<td>os.listdir(目标目录)</td>
+<td>获取指定目录下的文件信息，返回列表</td>
+</tr>
+<tr>
+<td>5</td>
+<td>os.rmdir(目标目录)</td>
+<td>用于删除一个指定名称的”空”文件夹</td>
+</tr>
+</tbody></table>
+<p>案例1：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 导入os模块</span>
+<span class="token keyword">import</span> os
+
+
+<span class="token comment" spellcheck="true"># 1、使用mkdir方法创建一个images文件夹</span>
+<span class="token comment" spellcheck="true"># os.mkdir('images')</span>
+<span class="token comment" spellcheck="true"># os.mkdir('images/avatar')</span>
+
+<span class="token comment" spellcheck="true"># 2、getcwd = get current work directory</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 3、os.chdir，ch = change dir = directory切换目录</span>
+os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span><span class="token string">'images/avatar'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 切换到上一级目录 => images</span>
+os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span><span class="token string">'../../'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 4、使用os.listdir打印当前所在目录下的所有文件，返回列表</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 5、删除空目录</span>
+os<span class="token punctuation">.</span>rmdir<span class="token punctuation">(</span><span class="token string">'images/avatar'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例2：准备一个static文件夹以及file1.txt、file2.txt、file3.txt三个文件</p>
+<p>① 在程序中，将当前目录切换到static文件夹</p>
+<p>② 创建一个新images文件夹以及test文件夹</p>
+<p>③ 获取目录下的所有文件</p>
+<p>④ 移除test文件夹</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 导入os模块</span>
+<span class="token keyword">import</span> os
+
+
+<span class="token comment" spellcheck="true"># ① 在程序中，将当前目录切换到static文件夹</span>
+os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span><span class="token string">'static'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># print(os.getcwd())</span>
+
+<span class="token comment" spellcheck="true"># ② 创建一个新images文件夹以及test文件夹</span>
+<span class="token comment" spellcheck="true"># os.mkdir('images')</span>
+<span class="token comment" spellcheck="true"># os.mkdir('test')</span>
+
+<span class="token comment" spellcheck="true"># ③ 获取目录下的所有文件</span>
+<span class="token comment" spellcheck="true"># print(os.listdir())</span>
+<span class="token keyword">for</span> file <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># ④ 移除test文件夹</span>
+os<span class="token punctuation">.</span>rmdir<span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、文件夹删除补充（递归删除、慎重！）"><a href="#4、文件夹删除补充（递归删除、慎重！）" class="headerlink" title="4、文件夹删除补充（递归删除、慎重！）"></a>4、文件夹删除补充（递归删除、慎重！）</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 导入shutil模块</span>
+<span class="token keyword">import</span> shutil
+
+<span class="token comment" spellcheck="true"># 递归删除非空目录</span>
+shutil<span class="token punctuation">.</span>rmtree<span class="token punctuation">(</span><span class="token string">'要删除文件夹路径'</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>递归删除文件夹的原理：理论上，其在删除过程中，如果文件夹非空，则自动切换到文件夹的内部，然后把其内部的文件，一个一个删除，当所有文件删除完毕后，返回到上一级目录，删除文件夹本身。</p>
+</blockquote>
+<h2 id="5、普及路径的小知识"><a href="#5、普及路径的小知识" class="headerlink" title="5、普及路径的小知识"></a>5、普及路径的小知识</h2><p>绝对路径：</p>
+<pre class=" language-python"><code class="language-python">D<span class="token punctuation">:</span>\PycharmProjects\pythonProject\static
+</code></pre>
+<p>相对路径：</p>
+<p>① 同级路径，都在同一个文件夹中，兄弟关系，如static目录下有file1.txt和file2.txt，则file1.txt和file2.txt就是同级关系，==同级访问直接使用名称即可==。</p>
+<p>② 下一级路径，我们的文件与另外一个文件存在上下级关系，如images文件夹中存在一个avatar文件夹，则images是上级目录，avatar是下级目录。==则我们访问avatar可以通过images/avatar来实现==。</p>
+<p>③ 上一级路径，如果我们某些时候，向从当前目录下，跳出到外一层路径，我们可以使用==../==来实现。</p>
+<h1 id="三、文件操作综合案例"><a href="#三、文件操作综合案例" class="headerlink" title="三、文件操作综合案例"></a>三、文件操作综合案例</h1><h2 id="1、需求分析"><a href="#1、需求分析" class="headerlink" title="1、需求分析"></a>1、需求分析</h2><p>需求：批量修改文件名，既可添加指定字符串，又能删除指定字符串。</p>
+<p>步骤：</p>
+<p>① 设置添加删除字符串的的标识</p>
+<p>② 获取指定目录的所有文件</p>
+<p>③ 将原有文件名添加/删除指定字符串，构造新名字</p>
+<p>④ os.rename()重命名</p>
+<h2 id="2、编写实例代码"><a href="#2、编写实例代码" class="headerlink" title="2、编写实例代码"></a>2、编写实例代码</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、导入os模块</span>
+<span class="token keyword">import</span> os
+<span class="token comment" spellcheck="true"># 2、定义一个要重命名的目录</span>
+path <span class="token operator">=</span> <span class="token string">'static'</span>
+<span class="token comment" spellcheck="true"># 3、切换到上面指定的目录中</span>
+os<span class="token punctuation">.</span>chdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 5、定义一个标识，用于确认是添加字符还是删除字符</span>
+flag <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您要执行的操作（1-添加字符，2-删除字符）：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 4、对目录中的所有文件进行遍历输出 => os.listdir()</span>
+<span class="token keyword">for</span> file <span class="token keyword">in</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 5、判断我们要执行的操作（1-添加字符，2-删除字符）</span>
+    <span class="token keyword">if</span> flag <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 01.txt => python-01.txt</span>
+        newname <span class="token operator">=</span> <span class="token string">'python-'</span> <span class="token operator">+</span> file
+        <span class="token comment" spellcheck="true"># 重命名操作</span>
+        os<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>file<span class="token punctuation">,</span> newname<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'文件批量重命名成功'</span><span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> flag <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># python-01.txt => 01.txt</span>
+        index <span class="token operator">=</span> len<span class="token punctuation">(</span><span class="token string">'python-'</span><span class="token punctuation">)</span>
+        newname <span class="token operator">=</span> file<span class="token punctuation">[</span>index<span class="token punctuation">:</span><span class="token punctuation">]</span>
+        <span class="token comment" spellcheck="true"># 重命名操作</span>
+        os<span class="token punctuation">.</span>rename<span class="token punctuation">(</span>file<span class="token punctuation">,</span> newname<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'文件批量重命名成功'</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'输入标识不正确，请重新输入...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="四、面向对象编程思想"><a href="#四、面向对象编程思想" class="headerlink" title="四、面向对象编程思想"></a>四、面向对象编程思想</h1><h2 id="1、什么是面向过程"><a href="#1、什么是面向过程" class="headerlink" title="1、什么是面向过程"></a>1、什么是面向过程</h2><p>传统的面向过程的编程思想总结起来就八个字——==自顶向下，逐步细化！==</p>
+<p>→ 将要实现的功能描述为一个从开始到结束按部就班的连续的“步骤”</p>
+<p>→ 依次逐步完成这些步骤，如果某一个步骤的难度较大，又可以将该步骤再次细化为若干个子步骤，以此类推，一直到结尾并得到我们想要的结果</p>
+<blockquote>
+<p>就是把要开发的系统分解为若干个步骤，每个步骤就是函数，当所有步骤全部完成以后，则这个系统就开发完毕了！</p>
+</blockquote>
+<p>举个栗子：大家以来传智教育报名学习这件事情，可以分成哪些步骤？开始 → 学员<strong>提出</strong>报名，<strong>提供</strong>相关材料 → 学生<strong>缴纳</strong>学费，<strong>获得</strong>缴费凭证 → 教师凭借学生缴费凭证进行<strong>分配</strong>班级 → 班级<strong>增加</strong>学生信息 → 结束所谓的面向过程，就是将上面分析好了的步骤，依次执行就行了！</p>
+<h2 id="2、什么是面向对象"><a href="#2、什么是面向对象" class="headerlink" title="2、什么是面向对象"></a>2、什么是面向对象</h2><p>思考：上面的整个报名过程，都有哪些动词？</p>
+<p><strong>提出、提供、缴纳、获得、分配、增加</strong></p>
+<p>有动词就一定有实现这个动作的实体！</p>
+<p>所谓的模拟现实世界，就是使计算机的编程语言在解决相关业务逻辑的时候，与真实的业务逻辑的发生保持一致，需要使任何一个动作的发生都存在一个支配给该动作的一个实体（主体），因为在现实世界中，任何一个功能的实现都可以看做是一个一个的实体在发挥其各自的“功能”（能力）并在内部进行协调有序的调用过程！</p>
+<h2 id="3、举个栗子：使用面向对象实现报名系统开发"><a href="#3、举个栗子：使用面向对象实现报名系统开发" class="headerlink" title="3、举个栗子：使用面向对象实现报名系统开发"></a>3、举个栗子：使用面向对象实现报名系统开发</h2><h3 id="☆-第一步：分析哪些动作是由哪些实体发出的"><a href="#☆-第一步：分析哪些动作是由哪些实体发出的" class="headerlink" title="☆ 第一步：分析哪些动作是由哪些实体发出的"></a>☆ 第一步：分析哪些动作是由哪些实体发出的</h3><p><strong>学生</strong>提出报名</p>
+<p><strong>学生</strong>提供相关资料</p>
+<p><strong>学生</strong>缴费</p>
+<p><strong>机构</strong>收费</p>
+<p><strong>教师</strong>分配教室</p>
+<p><strong>班级</strong>增加学生信息 </p>
+<p>于是，在整个过程中，一共有四个实体：<strong>学生、机构、教师、班级</strong>！在现实中的一个具体的实体，就是计算机编程中的一个==对象==！</p>
+<h3 id="☆-第二步：定义这些实体，为其增加相应的属性和功能"><a href="#☆-第二步：定义这些实体，为其增加相应的属性和功能" class="headerlink" title="☆ 第二步：定义这些实体，为其增加相应的属性和功能"></a>☆ 第二步：定义这些实体，为其增加相应的属性和功能</h3><p>属性就是实体固有的某些特征特性信息，在面向对象的术语中，属性就是以前的变量。</p>
+<p>比如</p>
+<p>一个人的属性有：身高、体重、三围、姓名、年龄、学历、电话、籍贯、毕业院校等</p>
+<p>一个手机的属性有：价格、品牌、操作系统、颜色、尺寸等</p>
+<p>功能就是就是实体可以完成的动作，在面向对象的术语中，功能就是封装成了函数或方法</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109365.png" alt="image-20210316122158360"></p>
+<h3 id="☆-第三步：让实体去执行相应的功能或动作"><a href="#☆-第三步：让实体去执行相应的功能或动作" class="headerlink" title="☆ 第三步：让实体去执行相应的功能或动作"></a>☆ 第三步：让实体去执行相应的功能或动作</h3><p>学生提出报名</p>
+<p>学生提供相关资料</p>
+<p>教师登记学生信息</p>
+<p>学生缴费</p>
+<p>机构收费</p>
+<p>教师分配教室</p>
+<p>班级增加学生信息</p>
+<h2 id="4、面向对象编程思想迁移"><a href="#4、面向对象编程思想迁移" class="headerlink" title="4、面向对象编程思想迁移"></a>4、面向对象编程思想迁移</h2><p>以前写代码，首先想到的是需要实现什么功能——调用系统函数，或者自己自定义函数，然后按部就班的执行就行了！</p>
+<p>以后写代码，==首先想到的是应该由什么样的主体去实现什么样的功能，再把该主体的属性和功能统一的进行封装，最后才去实现各个实体的功能。==</p>
+<p>注意：面向对象并不是一种技术，而是一种思想，是一种解决问题的最基本的思维方式！ </p>
+<p>所以，面向对象的核心思想是：==不仅仅是简单的将功能进行封装（封装成函数），更是对调用该功能的主体进行封装，实现某个主体拥有多个功能，在使用的过程中，先得到对应的主体，再使用主体去实现相关的功能！==</p>
+<h2 id="5、面向对象要比面向过程好？"><a href="#5、面向对象要比面向过程好？" class="headerlink" title="5、面向对象要比面向过程好？"></a>5、面向对象要比面向过程好？</h2><p>一个面试题：面向过程和面向对象的区别？</p>
+<p>① 都可以实现代码重用和模块化编程，面向对象的模块化更深，数据也更封闭和安全</p>
+<p>② 面向对象的思维方式更加贴近现实生活，更容易解决大型的复杂的业务逻辑</p>
+<p>③ 从前期开发的角度来看，面向对象比面向过程要更复杂，但是从维护和扩展的角度来看，面向对象要远比面向过程简单！</p>
+<p>④ 面向过程的代码执行效率比面向对象高</p>
+<h1 id="五、面向对象的基本概念"><a href="#五、面向对象的基本概念" class="headerlink" title="五、面向对象的基本概念"></a>五、面向对象的基本概念</h1><h2 id="1、面向对象中两个比较重要概念"><a href="#1、面向对象中两个比较重要概念" class="headerlink" title="1、面向对象中两个比较重要概念"></a>1、面向对象中两个比较重要概念</h2><h3 id="☆-对象"><a href="#☆-对象" class="headerlink" title="☆ 对象"></a>☆ 对象</h3><p>对象，object，现实业务逻辑的一个动作实体就对应着OOP编程中的一个对象！</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109903.png" alt="image-20210316143602528"></p>
+<p>所以：① 对象使用属性（property）保存数据！② 对象使用方法（method）管理数据！</p>
+<h3 id="☆-类"><a href="#☆-类" class="headerlink" title="☆ 类"></a>☆ 类</h3><p>对象如何产生？又是如何规定对象的属性和方法呢？</p>
+<p>答：==在Python中，采用类（class）来生产对象，用类来规定对象的属性和方法！也就是说，在Python中，要想得到对象，必须先有类！==</p>
+<p>为什么要引入类的概念？ 类本来就是对现实世界的一种模拟，在现实生活中，任何一个实体都有一个类别，==类就是具有相同或相似属性和动作的一组实体的集合！==所以，在Python中，对象是指现实中的一个具体的实体，而既然现实中的实体都有一个类别，所以，OOP中的对象也都应该有一个类！</p>
+<p>一个对象的所有应该具有特征特性信息，都是由其所属的类来决定的，但是每个对象又可以具有不同的特征特性信息，比如，我自己（人类）这个对象，名字叫老王，性别男，会写代码，会教书；另一个对象（人类）可能叫赵薇，性别女，会演戏，会唱歌！</p>
+<h2 id="2、类的定义"><a href="#2、类的定义" class="headerlink" title="2、类的定义"></a>2、类的定义</h2><p>在Python中，我们可以有两种类的定义方式：Python2（经典类）和 Python3（新式类）</p>
+<p>经典类：不由任意内置类型派生出的类，称之为经典类</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> 类名<span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 属性</span>
+    <span class="token comment" spellcheck="true"># 方法</span>
+</code></pre>
+<p>新式类：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> 类名<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 属性</span>
+    <span class="token comment" spellcheck="true"># 方法</span>
+</code></pre>
+<p>这就是一个类，只不过里面什么都没有！其中，==类名不区分大小写，遵守一般的标识符的命名规则（以字母、数字和下划线构成，并且不能以数字开头），一般为了和方法名相区分，类名的首字母一般大写！（大驼峰法）==</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 属性</span>
+    <span class="token comment" spellcheck="true"># 方法（函数）</span>
+    <span class="token keyword">def</span> <span class="token function">eat</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我喜欢吃零食'</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">drink</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我喜欢喝可乐'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、类的实例化（创建对象）"><a href="#3、类的实例化（创建对象）" class="headerlink" title="3、类的实例化（创建对象）"></a>3、类的实例化（创建对象）</h2><p>类的实例化就是把抽象的事务具体为现实世界中的实体。</p>
+<p>类的实例化就是==通过类得到对象！==</p>
+<p>类只是对象的一种规范，类本身基本上什么都做不了，必须利用类得到对象，这个过程就叫作==类的实例化！==</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">对象名 <span class="token operator">=</span> 类名<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>在其他的编程语言中，类的实例化一般是通过new关键字实例化生成的，但是在Python中，我们不需要new关键字，只需要类名＋()括号就代表类的实例。</p>
+</blockquote>
+<p>案例：把Person类实例化为为对象p1</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义一个类</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 定义相关方法</span>
+    <span class="token keyword">def</span> <span class="token function">eat</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我喜欢吃零食'</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">drink</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我喜欢喝可乐'</span><span class="token punctuation">)</span>
+        
+<span class="token comment" spellcheck="true"># 2、实例化对象</span>
+p1 <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、调用类中的方法</span>
+p1<span class="token punctuation">.</span>eat<span class="token punctuation">(</span><span class="token punctuation">)</span>
+p1<span class="token punctuation">.</span>drink<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、类中的self关键字"><a href="#4、类中的self关键字" class="headerlink" title="4、类中的self关键字"></a>4、类中的self关键字</h2><p>self也是Python内置的关键字之一，其指向了==类实例对象本身==。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义一个类</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 定义一个方法</span>
+    <span class="token keyword">def</span> <span class="token function">speak</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Nice to meet you!'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2、类的实例化（生成对象）</span>
+p1 <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span>
+p1<span class="token punctuation">.</span>speak<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+p2 <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>p2<span class="token punctuation">)</span>
+p2<span class="token punctuation">.</span>speak<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>一句话总结：类中的self就是谁实例化了对象，其就指向谁。</p>
+</blockquote>
+<h1 id="六、对象的属性添加与获取"><a href="#六、对象的属性添加与获取" class="headerlink" title="六、对象的属性添加与获取"></a>六、对象的属性添加与获取</h1><h2 id="1、什么是属性"><a href="#1、什么是属性" class="headerlink" title="1、什么是属性"></a>1、什么是属性</h2><p>在Python中，任何一个对象都应该由两部分组成：属性 + 方法</p>
+<p>属性即是特征，比如：人的姓名、年龄、身高、体重…都是对象的属性。</p>
+<p>​                                                 车的品牌、型号、颜色、载重量…都是对象的属性。</p>
+<p>对象属性既可以在类外面添加和获取，也能在类里面添加和获取。</p>
+<h2 id="2、在类的外面添加属性和获取属性"><a href="#2、在类的外面添加属性和获取属性" class="headerlink" title="2、在类的外面添加属性和获取属性"></a>2、在类的外面添加属性和获取属性</h2><h3 id="☆-设置"><a href="#☆-设置" class="headerlink" title="☆ 设置"></a>☆ 设置</h3><pre class=" language-python"><code class="language-python">对象名<span class="token punctuation">.</span>属性 <span class="token operator">=</span> 属性值
+</code></pre>
+<p>案例：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义一个Person类</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token comment" spellcheck="true"># 2、实例化Person类，生成p1对象</span>
+p1 <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、为p1对象添加属性</span>
+p1<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'老王'</span>
+p1<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">18</span>
+p1<span class="token punctuation">.</span>address <span class="token operator">=</span> <span class="token string">'北京市顺义区京顺路99号'</span>
+</code></pre>
+<h3 id="☆-获取"><a href="#☆-获取" class="headerlink" title="☆ 获取"></a>☆ 获取</h3><p>在Python中，获取对象属性的方法我们可以通过<code>对象名.属性</code>来获取</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义一个Person类</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token comment" spellcheck="true"># 2、实例化Person类，生成p1对象</span>
+p1 <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、为p1对象添加属性</span>
+p1<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'老王'</span>
+p1<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">18</span>
+p1<span class="token punctuation">.</span>address <span class="token operator">=</span> <span class="token string">'北京市顺义区京顺路99号'</span>
+
+<span class="token comment" spellcheck="true"># 4、获取p1对象的属性</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的姓名：{p1.name}'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的年龄：{p1.age}'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的住址：{p1.address}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、在类的内部获取外部定义的属性"><a href="#3、在类的内部获取外部定义的属性" class="headerlink" title="3、在类的内部获取外部定义的属性"></a>3、在类的内部获取外部定义的属性</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义一个Person类</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">speak</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我的名字：{self.name}，我的年龄：{self.age}，我的住址：{self.address}'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2、实例化Person类，生成p1对象</span>
+p1 <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、添加属性</span>
+p1<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'孙悟空'</span>
+p1<span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">500</span>
+p1<span class="token punctuation">.</span>address <span class="token operator">=</span> <span class="token string">'花果山水帘洞'</span>
+<span class="token comment" spellcheck="true"># 4、调用speak方法</span>
+p1<span class="token punctuation">.</span>speak<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>遗留一个问题：目前我们的确可以通过<code>对象.属性</code>的方式设置或获取对象的属性，但是这种设置属性的方式有点繁琐，每次定义一个对象，就必须手工设置属性，在我们面向对象中，对象的属性能不能在实例化对象时，直接进行设置呢？</p>
+<p>答：可以，但是需要使用魔术方法</p>
+<h1 id="七、魔术方法"><a href="#七、魔术方法" class="headerlink" title="七、魔术方法"></a>七、魔术方法</h1><h2 id="1、什么是魔术方法"><a href="#1、什么是魔术方法" class="headerlink" title="1、什么是魔术方法"></a>1、什么是魔术方法</h2><p>在Python中，<code>__xxx__()</code>的函数叫做魔法方法，指的是具有==特殊功能==的函数。</p>
+<h2 id="2、-init-方法-初始化方法或构造方法"><a href="#2、-init-方法-初始化方法或构造方法" class="headerlink" title="2、_init_()方法(初始化方法或构造方法)"></a>2、_<em>init</em>_()方法(初始化方法或构造方法)</h2><p>思考：人的姓名、年龄等信息都是与生俱来的属性，可不可以在生产过程中就赋予这些属性呢？</p>
+<p>答：可以，使用<code>__init__()</code> 方法，其作用：实例化对象时，连带其中的参数，会一并传给<code>__init__</code>函数自动并执行它。<code>__init__()</code>函数的参数列表会在开头多出一项，它永远指代新建的那个实例对象，Python语法要求这个参数必须要有，名称为self。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义一个类</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 初始化实例对象属性</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 赋予name属性、age属性给实例化对象本身</span>
+        <span class="token comment" spellcheck="true"># self.实例化对象属性 = 参数</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>age <span class="token operator">=</span> age
+
+<span class="token comment" spellcheck="true"># 2、实例化对象并传入初始化属性值</span>
+p1 <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token string">'孙悟空'</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、调用p1对象自身属性name与age</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>p1<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>p1<span class="token punctuation">.</span>age<span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>① _<em>init</em>_()方法，在创建一个对象时默认被调用，不需要手动调用</p>
+<p>② _<em>init</em>_(self)中的self参数，不需要开发者传递，python解释器会自动把当前的对象</p>
+<p>引用传递过去。</p>
+</blockquote>
+<h2 id="3、-str-方法"><a href="#3、-str-方法" class="headerlink" title="3、_str_()方法"></a>3、_<em>str</em>_()方法</h2><p>当使用print输出对象的时候，默认打印对象的内存地址。如果类定义了<code>__str__</code>方法，那么就会打印从在这个方法中 return 的数据。</p>
+<p>没有使用<code>__str__()</code>方法的类：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义一个类</span>
+<span class="token keyword">class</span> <span class="token class-name">Car</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 首先定义一个__init__方法，用于初始化实例对象属性</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> brand<span class="token punctuation">,</span> model<span class="token punctuation">,</span> color<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>brand <span class="token operator">=</span> brand
+        self<span class="token punctuation">.</span>model <span class="token operator">=</span> model
+        self<span class="token punctuation">.</span>color <span class="token operator">=</span> color
+
+    <span class="token comment" spellcheck="true"># 定义一个__str__内置魔术方法，用于输出小汽车的相关信息</span>
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> f<span class="token string">'汽车品牌：{self.brand}，汽车型号：{self.model}，汽车颜色：{self.color}'</span>
+
+<span class="token comment" spellcheck="true"># 2、实例化对象c1</span>
+c1 <span class="token operator">=</span> Car<span class="token punctuation">(</span><span class="token string">'奔驰'</span><span class="token punctuation">,</span> <span class="token string">'S600'</span><span class="token punctuation">,</span> <span class="token string">'黑色'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>c1<span class="token punctuation">)</span>
+</code></pre>
+<p>① <code>__str__</code>这个魔术方法是在类的外部，使用print(对象)时，自动被调用的</p>
+<p>② 在类的内部定义<code>__str__</code>方法时，必须使用return返回一个字符串类型的数据</p>
+<h2 id="4、-del-方法（删除方法或析构方法）"><a href="#4、-del-方法（删除方法或析构方法）" class="headerlink" title="4、__del__()方法（删除方法或析构方法）"></a>4、<code>__del__()</code>方法（删除方法或析构方法）</h2><p>当删除对象时，python解释器也会默认调用<code>__del__()</code>方法。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 构造函数__init__</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>age <span class="token operator">=</span> age
+        
+    <span class="token comment" spellcheck="true"># 析构方法__del__</span>
+    <span class="token keyword">def</span> <span class="token function">__del__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'{self}对象已经被删除'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 实例化对象</span>
+p1 <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token string">'白骨精'</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 删除对象p1</span>
+<span class="token keyword">del</span> p1
+</code></pre>
+<p><code>__del__()</code>方法在使用过程中，比较简单，但是其在实际开发中，有何作用呢？</p>
+<p>答：主要用于关闭文件操作、关闭数据库连接等等。</p>
+<h2 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h2><p>提到魔术方法：① 这个方法在什么情况下被触发 ② 这个方法有什么实际的作用</p>
+<p><code>__init__()</code>：初始化方法或者称之为“构造函数”，在对象初始化时执行，其主要作用就是在对象初始化时，对对象进行初始化操作（如赋予属性）</p>
+<p><code>__str__()</code>：对象字符串方法，当我们在类的外部，使用print方法输出对象时被触发，其主要功能就是对对象进行打印输出操作，要求方法必须使用return返回字符串格式的数据。</p>
+<p><code>__del__()</code>：删除方法或者称之为“析构方法”，在对象被del删除时触发，其主要作用就是适用于关闭文件、关闭数据库连接等等。</p>
+<h1 id="八、面向对象的综合案例"><a href="#八、面向对象的综合案例" class="headerlink" title="八、面向对象的综合案例"></a>八、面向对象的综合案例</h1><p>案例1：定义学员信息类，包含姓名、成绩属性，定义成绩打印方法（90分及以上显示优秀，80分及以上显示良好，70分及以上显示中等，60分及以上显示合格，60分以下显示不及格）</p>
+<p>学员对象（属性、方法）</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109721.png" alt="image-20210316171224229"></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义学员信息类</span>
+<span class="token keyword">class</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 2、定义学员对象属性</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> score<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>score <span class="token operator">=</span> score
+
+    <span class="token comment" spellcheck="true"># 3、定义一个方法，用于打印学员的成绩等级</span>
+    <span class="token keyword">def</span> <span class="token function">print_grade</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>score <span class="token operator">>=</span> <span class="token number">90</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'学员姓名：{self.name}，学员成绩：{self.score}，优秀'</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>score <span class="token operator">>=</span> <span class="token number">80</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'学员姓名：{self.name}，学员成绩：{self.score}，良好'</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>score <span class="token operator">>=</span> <span class="token number">70</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'学员姓名：{self.name}，学员成绩：{self.score}，中等'</span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> self<span class="token punctuation">.</span>score <span class="token operator">>=</span> <span class="token number">60</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'学员姓名：{self.name}，学员成绩：{self.score}，及格'</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'学员姓名：{self.name}，学员成绩：{self.score}，不及格'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 4、实例化对象</span>
+tom <span class="token operator">=</span> Student<span class="token punctuation">(</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">)</span>
+tom<span class="token punctuation">.</span>print_grade<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+jennifier <span class="token operator">=</span> Student<span class="token punctuation">(</span><span class="token string">'Jennifier'</span><span class="token punctuation">,</span> <span class="token number">59</span><span class="token punctuation">)</span>
+jennifier<span class="token punctuation">.</span>print_grade<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例2：小明体重75.0公斤，小明每次跑步会减掉0.50公斤，小明每次吃东西体重增加1公斤分析：① 对象：小明② 属性：姓名、体重③ 方法：跑步、吃东西</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012109263.png" alt="image-20210316174908823"></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、定义Person类</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 2、初始化对象属性，name和weight</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> weight<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>weight <span class="token operator">=</span> weight
+
+    <span class="token comment" spellcheck="true"># 3、定义一个__str__方法打印对象的信息</span>
+    <span class="token keyword">def</span> <span class="token function">__str__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> f<span class="token string">'姓名：{self.name}，目前体重：{self.weight}KG'</span>
+
+    <span class="token comment" spellcheck="true"># 4、定义一个run方法代表跑步</span>
+    <span class="token keyword">def</span> <span class="token function">run</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>weight <span class="token operator">-=</span> <span class="token number">0.5</span>
+
+    <span class="token comment" spellcheck="true"># 5、定义一个eat方法代表吃饭</span>
+    <span class="token keyword">def</span> <span class="token function">eat</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>weight <span class="token operator">+=</span> <span class="token number">1</span>
+
+<span class="token comment" spellcheck="true"># 6、实例化对象</span>
+xiaoming <span class="token operator">=</span> Person<span class="token punctuation">(</span><span class="token string">'小明'</span><span class="token punctuation">,</span> <span class="token number">75.0</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>xiaoming<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 7、吃饭</span>
+xiaoming<span class="token punctuation">.</span>eat<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>xiaoming<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 8、减肥跑步</span>
+xiaoming<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>xiaoming<span class="token punctuation">)</span>
+</code></pre>
+<h1 id="九、面向对象的三大特性"><a href="#九、面向对象的三大特性" class="headerlink" title="九、面向对象的三大特性"></a>九、面向对象的三大特性</h1><h2 id="1、面向对象有哪些特性"><a href="#1、面向对象有哪些特性" class="headerlink" title="1、面向对象有哪些特性"></a>1、面向对象有哪些特性</h2><p>三种：封装性、继承性、多态性</p>
+<h2 id="2、Python中的封装"><a href="#2、Python中的封装" class="headerlink" title="2、Python中的封装"></a>2、Python中的封装</h2><p>在Python代码中，封装有两层含义：</p>
+<p>① 把现实世界中的主体中的属性和方法书写到类的里面的操作即为封装</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 封装属性</span>
+    <span class="token comment" spellcheck="true"># 封装方法</span>
+</code></pre>
+<p>② 封装可以为属性和方法添加为私有权限</p>
+<h2 id="3、封装中的私有属性和私有方法"><a href="#3、封装中的私有属性和私有方法" class="headerlink" title="3、封装中的私有属性和私有方法"></a>3、封装中的私有属性和私有方法</h2><p>在面向对象代码中，我们可以把属性和方法分为两大类：公有（属性、方法）、私有（属性、方法）</p>
+<p>公有属性和公有方法：无论在类的内部还是在类的外部我们都可以对属性和方法进行操作。</p>
+<p>但是有些情况下，我们不希望在类的外部对类内部的属性和方法进行操作。我们就可以把这个属性或方法封装成私有形式。</p>
+<h2 id="4、私有属性的访问限制"><a href="#4、私有属性的访问限制" class="headerlink" title="4、私有属性的访问限制"></a>4、私有属性的访问限制</h2><p>设置私有属性和私有方法的方式非常简单：在属性名和方法名 前面 加上两个下划线 <code>__</code> 即可。</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Girl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>__age <span class="token operator">=</span> <span class="token number">18</span>
+
+xiaomei <span class="token operator">=</span> Girl<span class="token punctuation">(</span><span class="token string">'小美'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>xiaomei<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>xiaomei<span class="token punctuation">.</span>__age<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 报错，提示Girl对象没有__age属性</span>
+</code></pre>
+<blockquote>
+<p>类中的私有属性和私有方法，不能被其子类继承。</p>
+</blockquote>
+<p>由以上代码运行可知，私有属性不能在类的外部被直接访问。但是出于种种原因，我们想在外部对私有属性进行访问，该如何操作呢？</p>
+<p>答：我们可以定义一个统计的访问”接口”（函数），专门用于实现私有属性的访问。</p>
+<h2 id="5、私有属性设置与访问接口"><a href="#5、私有属性设置与访问接口" class="headerlink" title="5、私有属性设置与访问接口"></a>5、私有属性设置与访问接口</h2><p>在Python中，一般定义函数名’ get_xx ‘用来获取私有属性，定义’ set_xx ‘用来修改私有属性值。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Girl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>__age <span class="token operator">=</span> <span class="token number">18</span>
+
+    <span class="token comment" spellcheck="true"># 公共方法：提供给外部的访问接口</span>
+    <span class="token keyword">def</span> <span class="token function">get_age</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 本人访问：允许直接访问</span>
+        <span class="token comment" spellcheck="true"># 外人访问：加上限制条件</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>__age
+
+    <span class="token comment" spellcheck="true"># 公共方法：提供给外部的设置接口</span>
+    <span class="token keyword">def</span> <span class="token function">set_age</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>__age <span class="token operator">=</span> age
+
+
+girl <span class="token operator">=</span> Girl<span class="token punctuation">(</span><span class="token string">'小美'</span><span class="token punctuation">)</span>
+girl<span class="token punctuation">.</span>set_age<span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>girl<span class="token punctuation">.</span>get_age<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="6、私有方法"><a href="#6、私有方法" class="headerlink" title="6、私有方法"></a>6、私有方法</h2><p>私有方法的定义方式与私有属性基本一致，在方法名的前面添加两个下划线<code>__方法名()</code></p>
+<h2 id="7、封装性到底有何意义"><a href="#7、封装性到底有何意义" class="headerlink" title="7、封装性到底有何意义"></a>7、封装性到底有何意义</h2><p>① 以面向对象的编程思想进行项目开发</p>
+<p>② 封装数据属性：明确的区分内外，控制外部对隐藏的属性的操作行为（过滤掉异常数据）</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">People</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>__name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>__age <span class="token operator">=</span> age
+
+    <span class="token keyword">def</span> <span class="token function">tell_info</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Name:&lt;%s> Age:&lt;%s>'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>self<span class="token punctuation">.</span>__name<span class="token punctuation">,</span> self<span class="token punctuation">.</span>__age<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 对私有属性的访问接口</span>
+    <span class="token keyword">def</span> <span class="token function">set_info</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> name<span class="token punctuation">,</span> age<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token operator">not</span> isinstance<span class="token punctuation">(</span>name<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'名字必须是字符串类型'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span>
+        <span class="token keyword">if</span> <span class="token operator">not</span> isinstance<span class="token punctuation">(</span>age<span class="token punctuation">,</span> int<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'年龄必须是数字类型'</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span>
+        self<span class="token punctuation">.</span>__name <span class="token operator">=</span> name
+        self<span class="token punctuation">.</span>__age <span class="token operator">=</span> age
+
+p <span class="token operator">=</span> People<span class="token punctuation">(</span><span class="token string">'jack'</span><span class="token punctuation">,</span> <span class="token number">38</span><span class="token punctuation">)</span>
+p<span class="token punctuation">.</span>tell_info<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+p<span class="token punctuation">.</span>set_info<span class="token punctuation">(</span><span class="token string">'jennifer'</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">)</span>
+p<span class="token punctuation">.</span>tell_info<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+p<span class="token punctuation">.</span>set_info<span class="token punctuation">(</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">)</span>
+p<span class="token punctuation">.</span>tell_info<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>③ 私有方法封装的意义：降低程序的复杂度</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">ATM</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span>  <span class="token function">__card</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'插卡'</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span>  <span class="token function">__auth</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+         <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'用户认证'</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">__input</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'输入取款金额'</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">__print_bill</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'打印账单'</span><span class="token punctuation">)</span>
+    <span class="token keyword">def</span> <span class="token function">__take_money</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'取款'</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 定义一个对外提供服务的公共方法</span>
+    <span class="token keyword">def</span> <span class="token function">withdraw</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+          self<span class="token punctuation">.</span>__card<span class="token punctuation">(</span><span class="token punctuation">)</span>
+          self<span class="token punctuation">.</span>__auth<span class="token punctuation">(</span><span class="token punctuation">)</span>
+          self<span class="token punctuation">.</span>__input<span class="token punctuation">(</span><span class="token punctuation">)</span>
+          self<span class="token punctuation">.</span>__print_bill<span class="token punctuation">(</span><span class="token punctuation">)</span>
+          self<span class="token punctuation">.</span>__take_money<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+atm <span class="token operator">=</span> ATM<span class="token punctuation">(</span><span class="token punctuation">)</span>
+atm<span class="token punctuation">.</span>withdraw<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/03/022-python-ji-chu-07/">Day07之Python函数进阶与文件操作<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/03/024-python-ji-chu-09/">Day09之Python面向对象高级与Python的异常、模块以及包管理<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>

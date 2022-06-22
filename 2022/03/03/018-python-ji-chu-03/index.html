@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day03之Python中的循环结构 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、回顾分支练习题1、判断是否为一个合法三角形需求：输入三角形的3边，如果两边的长度大于第三条边，则代表是一个合法三角形 # 1、提示用户输入三角形的三边长度 a &#x3D; int(input(&#39;请输入第一条边的长度：&#39;)) b &#x3D; int(input(&#39;请输入第二条边的长度：&#39;)) c &#x3D; int(input(&#39;请输入第三条边的长度：&#39;)) # 2、判断两边之和是否大于第3条边 if (a + b &gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day03之Python中的循环结构">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/018-python-ji-chu-03/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、回顾分支练习题1、判断是否为一个合法三角形需求：输入三角形的3边，如果两边的长度大于第三条边，则代表是一个合法三角形 # 1、提示用户输入三角形的三边长度 a &#x3D; int(input(&#39;请输入第一条边的长度：&#39;)) b &#x3D; int(input(&#39;请输入第二条边的长度：&#39;)) c &#x3D; int(input(&#39;请输入第三条边的长度：&#39;)) # 2、判断两边之和是否大于第3条边 if (a + b &gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104213.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104540.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104667.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104283.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104701.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104559.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104214.png">
+<meta property="article:published_time" content="2022-03-02T18:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:05:03.647Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104213.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%90%88%E6%B3%95%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="toc-number">1.</span> <span class="toc-text">1、判断是否为一个合法三角形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%B1%82%E4%B8%96%E7%95%8C%E6%9D%AF%E5%B0%8F%E7%BB%84%E8%B5%9B%E7%9A%84%E6%80%BB%E6%88%90%E7%BB%A9"><span class="toc-number">2.</span> <span class="toc-text">2、求世界杯小组赛的总成绩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AA%E7%8E%AF"><span class="toc-number">3.</span> <span class="toc-text">1、什么是循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%BE%AA%E7%8E%AF%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">2、循环的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%BE%AA%E7%8E%AF%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">5.</span> <span class="toc-text">3、循环的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81while%E5%BE%AA%E7%8E%AF%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">1、while循环的基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81while%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">7.</span> <span class="toc-text">2、while循环的执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81while%E5%BE%AA%E7%8E%AF%E6%A1%88%E4%BE%8B"><span class="toc-number">8.</span> <span class="toc-text">3、while循环案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E7%BC%96%E5%86%99%E5%BE%AA%E7%8E%AF%E5%BC%8F%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">4、编写循环式常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%A4%E5%A4%A7%E5%85%B3%E9%94%AE%E8%AF%8D"><span class="toc-number">10.</span> <span class="toc-text">1、两大关键词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90"><span class="toc-number">11.</span> <span class="toc-text">2、举个栗子</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81break%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">12.</span> <span class="toc-text">3、break关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81continue%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">13.</span> <span class="toc-text">4、continue关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%AD%BB%E5%BE%AA%E7%8E%AF%E6%A6%82%E5%BF%B5"><span class="toc-number">14.</span> <span class="toc-text">5、死循环概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81while%E5%BE%AA%E7%8E%AF%E6%A1%88%E4%BE%8B%EF%BC%9A%E7%8C%9C%E6%95%B0%E5%AD%97"><span class="toc-number">15.</span> <span class="toc-text">6、while循环案例：猜数字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%BE%AA%E7%8E%AF%E5%B5%8C%E5%A5%97%E7%9A%84%E5%BC%95%E5%85%A5"><span class="toc-number">16.</span> <span class="toc-text">1、循环嵌套的引入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%BE%AA%E7%8E%AF%E5%B5%8C%E5%A5%97%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">17.</span> <span class="toc-text">2、循环嵌套的基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%BE%AA%E7%8E%AF%E5%B5%8C%E5%A5%97%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">18.</span> <span class="toc-text">3、循环嵌套的执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%BE%AA%E7%8E%AF%E5%B5%8C%E5%A5%97%E7%9A%84%E5%87%A0%E4%B8%AA%E6%A1%88%E4%BE%8B"><span class="toc-number">19.</span> <span class="toc-text">4、循环嵌套的几个案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81for%E5%BE%AA%E7%8E%AF%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">20.</span> <span class="toc-text">1、for循环基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81range%E6%96%B9%E6%B3%95%EF%BC%88%E5%87%BD%E6%95%B0%EF%BC%89"><span class="toc-number">21.</span> <span class="toc-text">2、range方法（函数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81for%E5%BE%AA%E7%8E%AF%E6%A1%88%E4%BE%8B"><span class="toc-number">22.</span> <span class="toc-text">3、for循环案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%BE%AA%E7%8E%AF%E4%B8%AD%E7%9A%84%E4%B8%A4%E5%A4%A7%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">23.</span> <span class="toc-text">4、循环中的两大关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B%EF%BC%9A%E4%BD%BF%E7%94%A8for%E5%BE%AA%E7%8E%AF%E5%AE%9E%E7%8E%B0%E7%94%A8%E6%88%B7%E5%90%8D-%E5%AF%86%E7%A0%81%E8%AE%A4%E8%AF%81"><span class="toc-number">24.</span> <span class="toc-text">5、综合案例：使用for循环实现用户名+密码认证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81for%E5%BE%AA%E7%8E%AF%E5%B5%8C%E5%A5%97"><span class="toc-number">25.</span> <span class="toc-text">6、for循环嵌套</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%9C%A8while%E5%BE%AA%E7%8E%AF%E4%B8%AD%E6%B7%BB%E5%8A%A0else%E7%BB%93%E6%9E%84"><span class="toc-number">26.</span> <span class="toc-text">1、为什么需要在while循环中添加else结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81while%E5%BE%AA%E7%8E%AF%E4%B8%ADelse%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">27.</span> <span class="toc-text">2、while循环中else的基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81break%E5%85%B3%E9%94%AE%E5%AD%97%E5%AF%B9while%E2%80%A6else%E7%BB%93%E6%9E%84%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">28.</span> <span class="toc-text">3、break关键字对while…else结构的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81continue%E5%85%B3%E9%94%AE%E5%AD%97%E5%AF%B9while%E2%80%A6else%E7%BB%93%E6%9E%84%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">29.</span> <span class="toc-text">4、continue关键字对while…else结构的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81for%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84else%E7%BB%93%E6%9E%84"><span class="toc-number">30.</span> <span class="toc-text">5、for循环结构中的else结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81break%E5%85%B3%E9%94%AE%E5%AD%97%E5%AF%B9for%E2%80%A6else%E7%BB%93%E6%9E%84%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">31.</span> <span class="toc-text">6、break关键字对for…else结构的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81continue%E5%85%B3%E9%94%AE%E5%AD%97%E5%AF%B9for%E2%80%A6else%E7%BB%93%E6%9E%84%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">32.</span> <span class="toc-text">7、continue关键字对for…else结构的影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%B0%8F%E6%B5%B7%E9%BE%9F%E6%A8%A1%E5%9D%97"><span class="toc-number">33.</span> <span class="toc-text">1、小海龟模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%A8%A1%E5%9D%97%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-number">34.</span> <span class="toc-text">2、模块如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%89%8B%E7%BB%98%E4%B8%80%E6%9D%A1%E7%9B%B4%E7%BA%BF"><span class="toc-number">35.</span> <span class="toc-text">3、手绘一条直线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8turtle%E6%A8%A1%E5%9D%97-for%E5%BE%AA%E7%8E%AF%E7%BB%98%E5%88%B6%E4%BA%94%E8%A7%92%E6%98%9F"><span class="toc-number">36.</span> <span class="toc-text">4、使用turtle模块+for循环绘制五角星</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-02T18:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day03之Python中的循环结构</span></h1>
+<h1 id="一、回顾分支练习题"><a href="#一、回顾分支练习题" class="headerlink" title="一、回顾分支练习题"></a>一、回顾分支练习题</h1><h2 id="1、判断是否为一个合法三角形"><a href="#1、判断是否为一个合法三角形" class="headerlink" title="1、判断是否为一个合法三角形"></a>1、判断是否为一个合法三角形</h2><p>需求：输入三角形的3边，如果两边的长度大于第三条边，则代表是一个合法三角形</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、提示用户输入三角形的三边长度</span>
+a <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入第一条边的长度：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入第二条边的长度：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+c <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入第三条边的长度：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 2、判断两边之和是否大于第3条边</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b <span class="token operator">></span> c<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> c <span class="token operator">></span> b<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token punctuation">(</span>b <span class="token operator">+</span> c <span class="token operator">></span> a<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'是一个合法的三角形'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'不是一个合法的三角形'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="2、求世界杯小组赛的总成绩"><a href="#2、求世界杯小组赛的总成绩" class="headerlink" title="2、求世界杯小组赛的总成绩"></a>2、求世界杯小组赛的总成绩</h2><p>需求：世界杯案例，世界杯小组赛的比赛规则是我们的球队与其他三支球队进行比赛，然后根据总成绩(积分)确定出线资格。小组赛球队实力已知(提示用户输入各球队实力），我们通过一个数字表示。如果我们赢1局得3分，平一局得1分，输一局得0分，最终求球队总成绩。</p>
+<p>我们的球队实力：20</p>
+<p>1号球队的实力：10</p>
+<p>2号球队的实力：20</p>
+<p>3号球队的实力：30</p>
+<p>如果：我们 &gt; 1号球队，赢了，得3分</p>
+<p>​             我们 == 2号球队，平局，得1分</p>
+<p>​            我们 &lt; 3号球队，输了，得0分</p>
+<p>则小组赛最终结果 = 3 + 1 + 0 = 4分</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、提示用户输入我们球队与其他三个球队的实力</span>
+a <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入我们球队的实力值：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入1号球队的实力值：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+c <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入2号球队的实力值：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+d <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入3号球队的实力值：'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2、开始比赛，求每次比赛的成绩</span>
+avsb <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">></span> b<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">==</span> b<span class="token punctuation">)</span>
+avsc <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">></span> c<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">==</span> c<span class="token punctuation">)</span>
+avsd <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">></span> d<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">==</span> d<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 3、总成绩</span>
+score <span class="token operator">=</span> avsb <span class="token operator">+</span> avsc <span class="token operator">+</span> avsd
+
+<span class="token comment" spellcheck="true"># 4、输出总成绩</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'我们球队最终的总成绩：{score}'</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>知识点：布尔类型转换为整型，True =&gt; int(True) = 1，False =&gt; int(False) = 0。这是手工类型转换，在Python中，如果布尔类型参与算术运算，则会发生自动类型转换。</p>
+</blockquote>
+<h1 id="二、Python中循环的介绍"><a href="#二、Python中循环的介绍" class="headerlink" title="二、Python中循环的介绍"></a>二、Python中循环的介绍</h1><h2 id="1、什么是循环"><a href="#1、什么是循环" class="headerlink" title="1、什么是循环"></a>1、什么是循环</h2><p>现实生活中，也有很多循环的应用场景：</p>
+<p>（1）食堂阿姨打菜：接过顾客的餐盘→询问菜品→打菜→递回餐盘，重复以上过程，直到所有顾客的菜都打完了</p>
+<p>（2）快递员送快递：查看送件地址→赶往目的地→电话告知收件人→收件人签收→交快递件，重复以上过程，直到所有需要送的快递都处理完了。</p>
+<p>（3）公交司机……</p>
+<p>（4）作业流程……</p>
+<p>……</p>
+<p>以上场景都有一个共同的特点：==有<strong>条件</strong>地<strong>重复</strong>地做一件事，每一次做的事情不同但类似。==</p>
+<p>程序是为了解决实际问题的，==实际问题中存在着重复动作，那么程序中也应该有相应的描述，这就是<strong>循环</strong>。==</p>
+<h2 id="2、循环的作用"><a href="#2、循环的作用" class="headerlink" title="2、循环的作用"></a>2、循环的作用</h2><p>思考：假如我有个女朋友，有一天我们闹矛盾生气了，女朋友说：道歉，说100遍“老婆大人，我错了”。这个时候程序员会怎么做？</p>
+<p>答：100遍print(‘老婆大人，我错了’)</p>
+<p>太麻烦了，有没有更好的办法呢？我们难道print输出语句要复制粘贴100次嘛？</p>
+<p>答：其实不用这么麻烦，以上输出代码中有很多重复的地方，我们只要重复执行100次相同的代码即可，这就是循环！</p>
+<p>循环的作用是什么？</p>
+<p>答：==让代码高效的重复执行==</p>
+<h2 id="3、循环的种类"><a href="#3、循环的种类" class="headerlink" title="3、循环的种类"></a>3、循环的种类</h2><p>在Python中，循环一共分为两大类：while循环与for循环</p>
+<p>思考问题：while循环和for循环如何选择呢？</p>
+<p>==① 对于循环次数已知的情况，建议使用while循环==</p>
+<p>==② 对于循环次数未知的情况，建议使用for循环==</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104213.png" alt="image-20210309100103002"></p>
+<h1 id="三、while循环基本语法及其应用"><a href="#三、while循环基本语法及其应用" class="headerlink" title="三、while循环基本语法及其应用"></a>三、while循环基本语法及其应用</h1><h2 id="1、while循环的基本语法"><a href="#1、while循环的基本语法" class="headerlink" title="1、while循环的基本语法"></a>1、while循环的基本语法</h2><pre class=" language-3"><code class="language-3"># ① 定义一个计数器（初始化一个计数器）
+i = 0或1
+# ② 编写while循环结构
+while 循环条件(判断 计数器 是否达到了目标位置):
+    循环体1
+    循环体2
+    ...
+    # ③ 在循环内部更新计数器
+    i = i + 1 或 i += 1
+</code></pre>
+<blockquote>
+<p>普及小知识：在计算机程序中，计数器大部分都是从0开始的。</p>
+</blockquote>
+<p>总结：while循环三步走</p>
+<p>==① 初始化计数器==</p>
+<p>==② 编写循环条件（判断计数器是否达到了目标位置）==</p>
+<p>==③ 在循环内部更新计数器==</p>
+<p>while循环入门案例：使用while循环，循环输出100遍“老婆大人，我错了”</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># ① 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># ② 编写循环条件（判断计数器是否达到了100）</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老婆大人，我错了'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># ③ 在循环体内部更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<h2 id="2、while循环的执行流程"><a href="#2、while循环的执行流程" class="headerlink" title="2、while循环的执行流程"></a>2、while循环的执行流程</h2><p>建议大家使用Debug调试工具，查看while循环的运行流程。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># ① 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># ② 编写循环条件（判断计数器是否达到了100）</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老婆大人，我错了'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># ③ 在循环体内部更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>下断点，开始Debug调试：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104540.png" alt="image-20210309103001017"></p>
+<p>① 代码都是顺序执行，首先执行到第2行，对变量i进行赋值操作，初始值为0</p>
+<p>② 当程序遇到while循环时，首先要把我们的计数器与循环条件进行比较i &lt; 100，如果条件成立，则进入循环内部，执行内部代码。</p>
+<p>③ 在循环体内部，针对本次循环进行计数器更新操作 i = i + 1或 i += 1</p>
+<p>④ 更新完毕后，把更新后的计数器与循环条件再次进行比较i &lt; 100，如果条件成立，继续进入循环内部，执行内部代码。</p>
+<p>…</p>
+<p>⑤ 直到，i更新后结果为100时，再次进行循环条件判断，发现不满足，则整个while循环结束。</p>
+<p>while循环流程图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104667.png" alt="image-20210309103649130"></p>
+<h2 id="3、while循环案例"><a href="#3、while循环案例" class="headerlink" title="3、while循环案例"></a>3、while循环案例</h2><p>案例1：使用while循环求1..100的和</p>
+<p>分析：定义一个while循环，让其可以帮助我们计算 1 + 2 + 3 + 4 + 5 … + 100，结果：5050</p>
+<p>大问题拆解为小问题：</p>
+<p>① 使用while循环，循环100次</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 第一步：初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 第二步：编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">#  1 2 3 4 5 6 7 8 9 10...</span>
+    <span class="token comment" spellcheck="true"># 第三步：更新计数器的值</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>② 在循环体内部，累计求和</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 第四步：定义一个变量，用于得到最终的运算结果</span>
+result <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 第五步：想办法，让result = 变量i累加后的结果</span>
+</code></pre>
+<p>③ 最终代码</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 第一步：初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 第四步：定义一个result变量，用于接收累加后的结果</span>
+result <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 第二步：编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 第五步：循环累加变量i</span>
+    result <span class="token operator">+=</span> i
+    <span class="token comment" spellcheck="true"># 第三步：更新计数器的值</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'1~100累加后的结果：{result}'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>☆ 首先定义变量i和变量result，进行初始化赋值</p>
+<p>☆ 判断变量i是否满足循环条件，如果满足循环条件，则进入到循环体内部，执行内部代码</p>
+<p>思考：如何让变量i进行累加，然后赋予给result</p>
+<pre class=" language-python"><code class="language-python">result <span class="token operator">=</span> i
+</code></pre>
+<p>第一次循环式，i = 1，result = 0，如果想获取累加的结构，则result = result + i</p>
+<pre class=" language-python"><code class="language-python">result <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">+</span> <span class="token number">1</span>
+</code></pre>
+<p>计数器更新，i += 1，i变成2，然后i &lt;= 100，继续执行循环内部代码</p>
+<pre class=" language-python"><code class="language-python">result <span class="token operator">=</span> result <span class="token operator">+</span> i  换成数值  result <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">2</span>
+</code></pre>
+<p>依次类推</p>
+<pre class=" language-python"><code class="language-python">result <span class="token operator">=</span> result <span class="token operator">+</span> i
+</code></pre>
+<p>简写</p>
+<pre class=" language-python"><code class="language-python">result <span class="token operator">+=</span> i
+</code></pre>
+<p>案例2：求1~100之间，所有偶数的和</p>
+<p>什么是偶数：所谓的偶数，就是能被2整除的数字就是偶数，数学中可以使用2n来表示偶数。(Python代码 =&gt; if  数值 % 2 == 0 代表它是一个偶数)</p>
+<p>知识点：在while循环中，我们还可以结合if进行判断。</p>
+<p>第一步：求出1~100之间，所有的偶数</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 将来写代码的位置</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>第二步：在循环体中，引入if条件判断，判断变量i是否为一个偶数</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 将来写代码的位置</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 代表变量i是一个偶数</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>第三步：引入result变量，初始值为0，然后对第二步中得到的所有偶数进行累加</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 定义result，用于接收所有偶数的和</span>
+result <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 将来写代码的位置</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 代表变量i是一个偶数</span>
+        result <span class="token operator">+=</span> i
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'1~100之间所有偶数的和：{result}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、编写循环式常见问题"><a href="#4、编写循环式常见问题" class="headerlink" title="4、编写循环式常见问题"></a>4、编写循环式常见问题</h2><pre class=" language-python"><code class="language-python">i <span class="token operator">=</span> <span class="token number">1</span>
+result <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">100</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        result <span class="token operator">+=</span> i
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'1~100之间所有偶数的和：{result}'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>问题的原因：在于i += 1缩进了2次，导致其和if形成了一个整体。while循环中计数器无法更新，最终导致以上代码出现了死循环。</p>
+<h1 id="四、循环中的两大关键词"><a href="#四、循环中的两大关键词" class="headerlink" title="四、循环中的两大关键词"></a>四、循环中的两大关键词</h1><h2 id="1、两大关键词"><a href="#1、两大关键词" class="headerlink" title="1、两大关键词"></a>1、两大关键词</h2><p>在Python循环中，经常会遇到两个常见的关键词：break 与 continue</p>
+<p>break：代表终止整个循环结构</p>
+<p>continue：代表中止当前本次循环，继续下一次循环</p>
+<h2 id="2、举个栗子"><a href="#2、举个栗子" class="headerlink" title="2、举个栗子"></a>2、举个栗子</h2><p>举例：一共吃5个苹果，吃完第一个，吃第二个…，这里”吃苹果”的动作是不是重复执行？</p>
+<p>情况一：如果吃的过程中，吃完第三个吃饱了，则不需要再吃第4个和第5个苹果，即是吃苹果的动作停止，这里就是break控制循环流程，即终止此循环。</p>
+<p>情况二：如果吃的过程中，吃到第三个吃出一个大虫子…,是不是这个苹果就不吃了，开始吃第四个苹果，这里就是continue控制循环流程，即退出当前一次循环继而执行下一次循环代码。</p>
+<h2 id="3、break关键字"><a href="#3、break关键字" class="headerlink" title="3、break关键字"></a>3、break关键字</h2><p>情况一：如果吃的过程中，吃完第三个吃饱了，则不需要再吃第4个和第5个苹果，即是吃苹果的动作停止，这里就是break控制循环流程，即终止此循环。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 当变量i == 4的时候，终止循环</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">4</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我已经吃饱了，实在吃不下了...'</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+        
+    <span class="token comment" spellcheck="true"># 正在吃第几个苹果</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'正在吃第{i}个苹果'</span><span class="token punctuation">)</span>
+    
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<h2 id="4、continue关键字"><a href="#4、continue关键字" class="headerlink" title="4、continue关键字"></a>4、continue关键字</h2><p>情况二：如果吃的过程中，吃到第三个吃出一个大虫子…,是不是这个苹果就不吃了，开始吃第四个苹果，这里就是continue控制循环流程，即退出当前一次循环继而执行下一次循环代码。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 当变量i == 3的时候，中止当前循环，继续下一次循环</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 手工更新计数器(非常重要)</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'吃到了一只大虫子，这个苹果不吃了...'</span><span class="token punctuation">)</span>
+        <span class="token keyword">continue</span>
+        
+    <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'正在吃第{i}个苹果'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>如果在使用continue的时候，不手工更新计数器会有什么后果呢？</p>
+<p>答：会出现死循环，建议使用Debug调试工具观看</p>
+<h2 id="5、死循环概念"><a href="#5、死循环概念" class="headerlink" title="5、死循环概念"></a>5、死循环概念</h2><p>在编程中一个靠自身控制无法终止的程序称为“死循环”。</p>
+<p>在Python中，我们也可以使用while True来模拟死循环：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'你是风儿我是沙，缠缠绵绵到天涯'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="6、while循环案例：猜数字"><a href="#6、while循环案例：猜数字" class="headerlink" title="6、while循环案例：猜数字"></a>6、while循环案例：猜数字</h2><p>需求：计算机从1 ~ 10之间随机生成一个数字，然后提示输入数字，如果我们输入的数字与随机数相等，则提示恭喜你，答对了。如果输入的数字比随机数大，则提示，猜大了。反之，则提示猜小了，一共有3次机会。</p>
+<p>分析：① 编写一个循环，循环3次。② 要从1 ~ 10之间选择一个随机数 ③ if分支判断</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> random
+<span class="token comment" spellcheck="true"># 第一步：定义一个计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 第四步：生成1 ~ 10之间的随机数</span>
+secretNum <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 第二步：编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 第五步：提示用户输入一个数字</span>
+    userNum <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token string">'请输入您猜的数字（范围1~10之间）:'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 第六步：判断用户输入的数字是否与随机数相等</span>
+    <span class="token keyword">if</span> secretNum <span class="token operator">==</span> userNum<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'恭喜你，才对了'</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">elif</span> secretNum <span class="token operator">&lt;</span> userNum<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'猜大了'</span><span class="token punctuation">)</span>
+    <span class="token keyword">elif</span> secretNum <span class="token operator">></span> userNum<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'猜小了'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 第三步：更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<h1 id="五、while循环嵌套"><a href="#五、while循环嵌套" class="headerlink" title="五、while循环嵌套"></a>五、while循环嵌套</h1><h2 id="1、循环嵌套的引入"><a href="#1、循环嵌套的引入" class="headerlink" title="1、循环嵌套的引入"></a>1、循环嵌套的引入</h2><p>故事梗概：有天女朋友又生气了，惩罚：说3遍“老婆大人， 我错了”，这个程序是不是循环即可？但如果女朋友说：还要刷今天晚饭的碗，这个程序怎么书写？</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老婆大人，我错了'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'刷今天的碗'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>但如果女朋友还是生气，把这套惩罚要连续3天都执行，有如何书写程序？</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化外层计数器</span>
+j <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写外层循环条件</span>
+<span class="token keyword">while</span> j <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 初始化计数器</span>
+    i <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 编写循环条件</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老婆大人，我错了'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 更新计数器</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'刷今天的碗'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新外层计数器</span>
+    j <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<h2 id="2、循环嵌套的基本语法"><a href="#2、循环嵌套的基本语法" class="headerlink" title="2、循环嵌套的基本语法"></a>2、循环嵌套的基本语法</h2><p>编写一个简单的while循环结构</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span> 或 i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> 边界值<span class="token punctuation">:</span>
+    循环体代码
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>所谓的while嵌套循环就是在while循环的基础上，把循环体代码更换为一层while循环，就组成了while嵌套循环。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 第一步：初始化外层循环计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 第二步：编写外层循环的条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 第四步：初始化内层循环计数器</span>
+    j <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 第五步：编写内层循环的条件</span>
+    <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        循环体代码
+        <span class="token comment" spellcheck="true"># 第六步：更新内层循环计数器</span>
+        j <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 第三步：更新外层循环计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>结构如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104283.png" alt="image-20210309144900348"></p>
+<h2 id="3、循环嵌套的执行流程"><a href="#3、循环嵌套的执行流程" class="headerlink" title="3、循环嵌套的执行流程"></a>3、循环嵌套的执行流程</h2><p>while循环嵌套执行流程口诀：在while循环嵌套的执行过程中，==外层循环1次，内层循环N次。==（时钟 =&gt; 分针和秒针，分针就相当于外层循环，秒针就相当于内层循环）</p>
+<p>想具体了解while嵌套循环的执行流程，建议使用Debug调试。</p>
+<p>循环嵌套的总次数 = 外层循环次数 * 内层循环次数</p>
+<h2 id="4、循环嵌套的几个案例"><a href="#4、循环嵌套的几个案例" class="headerlink" title="4、循环嵌套的几个案例"></a>4、循环嵌套的几个案例</h2><p>案例1：打印5行5列的正方形，单元格中使用*号进行填充</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104701.png" alt="image-20210309150645399"></p>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 方法一：直接print打印</span>
+<span class="token comment" spellcheck="true"># print("*  *  *  *  *")</span>
+<span class="token comment" spellcheck="true"># print("*  *  *  *  *")</span>
+<span class="token comment" spellcheck="true"># print("*  *  *  *  *")</span>
+<span class="token comment" spellcheck="true"># print("*  *  *  *  *")</span>
+<span class="token comment" spellcheck="true"># print("*  *  *  *  *")</span>
+
+<span class="token comment" spellcheck="true"># 方法二：使用单层while循环</span>
+<span class="token comment" spellcheck="true"># i = 1</span>
+<span class="token comment" spellcheck="true"># while i &lt;= 5:</span>
+<span class="token comment" spellcheck="true">#     print("*  *  *  *  *")</span>
+<span class="token comment" spellcheck="true">#     i += 1</span>
+
+<span class="token comment" spellcheck="true"># 方法三：使用单层while循环 + 运算符</span>
+<span class="token comment" spellcheck="true"># i = 1</span>
+<span class="token comment" spellcheck="true"># while i &lt;= 5:</span>
+<span class="token comment" spellcheck="true">#     print("*  " * 5)</span>
+<span class="token comment" spellcheck="true">#     i += 1</span>
+
+<span class="token comment" spellcheck="true"># 方法四：使用while循环嵌套</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># print("*  *  *  *  *")</span>
+    j <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"*  "</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+        j <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 换行</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>使用Debug工具对while嵌套循环进行调试可知，在正方形案例中，外层的while主要用于控制行row信息，内层的wihle循环主要用于控制列信息col。</p>
+<p>案例2：打印直角三角形，特征：一共有5行，第1行，有1列。第2行，有2列，第3，有3列。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104559.png" alt="image-20210309154835512"></p>
+<p>分析：如果采用wihle循环嵌套，外层应该循环5次，内层循环次数有一定的规则</p>
+<p>1  循环1次</p>
+<p>2  循环2次</p>
+<p>3  循环3次</p>
+<p>4  循环4次</p>
+<p>5  循环5次</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义外层循环计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写外层循环的循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 定义内层循环计数器</span>
+    j <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 编写内层循环的循环条件</span>
+    <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> i<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'*  '</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+        j <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新外层循环计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>案例3：使用while嵌套循环打印 9 x 9乘法表</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012104214.png" alt="image-20210309160453980"></p>
+<p>第一步：使用while嵌套循环打印9行的直角三角形</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化外层循环计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写外层的循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">9</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 初始化内层循环计数器</span>
+    j <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 编写内层的循环条件</span>
+    <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> i<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'*'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'  '</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 更新内层循环的计数器</span>
+        j <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新外层循环计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<p>第二步：把小星星换成具体的数值</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化外层循环计数器</span>
+i <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 编写外层的循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;=</span> <span class="token number">9</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 初始化内层循环计数器</span>
+    j <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 编写内层的循环条件</span>
+    <span class="token keyword">while</span> j <span class="token operator">&lt;=</span> i<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'{j} x {i} = {i * j}'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'  '</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 更新内层循环的计数器</span>
+        j <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新外层循环计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+</code></pre>
+<h1 id="六、for循环基本语法及其应用"><a href="#六、for循环基本语法及其应用" class="headerlink" title="六、for循环基本语法及其应用"></a>六、for循环基本语法及其应用</h1><h2 id="1、for循环基本语法"><a href="#1、for循环基本语法" class="headerlink" title="1、for循环基本语法"></a>1、for循环基本语法</h2><p>for循环结构主要用于（序列 =&gt; 字符串、列表、元组、集合以及字典）类型数据的遍历（循环）操作。</p>
+<p>另外当循环次数未知的情况，建议使用for循环。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> 临时变量 <span class="token keyword">in</span> 序列<span class="token punctuation">:</span>
+    重复执行的代码<span class="token number">1</span>
+    重复执行的代码<span class="token number">2</span>
+</code></pre>
+<p>案例：使用for循环遍历字符串”itheima”</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'itheima'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> str1<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<p>使用Debug调试以上代码可知：for循环功能非常强大，可以自动判断序列的长度，长度为多少，则for循环就循环多少次。每次循环时，系统会自动将序列中的每个元素赋值给变量i，赋值完成后，for循环内部会自动更新计数器，向后移动一位，继续循环，直至元素全部循环结束。</p>
+<h2 id="2、range方法（函数）"><a href="#2、range方法（函数）" class="headerlink" title="2、range方法（函数）"></a>2、range方法（函数）</h2><p>Python2 range() 函数返回的是列表，而在Python3中 range() 函数返回的是一个可迭代对象（类型是对象），而不是列表类型， 所以打印的时候不会打印列表。（由于我们还未学习面向对象，为了方便大家理解，你可以简单的将其理解为一个序列结构）</p>
+<p>主要作用：用于生成一段连续的内容，从0到9</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">range<span class="token punctuation">(</span>stop<span class="token punctuation">)</span>
+range<span class="token punctuation">(</span>start<span class="token punctuation">,</span> stop<span class="token punctuation">[</span><span class="token punctuation">,</span> step<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+start<span class="token punctuation">:</span> 计数从 start 开始。默认是从 <span class="token number">0</span> 开始。例如range（<span class="token number">5</span>）等价于range（<span class="token number">0</span>， <span class="token number">5</span>）<span class="token punctuation">;</span>
+stop<span class="token punctuation">:</span> 计数到 stop 结束，但不包括 stop。例如：range（<span class="token number">0</span>，<span class="token number">5</span>） 是 <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span> 没有 <span class="token number">5</span>
+step：步长，默认为<span class="token number">1</span>。例如：range（<span class="token number">0</span>，<span class="token number">5</span>） 等价于 range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>range有一个口诀：顾头不顾尾，包含头部信息，但是不包含尾部信息，如range(10)，则返回0~9之间的序列，又比如range(0, 5)代表返回0 ~ 4之间的序列。</p>
+</blockquote>
+<p>案例：for循环与range方法，使用for循环，循环5次</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、for循环案例"><a href="#3、for循环案例" class="headerlink" title="3、for循环案例"></a>3、for循环案例</h2><p>案例1：使用for循环，求1 ~ 100的和</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个变量，用于接收1~100的和</span>
+result <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 从1开始循环，循环100次</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    result <span class="token operator">+=</span> i
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'1~100的和为{result}'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例2：使用for循环，求1 ~ 100之间所有偶数的和</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个变量，用于接收1~100之间所有偶数的和</span>
+result <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 从1开始循环，循环100次</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        result <span class="token operator">+=</span> i
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'1~100之间所有偶数的和为{result}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、循环中的两大关键字"><a href="#4、循环中的两大关键字" class="headerlink" title="4、循环中的两大关键字"></a>4、循环中的两大关键字</h2><p>在循环结构中存在两个关键字：break和continue</p>
+<p>break：主要功能是终止整个循环</p>
+<p>案例：遇到字符’e’，则终止整个循环</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'itheima'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> str1<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token string">'e'</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<p>continue：主要功能是中止当前循环，继续下一次循环</p>
+<p>案例：遇到字符’e’，跳过循环，继续下一次循环</p>
+<pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'itheima'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> str1<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token string">'e'</span><span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、综合案例：使用for循环实现用户名-密码认证"><a href="#5、综合案例：使用for循环实现用户名-密码认证" class="headerlink" title="5、综合案例：使用for循环实现用户名+密码认证"></a>5、综合案例：使用for循环实现用户名+密码认证</h2><p>案例：用for循环实现用户登录</p>
+<p>① 输入用户名和密码</p>
+<p>② 判断用户名和密码是否正确（username=’admin’，password=’admin888’） </p>
+<p>③ 登录仅有三次机会，超过3次会报错 </p>
+<p>分析：用户登陆情况有3种:</p>
+<p>① 用户名错误(此时便无需判断密码是否正确)  – 登陆失败 </p>
+<p>② 用户名正确 密码错误 –登陆失败 </p>
+<p>③ 用户名正确 密码正确 –登陆成功</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义变量，用于记录登录次数</span>
+trycount <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 循环3次，因为超过3次就会报错</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 更新登录次数</span>
+    trycount <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 提示用户输入账号与密码</span>
+    username <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的登录账号：'</span><span class="token punctuation">)</span>
+    password <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的登录密码：'</span><span class="token punctuation">)</span>
+    
+    <span class="token comment" spellcheck="true"># 判断用户名是否正确</span>
+    <span class="token keyword">if</span> username <span class="token operator">==</span> <span class="token string">'admin'</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 判断密码是否正确</span>
+        <span class="token keyword">if</span> password <span class="token operator">==</span> <span class="token string">'admin888'</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'恭喜你，登录成功'</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'密码错误'</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'您还有{3 - trycount}次输入机会'</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'用户名错误'</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'您还有{3 - trycount}次输入机会'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="6、for循环嵌套"><a href="#6、for循环嵌套" class="headerlink" title="6、for循环嵌套"></a>6、for循环嵌套</h2><p>所谓for循环嵌套，就是一个for循环里面嵌套另外一个for循环的写法。</p>
+<p>当循环结构相互嵌套时，位于外层的循环结构常简称为外层循环或外循环，位于内层的循环结构常简称为内层循环或内循环。</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 外层循环</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> 序列<span class="token number">1</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 内层循环</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> 序列<span class="token number">2</span><span class="token punctuation">:</span>
+        循环体
+</code></pre>
+<p>案例：使用for循环嵌套实现打印九九乘法表</p>
+<p>分析：外层循环主要用于控制循环的行数，内层循环用于控制列数</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'{j} x {i} = {i * j}'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">'  '</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 打印换行符</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="七、while循环与for循环中的else结构"><a href="#七、while循环与for循环中的else结构" class="headerlink" title="七、while循环与for循环中的else结构"></a>七、while循环与for循环中的else结构</h1><h2 id="1、为什么需要在while循环中添加else结构"><a href="#1、为什么需要在while循环中添加else结构" class="headerlink" title="1、为什么需要在while循环中添加else结构"></a>1、为什么需要在while循环中添加else结构</h2><p>循环可以和else配合使用，else下方缩进的代码指的是==当循环正常结束之后要执行的代码。==</p>
+<p>强调：’正常结束’，非正常结束，其else中的代码时不会执行的。（如遇到break的情况）</p>
+<h2 id="2、while循环中else的基本语法"><a href="#2、while循环中else的基本语法" class="headerlink" title="2、while循环中else的基本语法"></a>2、while循环中else的基本语法</h2><p>需求：女朋友生气了，要惩罚：连续说5遍“老婆大人，我错了”，如果道歉正常完毕后女朋友就原谅我了，这个程序怎么写？</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老婆大人，我错了'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 循环结束后，女朋友就原谅我了</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'好开森，女朋友原谅我了...'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>思考： 这个print是不是没有循环也能执行？那我们应该如何解决呢？</p>
+<p>答：使用while…else结构</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老婆大人，我错了'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 循环结束后，女朋友就原谅我了</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'好开森，女朋友原谅我了...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、break关键字对while…else结构的影响"><a href="#3、break关键字对while…else结构的影响" class="headerlink" title="3、break关键字对while…else结构的影响"></a>3、break关键字对while…else结构的影响</h2><p>需求：女朋友生气，要求道歉5遍：老婆大人，我错了。道歉到第三遍的时候，媳妇埋怨这一遍说的不真诚，是不是就是要退出循环了？这个退出有两种可能性：</p>
+<p>① 更生气，不打算原谅，也不需要道歉了，程序如何书写？</p>
+<p>② 只一遍不真诚，可以忍受，继续下一遍道歉，程序如何书写？</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'这遍说的不够真诚'</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老婆大人，我错了'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 循环结束后，女朋友就原谅我了</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'好开森，女朋友原谅我了...'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>由运行结果可知，如果我们在while循环中，使用了break，一旦break语句执行了，则else语句则不会输出。</p>
+<h2 id="4、continue关键字对while…else结构的影响"><a href="#4、continue关键字对while…else结构的影响" class="headerlink" title="4、continue关键字对while…else结构的影响"></a>4、continue关键字对while…else结构的影响</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 初始化计数器</span>
+i <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 编写循环条件</span>
+<span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        i <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'这遍说的不够真诚'</span><span class="token punctuation">)</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'老婆大人，我错了'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 更新计数器</span>
+    i <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token comment" spellcheck="true"># 循环结束后，女朋友就原谅我了</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'好开森，女朋友原谅我了...'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、for循环结构中的else结构"><a href="#5、for循环结构中的else结构" class="headerlink" title="5、for循环结构中的else结构"></a>5、for循环结构中的else结构</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> 临时变量 <span class="token keyword">in</span> 序列<span class="token punctuation">:</span>
+    循环体
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    当<span class="token keyword">for</span>循环正常结束后，返回的代码
+</code></pre>
+<h2 id="6、break关键字对for…else结构的影响"><a href="#6、break关键字对for…else结构的影响" class="headerlink" title="6、break关键字对for…else结构的影响"></a>6、break关键字对for…else结构的影响</h2><pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'itheima'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> str1<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token string">'e'</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'遇e不打印'</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'循环正常结束之后执行的代码'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="7、continue关键字对for…else结构的影响"><a href="#7、continue关键字对for…else结构的影响" class="headerlink" title="7、continue关键字对for…else结构的影响"></a>7、continue关键字对for…else结构的影响</h2><pre class=" language-python"><code class="language-python">str1 <span class="token operator">=</span> <span class="token string">'itheima'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> str1<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i <span class="token operator">==</span> <span class="token string">'e'</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'遇e不打印'</span><span class="token punctuation">)</span>
+        <span class="token keyword">continue</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'循环正常结束之后执行的代码'</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="八、小海龟会画画"><a href="#八、小海龟会画画" class="headerlink" title="八、小海龟会画画"></a>八、小海龟会画画</h1><h2 id="1、小海龟模块"><a href="#1、小海龟模块" class="headerlink" title="1、小海龟模块"></a>1、小海龟模块</h2><p>在Python3版本中，新增加了一个模块叫做turtle（海龟），专门用于绘制图形图像</p>
+<h2 id="2、模块如何使用"><a href="#2、模块如何使用" class="headerlink" title="2、模块如何使用"></a>2、模块如何使用</h2><pre class=" language-python"><code class="language-python">① 导入模块
+<span class="token keyword">import</span> turtle
+
+② 使用turtle模块中已经定义好的方法
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span>数值<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 从左向右，绘制一条指定长度的横线（像素） 1980 * 1024</span>
+</code></pre>
+<h2 id="3、手绘一条直线"><a href="#3、手绘一条直线" class="headerlink" title="3、手绘一条直线"></a>3、手绘一条直线</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> turtle
+<span class="token keyword">import</span> time
+
+<span class="token comment" spellcheck="true"># 绘制一条100像素的横线</span>
+turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 休眠10s</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、使用turtle模块-for循环绘制五角星"><a href="#4、使用turtle模块-for循环绘制五角星" class="headerlink" title="4、使用turtle模块+for循环绘制五角星"></a>4、使用turtle模块+for循环绘制五角星</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> turtle
+<span class="token keyword">import</span> time
+
+<span class="token comment" spellcheck="true"># 循环5次</span>
+turtle<span class="token punctuation">.</span>pencolor<span class="token punctuation">(</span><span class="token string">'red'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    turtle<span class="token punctuation">.</span>forward<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span>
+    turtle<span class="token punctuation">.</span>right<span class="token punctuation">(</span><span class="token number">144</span><span class="token punctuation">)</span>
+
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+</code></pre>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/03/017-python-ji-chu-02/">Day02之Python运算符与if结构<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/03/019-python-ji-chu-04/">Day04之Python数据序列<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>

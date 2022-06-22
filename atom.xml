@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>华佐博客</title>
+  
+  <subtitle>一往无前</subtitle>
+  <link href="https://i80980.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://i80980.github.io/"/>
+  <updated>2022-04-04T11:47:22.787Z</updated>
+  <id>https://i80980.github.io/</id>
+  
+  <author>
+    <name>华佐</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://i80980.github.io/2022/06/22/3ds21/"/>
+    <id>https://i80980.github.io/2022/06/22/3ds21/</id>
+    <published>2022-06-22T09:03:52.894Z</published>
+    <updated>2022-04-04T11:47:22.787Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;下载：https-pan-baidu-com-share-init-surl-hOA73RRdUL8gdKN2xpIbAA&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://i80980.github.io/2022/06/22/ben-ren-xian-shi-shang-wang-sou-suo-liao-jie-jue-fang-fa-shuo-shi-python3/"/>
+    <id>https://i80980.github.io/2022/06/22/ben-ren-xian-shi-shang-wang-sou-suo-liao-jie-jue-fang-fa-shuo-shi-python3/</id>
+    <published>2022-06-22T09:03:52.887Z</published>
+    <updated>2022-04-15T13:08:47.740Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本人先是上网搜索了解决方法，说是python3.7和Django1.11不兼容。但本机环境为python3.8+Django1.11.6。&lt;/p&gt;
+&lt;p&gt;执行python manage.py runserver报错：&lt;/p&gt;
+&lt;pre class=&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://i80980.github.io/2022/06/22/1/"/>
+    <id>https://i80980.github.io/2022/06/22/1/</id>
+    <published>2022-06-22T09:03:52.884Z</published>
+    <updated>2022-04-16T08:13:09.427Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;1.在官网&lt;a href=&quot;https://www.jetbrains.com/pycharm/download/#section=linux&quot;&gt;Download PyCharm: Python IDE for Professional Developers by</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SketchBook2021安装及破解教程</title>
+    <link href="https://i80980.github.io/2022/04/11/028-an-zhuang-sketchbook/"/>
+    <id>https://i80980.github.io/2022/04/11/028-an-zhuang-sketchbook/</id>
+    <published>2022-04-10T16:00:00.000Z</published>
+    <updated>2022-04-11T01:56:33.203Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;安装步骤&quot;&gt;&lt;a href=&quot;#安装步骤&quot; class=&quot;headerlink&quot; title=&quot;安装步骤&quot;&gt;&lt;/a&gt;安装步骤&lt;/h1&gt;&lt;h2 id=&quot;1、开始解压&quot;&gt;&lt;a href=&quot;#1、开始解压&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="软件" scheme="https://i80980.github.io/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day10（下）之Python综合案例</title>
+    <link href="https://i80980.github.io/2022/03/03/026-python-ji-chu-10-xia/"/>
+    <id>https://i80980.github.io/2022/03/03/026-python-ji-chu-10-xia/</id>
+    <published>2022-03-03T02:00:00.000Z</published>
+    <updated>2022-04-01T13:11:39.553Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、系统需求分析&quot;&gt;&lt;a href=&quot;#一、系统需求分析&quot; class=&quot;headerlink&quot; title=&quot;一、系统需求分析&quot;&gt;&lt;/a&gt;一、系统需求分析&lt;/h1&gt;&lt;h2 id=&quot;1、需求分析&quot;&gt;&lt;a href=&quot;#1、需求分析&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day10（上）之Python模块、包与面向对象综合案例</title>
+    <link href="https://i80980.github.io/2022/03/03/025-python-ji-chu-10-shang/"/>
+    <id>https://i80980.github.io/2022/03/03/025-python-ji-chu-10-shang/</id>
+    <published>2022-03-03T01:00:00.000Z</published>
+    <updated>2022-04-01T13:11:21.430Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Python内置模块&quot;&gt;&lt;a href=&quot;#一、Python内置模块&quot; class=&quot;headerlink&quot; title=&quot;一、Python内置模块&quot;&gt;&lt;/a&gt;一、Python内置模块&lt;/h1&gt;&lt;h2 id=&quot;1、什么是Python模块&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day09之Python面向对象高级与Python的异常、模块以及包管理</title>
+    <link href="https://i80980.github.io/2022/03/03/024-python-ji-chu-09/"/>
+    <id>https://i80980.github.io/2022/03/03/024-python-ji-chu-09/</id>
+    <published>2022-03-03T00:00:00.000Z</published>
+    <updated>2022-04-01T13:10:53.911Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Python中的继承&quot;&gt;&lt;a href=&quot;#一、Python中的继承&quot; class=&quot;headerlink&quot; title=&quot;一、Python中的继承&quot;&gt;&lt;/a&gt;一、Python中的继承&lt;/h1&gt;&lt;h2 id=&quot;1、什么是继承&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day08之Python文件操作与面向对象</title>
+    <link href="https://i80980.github.io/2022/03/03/023-python-ji-chu-08/"/>
+    <id>https://i80980.github.io/2022/03/03/023-python-ji-chu-08/</id>
+    <published>2022-03-02T23:00:00.000Z</published>
+    <updated>2022-04-01T13:10:04.445Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、文件备份案例&quot;&gt;&lt;a href=&quot;#一、文件备份案例&quot; class=&quot;headerlink&quot; title=&quot;一、文件备份案例&quot;&gt;&lt;/a&gt;一、文件备份案例&lt;/h1&gt;&lt;h2 id=&quot;1、实例代码&quot;&gt;&lt;a href=&quot;#1、实例代码&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day07之Python函数进阶与文件操作</title>
+    <link href="https://i80980.github.io/2022/03/03/022-python-ji-chu-07/"/>
+    <id>https://i80980.github.io/2022/03/03/022-python-ji-chu-07/</id>
+    <published>2022-03-02T22:00:00.000Z</published>
+    <updated>2022-04-01T13:09:24.515Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot; title=&quot;一、作业回顾&quot;&gt;&lt;/a&gt;一、作业回顾&lt;/h1&gt;&lt;h2 id=&quot;1、格式化输出与-百分号&quot;&gt;&lt;a href=&quot;#1、格式化输出与-百分号&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day06之Python中的函数</title>
+    <link href="https://i80980.github.io/2022/03/03/021-python-ji-chu-06/"/>
+    <id>https://i80980.github.io/2022/03/03/021-python-ji-chu-06/</id>
+    <published>2022-03-02T21:00:00.000Z</published>
+    <updated>2022-04-01T13:07:36.535Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day05之Python中的数据序列</title>
+    <link href="https://i80980.github.io/2022/03/03/020-python-ji-chu-05/"/>
+    <id>https://i80980.github.io/2022/03/03/020-python-ji-chu-05/</id>
+    <published>2022-03-02T20:00:00.000Z</published>
+    <updated>2022-04-01T13:06:48.823Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot; title=&quot;一、作业回顾&quot;&gt;&lt;/a&gt;一、作业回顾&lt;/h1&gt;&lt;h2 id=&quot;1、求幸运数字6&quot;&gt;&lt;a href=&quot;#1、求幸运数字6&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day04之Python数据序列</title>
+    <link href="https://i80980.github.io/2022/03/03/019-python-ji-chu-04/"/>
+    <id>https://i80980.github.io/2022/03/03/019-python-ji-chu-04/</id>
+    <published>2022-03-02T19:00:00.000Z</published>
+    <updated>2022-04-01T13:05:59.625Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot; title=&quot;一、作业回顾&quot;&gt;&lt;/a&gt;一、作业回顾&lt;/h1&gt;&lt;h2 id=&quot;1、面试题&quot;&gt;&lt;a href=&quot;#1、面试题&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day03之Python中的循环结构</title>
+    <link href="https://i80980.github.io/2022/03/03/018-python-ji-chu-03/"/>
+    <id>https://i80980.github.io/2022/03/03/018-python-ji-chu-03/</id>
+    <published>2022-03-02T18:00:00.000Z</published>
+    <updated>2022-04-01T13:05:03.647Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、回顾分支练习题&quot;&gt;&lt;a href=&quot;#一、回顾分支练习题&quot; class=&quot;headerlink&quot; title=&quot;一、回顾分支练习题&quot;&gt;&lt;/a&gt;一、回顾分支练习题&lt;/h1&gt;&lt;h2 id=&quot;1、判断是否为一个合法三角形&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day02之Python运算符与if结构</title>
+    <link href="https://i80980.github.io/2022/03/03/017-python-ji-chu-02/"/>
+    <id>https://i80980.github.io/2022/03/03/017-python-ji-chu-02/</id>
+    <published>2022-03-02T17:00:00.000Z</published>
+    <updated>2022-04-01T13:03:59.575Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、昨日回顾&quot;&gt;&lt;a href=&quot;#一、昨日回顾&quot; class=&quot;headerlink&quot; title=&quot;一、昨日回顾&quot;&gt;&lt;/a&gt;一、昨日回顾&lt;/h1&gt;&lt;h2 id=&quot;1、回顾昨天的课程内容&quot;&gt;&lt;a href=&quot;#1、回顾昨天的课程内容&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Day01之Python环境搭建与输入输出</title>
+    <link href="https://i80980.github.io/2022/03/03/016-python-ji-chu-01/"/>
+    <id>https://i80980.github.io/2022/03/03/016-python-ji-chu-01/</id>
+    <published>2022-03-02T16:00:00.000Z</published>
+    <updated>2022-04-01T13:00:30.653Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Python概述&quot;&gt;&lt;a href=&quot;#一、Python概述&quot; class=&quot;headerlink&quot; title=&quot;一、Python概述&quot;&gt;&lt;/a&gt;一、Python概述&lt;/h1&gt;&lt;h2 id=&quot;1、计算机资源&quot;&gt;&lt;a href=&quot;#1、计算机资源&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>混沌</title>
+    <link href="https://i80980.github.io/2021/11/24/015-hun-dun/"/>
+    <id>https://i80980.github.io/2021/11/24/015-hun-dun/</id>
+    <published>2021-11-23T16:00:00.000Z</published>
+    <updated>2021-11-24T14:09:48.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;总感觉一天天浑浑噩噩的，心知肚明大一是最闲的时候，正好碰上疫情，一两个月待在寝室了，自己学业反倒照顾不到，反而欠一大屁股帐，尚不且说你超前学习，成效数一数二，你连基本的跟上老师的步伐都做不到……在这疫情两个月，难道你唯一说得出口的是带舍友入坑原神，还让舍友充了两三百了吗？&lt;</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://i80980.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>观《再见爱人》有感</title>
+    <link href="https://i80980.github.io/2021/11/20/014-zai-jian-ai-ren-you-gan/"/>
+    <id>https://i80980.github.io/2021/11/20/014-zai-jian-ai-ren-you-gan/</id>
+    <published>2021-11-20T04:26:06.000Z</published>
+    <updated>2022-04-11T02:08:57.604Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;节目看完了，最不舍的是王秋雨和郭柯宇。&lt;/p&gt;
+&lt;p&gt;可以说，kk那对是来寻找一个答案，最后找到了，为他们开心；&lt;/p&gt;
+&lt;p&gt;而对王秋雨来说，他确实有缺点，而且这么坦率地暴露在全国观众中，不知道能否再续新婚，年龄大了，离婚也只是妥协，他内心是不愿意的，只为成全他爱的那个人</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://i80980.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈今后</title>
+    <link href="https://i80980.github.io/2021/11/20/013-jin-tian-bu-zhi-zha-hui-shi-hen-duo-gan-xiang-xie-xie-ba/"/>
+    <id>https://i80980.github.io/2021/11/20/013-jin-tian-bu-zhi-zha-hui-shi-hen-duo-gan-xiang-xie-xie-ba/</id>
+    <published>2021-11-19T16:00:00.000Z</published>
+    <updated>2021-11-20T12:25:20.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天不知咋回事，很多感想，写写吧。&lt;/p&gt;
+&lt;p&gt;我坚持写博客，是因为这完全符合我对程序员的设想，而且这肯定有利于我的&lt;/p&gt;
+&lt;p&gt;我不想想普通大学生一样普普通通过完四年，仅仅完成学业，我想出色，像新闻报道中的那样，有成长，有成就。&lt;/p&gt;
+&lt;p&gt;对我未来的设想哈&lt;/p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://i80980.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>逝者安息，生者自强</title>
+    <link href="https://i80980.github.io/2021/10/23/012-shi-zhe-an-xi-sheng-zhe-zi-qiang/"/>
+    <id>https://i80980.github.io/2021/10/23/012-shi-zhe-an-xi-sheng-zhe-zi-qiang/</id>
+    <published>2021-10-22T16:00:00.000Z</published>
+    <updated>2021-11-20T04:29:08.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>一人</title>
+    <link href="https://i80980.github.io/2021/10/04/011-yi-ren/"/>
+    <id>https://i80980.github.io/2021/10/04/011-yi-ren/</id>
+    <published>2021-10-03T16:00:00.000Z</published>
+    <updated>2022-04-01T13:16:27.061Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012115154.jpeg&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://i80980.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+</feed>

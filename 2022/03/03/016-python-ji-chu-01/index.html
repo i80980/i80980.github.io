@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day01之Python环境搭建与输入输出 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、Python概述1、计算机资源在开发领域，计算机资源可以分为两部分：软件资源 + 硬件资源 &#x3D;&#x3D;软件资源：看得见，摸不着&#x3D;&#x3D; &#x3D;&#x3D;硬件资源：看得见，摸得着&#x3D;&#x3D; 硬件资源（CPU、内存、硬盘、风扇、电源、键盘、鼠标…） 软件资源（Office办公软件、网易云音乐、各种各样的计算机游戏） 思考：我们发现，软硬件之间其实是可以交互的，这是什么原理呢？ 答：使用操作系统，&#x3D;&#x3D;操作系统&#x3D;&#x3D;是计算机软硬件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day01之Python环境搭建与输入输出">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/016-python-ji-chu-01/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、Python概述1、计算机资源在开发领域，计算机资源可以分为两部分：软件资源 + 硬件资源 &#x3D;&#x3D;软件资源：看得见，摸不着&#x3D;&#x3D; &#x3D;&#x3D;硬件资源：看得见，摸得着&#x3D;&#x3D; 硬件资源（CPU、内存、硬盘、风扇、电源、键盘、鼠标…） 软件资源（Office办公软件、网易云音乐、各种各样的计算机游戏） 思考：我们发现，软硬件之间其实是可以交互的，这是什么原理呢？ 答：使用操作系统，&#x3D;&#x3D;操作系统&#x3D;&#x3D;是计算机软硬件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058045.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058414.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058251.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058826.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058573.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058188.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058656.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058337.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058350.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058644.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058354.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058549.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059321.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059439.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059478.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059817.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059246.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059680.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100952.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100161.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100485.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100661.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100194.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100587.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100207.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100616.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100262.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059098.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059903.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059087.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059923.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059447.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059634.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059133.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059367.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059600.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059067.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059700.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059900.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059111.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059951.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059179.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059278.png">
+<meta property="article:published_time" content="2022-03-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:00:30.653Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058045.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%B5%84%E6%BA%90"><span class="toc-number">1.</span> <span class="toc-text">1、计算机资源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%88%86%E7%B1%BB"><span class="toc-number">2.</span> <span class="toc-text">2、操作系统分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0Python"><span class="toc-number">3.</span> <span class="toc-text">3、为什么要学习Python</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81Python%E8%AF%AD%E8%A8%80%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">4.</span> <span class="toc-text">4、Python语言的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81Python%E8%AF%AD%E8%A8%80%E4%BB%8B%E7%BB%8D"><span class="toc-number">5.</span> <span class="toc-text">5、Python语言介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81Python2-x%E5%92%8CPython3-x%E7%89%88%E6%9C%AC%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">6.</span> <span class="toc-text">6、Python2.x和Python3.x版本的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81Python%E8%A7%A3%E6%9E%90%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">1、Python解析器的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Python%E8%A7%A3%E6%9E%90%E5%99%A8%E7%9A%84%E7%A7%8D%E7%B1%BB"><span class="toc-number">8.</span> <span class="toc-text">2、Python解析器的种类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E4%B8%8B%E8%BD%BDPython%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-number">9.</span> <span class="toc-text">3、下载Python解析器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81Python%E8%A7%A3%E6%9E%90%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">10.</span> <span class="toc-text">4、Python解析器的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AE%89%E8%A3%85PyCharm"><span class="toc-number">11.</span> <span class="toc-text">1、为什么要安装PyCharm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81PyCharm%E7%9A%84%E4%B8%BB%E8%A6%81%E4%BD%9C%E7%94%A8"><span class="toc-number">12.</span> <span class="toc-text">2、PyCharm的主要作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81PyCharm%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">13.</span> <span class="toc-text">3、PyCharm的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%B8%8B%E8%BD%BDPyCharm"><span class="toc-number">14.</span> <span class="toc-text">4、下载PyCharm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81PyCharm%E5%AE%89%E8%A3%85"><span class="toc-number">15.</span> <span class="toc-text">5、PyCharm安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81PyCharm%E8%BD%AF%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">16.</span> <span class="toc-text">6、PyCharm软件的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%88%9B%E5%BB%BAPython%E9%A1%B9%E7%9B%AE"><span class="toc-number">16.1.</span> <span class="toc-text">☆ 创建Python项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E4%B8%8E%E4%BB%A3%E7%A0%81%E4%B9%A6%E5%86%99"><span class="toc-number">16.2.</span> <span class="toc-text">☆ 新建文件与代码书写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E8%BF%90%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">16.3.</span> <span class="toc-text">☆ 运行代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E8%AE%BE%E7%BD%AE%E6%88%96%E6%9B%B4%E6%8D%A2Python%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-number">16.4.</span> <span class="toc-text">☆ 设置或更换Python解析器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-PyCharm%E8%BD%AF%E4%BB%B6%E6%9C%AC%E8%BA%AB%E8%AE%BE%E7%BD%AE"><span class="toc-number">16.5.</span> <span class="toc-text">☆ PyCharm软件本身设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E6%89%93%E5%BC%80%E9%A1%B9%E7%9B%AE%E4%B8%8E%E5%85%B3%E9%97%AD%E9%A1%B9%E7%9B%AE"><span class="toc-number">16.6.</span> <span class="toc-text">☆ 打开项目与关闭项目</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%B3%A8%E9%87%8A%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">17.</span> <span class="toc-text">1、注释的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Python%E6%B3%A8%E9%87%8A%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">18.</span> <span class="toc-text">2、Python注释的基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%8D%95%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-number">18.1.</span> <span class="toc-text">☆ 单行注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%A4%9A%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-number">18.2.</span> <span class="toc-text">☆ 多行注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-PyCharm%E6%B3%A8%E9%87%8A%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%88%E5%BF%AB%E6%8D%B7%E9%94%AE%EF%BC%89"><span class="toc-number">18.3.</span> <span class="toc-text">☆ PyCharm注释小技巧（快捷键）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%A3%E7%A0%81%E6%8F%90%E7%A4%BA"><span class="toc-number">19.</span> <span class="toc-text">1、代码提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%BB%A3%E7%A0%81%E4%BF%9D%E5%AD%98"><span class="toc-number">20.</span> <span class="toc-text">2、代码保存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%92%A4%E9%94%80%E4%B8%8E%E6%81%A2%E5%A4%8D"><span class="toc-number">21.</span> <span class="toc-text">3、撤销与恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%9B%AE%E6%A0%87%EF%BC%88%E6%A1%88%E4%BE%8B%EF%BC%89"><span class="toc-number">22.</span> <span class="toc-text">1、变量的学习目标（案例）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%BC%95%E5%85%A5%E5%8F%98%E9%87%8F%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">23.</span> <span class="toc-text">2、引入变量的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%88%E4%B8%BE%E4%B8%AA%E6%A0%97%E5%AD%90%EF%BC%89"><span class="toc-number">24.</span> <span class="toc-text">3、变量的作用（举个栗子）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">25.</span> <span class="toc-text">4、变量的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A7%84%E5%88%99"><span class="toc-number">26.</span> <span class="toc-text">5、变量的命令规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E6%8E%A8%E8%8D%90%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-number">27.</span> <span class="toc-text">6、推荐变量的命名规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E8%B0%83%E7%94%A8"><span class="toc-number">28.</span> <span class="toc-text">7、变量的定义与调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">29.</span> <span class="toc-text">8、变量的定义与使用常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">30.</span> <span class="toc-text">1、为什么要学习数据类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="toc-number">31.</span> <span class="toc-text">2、数值类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B"><span class="toc-number">32.</span> <span class="toc-text">3、布尔类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="toc-number">33.</span> <span class="toc-text">4、字符串类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B-%E4%BA%86%E8%A7%A3"><span class="toc-number">34.</span> <span class="toc-text">5、其他类型(了解)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E8%AE%A4%E8%AF%86%E4%B8%80%E4%B8%8Bbug"><span class="toc-number">35.</span> <span class="toc-text">1、认识一下bug</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E8%A7%A3%E5%86%B3bug%E4%B8%89%E6%AD%A5%E8%B5%B0"><span class="toc-number">36.</span> <span class="toc-text">2、解决bug三步走</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81PyCharm%E4%BB%A3%E7%A0%81%E8%B0%83%E8%AF%95%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-number">37.</span> <span class="toc-text">3、PyCharm代码调试（重点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E4%B8%8B%E6%96%AD%E7%82%B9"><span class="toc-number">38.</span> <span class="toc-text">4、下断点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81Debug%E8%B0%83%E8%AF%95"><span class="toc-number">39.</span> <span class="toc-text">5、Debug调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E5%8D%95%E6%AD%A5%E8%B0%83%E8%AF%95"><span class="toc-number">40.</span> <span class="toc-text">6、单步调试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">41.</span> <span class="toc-text">1、格式化输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%99%BE%E5%88%86%E5%8F%B7%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">42.</span> <span class="toc-text">2、百分号格式化输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81format%E6%96%B9%E6%B3%95%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA"><span class="toc-number">43.</span> <span class="toc-text">3、format方法格式化输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81format%E6%96%B9%E6%B3%95%E7%AE%80%E5%86%99%E5%BD%A2%E5%BC%8F%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">44.</span> <span class="toc-text">4、format方法简写形式格式化输出（推荐）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA%E4%B8%AD%E7%9A%84%E8%BD%AC%E4%B9%89%E7%AC%A6%E5%8F%B7"><span class="toc-number">45.</span> <span class="toc-text">5、格式化输出中的转义符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BE%93%E5%85%A5"><span class="toc-number">46.</span> <span class="toc-text">1、为什么需要输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81input-%E8%BE%93%E5%85%A5%E6%96%B9%E6%B3%95"><span class="toc-number">47.</span> <span class="toc-text">2、input()输入方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81input-%E6%96%B9%E6%B3%95%E9%87%8D%E8%A6%81%E4%BA%8B%E9%A1%B9"><span class="toc-number">48.</span> <span class="toc-text">3、input()方法重要事项</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-02T16:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day01之Python环境搭建与输入输出</span></h1>
+<h1 id="一、Python概述"><a href="#一、Python概述" class="headerlink" title="一、Python概述"></a>一、Python概述</h1><h2 id="1、计算机资源"><a href="#1、计算机资源" class="headerlink" title="1、计算机资源"></a>1、计算机资源</h2><p>在开发领域，计算机资源可以分为两部分：软件资源 + 硬件资源</p>
+<p>==软件资源：看得见，摸不着==</p>
+<p>==硬件资源：看得见，摸得着==</p>
+<p>硬件资源（CPU、内存、硬盘、风扇、电源、键盘、鼠标…）</p>
+<p>软件资源（Office办公软件、网易云音乐、各种各样的计算机游戏）</p>
+<p>思考：我们发现，软硬件之间其实是可以交互的，这是什么原理呢？</p>
+<p>答：使用操作系统，==操作系统==是计算机软硬件之间的桥梁</p>
+<h2 id="2、操作系统分类"><a href="#2、操作系统分类" class="headerlink" title="2、操作系统分类"></a>2、操作系统分类</h2><p>在日常的应用中，操作系统大概可以分为三大类：</p>
+<p>① Windows操作系统 </p>
+<p>② MacOS操作系统 </p>
+<p>③ Linux操作系统（服务器端使用量最大的操作系统）</p>
+<h2 id="3、为什么要学习Python"><a href="#3、为什么要学习Python" class="headerlink" title="3、为什么要学习Python"></a>3、为什么要学习Python</h2><p><strong>① 技术趋势</strong></p>
+<p>Python自带明星属性，热度稳居编程语言界前三</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058045.png" alt="image-20210306090039676"></p>
+<p><strong>② 简单易学</strong></p>
+<p>开发代码少，精确表达需求逻辑；==33个关键字，7种基本数据类型==；语法规则简单，接近自然语。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058414.png" alt="image-20210306090337310"></p>
+<p><strong>③ 应用广泛</strong></p>
+<p>Python语言涉及IT行业70%以上的技术领域</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058251.png" alt="image-20210306090727147"></p>
+<h2 id="4、Python语言的缺点"><a href="#4、Python语言的缺点" class="headerlink" title="4、Python语言的缺点"></a>4、Python语言的缺点</h2><p>① Python其运行速度相对于C/C++/Java要略慢一些</p>
+<p>② Python由于语言的特性，无法对代码进行加密</p>
+<p>③ Python的版本之间，兼容性不太理想（Python2和Python3）</p>
+<h2 id="5、Python语言介绍"><a href="#5、Python语言介绍" class="headerlink" title="5、Python语言介绍"></a>5、Python语言介绍</h2><p>Python是一种==跨平台==的计算机程序设计语⾔。 是一个高层次的结合了==解释性、编译性、互动性和面向对象==的脚本语⾔。最初被设计用于编写自动化脚本Shell（适用于Linux操作系统），随着版本的不断更新和语言新功能的添加，逐渐被用于独立的、大型项目的开发。</p>
+<p>其实目前很多知名的机器学习、⼈⼯智能以及深度学习框架也都是基于Python语⾔进⾏开发的：</p>
+<p>Google开源机器学习框架：TensorFlow</p>
+<p>开源社区主推学习框架：Scikit-learn</p>
+<p>百度开源深度学习框架：Paddle</p>
+<h2 id="6、Python2-x和Python3-x版本的区别"><a href="#6、Python2-x和Python3-x版本的区别" class="headerlink" title="6、Python2.x和Python3.x版本的区别"></a>6、Python2.x和Python3.x版本的区别</h2><p>在目前的Python领域，其主要应用版本有两个：Python2和Python3</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058826.png" alt="image-20210306091509401"></p>
+<p>主要区别可以理解为：==输入、输出以及编码格式的不同==</p>
+<p>Python2.x</p>
+<p>Python3.x</p>
+<p>​     Python3.6、==Python3.7==、Python3.8、Python3.9…</p>
+<p>在生产环境中，我们⼀般不会选择最新版本的Python，因为可能会存在未知Bug，所以⼀般强烈建议大家在选择软件版本时，向前推1 ~ 2个版本。所以咱们课程主要讲解Python3.7版本。</p>
+<h1 id="二、Python解析器"><a href="#二、Python解析器" class="headerlink" title="二、Python解析器"></a>二、Python解析器</h1><h2 id="1、Python解析器的作用"><a href="#1、Python解析器的作用" class="headerlink" title="1、Python解析器的作用"></a>1、Python解析器的作用</h2><p>demo.py</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>由于Python属于高级语言，其并不能直接在计算机中运行，因为缺少Python语言的运行环境：Python解析器</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058573.png" alt="image-20210306092814499"></p>
+<p>Python解析器的作用：==就是把Python代码转换为计算机底层可以识别的机器语言==，如0101…</p>
+<h2 id="2、Python解析器的种类"><a href="#2、Python解析器的种类" class="headerlink" title="2、Python解析器的种类"></a>2、Python解析器的种类</h2><p>==① CPython，C语言开发的解释器[官方]，应⽤广泛的解释器。==</p>
+<p>② IPython，基于CPython的一种交互式解释器。</p>
+<p>③ 其他解释器</p>
+<p>PyPy，基于Python语言开发的解释器。</p>
+<p>JPython，运⾏在Java平台的解释器，直接把Python代码编译成Java字节码执⾏。</p>
+<p>IronPython，运⾏在微软.Net平台上的Python解释器，可直接把Python代码编译成.Net的字节码。</p>
+<h2 id="3、下载Python解析器"><a href="#3、下载Python解析器" class="headerlink" title="3、下载Python解析器"></a>3、下载Python解析器</h2><p>下载地址：<a target="_blank" rel="noopener" href="https://www.python.org/downloads/release/python-379/">https://www.python.org/downloads/release/python-379/</a></p>
+<p>[单击上述链接] – 查找目标文件：Windows x86-64 executable installer – 单</p>
+<p>击即可下载。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058188.png" alt="image-20210306093337458"></p>
+<h2 id="4、Python解析器的安装"><a href="#4、Python解析器的安装" class="headerlink" title="4、Python解析器的安装"></a>4、Python解析器的安装</h2><p>第一步：双击运行Python的解析器，选择==自定义安装==以及==添加Python到环境变量==</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058656.png" alt="image-20210306095227329"></p>
+<p>第二步：选择所有要安装的功能菜单，默认全部勾选</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058337.png" alt="image-20210306095439595"></p>
+<blockquote>
+<p>pip：Python的包管理工具，可以用来安装未来我们项目中需要使用的各种模块</p>
+</blockquote>
+<p>第三步：设置Python解析器的安装路径，强烈建议安装在除C盘以外的盘符</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058350.png" alt="image-20210306095909408"></p>
+<p>第四步：测试Python解析器是否可以使用</p>
+<p>按Windows + R，输入cmd字符，打开Windows的DOS窗口，输入python（全部小写），如下图所示：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058644.png" alt="image-20210306100236471"></p>
+<p>出现了以上界面，就代表Python3.7的解析器已经安装成功了。如何从这个窗口中退出到DOS模式呢？</p>
+<p>答：使用exit()方法</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> exit<span class="token punctuation">(</span><span class="token punctuation">)</span> 回车
+</code></pre>
+<h1 id="三、Python开发工具PyCharm"><a href="#三、Python开发工具PyCharm" class="headerlink" title="三、Python开发工具PyCharm"></a>三、Python开发工具PyCharm</h1><h2 id="1、为什么要安装PyCharm"><a href="#1、为什么要安装PyCharm" class="headerlink" title="1、为什么要安装PyCharm"></a>1、为什么要安装PyCharm</h2><p>工欲善其事必先利其器</p>
+<p>在Python的开发领域，其开发工具非常非常多，EditPlus、Notepad++、Sublime Text3、Visual Studio Code、PyCharm（目前功能最强大的IDE）</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058354.png" alt="image-20210306102520443"></p>
+<h2 id="2、PyCharm的主要作用"><a href="#2、PyCharm的主要作用" class="headerlink" title="2、PyCharm的主要作用"></a>2、PyCharm的主要作用</h2><p>PyCharm是⼀种Python IDE （集成开发环境），带有一整套可以帮助用户在使用Python语言开发时提高其效率的⼯具，内部集成的功能如下：</p>
+<p>Project管理</p>
+<p>智能提示</p>
+<p>语法高亮</p>
+<p>代码跳转</p>
+<p>调试代码</p>
+<p>解释代码(解释器)</p>
+<p>框架和库</p>
+<p>……</p>
+<h2 id="3、PyCharm的分类"><a href="#3、PyCharm的分类" class="headerlink" title="3、PyCharm的分类"></a>3、PyCharm的分类</h2><p>PyCharm一共有两个版本：专业版（收费） 与 社区版（免费、开源）</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012058549.png" alt="image-20210306102803654"></p>
+<p>在基础班，PyCharm社区版足够我们使用，绰绰有余。</p>
+<h2 id="4、下载PyCharm"><a href="#4、下载PyCharm" class="headerlink" title="4、下载PyCharm"></a>4、下载PyCharm</h2><p>下载地址：<strong><a target="_blank" rel="noopener" href="https://www.jetbrains.com/pycharm/download/#section=windows">https://www.jetbrains.com/pycharm/download/#section=windows</a></strong></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059321.png" alt="image-20210306103210207"></p>
+<h2 id="5、PyCharm安装"><a href="#5、PyCharm安装" class="headerlink" title="5、PyCharm安装"></a>5、PyCharm安装</h2><p>第一步：双击PyCharm软件安装包，进行软件安装</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059439.png" alt="image-20210306104505660"></p>
+<p>第二步：设置软件的安装路径，理论上没有任何要求，但是建议放在除C盘以外的盘符</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059478.png" alt="image-20210306105046370"></p>
+<p>第三步：PyCharm基本设置，创建桌面图标与.py文件关联</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059817.png" alt="image-20210306105223088"></p>
+<h2 id="6、PyCharm软件的使用"><a href="#6、PyCharm软件的使用" class="headerlink" title="6、PyCharm软件的使用"></a>6、PyCharm软件的使用</h2><h3 id="☆-创建Python项目"><a href="#☆-创建Python项目" class="headerlink" title="☆ 创建Python项目"></a>☆ 创建Python项目</h3><p>什么是项目？其实我们在实际开发中，每次参与一个工作的开发都是一个项目的开发过程。所以使用PyCharm的第一件事就是学习Python项目的创建过程。</p>
+<p>第一步：创建项目</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059246.png" alt="image-20210306110324245"></p>
+<p>第二步：设置项目路径，必须放在C盘以外的盘符（非常重要！！！）</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059680.png" alt="image-20210306110916916"></p>
+<p>配置完成后，单机Create创建Python项目。</p>
+<h3 id="☆-新建文件与代码书写"><a href="#☆-新建文件与代码书写" class="headerlink" title="☆ 新建文件与代码书写"></a>☆ 新建文件与代码书写</h3><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100952.png" alt="image-20210306111656942"></p>
+<blockquote>
+<p>如果将来要上传到服务器的文件，那么文件名切记不能使用中文。</p>
+</blockquote>
+<p> 编写Hello World</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-运行代码"><a href="#☆-运行代码" class="headerlink" title="☆ 运行代码"></a>☆ 运行代码</h3><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100161.png" alt="image-20210306112159796"></p>
+<p>运行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100485.png" alt="image-20210306112245497"></p>
+<h3 id="☆-设置或更换Python解析器"><a href="#☆-设置或更换Python解析器" class="headerlink" title="☆ 设置或更换Python解析器"></a>☆ 设置或更换Python解析器</h3><p>打开File文件，找到Settings设置，如下图所示：更换Python解析器</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100661.png" alt="image-20210306113159846"></p>
+<h3 id="☆-PyCharm软件本身设置"><a href="#☆-PyCharm软件本身设置" class="headerlink" title="☆ PyCharm软件本身设置"></a>☆ PyCharm软件本身设置</h3><p>① 软件主题（软件未来的样式）</p>
+<p>② 编码字体的设置</p>
+<p>③ 代码字号的设置（文字大小）</p>
+<p>打开File文件 =&gt; Settings设置，找到界面设置：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100194.png" alt="image-20210306115108007"></p>
+<p>主题设置：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100587.png" alt="image-20210306115322452"></p>
+<p>字体与字号设置：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100207.png" alt="image-20210306115516870"></p>
+<p>字体设置：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100616.png" alt="image-20210306115611339"></p>
+<p>字号设置：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012100262.png" alt="image-20210306115735435"></p>
+<h3 id="☆-打开项目与关闭项目"><a href="#☆-打开项目与关闭项目" class="headerlink" title="☆ 打开项目与关闭项目"></a>☆ 打开项目与关闭项目</h3><p>打开项目：本身项目已经存在了，我们直接打开。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059098.png" alt="image-20210306120615122"></p>
+<p>选择项目目录（文件夹）即可，如下图所示：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059903.png" alt="image-20210306120712306"></p>
+<p>① This Window =&gt; 覆盖当前项⽬，从⽽打开目标项目</p>
+<p>② New Window =&gt; 在新窗⼝打开，则打开两次PyCharm，每个PyCharm负责一个项⽬</p>
+<p>③ Attach =&gt; 把两个项目合并在一起，放在同一个窗口中</p>
+<p>关闭项目：对已经运行项目进行关闭操作。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059087.png" alt="image-20210306120425927"></p>
+<h1 id="四、Python注释"><a href="#四、Python注释" class="headerlink" title="四、Python注释"></a>四、Python注释</h1><h2 id="1、注释的作用"><a href="#1、注释的作用" class="headerlink" title="1、注释的作用"></a>1、注释的作用</h2><p>首先强调一件事：Python代码 =&gt; Python解析器 =&gt; 机器语言，但是注释经过了Python的解释器并不会解析与执行。因为其主要就是进行代码的注释。</p>
+<p>注释作用：==提高代码的阅读性==</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059923.png" alt="image-20210306143714495"></p>
+<p>在我们编写Python程序时，为了了提高程序的可读性，强烈建议大家为核心代码添加注释信息。</p>
+<h2 id="2、Python注释的基本语法"><a href="#2、Python注释的基本语法" class="headerlink" title="2、Python注释的基本语法"></a>2、Python注释的基本语法</h2><h3 id="☆-单行注释"><a href="#☆-单行注释" class="headerlink" title="☆ 单行注释"></a>☆ 单行注释</h3><p>单行注释，以”#”(Shift + 3)号开头，只能注释一行内容</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 注释内容</span>
+</code></pre>
+<p>示例代码：</p>
+<p>第一种：代码行的上面</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 输出Hello World字符串</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>第二种：放在代码的后面(代码后面保留2个空格)</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 输出Hello World字符串</span>
+</code></pre>
+<h3 id="☆-多行注释"><a href="#☆-多行注释" class="headerlink" title="☆ 多行注释"></a>☆ 多行注释</h3><p>多行注释：可以同时注释多行代码或程序，常用于代码块的注释</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token triple-quoted-string string">"""
+注释内容
+第一行
+第二行
+第三行
+"""</span>
+</code></pre>
+<p>或</p>
+<pre><code>'''
+注释内容
+第一行
+第二行
+第三行
+'''
+</code></pre>
+<p>示例代码：</p>
+<pre class=" language-python"><code class="language-python"><span class="token triple-quoted-string string">"""
+Hi, 大家好
+我是黑马程序员的小伙伴
+从今天开始，我们将一起学习Python这门语言
+"""</span>
+
+<span class="token triple-quoted-string string">'''
+Hi, 大家好
+我是黑马程序员的小伙伴
+从今天开始，我们将一起学习Python这门语言
+'''</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Hi, 大家好'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'我是黑马程序员的小伙伴'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'从今天开始，我们将一起学习Python这门语言'</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-PyCharm注释小技巧（快捷键）"><a href="#☆-PyCharm注释小技巧（快捷键）" class="headerlink" title="☆ PyCharm注释小技巧（快捷键）"></a>☆ PyCharm注释小技巧（快捷键）</h3><p>在PyCharm中，我们可以使用<code>Ctrl + /斜杠</code>来对代码或程序进行快速注释。</p>
+<h1 id="五、PyCharm常用快捷键"><a href="#五、PyCharm常用快捷键" class="headerlink" title="五、PyCharm常用快捷键"></a>五、PyCharm常用快捷键</h1><h2 id="1、代码提示"><a href="#1、代码提示" class="headerlink" title="1、代码提示"></a>1、代码提示</h2><p>在PyCharm中，当我们输入Python关键字中的前2~3个字符，其会自动进行代码提示。这个时候，我们只需要按回车即可以快速的输入某个内容。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059447.png" alt="image-20210306150352389"></p>
+<h2 id="2、代码保存"><a href="#2、代码保存" class="headerlink" title="2、代码保存"></a>2、代码保存</h2><p>编写代码时，一定要养成一个好的习惯，使用<code>Ctrl + S</code>快速对代码进行保存操作。</p>
+<p>个人建议，当写完一行代码时，就按一次。</p>
+<h2 id="3、撤销与恢复"><a href="#3、撤销与恢复" class="headerlink" title="3、撤销与恢复"></a>3、撤销与恢复</h2><p>如果不小心删除了某行代码，这个时候我们可以快速按<code>Ctrl + Z</code>就可以快速进行恢复。每按一次就撤销一次，如果撤销多了，怎么办？</p>
+<p>答：还可以通过<code>Ctrl + Y</code>进行恢复操作</p>
+<h1 id="六、Python中的变量（重点）"><a href="#六、Python中的变量（重点）" class="headerlink" title="六、Python中的变量（重点）"></a>六、Python中的变量（重点）</h1><h2 id="1、变量的学习目标（案例）"><a href="#1、变量的学习目标（案例）" class="headerlink" title="1、变量的学习目标（案例）"></a>1、变量的学习目标（案例）</h2><p>案例：实现两个变量的交换</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059634.png" alt="image-20210306152222362"></p>
+<p>1号杯：可乐</p>
+<p>2号杯：牛奶</p>
+<p>经过一系列Python操作以后</p>
+<p>1号杯：牛奶</p>
+<p>2号杯：可乐</p>
+<h2 id="2、引入变量的概念"><a href="#2、引入变量的概念" class="headerlink" title="2、引入变量的概念"></a>2、引入变量的概念</h2><p>什么是量：量是程序中的最小单元。</p>
+<p>那什么是变量呢？</p>
+<p>==① 变量是存储数据的容器==</p>
+<p>==② 变量在程序运行过程中是可以发生改变的量== </p>
+<p>==③ 变量存储的数据是临时的==</p>
+<h2 id="3、变量的作用（举个栗子）"><a href="#3、变量的作用（举个栗子）" class="headerlink" title="3、变量的作用（举个栗子）"></a>3、变量的作用（举个栗子）</h2><p>淘宝注册案例：</p>
+<p>① 写入用户名、密码</p>
+<p>==② Python程序要接收用户名和密码（临时存储）==</p>
+<p>③ 把刚才接收的用户名和密码永久的存储起来（数据库）</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059133.png" alt="image-20210306153106909"></p>
+<p>为了解决以上问题，Python开发了变量这样一个概念，可以把用户输入的一些信息，临时的保存起来，保存的这个容器就是Python变量。</p>
+<h2 id="4、变量的定义"><a href="#4、变量的定义" class="headerlink" title="4、变量的定义"></a>4、变量的定义</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">变量名称 <span class="token operator">=</span> 变量的值
+注：等号的两边都要保留一个空格，其实Python中建议符号的两边尽量都要保留一个空格
+</code></pre>
+<blockquote>
+<p>说明：在Python程序中，这个等号和日常生活中的等号不太一样，其有一个专业名词：赋值运算符，其读法：要从右向左读，把变量的值通过 = 赋值给左边的变量。</p>
+</blockquote>
+<h2 id="5、变量的命令规则"><a href="#5、变量的命令规则" class="headerlink" title="5、变量的命令规则"></a>5、变量的命令规则</h2><p>标识符命名规则是Python中定义变量名称时一种命名规范，具体如下：</p>
+<p>==① 由数字、字母、下划线(_)组成==</p>
+<p>==② 不能数字开头==</p>
+<p>==③ 严格区分⼤小写==</p>
+<p>==④ 不能使⽤内置关键字作为变量名称==</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059367.png" alt="image-20210306155908564"></p>
+<blockquote>
+<p>下划线 =&gt; Shift + -减号</p>
+</blockquote>
+<p>举个栗子：</p>
+<p>① abc、abc123、_abc、hello（合理）</p>
+<p>② 123abc、@abc、abc-123（不合理）</p>
+<p>③ _（下划线） =&gt; 请问这可以是一个变量名称么？答：可以</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">for</span> _ <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<p>④ 变量abc和变量ABC是同一个变量么？答：不一样，这是两个完全不同的变量</p>
+<p>⑤ 记不住33个关键字怎么办？答：借助于help()方法</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> help<span class="token punctuation">(</span><span class="token string">'keywords'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="6、推荐变量的命名规则"><a href="#6、推荐变量的命名规则" class="headerlink" title="6、推荐变量的命名规则"></a>6、推荐变量的命名规则</h2><p>① 变量命名一定要做到见名知义。</p>
+<p>② 大驼峰：即每个单词首字母都大写，例如： MyName 。</p>
+<p>③ 小驼峰：第二个（含）以后的单词首字母大写，例例如： myName 。</p>
+<p>④ 下划线：例如： my_name 。</p>
+<h2 id="7、变量的定义与调用"><a href="#7、变量的定义与调用" class="headerlink" title="7、变量的定义与调用"></a>7、变量的定义与调用</h2><p>在Python中，记住：变量一定要先定义，后使用，否则会报错。</p>
+<p>定义：</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> <span class="token string">'itheima'</span>
+address <span class="token operator">=</span> <span class="token string">'北京市顺义区京顺路99号'</span>
+</code></pre>
+<p>调用：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>address<span class="token punctuation">)</span>
+或
+<span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> address<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="8、变量的定义与使用常见问题"><a href="#8、变量的定义与使用常见问题" class="headerlink" title="8、变量的定义与使用常见问题"></a>8、变量的定义与使用常见问题</h2><p>① 变量与字符串如何区别：</p>
+<p>==在Python中，如果要赋值的内容添加了单引号或者双引号，其就是Python中的一种数据类型：叫做字符串（日常生活中的文本信息）==</p>
+<p>② print打印变量时，喜欢为其添加引号</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 输出变量name对应的值</span>
+与
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 输出'name'这个字符串</span>
+</code></pre>
+<h1 id="七、Python中变量的数据类型"><a href="#七、Python中变量的数据类型" class="headerlink" title="七、Python中变量的数据类型"></a>七、Python中变量的数据类型</h1><h2 id="1、为什么要学习数据类型"><a href="#1、为什么要学习数据类型" class="headerlink" title="1、为什么要学习数据类型"></a>1、为什么要学习数据类型</h2><p>变量的定义非常的简单，但是很多小伙伴可能会想：变量除了存储这种字符类型的数据以外，还能存储其他类型的数据么？其实，在 Python中，我们为了应对不同的业务需求，也会把数据分为不同的类型，如下图所示：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059600.png" alt="image-20210306162601034"></p>
+<p>面试题：请手写出Python中的7种数据类型？</p>
+<p>答：数值类型、布尔类型、字符串类型、列表类型、元组类型、集合类型、字典类型</p>
+<p>今天我们只需要了解前3种即可。</p>
+<p>问题：如何判断一个变量到底是什么类型？</p>
+<p>答：① 使用type(变量名称)方法，返回变量的数据类型 ② isinstance(变量名称,数据类型)，只能返回True或False（真的还是假的）</p>
+<h2 id="2、数值类型"><a href="#2、数值类型" class="headerlink" title="2、数值类型"></a>2、数值类型</h2><p>数值类型就是我们日常生活中的数字，数字又分为两种形式：整数 与 小数（带小数点）</p>
+<p>整数类型：int类型</p>
+<p>小数类型：float类型</p>
+<p>案例1：定义一个人的信息，姓名：Tom、年龄18岁</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> <span class="token string">'Tom'</span>
+age <span class="token operator">=</span> <span class="token number">18</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例2：定义一个超市收银系统，写入一个名称：大白菜，价格：3.5</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> <span class="token string">'大白菜'</span>
+price <span class="token operator">=</span> <span class="token number">3.5</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>price<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、布尔类型"><a href="#3、布尔类型" class="headerlink" title="3、布尔类型"></a>3、布尔类型</h2><p>布尔类型是与逻辑相关一种数据类型，只有两个值：True（真）与False（假）</p>
+<p>案例1：手工定义一个flag变量，其值为True</p>
+<pre class=" language-python"><code class="language-python">flag <span class="token operator">=</span> <span class="token boolean">True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>其实在Python中，很多程序的返回结果也可以是True或False，比如isinstance()</p>
+<pre class=" language-python"><code class="language-python">num <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>isinstance<span class="token punctuation">(</span>num<span class="token punctuation">,</span> int<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># True</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>isinstance<span class="token punctuation">(</span>num<span class="token punctuation">,</span> bool<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># False</span>
+</code></pre>
+<h2 id="4、字符串类型"><a href="#4、字符串类型" class="headerlink" title="4、字符串类型"></a>4、字符串类型</h2><p>在Python变量定义中，如果其赋值的内容是通过单引号或双引号引起来的内容就是字符串str类型。</p>
+<pre class=" language-python"><code class="language-python">msg <span class="token operator">=</span> <span class="token string">'这家伙很懒，什么都没有留下...'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、其他类型-了解"><a href="#5、其他类型-了解" class="headerlink" title="5、其他类型(了解)"></a>5、其他类型(了解)</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、list列表类型</span>
+list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>list1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 2、tuple元组类型</span>
+tuple1 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>tuple1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 3、set集合类型：去重</span>
+set1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>set1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 4、dict字典类型：查询、搜索</span>
+dict1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span><span class="token string">'itheima'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span><span class="token number">18</span><span class="token punctuation">}</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>dict1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="八、了解Python中的Bug"><a href="#八、了解Python中的Bug" class="headerlink" title="八、了解Python中的Bug"></a>八、了解Python中的Bug</h1><h2 id="1、认识一下bug"><a href="#1、认识一下bug" class="headerlink" title="1、认识一下bug"></a>1、认识一下bug</h2><p>所谓bug，就是程序中的错误。如果程序有错误，就需要咱们程序员来进行问题排查，及时纠正错误。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059067.png" alt="image-20210306171244287"></p>
+<h2 id="2、解决bug三步走"><a href="#2、解决bug三步走" class="headerlink" title="2、解决bug三步走"></a>2、解决bug三步走</h2><p>第一步：查看错误页面</p>
+<p>第二步：看错误的行号</p>
+<p>第三步：根据具体的错误，具体分析</p>
+<h2 id="3、PyCharm代码调试（重点）"><a href="#3、PyCharm代码调试（重点）" class="headerlink" title="3、PyCharm代码调试（重点）"></a>3、PyCharm代码调试（重点）</h2><p>Debug工具是PyCharm IDE中集成的专门用来调试程序的工具，在这里程序员可以查看程序的执行细节和流程，以方便我们快速找出程序的Bug！</p>
+<p>Debug工具使⽤二步走：==① 打断点 ② Debug调试==</p>
+<h2 id="4、下断点"><a href="#4、下断点" class="headerlink" title="4、下断点"></a>4、下断点</h2><p>断点应该放在哪个位置：答：代码可能出错的代码段的第一行</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059700.png" alt="image-20210306171719774"></p>
+<h2 id="5、Debug调试"><a href="#5、Debug调试" class="headerlink" title="5、Debug调试"></a>5、Debug调试</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059900.png" alt="image-20210306171833494"></p>
+<h2 id="6、单步调试"><a href="#6、单步调试" class="headerlink" title="6、单步调试"></a>6、单步调试</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059111.png" alt="image-20210306172007078"></p>
+<p>遇到小闪电图标就代表这一行，可能出错了。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059951.png" alt="image-20210306172338345"></p>
+<h1 id="九、Python中的格式化输出"><a href="#九、Python中的格式化输出" class="headerlink" title="九、Python中的格式化输出"></a>九、Python中的格式化输出</h1><h2 id="1、格式化输出"><a href="#1、格式化输出" class="headerlink" title="1、格式化输出"></a>1、格式化输出</h2><p>目前为止，我们所有的输出都是直接通过print(变量名称)形式直接打印的。但是实际工作中，我们可能需要对变量的输出进行格式化操作（按照一定格式进行输出）。</p>
+<h2 id="2、百分号格式化输出"><a href="#2、百分号格式化输出" class="headerlink" title="2、百分号格式化输出"></a>2、百分号格式化输出</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>变量名称<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'字符串%格式'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>变量名称<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'字符串%格式 %格式 %格式'</span> <span class="token operator">%</span> <span class="token punctuation">(</span>变量名称<span class="token number">1</span><span class="token punctuation">,</span> 变量名称<span class="token number">2</span><span class="token punctuation">,</span> 变量名称<span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>%格式常见形式如下：</p>
+<table>
+<thead>
+<tr>
+<th><strong>格式符号</strong></th>
+<th><strong>转换</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>==%s==</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>==%d==</td>
+<td>有符号的十进制整数</td>
+</tr>
+<tr>
+<td>==%f==</td>
+<td>浮点数</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>字符</td>
+</tr>
+<tr>
+<td>%u</td>
+<td>无符号十进制整数</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>八进制整数</td>
+</tr>
+<tr>
+<td>%x</td>
+<td>十六进制整数（小写ox）</td>
+</tr>
+<tr>
+<td>%X</td>
+<td>十六进制整数（大写OX）</td>
+</tr>
+<tr>
+<td>%e</td>
+<td>科学计数法（小写’e’）</td>
+</tr>
+<tr>
+<td>%E</td>
+<td>科学计数法（大写’E’）</td>
+</tr>
+<tr>
+<td>%g</td>
+<td>%f和%e的简写</td>
+</tr>
+<tr>
+<td>%G</td>
+<td>%f和%E的简写</td>
+</tr>
+</tbody></table>
+<p>案例：定义两个变量name=’itheima’, age=18，按照如下格式进行输出：我的名字是itheima，今年18岁了。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059179.png" alt="image-20210306175326815"></p>
+<p>案例：定义两个变量title=’大白菜’，price=3.5，按照如下格式进行输出：今天蔬菜特价了，大白菜只要3.5元/斤。</p>
+<pre class=" language-python"><code class="language-python">title <span class="token operator">=</span> <span class="token string">'大白菜'</span>
+price <span class="token operator">=</span> <span class="token number">3.5</span>
+<span class="token comment" spellcheck="true"># 格式化输出“今天蔬菜特价了，大白菜只要3.5元/斤。"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"今天蔬菜特价了，%s只要%.2f元/斤。"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>title<span class="token punctuation">,</span> price<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>其实除了%f可以设置小数点位数以外，%d也可以填充序号。</p>
+<p>案例：定义两个变量id=1，name=’itheima’，按照如下格式进行输出：姓名itheima，学号000001</p>
+<pre class=" language-python"><code class="language-python">id <span class="token operator">=</span> <span class="token number">1</span>
+name <span class="token operator">=</span> <span class="token string">'itheima'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"姓名%s，学号%06d"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、format方法格式化输出"><a href="#3、format方法格式化输出" class="headerlink" title="3、format方法格式化输出"></a>3、format方法格式化输出</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'字符串{}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>变量名称<span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'{}字符串{}'</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>变量名称<span class="token number">1</span><span class="token punctuation">,</span> 变量名称<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例：定义两个变量，name=’孙悟空’，mobile=’18878569090’，按照以下格式进行输出”姓名：孙悟空，联系方式：18878569090”</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> <span class="token string">'孙悟空'</span>
+mobile <span class="token operator">=</span> <span class="token string">'18878569090'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"姓名：{}，联系方式：{}"</span><span class="token punctuation">.</span>format<span class="token punctuation">(</span>name<span class="token punctuation">,</span> mobile<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、format方法简写形式格式化输出（推荐）"><a href="#4、format方法简写形式格式化输出（推荐）" class="headerlink" title="4、format方法简写形式格式化输出（推荐）"></a>4、format方法简写形式格式化输出（推荐）</h2><p>在Python3.6以后版本，为了简化format输出操作，引入了一个简写形式：</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> <span class="token string">'孙悟空'</span>
+mobile <span class="token operator">=</span> <span class="token string">'18878569090'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'姓名：{name}，联系方式：{mobile}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、格式化输出中的转义符号"><a href="#5、格式化输出中的转义符号" class="headerlink" title="5、格式化输出中的转义符号"></a>5、格式化输出中的转义符号</h2><p>在字符串中，如果出现了\t和\n，其代表的含义就是两个转义字符</p>
+<pre class=" language-python"><code class="language-python">\t ：制表符，一个tab键（<span class="token number">4</span>个空格）的距离
+\n ：换行符
+</code></pre>
+<p>案例：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'*\t*\t*'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'hello\nworld'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>特别说明：==默认情况下，每个print()方法执行完毕后，都会输出一个\n换行符。如果不想让print()方法换行，可以添加一个end参数==</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'*'</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="十、Python中的标准输入"><a href="#十、Python中的标准输入" class="headerlink" title="十、Python中的标准输入"></a>十、Python中的标准输入</h1><h2 id="1、为什么需要输入"><a href="#1、为什么需要输入" class="headerlink" title="1、为什么需要输入"></a>1、为什么需要输入</h2><p>到目前为止，我们所有的程序都只能把数据输出给用户。但是实际工作中，我们经常输入获取用户的输入信息，如银行系统中的密码输入、淘宝中的用户登录验证。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012059278.png" alt="image-20210306182224429"></p>
+<h2 id="2、input-输入方法"><a href="#2、input-输入方法" class="headerlink" title="2、input()输入方法"></a>2、input()输入方法</h2><p>在Python中，如果想让Python程序接受用户的输入信息，可以使用input()方法</p>
+<p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">input<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>但是往往只有input()方法，其意义不大，我们还应该使用一个变量来临时接受用户的输入，已方便后期的操作。</p>
+<pre class=" language-python"><code class="language-python">变量名称 <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'提示信息：'</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例：银行系统中的，输入密码的过程</p>
+<pre class=" language-python"><code class="language-python">password <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的银行卡密码：'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token string">'您输入的银行卡密码为：{password}'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、input-方法重要事项"><a href="#3、input-方法重要事项" class="headerlink" title="3、input()方法重要事项"></a>3、input()方法重要事项</h2><p>记住：所有由input()方法获取的数据都是==“字符串”==类型</p>
+<pre class=" language-python"><code class="language-python">name <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的姓名：'</span><span class="token punctuation">)</span>
+age <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入您的年龄：'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># &lt;class 'str'></span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>type<span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># &lt;class 'str'></span>
+</code></pre>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/11/24/015-hun-dun/">混沌<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/03/017-python-ji-chu-02/">Day02之Python运算符与if结构<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>

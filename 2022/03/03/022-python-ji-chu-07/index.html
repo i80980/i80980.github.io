@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>Day07之Python函数进阶与文件操作 - 华佐博客</title>
+
+  
+    <meta name="description" content="一、作业回顾1、格式化输出与%百分号以下结果中，可以正常输出“50%及格”语句是（B） A、print(“%d%及格” % (50))    &#x3D;&gt;  回答大部分结果（Python这种写法不正确） B、print(“%d%%及格” % (50))  &#x3D;&gt;  正确结果 2、字符串切片定义一个字符串str1 &#x3D; ‘abcdefg’，使用切片截取字符串str1[3::-2]，求返回结果：（C）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day07之Python函数进阶与文件操作">
+<meta property="og:url" content="https://i80980.github.io/2022/03/03/022-python-ji-chu-07/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="一、作业回顾1、格式化输出与%百分号以下结果中，可以正常输出“50%及格”语句是（B） A、print(“%d%及格” % (50))    &#x3D;&gt;  回答大部分结果（Python这种写法不正确） B、print(“%d%%及格” % (50))  &#x3D;&gt;  正确结果 2、字符串切片定义一个字符串str1 &#x3D; ‘abcdefg’，使用切片截取字符串str1[3::-2]，求返回结果：（C）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107233.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108531.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107842.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107030.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108627.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108244.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108048.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108325.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108530.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108528.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108775.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108898.png">
+<meta property="article:published_time" content="2022-03-02T22:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-01T13:09:24.515Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107233.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA%E4%B8%8E-%E7%99%BE%E5%88%86%E5%8F%B7"><span class="toc-number">1.</span> <span class="toc-text">1、格式化输出与%百分号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%87%E7%89%87"><span class="toc-number">2.</span> <span class="toc-text">2、字符串切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%AD%97%E5%85%B8%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">3、字典的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">4.</span> <span class="toc-text">1、引用变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E8%81%8A%E8%81%8A%E5%8F%98%E9%87%8F%E5%9C%A8%E5%86%85%E5%AD%98%E5%BA%95%E5%B1%82%E7%9A%84%E5%AD%98%E5%82%A8%E5%BD%A2%E5%BC%8F"><span class="toc-number">4.1.</span> <span class="toc-text">☆ 聊聊变量在内存底层的存储形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%A6%82%E4%BD%95%E9%AA%8C%E8%AF%81Python%E4%B8%AD%E5%8F%98%E9%87%8F%E7%9A%84%E5%BC%95%E7%94%A8%E5%85%B3%E7%B3%BB"><span class="toc-number">4.2.</span> <span class="toc-text">☆ 如何验证Python中变量的引用关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E6%8A%8A%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E8%B5%8B%E4%BA%88%E7%BB%99%E5%8F%A6%E5%A4%96%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="toc-number">4.3.</span> <span class="toc-text">☆ 把一个变量赋予给另外一个变量的影响</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81Python%E4%B8%AD%E5%8F%AF%E5%8F%98%E5%92%8C%E9%9D%9E%E5%8F%AF%E5%8F%98%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">5.</span> <span class="toc-text">2、Python中可变和非可变数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E9%97%AE%E9%A2%981%EF%BC%9A%E5%9C%A8Python%E4%B8%AD%E4%B8%80%E5%85%B1%E6%9C%89%E5%87%A0%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">5.1.</span> <span class="toc-text">☆ 问题1：在Python中一共有几种数据类型？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E9%97%AE%E9%A2%982%EF%BC%9A%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%98%AF%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E8%BF%98%E6%98%AF%E9%9D%9E%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="toc-number">5.2.</span> <span class="toc-text">☆ 问题2：如何判断一个数据类型是可变类型还是非可变类型？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E4%B8%8E%E9%9D%9E%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B%E5%9C%A8%E5%87%BD%E6%95%B0%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">6.</span> <span class="toc-text">3、可变类型与非可变类型在函数中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.1.</span> <span class="toc-text">☆ 可变类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E4%B8%8D%E5%8F%AF%E5%8F%98%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.2.</span> <span class="toc-text">☆ 不可变类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-number">7.</span> <span class="toc-text">1、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E9%80%92%E6%8E%A8%E7%AE%97%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">2、递推算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95"><span class="toc-number">9.</span> <span class="toc-text">3、什么是递归算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E9%80%92%E5%BD%92%E4%B8%A4%E7%A7%8D%E9%87%8D%E8%A6%81%E7%9A%84%E5%85%83%E7%B4%A0"><span class="toc-number">10.</span> <span class="toc-text">4、递归两种重要的元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E7%BC%96%E5%86%99%E9%80%92%E5%BD%92%E4%B8%89%E6%AD%A5%E8%B5%B0"><span class="toc-number">11.</span> <span class="toc-text">5、编写递归三步走</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-number">12.</span> <span class="toc-text">1、普通函数与匿名函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">13.</span> <span class="toc-text">2、lambda表达式应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">14.</span> <span class="toc-text">3、lambda表达式基本语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81%E7%BC%96%E5%86%99lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">15.</span> <span class="toc-text">4、编写lambda表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E7%BC%96%E5%86%99%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">16.</span> <span class="toc-text">5、编写带参数的lambda表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9B%B8%E5%85%B3%E5%BA%94%E7%94%A8"><span class="toc-number">17.</span> <span class="toc-text">6、lambda表达式相关应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%B8%A6%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">17.1.</span> <span class="toc-text">☆ 带默认参数的lambda表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E4%B8%8D%E5%AE%9A%E9%95%BF%E5%8F%82%E6%95%B0%EF%BC%9A%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0-args"><span class="toc-number">17.2.</span> <span class="toc-text">☆  不定长参数：可变参数*args</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E4%B8%8D%E5%AE%9A%E9%95%BF%E5%8F%82%E6%95%B0%EF%BC%9A%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0-kwargs"><span class="toc-number">17.3.</span> <span class="toc-text">☆ 不定长参数：可变参数**kwargs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%B8%A6if%E5%88%A4%E6%96%AD%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">17.4.</span> <span class="toc-text">☆ 带if判断的lambda表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%98%86-%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE-%E5%AD%97%E5%85%B8%E6%95%B0%E6%8D%AE%E6%8E%92%E5%BA%8F%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="toc-number">17.5.</span> <span class="toc-text">☆ 列表数据+字典数据排序（重点）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0"><span class="toc-number">18.</span> <span class="toc-text">1、什么是高阶函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-number">19.</span> <span class="toc-text">2、高阶函数的由来</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81map-%E5%87%BD%E6%95%B0"><span class="toc-number">20.</span> <span class="toc-text">3、map()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81reduce-%E5%87%BD%E6%95%B0"><span class="toc-number">21.</span> <span class="toc-text">4、reduce()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81filter-%E5%87%BD%E6%95%B0"><span class="toc-number">22.</span> <span class="toc-text">5、filter()函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E6%96%87%E4%BB%B6"><span class="toc-number">23.</span> <span class="toc-text">1、什么是文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E6%80%9D%E8%80%83%EF%BC%9A%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%8C%85%E5%90%AB%E5%93%AA%E4%BA%9B%E5%86%85%E5%AE%B9%E5%91%A2%EF%BC%9F"><span class="toc-number">24.</span> <span class="toc-text">2、思考：文件操作包含哪些内容呢？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">25.</span> <span class="toc-text">3、文件操作的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E4%B8%89%E6%AD%A5%E8%B5%B0"><span class="toc-number">26.</span> <span class="toc-text">1、文件操作三步走</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81open%E5%87%BD%E6%95%B0%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6"><span class="toc-number">27.</span> <span class="toc-text">2、open函数打开文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81write%E5%87%BD%E6%95%B0%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="toc-number">28.</span> <span class="toc-text">3、write函数写入文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E3%80%81close%E5%87%BD%E6%95%B0%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6"><span class="toc-number">29.</span> <span class="toc-text">4、close函数关闭文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%E3%80%81%E5%85%A5%E9%97%A8%E7%BA%A7%E6%A1%88%E4%BE%8B"><span class="toc-number">30.</span> <span class="toc-text">5、入门级案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%E3%80%81%E8%A7%A3%E5%86%B3%E5%86%99%E5%85%A5%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-number">31.</span> <span class="toc-text">6、解决写入中文乱码问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%E3%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E8%AF%BB%E5%8F%96%E6%93%8D%E4%BD%9C"><span class="toc-number">32.</span> <span class="toc-text">7、文件的读取操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%E3%80%81%E8%81%8A%E8%81%8A%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E7%9A%84mode%E6%A8%A1%E5%BC%8F"><span class="toc-number">33.</span> <span class="toc-text">8、聊聊文件操作的mode模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%E3%80%81seek%E5%87%BD%E6%95%B0%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87"><span class="toc-number">34.</span> <span class="toc-text">9、seek函数移动光标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%A1%88%E4%BE%8B%E9%9C%80%E6%B1%82"><span class="toc-number">35.</span> <span class="toc-text">1、案例需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">36.</span> <span class="toc-text">2、代码实现</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Python%E5%9F%BA%E7%A1%80/">Python基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-03-02T22:00:00.000Z">2022-03-03</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>Day07之Python函数进阶与文件操作</span></h1>
+<h1 id="一、作业回顾"><a href="#一、作业回顾" class="headerlink" title="一、作业回顾"></a>一、作业回顾</h1><h2 id="1、格式化输出与-百分号"><a href="#1、格式化输出与-百分号" class="headerlink" title="1、格式化输出与%百分号"></a>1、格式化输出与%百分号</h2><p>以下结果中，可以正常输出“50%及格”语句是（B）</p>
+<p>A、print(“%d%及格” % (50))    =&gt;  回答大部分结果（Python这种写法不正确）</p>
+<p>B、print(“%d%%及格” % (50))  =&gt;  正确结果</p>
+<h2 id="2、字符串切片"><a href="#2、字符串切片" class="headerlink" title="2、字符串切片"></a>2、字符串切片</h2><p>定义一个字符串str1 = ‘abcdefg’，使用切片截取字符串str1[3::-2]，求返回结果：（C）</p>
+<p>C、’db’</p>
+<h2 id="3、字典的定义"><a href="#3、字典的定义" class="headerlink" title="3、字典的定义"></a>3、字典的定义</h2><p>其实字典中的key可以是很多数据类型（不可变数据类型 =&gt; 整型、浮点型、字符串、元组）</p>
+<pre class=" language-python"><code class="language-python">my_dict <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+my_dict<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+my_dict<span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+my_dict<span class="token punctuation">[</span><span class="token number">1.0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>my_dict<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> my_dict<span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">]</span> <span class="token operator">+</span> my_dict<span class="token punctuation">[</span><span class="token number">1.0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="二、引用变量与可变、非可变类型"><a href="#二、引用变量与可变、非可变类型" class="headerlink" title="二、引用变量与可变、非可变类型"></a>二、引用变量与可变、非可变类型</h1><h2 id="1、引用变量"><a href="#1、引用变量" class="headerlink" title="1、引用变量"></a>1、引用变量</h2><p>在大多数编程语言中，值的传递通常可以分为两种形式“值传递与引用传递”，但是在Python中变量的传递基本上都是引用传递。</p>
+<h3 id="☆-聊聊变量在内存底层的存储形式"><a href="#☆-聊聊变量在内存底层的存储形式" class="headerlink" title="☆ 聊聊变量在内存底层的存储形式"></a>☆ 聊聊变量在内存底层的存储形式</h3><pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> <span class="token number">10</span>
+</code></pre>
+<p>第一步：首先在计算机内存中创建一个数值10（占用一块内存空间）</p>
+<p>第二步：在栈空间中声明一个变量，如a</p>
+<p>第三步：把数值10的内存地址赋予给变量小a，形成所谓的==“引用关系”==</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107233.png" alt="image-20210315100015772"></p>
+<h3 id="☆-如何验证Python中变量的引用关系"><a href="#☆-如何验证Python中变量的引用关系" class="headerlink" title="☆ 如何验证Python中变量的引用关系"></a>☆ 如何验证Python中变量的引用关系</h3><p>答：可以使用内置方法id()，其参数就是要显示的变量信息 =&gt; <code>id(变量名称)</code></p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-把一个变量赋予给另外一个变量的影响"><a href="#☆-把一个变量赋予给另外一个变量的影响" class="headerlink" title="☆ 把一个变量赋予给另外一个变量的影响"></a>☆ 把一个变量赋予给另外一个变量的影响</h3><pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> <span class="token number">10</span>
+b <span class="token operator">=</span> a
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>运行结果：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108531.png" alt="image-20210315100748118"></p>
+<p>说明：由以上运行结果可知，当我们把一个变量赋予给另外一个变量时，其两者指向的内存地址相同。就说明a和b指向了同一块内存空间，原理图如下：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107842.png" alt="image-20210315101115722"></p>
+<p>思考：如果在b = a以后，我们改变了变量a的值，问变量b是否会受到影响？</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># a = 10</span>
+<span class="token comment" spellcheck="true"># print(id(a))</span>
+
+a <span class="token operator">=</span> <span class="token number">10</span>
+b <span class="token operator">=</span> a
+
+a <span class="token operator">=</span> <span class="token number">100</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 10 或 100</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>原理图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012107030.png" alt="image-20210315101547645"></p>
+<p>总结：不可变数据类型（数值）在赋值以后，其中一个值的改变不影响另外一个变量，因为两者指向空间地址不同。</p>
+<h2 id="2、Python中可变和非可变数据类型"><a href="#2、Python中可变和非可变数据类型" class="headerlink" title="2、Python中可变和非可变数据类型"></a>2、Python中可变和非可变数据类型</h2><h3 id="☆-问题1：在Python中一共有几种数据类型？"><a href="#☆-问题1：在Python中一共有几种数据类型？" class="headerlink" title="☆ 问题1：在Python中一共有几种数据类型？"></a>☆ 问题1：在Python中一共有几种数据类型？</h3><p>答：7种，数值（int整型、float浮点类型）、bool类型（True和False）、字符串类型（str）、元组（tuple 1,2,3）、列表（list [1, 2, 3]）、字典（dict {key:value})、集合（set {1, 2})</p>
+<p>在Python中，我们可以把7种数据类型分为两大类：可变类型 + 非可变类型</p>
+<p>① 非可变类型</p>
+<p>数值（int整型、float浮点类型）</p>
+<p>bool类型（True和False）</p>
+<p>字符串类型（str）</p>
+<p>元组（tuple 1,2,3）</p>
+<p>② 可变类型</p>
+<p>列表（list [1, 2, 3]）</p>
+<p>字典（dict {key:value})</p>
+<p>集合（set {1, 2})</p>
+<h3 id="☆-问题2：如何判断一个数据类型是可变类型还是非可变类型？"><a href="#☆-问题2：如何判断一个数据类型是可变类型还是非可变类型？" class="headerlink" title="☆ 问题2：如何判断一个数据类型是可变类型还是非可变类型？"></a>☆ 问题2：如何判断一个数据类型是可变类型还是非可变类型？</h3><p>在Python中，可变类型与非可变类型主要是通过这个数据类型在内存中的表现形式来进行定义的。</p>
+<p>==① 可变类型就是在内存中，其内存地址一旦固定，其值是可以发生改变的==</p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 向内存中追加新数据（对数据进行改变只能通过数据类型.方法()实现）</span>
+a<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>原理图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108627.png" alt="image-20210315103357217"></p>
+<p>==② 非可变类型就是在内存中，内存地址一旦固定，其值就没办法发生任何改变了==</p>
+<pre class=" language-python"><code class="language-python">a <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+a <span class="token operator">=</span> <span class="token string">'hello'</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>id<span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>原理图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108244.png" alt="image-20210315103823240"></p>
+<h2 id="3、可变类型与非可变类型在函数中的应用"><a href="#3、可变类型与非可变类型在函数中的应用" class="headerlink" title="3、可变类型与非可变类型在函数中的应用"></a>3、可变类型与非可变类型在函数中的应用</h2><h3 id="☆-可变类型"><a href="#☆-可变类型" class="headerlink" title="☆ 可变类型"></a>☆ 可变类型</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>names<span class="token punctuation">)</span>
+    
+<span class="token comment" spellcheck="true"># 定义一个全局变量</span>
+names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'张三'</span><span class="token punctuation">,</span> <span class="token string">'李四'</span><span class="token punctuation">,</span> <span class="token string">'王五'</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 调用函数</span>
+func<span class="token punctuation">(</span>names<span class="token punctuation">)</span>
+</code></pre>
+<p>原理图：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108048.png" alt="image-20210315110548353"></p>
+<p>综上所述：可变类型在函数中，如果在全局或局部中对可变类型进行增删改操作，其外部和内部都会受到影响。</p>
+<h3 id="☆-不可变类型"><a href="#☆-不可变类型" class="headerlink" title="☆ 不可变类型"></a>☆ 不可变类型</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    num <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
+    
+<span class="token comment" spellcheck="true"># 定义一个全局变量</span>
+a <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token comment" spellcheck="true"># 调用函数</span>
+func<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 在全局作用域中打印a</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</code></pre>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108325.png" alt="image-20210315111142925"></p>
+<p>综上所述：不可变类型在函数中，局部或全局的改变对外部和内部都没有任何影响。</p>
+<h1 id="三、函数递归（重点难点）"><a href="#三、函数递归（重点难点）" class="headerlink" title="三、函数递归（重点难点）"></a>三、函数递归（重点难点）</h1><h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h2><p>编程思想：如何利用数学模型，来解决对应的需求问题；然后利用代码实现对应的数据模</p>
+<p>算法：使用代码实现对应的数学模型，从而解决对应的业务问题</p>
+<blockquote>
+<p>程序 = 算法 + 数据结构</p>
+</blockquote>
+<p>在我们经常使用的算法中，有两种非常常用的算法：<code>递推算法 + 递归算法</code>，专门用于解决一些比较复杂，但是拆分后相似度又非常高的程序。</p>
+<h2 id="2、递推算法"><a href="#2、递推算法" class="headerlink" title="2、递推算法"></a>2、递推算法</h2><p>递归算法：递推算法是一种简单的算法，即通过已知条件，利用特定条件得出中间推论，直至得到结果的算法。递推又分为顺推和逆推。</p>
+<p>顺推：通过最简单的条件，然后逐步推演结果</p>
+<p>逆推：通过结果找到规律，然后推导已知条件</p>
+<p>递推算法案例：斐波那契数列</p>
+<p>1   1    2    3    5    8    13    21   …</p>
+<p>① ② ③  ④  ⑤  ⑥ …</p>
+<p>第1位为1，第2位为1，第3位为2 = 1 + 1，第4位为3 = 2 + 1，依次类推…第n位结果为多少？</p>
+<p>f(n) = f(n-1) + f(n-2)</p>
+<p>提出问题：求斐波那契数列第15位的结果？</p>
+<p>分析：f(15) = f(14) + f(13)  </p>
+<p>​            f(14) = f(13) + f(12)</p>
+<p>​            f(13) = f(12) + f(11)</p>
+<p>​            …</p>
+<p>​            f(4)   =  f(3) + f(2)   = 3  +  1</p>
+<p>​            f(3)   =  f(2) + f(1)   = 2</p>
+<p>​            f(2)  =   1</p>
+<p>​           f(1)   =   1</p>
+<p>递推算法：使用while循环或for循环</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 递推算法：根据已知条件，求结果（或者根据结果求未知条件）</span>
+<span class="token keyword">def</span> <span class="token function">recusive</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">""" 返回斐波那契数列某一位（n>=1）的结果 """</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">or</span> n <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 开始递推f(3) = f(2) + f(1)  f(4) = f(3) + f(2) ... f(15) = f(14) + f(13)</span>
+    dict1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">}</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># f(3) = f(2) + f(1)</span>
+        <span class="token comment" spellcheck="true"># f(i) = f(i-1) + f(i-2)</span>
+        dict1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> dict1<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span> <span class="token operator">+</span> dict1<span class="token punctuation">[</span>i<span class="token number">-2</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> dict1<span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 函数调用</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>recusive<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、什么是递归算法"><a href="#3、什么是递归算法" class="headerlink" title="3、什么是递归算法"></a>3、什么是递归算法</h2><p>程序调用自身的编程技巧称为递归（ recursion）。递归做为一种算法在程序设计语言中广泛应用，它通常==把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解==，递归策略只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。</p>
+<p>① 简化问题：找到最优子问题（不能再小） ② 函数自己调用自己</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 自己调用自己</span>
+    func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、递归两种重要的元素"><a href="#4、递归两种重要的元素" class="headerlink" title="4、递归两种重要的元素"></a>4、递归两种重要的元素</h2><p>递归有两个非常重要的概念：</p>
+<p>==① 递归点==：找到解决当前问题的等价函数（先解决规模比当前问题小一些的函数，依次类推，最终实现对问题的解决） =&gt; 有递有归</p>
+<p>==② 递归出口==：当问题解决的时候，已经到达（必须存在）最优问题，不能再次调用函数了</p>
+<blockquote>
+<p>注：如果一个递归函数没有递归出口就变成了死循环</p>
+</blockquote>
+<h2 id="5、编写递归三步走"><a href="#5、编写递归三步走" class="headerlink" title="5、编写递归三步走"></a>5、编写递归三步走</h2><p>==① 明确你这个函数想要干什么==</p>
+<p>如：求斐波那契数列</p>
+<p>==② 寻找递归结束条件==</p>
+<p>如：就是在什么情况下，递归会停止循环，返回结果</p>
+<p>==③ 找出函数的等价关系式==</p>
+<p>如：斐波那契数列，第n位 f(n) = f(n-1) + f(n-2)</p>
+<p>案例1：使用递归求斐波那契数列</p>
+<p>第一步：明确这个函数想要干什么（先定义出来，明确调用方式）</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 斐波那契数列 1 1 2 3 5 8 13 21 ...</span>
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 编写递归代码求第n位的结果</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 610</span>
+</code></pre>
+<p>第二步：寻找递归的结束条件</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 斐波那契数列 1 1 2 3 5 8 13 21 ...</span>
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 编写递归代码求第n位的结果</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">or</span> n <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 610</span>
+</code></pre>
+<p>第三步：找出函数的等价关系式(最关键的一步)</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 斐波那契数列 1 1 2 3 5 8 13 21 ...</span>
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 编写递归代码求第n位的结果</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">or</span> n <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 找出与斐波那契数列等价的关系式</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">)</span> <span class="token operator">+</span> f<span class="token punctuation">(</span>n<span class="token number">-2</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 610</span>
+</code></pre>
+<p>案例2：使用递归求N的阶乘（如n=100）</p>
+<p>阶乘是什么？一个正整数的阶乘（factorial）是所有小于及等于该数的正整数的积，如：n!=1×2×3×…×(n-1)×n</p>
+<p>1! = 1</p>
+<p>2! = 1x2 = 2</p>
+<p>3! = 1x2x3 = 6</p>
+<p>4! = 1x2x3x4 = 24</p>
+<p>…</p>
+<p>n!=1×2×3×…×(n-1)×n</p>
+<p>第一步：明确这个函数要做什么以及定义函数以及调用方式</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 编写递归条件</span>
+    
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>第二步：寻找递归的结束条件</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 编写递归结束条件</span>
+    <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> n
+    <span class="token comment" spellcheck="true"># ...递归等式</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>第三步：编写递归等价公式（自己要调用自己）</p>
+<p>等价公式 = 找规律</p>
+<p>1! = f(1) = 1</p>
+<p>2! = f(2) = 2</p>
+<p>3! = f(2)x3 = 6</p>
+<p>4! = f(3)x4 = 24</p>
+<p>…</p>
+<p>n!= f(n-1) * n</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 编写递归结束条件</span>
+    <span class="token keyword">if</span> n <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> n
+    <span class="token comment" spellcheck="true"># ...递归等式</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">(</span>n<span class="token number">-1</span><span class="token punctuation">)</span> <span class="token operator">*</span> n
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>案例3：面试题 =&gt; 猴子吃桃问题</p>
+<p>猴子吃桃问题。猴子第1天摘下若干个桃子，当即吃了一半，还不过瘾，又多吃了一个。第2天早上又将剩下的桃子吃掉一半，又多吃了一个。以后每天早上都吃了前一天剩下的一半另加一个。到第10天早上想再吃时，就只剩下一个桃子了。求第1天共摘了多少个桃子</p>
+<p>第一步：确定函数主要要完成什么功能，需要传递哪些参数，确认调用方式</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 编写递归代码</span>
+    
+<span class="token comment" spellcheck="true"># 调用f函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>第二步：编写递归的结束条件（出口）</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 第一步：确定函数功能</span>
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 第二步：编写递归结束条件（出口）</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">10</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>第三步：找出与这个问题相等的等式关系</p>
+<p>求桃子的剩余数量？假设法：假设有10个桃子</p>
+<p>第1天，10个桃子吃一半，10/2 = 5 + 1 = 6</p>
+<p>第2天，4个桃子吃一半，4/2 = 2 + 1 = 3</p>
+<p>第3天，再想吃剩1个</p>
+<p>第n天，总剩余桃子的数量 = （第(n+1)天桃子的剩余桃子的数量 + 1) * 2</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 第一步：确定函数功能</span>
+<span class="token keyword">def</span> <span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 第二步：编写递归结束条件（出口）</span>
+    <span class="token keyword">if</span> n <span class="token operator">==</span> <span class="token number">10</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token comment" spellcheck="true"># 第三步：寻找与这个问题相似的等价公式</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>f<span class="token punctuation">(</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span>
+
+<span class="token comment" spellcheck="true"># 调用函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>f<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="四、lambda表达式"><a href="#四、lambda表达式" class="headerlink" title="四、lambda表达式"></a>四、lambda表达式</h1><h2 id="1、普通函数与匿名函数"><a href="#1、普通函数与匿名函数" class="headerlink" title="1、普通函数与匿名函数"></a>1、普通函数与匿名函数</h2><p>在Python中，函数是一个被命名的、独立的完成特定功能的一段代码，并可能给调用它的程序一个返回值。</p>
+<p>所以在Python中，函数大多数是有名函数 =&gt; 普通函数。但是有些情况下，我们为了简化程序代码，也可以定义匿名函数 =&gt; lambda表达式</p>
+<h2 id="2、lambda表达式应用场景"><a href="#2、lambda表达式应用场景" class="headerlink" title="2、lambda表达式应用场景"></a>2、lambda表达式应用场景</h2><p>如果一个函数有一个返回值，并且只有一句代码，可以使用 lambda简化。</p>
+<h2 id="3、lambda表达式基本语法"><a href="#3、lambda表达式基本语法" class="headerlink" title="3、lambda表达式基本语法"></a>3、lambda表达式基本语法</h2><pre class=" language-python"><code class="language-python">变量 <span class="token operator">=</span> <span class="token keyword">lambda</span> 函数参数<span class="token punctuation">:</span>表达式（函数代码 <span class="token operator">+</span> <span class="token keyword">return</span>返回值）
+<span class="token comment" spellcheck="true"># 调用变量</span>
+变量<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、编写lambda表达式"><a href="#4、编写lambda表达式" class="headerlink" title="4、编写lambda表达式"></a>4、编写lambda表达式</h2><p>定义一个函数，经过一系列操作，最终返回100</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fn1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token number">100</span>
+
+<span class="token comment" spellcheck="true"># 调用fn1函数</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 返回fn1函数在内存中的地址</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn1<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 代表找到fn1函数的地址并立即执行</span>
+</code></pre>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108530.png" alt="image-20210315150207427"></p>
+<p>lambda表达式进行简化：</p>
+<pre class=" language-python"><code class="language-python">fn2 <span class="token operator">=</span> <span class="token keyword">lambda</span> <span class="token punctuation">:</span> <span class="token number">100</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn2<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 返回fn2在内存中的地址</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn2<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、编写带参数的lambda表达式"><a href="#5、编写带参数的lambda表达式" class="headerlink" title="5、编写带参数的lambda表达式"></a>5、编写带参数的lambda表达式</h2><p>编写一个函数求两个数的和</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fn1</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> num1 <span class="token operator">+</span> num2
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn1<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>lambda表达式进行简化：</p>
+<pre class=" language-python"><code class="language-python">fn2 <span class="token operator">=</span> <span class="token keyword">lambda</span> num1<span class="token punctuation">,</span> num2<span class="token punctuation">:</span>num1 <span class="token operator">+</span> num2
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn2<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="6、lambda表达式相关应用"><a href="#6、lambda表达式相关应用" class="headerlink" title="6、lambda表达式相关应用"></a>6、lambda表达式相关应用</h2><h3 id="☆-带默认参数的lambda表达式"><a href="#☆-带默认参数的lambda表达式" class="headerlink" title="☆ 带默认参数的lambda表达式"></a>☆ 带默认参数的lambda表达式</h3><pre class=" language-python"><code class="language-python">fn <span class="token operator">=</span> <span class="token keyword">lambda</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token operator">=</span><span class="token number">100</span> <span class="token punctuation">:</span> a <span class="token operator">+</span> b <span class="token operator">+</span> c
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-不定长参数：可变参数-args"><a href="#☆-不定长参数：可变参数-args" class="headerlink" title="☆  不定长参数：可变参数*args"></a>☆  不定长参数：可变参数*args</h3><pre class=" language-python"><code class="language-python">fn1 <span class="token operator">=</span> <span class="token keyword">lambda</span> <span class="token operator">*</span>args <span class="token punctuation">:</span> args
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn1<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-不定长参数：可变参数-kwargs"><a href="#☆-不定长参数：可变参数-kwargs" class="headerlink" title="☆ 不定长参数：可变参数**kwargs"></a>☆ 不定长参数：可变参数**kwargs</h3><pre class=" language-python"><code class="language-python">fn2 <span class="token operator">=</span> <span class="token keyword">lambda</span> <span class="token operator">**</span>kwargs <span class="token punctuation">:</span> kwargs
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn2<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> age<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span> address<span class="token operator">=</span><span class="token string">'北京市海淀区'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-带if判断的lambda表达式"><a href="#☆-带if判断的lambda表达式" class="headerlink" title="☆ 带if判断的lambda表达式"></a>☆ 带if判断的lambda表达式</h3><pre class=" language-python"><code class="language-python">fn <span class="token operator">=</span> <span class="token keyword">lambda</span> a<span class="token punctuation">,</span> b <span class="token punctuation">:</span> a <span class="token keyword">if</span> a <span class="token operator">></span> b <span class="token keyword">else</span> b
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="☆-列表数据-字典数据排序（重点）"><a href="#☆-列表数据-字典数据排序（重点）" class="headerlink" title="☆ 列表数据+字典数据排序（重点）"></a>☆ 列表数据+字典数据排序（重点）</h3><p>知识点：列表.sort(key=排序的key索引, reverse=True)</p>
+<pre class=" language-python"><code class="language-python">students <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Rose'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span> <span class="token number">19</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Jack'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span> <span class="token number">22</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 按name值升序排列</span>
+students<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 按name值降序排列</span>
+students<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 按age值升序排列</span>
+students<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token string">'age'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span>
+</code></pre>
+<p>执行流程：</p>
+<pre class=" language-python"><code class="language-python">students <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Rose'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span> <span class="token number">19</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Jack'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span> <span class="token number">22</span><span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 按name值升序排列</span>
+students<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span>x<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>students<span class="token punctuation">)</span>
+</code></pre>
+<h1 id="五、Python中高阶函数"><a href="#五、Python中高阶函数" class="headerlink" title="五、Python中高阶函数"></a>五、Python中高阶函数</h1><h2 id="1、什么是高阶函数"><a href="#1、什么是高阶函数" class="headerlink" title="1、什么是高阶函数"></a>1、什么是高阶函数</h2><p>把==函数作为参数传入==，这样的函数称为高阶函数，高阶函数是函数式编程的体现。函数式编程就是指这种高度抽象的编程范式。</p>
+<h2 id="2、高阶函数的由来"><a href="#2、高阶函数的由来" class="headerlink" title="2、高阶函数的由来"></a>2、高阶函数的由来</h2><p>在Python中，<code>abs()</code>函数可以完成对数字求绝对值计算。</p>
+<p>① 正数的绝对值是它本身 ② 负数的绝对值是它的相反数</p>
+<p>abs()返回的结果都是正数</p>
+<pre class=" language-python"><code class="language-python">abs<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 10</span>
+</code></pre>
+<p><code>round()</code>函数可以完成对数字的四舍五入计算。</p>
+<pre class=" language-python"><code class="language-python">round<span class="token punctuation">(</span><span class="token number">1.2</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 1</span>
+round<span class="token punctuation">(</span><span class="token number">1.9</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 2</span>
+</code></pre>
+<p>需求：任意两个数字，按照指定要求（① 绝对值 ② 四舍五入）整理数字后再进行求和计算。</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fn1</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> abs<span class="token punctuation">(</span>num1<span class="token punctuation">)</span> <span class="token operator">+</span> abs<span class="token punctuation">(</span>num2<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn1<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fn2</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> round<span class="token punctuation">(</span>num1<span class="token punctuation">)</span> <span class="token operator">+</span> round<span class="token punctuation">(</span>num2<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn2<span class="token punctuation">(</span><span class="token number">10.2</span><span class="token punctuation">,</span> <span class="token number">6.9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>要求：我们能不能对以上进行简化，然后合并为同一个函数 =&gt; 设计思想（高阶函数）</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">fn</span><span class="token punctuation">(</span>num1<span class="token punctuation">,</span> num2<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># f代表要传入的参数（参数是一个函数名，如abs或round）</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">(</span>num1<span class="token punctuation">)</span> <span class="token operator">+</span> f<span class="token punctuation">(</span>num2<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 绝对值求和</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> abs<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 四舍五入</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>fn<span class="token punctuation">(</span><span class="token number">10.2</span><span class="token punctuation">,</span> <span class="token number">6.9</span><span class="token punctuation">,</span> round<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="3、map-函数"><a href="#3、map-函数" class="headerlink" title="3、map()函数"></a>3、map()函数</h2><p><code>map(func, lst)</code>，将传入的函数变量func作用到lst变量的每个元素中，并将结果组成新的列表(Python2)/迭代器(Python3)返回。</p>
+<p>lst = [1, 2, 3]</p>
+<p>func函数：求某个数的平方，如输入2返回4，输入3返回9</p>
+<p><code>map(func, lst)</code>返回结果[1, 4, 9]</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> n <span class="token operator">**</span> <span class="token number">2</span>
+<span class="token comment" spellcheck="true"># 定义一个列表</span>
+list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 使用map对lst进行func函数操作</span>
+list2 <span class="token operator">=</span> list<span class="token punctuation">(</span>map<span class="token punctuation">(</span>func<span class="token punctuation">,</span> list1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list2<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、reduce-函数"><a href="#4、reduce-函数" class="headerlink" title="4、reduce()函数"></a>4、reduce()函数</h2><p><code>reduce(func，lst)</code>，其中func必须有两个参数。每次func计算的结果继续和序列的下一个元素做累加计算。&gt; 注意：reduce()传入的参数func必须接收2个参数。</p>
+<p>list1 = [1, 2, 3]</p>
+<p>def func(a, b):</p>
+<p>​       return a + b</p>
+<p><code>reduce(func，lst)</code>则把列表中的每个元素放入func中进行加工，然后进行累加操作</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> functools
+
+
+<span class="token comment" spellcheck="true"># 定义一个函数</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token comment" spellcheck="true"># 定义一个列表</span>
+list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">]</span>
+sums <span class="token operator">=</span> functools<span class="token punctuation">.</span>reduce<span class="token punctuation">(</span>func<span class="token punctuation">,</span> list1<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>sums<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、filter-函数"><a href="#5、filter-函数" class="headerlink" title="5、filter()函数"></a>5、filter()函数</h2><p>filter(func, lst)函数用于过滤序列, 过滤掉不符合条件的元素, 返回一个 filter 对象。如果要转换为列表, 可以使用 list() 来转换。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义一个函数（获取所有的偶数）</span>
+<span class="token keyword">def</span> <span class="token function">func</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+   <span class="token keyword">return</span> n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span>
+<span class="token comment" spellcheck="true"># 定义一个序列</span>
+list1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true"># 调用filter函数进行过滤操作</span>
+result <span class="token operator">=</span> filter<span class="token punctuation">(</span>func<span class="token punctuation">,</span> list1<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>list<span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h1 id="六、文件的概念"><a href="#六、文件的概念" class="headerlink" title="六、文件的概念"></a>六、文件的概念</h1><h2 id="1、什么是文件"><a href="#1、什么是文件" class="headerlink" title="1、什么是文件"></a>1、什么是文件</h2><p>内存中存放的数据在计算机关机后就会消失。要长久保存数据，就要使用硬盘、光盘、U 盘等设备。为了便于数据的管理和检索，引入了==“文件”==的概念。</p>
+<p>一篇文章、一段视频、一个可执行程序，都可以被保存为一个文件，并赋予一个文件名。操作系统以文件为单位管理磁盘中的数据。一般来说，==文件可分为文本文件、视频文件、音频文件、图像文件、可执行文件等多种类别。==</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108528.png" alt="image-20210315171013811"></p>
+<h2 id="2、思考：文件操作包含哪些内容呢？"><a href="#2、思考：文件操作包含哪些内容呢？" class="headerlink" title="2、思考：文件操作包含哪些内容呢？"></a>2、思考：文件操作包含哪些内容呢？</h2><p>在日常操作中，我们对文件的主要操作：创建文件、打开文件、文件读写、文件备份等等</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108775.png" alt="image-20210315171310117"></p>
+<h2 id="3、文件操作的作用"><a href="#3、文件操作的作用" class="headerlink" title="3、文件操作的作用"></a>3、文件操作的作用</h2><p>文件操作的作用就是==把一些内容(数据)存储存放起来==，可以让程序下一次执行的时候直接使用，而不必重新制作一份，省时省力。</p>
+<h1 id="七、文件的基本操作"><a href="#七、文件的基本操作" class="headerlink" title="七、文件的基本操作"></a>七、文件的基本操作</h1><h2 id="1、文件操作三步走"><a href="#1、文件操作三步走" class="headerlink" title="1、文件操作三步走"></a>1、文件操作三步走</h2><p>① 打开文件</p>
+<p>② 读写文件</p>
+<p>③ 关闭文件</p>
+<h2 id="2、open函数打开文件"><a href="#2、open函数打开文件" class="headerlink" title="2、open函数打开文件"></a>2、open函数打开文件</h2><p>在Python，使用open()函数，可以打开一个已经存在的文件，或者创建一个新文件，语法如下：</p>
+<pre class=" language-python"><code class="language-python">f <span class="token operator">=</span> open<span class="token punctuation">(</span>name<span class="token punctuation">,</span> mode<span class="token punctuation">)</span>
+注：返回的结果是一个file文件对象（后续会学习，只需要记住，后续方法都是f<span class="token punctuation">.</span>方法<span class="token punctuation">(</span><span class="token punctuation">)</span>）
+</code></pre>
+<p>name：是要打开的目标文件名的字符串(可以包含文件所在的具体路径)。</p>
+<p>mode：设置打开文件的模式(访问模式)：只读r、写入w、追加a等。</p>
+<blockquote>
+<p>r模式：代表以只读模式打开一个已存在的文件，后续我们对这个文件只能进行读取操作。如果文件不存在，则直接报错。另外，r模式在打开文件时，会将光标放在文件的一行。</p>
+</blockquote>
+<blockquote>
+<p>w模式：代表以只写模式打开一个文件，文件不存在，则自动创建该文件。w模式主要是针对文件写入而定义的模式。但是，要特别注意，w模式在写入时，光标也是置于第一行同时还会清空原有文件内容。</p>
+</blockquote>
+<blockquote>
+<p>a模式：代表以追加模式打开一个文件，文件不存在，则自动创建该文件。a模式主要也是针对文件写入而定义模式。但是和w模式有所不同，a模式不会清空文件的原有内容，而是在文件的尾部追加内容。</p>
+</blockquote>
+<h2 id="3、write函数写入文件"><a href="#3、write函数写入文件" class="headerlink" title="3、write函数写入文件"></a>3、write函数写入文件</h2><p>基本语法：</p>
+<pre class=" language-python"><code class="language-python">f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'要写入的内容，要求是一个字符串类型的数据'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="4、close函数关闭文件"><a href="#4、close函数关闭文件" class="headerlink" title="4、close函数关闭文件"></a>4、close函数关闭文件</h2><pre class=" language-python"><code class="language-python">f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="5、入门级案例"><a href="#5、入门级案例" class="headerlink" title="5、入门级案例"></a>5、入门级案例</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、打开文件</span>
+f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'python.txt'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 2、写入内容</span>
+f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'人生苦短，我学Python！'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、关闭文件</span>
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<blockquote>
+<p>强调一下：中文乱码问题，默认情况下，计算机常用编码ASCII、GBK、UTF-8</p>
+</blockquote>
+<h2 id="6、解决写入中文乱码问题"><a href="#6、解决写入中文乱码问题" class="headerlink" title="6、解决写入中文乱码问题"></a>6、解决写入中文乱码问题</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、打开文件</span>
+f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'python.txt'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 2、写入内容</span>
+f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'人生苦短，我学Python！'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、关闭文件</span>
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="7、文件的读取操作"><a href="#7、文件的读取操作" class="headerlink" title="7、文件的读取操作"></a>7、文件的读取操作</h2><p><code>read(size)方法</code>：主要用于文本类型或者二进制文件（图片、音频、视频…）数据的读取</p>
+<p>size表示要从文件中读取的数据的长度（单位是字节），如果没有传入size，那么就表示读取文件中所有的数据。</p>
+<pre class=" language-python"><code class="language-python">f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 读取文件的所有内容</span>
+f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 读取1024个字节长度文件内容，字母或数字，一个占1个字节长度。中文utf-8占3个字节长度。</span>
+</code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、打开文件</span>
+f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'python.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 2、使用read()方法读取文件所有内容</span>
+contents <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>contents<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、关闭文件</span>
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p><code>readlines()方法</code>：主要用于文本类型数据的读取</p>
+<p>readlines可以按照行的方式把整个文件中的内容进行一次性读取，并且返回的是一个列表，其中每一行的数据为一个元素。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、打开文件</span>
+f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'python.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 2、读取文件</span>
+lines <span class="token operator">=</span> f<span class="token punctuation">.</span>readlines<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> line <span class="token keyword">in</span> lines<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>line<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 3、关闭文件</span>
+f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="8、聊聊文件操作的mode模式"><a href="#8、聊聊文件操作的mode模式" class="headerlink" title="8、聊聊文件操作的mode模式"></a>8、聊聊文件操作的mode模式</h2><table>
+<thead>
+<tr>
+<th><strong>模式</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td>rb</td>
+<td>以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。这是默认模式。</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>rb+</td>
+<td>以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>wb</td>
+<td>以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>wb+</td>
+<td>以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。</td>
+</tr>
+<tr>
+<td>a</td>
+<td>打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td>ab</td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+<tr>
+<td>ab+</td>
+<td>以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>虽然mode文件操作模式很多，但是我们只需要记住3个字符即可。r、w、a</p>
+</blockquote>
+<blockquote>
+<p>r+、w+、a+，代加号，功能全，既能读，又能写（区别在于指针到底指向不同）</p>
+</blockquote>
+<blockquote>
+<p>rb、wb、ab，代b的字符，代表以二进制的形式对其进行操作，适合读取文本或二进制格式文件，如图片、音频、视频等格式</p>
+</blockquote>
+<blockquote>
+<p>rb+、wb+、ab+，代加号，功能全，既能读，又能写（区别在于指针到底指向不同）</p>
+</blockquote>
+<h2 id="9、seek函数移动光标"><a href="#9、seek函数移动光标" class="headerlink" title="9、seek函数移动光标"></a>9、seek函数移动光标</h2><p>无论是文件读操作，还是写操作。其起始位置都是文件光标决定的。</p>
+<p>r =&gt; 文件头</p>
+<p>w =&gt; 清空文件内容，指向文件头</p>
+<p>a =&gt; 文件尾</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012108898.png" alt="image-20210315183136345"></p>
+<p>光标在刚打开文件时，默认情况下是根据r、w、a模式相关固定的。但是我们可以通过某些方法，人为移动光标。可以通过seek方法实现。</p>
+<pre><code>f.seek(offset,whence=0)
+
+offset：开始的偏移量，也就是代表需要移动偏移的字节数
+whence：给offset参数一个定义，表示要从哪个位置开始偏移；0代表从文件开头开始算起，1代表从当前位置开始算起，2代表从文件末尾算起。
+</code></pre>
+<p>实际工作中，seek主要用于重置光标到起始位置。</p>
+<pre class=" language-python"><code class="language-python">f<span class="token punctuation">.</span>seek<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+或
+f<span class="token punctuation">.</span>seek<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+</code></pre>
+<p>其他应用：</p>
+<pre class=" language-python"><code class="language-python"><span class="token operator">>></span><span class="token operator">></span> f <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">'workfile'</span><span class="token punctuation">,</span> <span class="token string">'rb+'</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>b<span class="token string">'0123456789abcdef'</span><span class="token punctuation">)</span>
+<span class="token number">16</span>
+<span class="token operator">>></span><span class="token operator">></span> f<span class="token punctuation">.</span>seek<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true"># 从0开始向右移动5个字节</span>
+<span class="token number">5</span>
+<span class="token operator">>></span><span class="token operator">></span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+b<span class="token string">'5'</span>
+<span class="token operator">>></span><span class="token operator">></span> f<span class="token punctuation">.</span>seek<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 从右向左移动3个字节</span>
+<span class="token number">13</span>
+<span class="token operator">>></span><span class="token operator">></span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+b<span class="token string">'d'</span>
+</code></pre>
+<h1 id="八、文件备份案例"><a href="#八、文件备份案例" class="headerlink" title="八、文件备份案例"></a>八、文件备份案例</h1><h2 id="1、案例需求"><a href="#1、案例需求" class="headerlink" title="1、案例需求"></a>1、案例需求</h2><p>需求：用户输入当前目录下任意文件名，完成对该文件的备份功能(备份文件名为xx[备份]后缀，例如：test[备份].txt)。</p>
+<p>实现思路：</p>
+<p>① 接收用户输入的文件名</p>
+<p>② 规划备份文件名</p>
+<p>③ 备份文件写入数据</p>
+<h2 id="2、代码实现"><a href="#2、代码实现" class="headerlink" title="2、代码实现"></a>2、代码实现</h2><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 1、接收用户输入的文件名（要备份的文件名）</span>
+oldname <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">'请输入要备份的文件名称：'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># python.txt</span>
+<span class="token comment" spellcheck="true"># 2、规划备份文件名（python[备份].txt）</span>
+<span class="token comment" spellcheck="true"># 搜索点号</span>
+index <span class="token operator">=</span> oldname<span class="token punctuation">.</span>rfind<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 返回文件名和文件后缀</span>
+name <span class="token operator">=</span> oldname<span class="token punctuation">[</span><span class="token punctuation">:</span>index<span class="token punctuation">]</span>
+postfix <span class="token operator">=</span> oldname<span class="token punctuation">[</span>index<span class="token punctuation">:</span><span class="token punctuation">]</span>
+newname <span class="token operator">=</span> name <span class="token operator">+</span> <span class="token string">'[备份]'</span> <span class="token operator">+</span> postfix
+<span class="token comment" spellcheck="true"># 3、对文件进行备份操作</span>
+old_f <span class="token operator">=</span> open<span class="token punctuation">(</span>oldname<span class="token punctuation">,</span> <span class="token string">'rb'</span><span class="token punctuation">)</span>
+new_f <span class="token operator">=</span> open<span class="token punctuation">(</span>newname<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 读取源文件内容写入新文件</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    content <span class="token operator">=</span> old_f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> len<span class="token punctuation">(</span>content<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    new_f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>content<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 4、关闭文件</span>
+old_f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+new_f<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/03/03/021-python-ji-chu-06/">Day06之Python中的函数<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/03/03/023-python-ji-chu-08/">Day08之Python文件操作与面向对象<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>
