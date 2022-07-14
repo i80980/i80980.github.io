@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>华佐博客</title>
+
+  
+    <meta name="description" content="1. Java概述1.1 Java语言背景介绍（了解）语言：人与人交流沟通的表达方式 计算机语言：人与计算机之间进行信息交流沟通的一种特殊语言 Java语言是美国Sun公司（Stanford University Network）在1995年推出的计算机语言 Java之父：詹姆斯·高斯林（James Gosling） 2009年，Sun公司被甲骨文公司收购，所以我们现在访问oracle官网即可：h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华佐博客">
+<meta property="og:url" content="https://i80980.github.io/2022/07/14/day01-java-ji-chu-yu-fa/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="1. Java概述1.1 Java语言背景介绍（了解）语言：人与人交流沟通的表达方式 计算机语言：人与计算机之间进行信息交流沟通的一种特殊语言 Java语言是美国Sun公司（Stanford University Network）在1995年推出的计算机语言 Java之父：詹姆斯·高斯林（James Gosling） 2009年，Sun公司被甲骨文公司收购，所以我们现在访问oracle官网即可：h">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202207141725974.jpg">
+<meta property="article:published_time" content="2022-07-14T09:30:46.568Z">
+<meta property="article:modified_time" content="2022-07-14T09:30:21.594Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202207141725974.jpg">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Java%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1. Java概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Java%E8%AF%AD%E8%A8%80%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D%EF%BC%88%E4%BA%86%E8%A7%A3%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 Java语言背景介绍（了解）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Java%E8%AF%AD%E8%A8%80%E8%B7%A8%E5%B9%B3%E5%8F%B0%E5%8E%9F%E7%90%86%EF%BC%88%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 Java语言跨平台原理（理解）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-JRE%E5%92%8CJDK%EF%BC%88%E8%AE%B0%E5%BF%86%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 JRE和JDK（记忆）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-JDK%E7%9A%84%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 JDK的下载和安装（应用）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.4.1.</span> <span class="toc-text">1.4.1 下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.2.</span> <span class="toc-text">1.4.2 安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-JDK%E7%9A%84%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.4.3.</span> <span class="toc-text">1.4.3 JDK的安装目录介绍</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%BC%94%E7%A4%BA%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">2. 第一个演示程序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%B8%B8%E7%94%A8DOS%E5%91%BD%E4%BB%A4%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 常用DOS命令（应用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Path%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E9%85%8D%E7%BD%AE%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Path环境变量的配置（应用）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 为什么配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-HelloWorld%E6%A1%88%E4%BE%8B%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 HelloWorld案例（应用）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-Java%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 Java程序开发运行流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-HelloWorld%E6%A1%88%E4%BE%8B%E7%9A%84%E7%BC%96%E5%86%99"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 HelloWorld案例的编写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-HelloWorld%E6%A1%88%E4%BE%8B%E7%9A%84%E7%BC%96%E8%AF%91%E5%92%8C%E8%BF%90%E8%A1%8C"><span class="toc-number">2.3.3.</span> <span class="toc-text">2.3.3 HelloWorld案例的编译和运行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-HelloWorld%E6%A1%88%E4%BE%8B%E8%AF%A6%E8%A7%A3%EF%BC%88%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 HelloWorld案例详解（理解）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-HelloWorld%E6%A1%88%E4%BE%8B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%EF%BC%88%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 HelloWorld案例常见问题（理解）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-1-BUG"><span class="toc-number">2.5.1.</span> <span class="toc-text">2.5.1 BUG</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-2-BUG%E7%9A%84%E8%A7%A3%E5%86%B3"><span class="toc-number">2.5.2.</span> <span class="toc-text">2.5.2 BUG的解决</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-3-HelloWorld%E6%A1%88%E4%BE%8B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">2.5.3.</span> <span class="toc-text">2.5.3 HelloWorld案例常见问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-Notepad-%E8%BD%AF%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 Notepad++软件的安装和使用（应用）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-1-%E4%BB%80%E4%B9%88%E8%A6%81%E4%BD%BF%E7%94%A8Notepad-%E8%BD%AF%E4%BB%B6"><span class="toc-number">2.6.1.</span> <span class="toc-text">2.6.1 什么要使用Notepad++软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-2-Notepad-%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">2.6.2.</span> <span class="toc-text">2.6.2 Notepad++软件安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-3Notepad-%E8%BD%AF%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">2.6.3.</span> <span class="toc-text">2.6.3Notepad++软件配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-java%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">3. java基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E6%B3%A8%E9%87%8A%EF%BC%88%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 注释（理解）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%85%B3%E9%94%AE%E5%AD%97%EF%BC%88%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 关键字（理解）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%B8%B8%E9%87%8F%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 常量（应用）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BB%8B%E7%BB%8D-%E7%90%86%E8%A7%A3"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 变量的介绍(理解)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 数据类型（应用）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%98%E5%82%A8%E5%8D%95%E5%85%83"><span class="toc-number">3.5.1.</span> <span class="toc-text">3.5.1 计算机存储单元</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-2-Java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.5.2.</span> <span class="toc-text">3.5.2 Java中的数据类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-%E5%8F%98%E9%87%8F%EF%BC%88%E5%BA%94%E7%94%A8%EF%BC%89"><span class="toc-number">3.6.</span> <span class="toc-text">3.6 变量（应用）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-1-%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.6.1.</span> <span class="toc-text">3.6.1 变量的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-2-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BF%AE%E6%94%B9"><span class="toc-number">3.6.2.</span> <span class="toc-text">3.6.2 变量的修改</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-%E5%8F%98%E9%87%8F%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-%E7%90%86%E8%A7%A3"><span class="toc-number">3.7.</span> <span class="toc-text">3.7 变量的注意事项(理解)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-8-%E9%94%AE%E7%9B%98%E5%BD%95%E5%85%A5%EF%BC%88%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">3.8.</span> <span class="toc-text">3.8 键盘录入（理解）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-9-%E6%A0%87%E8%AF%86%E7%AC%A6%EF%BC%88%E7%90%86%E8%A7%A3%EF%BC%89"><span class="toc-number">3.9.</span> <span class="toc-text">3.9 标识符（理解）</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-07-14T09:30:46.568Z">2022-07-14</time></div></div>
+
+<article class='content md post'>
+
+<h2 id="1-Java概述"><a href="#1-Java概述" class="headerlink" title="1. Java概述"></a>1. Java概述</h2><h3 id="1-1-Java语言背景介绍（了解）"><a href="#1-1-Java语言背景介绍（了解）" class="headerlink" title="1.1 Java语言背景介绍（了解）"></a>1.1 Java语言背景介绍（了解）</h3><p>语言：人与人交流沟通的表达方式</p>
+<p>计算机语言：人与计算机之间进行信息交流沟通的一种特殊语言</p>
+<p>Java语言是美国Sun公司（Stanford University Network）在1995年推出的计算机语言</p>
+<p>Java之父：詹姆斯·高斯林（James Gosling）</p>
+<p>2009年，Sun公司被甲骨文公司收购，所以我们现在访问oracle官网即可：<a target="_blank" rel="noopener" href="https://www.oracle.com/">https://www.oracle.com</a> </p>
+<p>java语言的三个版本：</p>
+<p>​    JavaSE:  Java 语言的（标准版），用于桌面应用的开发，是其他两个版本的基础</p>
+<p>​    JavaME: Java 语言的（小型版），用于嵌入式消费类电子设备</p>
+<p>​    JavaEE: Java 语言的（企业版），用于 Web 方向的网站开发</p>
+<h3 id="1-2-Java语言跨平台原理（理解）"><a href="#1-2-Java语言跨平台原理（理解）" class="headerlink" title="1.2 Java语言跨平台原理（理解）"></a>1.2 Java语言跨平台原理（理解）</h3><p>Java程序并非是直接运行的，Java编译器将Java源程序编译成与平台无关的字节码文件(class文件)，然后由Java虚拟机（JVM）对字节码文件解释执行。所以在不同的操作系统下，只需安装不同的Java虚拟机即可实现java程序的跨平台。</p>
+<h3 id="1-3-JRE和JDK（记忆）"><a href="#1-3-JRE和JDK（记忆）" class="headerlink" title="1.3 JRE和JDK（记忆）"></a>1.3 JRE和JDK（记忆）</h3><p>JVM（Java Virtual Machine），Java虚拟机</p>
+<p>JRE（Java Runtime Environment），Java运行环境，包含了JVM和Java的核心类库（Java API）</p>
+<p>JDK（Java Development Kit）称为Java开发工具，包含了JRE和开发工具</p>
+<p>总结：我们只需安装JDK即可，它包含了java的运行环境和虚拟机。</p>
+<h3 id="1-4-JDK的下载和安装（应用）"><a href="#1-4-JDK的下载和安装（应用）" class="headerlink" title="1.4 JDK的下载和安装（应用）"></a>1.4 JDK的下载和安装（应用）</h3><h4 id="1-4-1-下载"><a href="#1-4-1-下载" class="headerlink" title="1.4.1 下载"></a>1.4.1 下载</h4><p>通过官方网站获取JDK</p>
+<p><a target="_blank" rel="noopener" href="http://www.oracle.com/">http://www.oracle.com</a></p>
+<p><strong>注意</strong>：针对不同的操作系统，需要下载对应版本的JDK。</p>
+<h4 id="1-4-2-安装"><a href="#1-4-2-安装" class="headerlink" title="1.4.2 安装"></a>1.4.2 安装</h4><p>傻瓜式安装，下一步即可。但默认的安装路径是在C:\Program Files下，为方便统一管理建议修改安装路径，将与开发相关的软件都安装到一个目录下，例如：E:\develop。</p>
+<p><strong>注意</strong>：安装路径不要包含中文或者空格等特殊字符（使用纯英文目录）。</p>
+<h4 id="1-4-3-JDK的安装目录介绍"><a href="#1-4-3-JDK的安装目录介绍" class="headerlink" title="1.4.3 JDK的安装目录介绍"></a>1.4.3 JDK的安装目录介绍</h4><table>
+<thead>
+<tr>
+<th>目录名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>bin</td>
+<td>该路径下存放了JDK的各种工具命令。javac和java就放在这个目录。</td>
+</tr>
+<tr>
+<td>conf</td>
+<td>该路径下存放了JDK的相关配置文件。</td>
+</tr>
+<tr>
+<td>include</td>
+<td>该路径下存放了一些平台特定的头文件。</td>
+</tr>
+<tr>
+<td>jmods</td>
+<td>该路径下存放了JDK的各种模块。</td>
+</tr>
+<tr>
+<td>legal</td>
+<td>该路径下存放了JDK各模块的授权文档。</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>该路径下存放了JDK工具的一些补充JAR包。</td>
+</tr>
+</tbody></table>
+<h2 id="2-第一个演示程序"><a href="#2-第一个演示程序" class="headerlink" title="2. 第一个演示程序"></a>2. 第一个演示程序</h2><h3 id="2-1-常用DOS命令（应用）"><a href="#2-1-常用DOS命令（应用）" class="headerlink" title="2.1 常用DOS命令（应用）"></a>2.1 常用DOS命令（应用）</h3><p>在接触集成开发环境之前，我们需要使用命令行窗口对java程序进行编译和运行，所以需要知道一些常用DOS命令。</p>
+<p>1、打开命令行窗口的方式：win + r打开运行窗口，输入cmd，回车。</p>
+<p>2、常用命令及其作用</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>盘符名称:</td>
+<td>盘符切换。E:回车，表示切换到E盘。</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>查看当前路径下的内容。</td>
+</tr>
+<tr>
+<td>cd 目录</td>
+<td>进入单级目录。cd itheima</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td>回退到上一级目录。</td>
+</tr>
+<tr>
+<td>cd 目录1\目录2...</td>
+<td>进入多级目录。cd itheima\JavaSE</td>
+</tr>
+<tr>
+<td>cd \</td>
+<td>回退到盘符目录。</td>
+</tr>
+<tr>
+<td>cls</td>
+<td>清屏。</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>退出命令提示符窗口。</td>
+</tr>
+</tbody></table>
+<h3 id="2-2-Path环境变量的配置（应用）"><a href="#2-2-Path环境变量的配置（应用）" class="headerlink" title="2.2 Path环境变量的配置（应用）"></a>2.2 Path环境变量的配置（应用）</h3><h4 id="2-2-1-为什么配置环境变量"><a href="#2-2-1-为什么配置环境变量" class="headerlink" title="2.2.1 为什么配置环境变量"></a>2.2.1 为什么配置环境变量</h4><p>开发Java程序，需要使用JDK提供的开发工具（比如javac.exe、java.exe等命令），而这些工具在JDK的安装目录的bin目录下，如果不配置环境变量，那么这些命令只可以在该目录下执行。我们不可能把所有的java文件都放到JDK的bin目录下，所以配置环境变量的作用就是可以使bin目录下的java相关命令可以在任意目录下使用。    </p>
+<h3 id="2-3-HelloWorld案例（应用）"><a href="#2-3-HelloWorld案例（应用）" class="headerlink" title="2.3 HelloWorld案例（应用）"></a>2.3 HelloWorld案例（应用）</h3><p>HelloWorld案例是指在计算机屏幕上输出“HelloWorld”这行文字。</p>
+<p>各种计算机语言都习惯使用该案例作为第一个演示案例。</p>
+<h4 id="2-3-1-Java程序开发运行流程"><a href="#2-3-1-Java程序开发运行流程" class="headerlink" title="2.3.1 Java程序开发运行流程"></a>2.3.1 Java程序开发运行流程</h4><p>开发Java程序，需要三个步骤：编写程序，编译程序，运行程序。</p>
+<h4 id="2-3-2-HelloWorld案例的编写"><a href="#2-3-2-HelloWorld案例的编写" class="headerlink" title="2.3.2 HelloWorld案例的编写"></a>2.3.2 HelloWorld案例的编写</h4><p>1、新建文本文档文件，修改名称为HelloWorld.java。</p>
+<p>2、用记事本打开HelloWorld.java文件，输写程序内容。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"HelloWorld"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="2-3-3-HelloWorld案例的编译和运行"><a href="#2-3-3-HelloWorld案例的编译和运行" class="headerlink" title="2.3.3 HelloWorld案例的编译和运行"></a>2.3.3 HelloWorld案例的编译和运行</h4><p>存文件，打开命令行窗口，将目录切换至java文件所在目录，编译java文件生成class文件，运行class文件。</p>
+<blockquote>
+<p>编译：javac 文件名.java</p>
+<p>范例：javac HelloWorld.java</p>
+<p>执行：java 类名</p>
+<p>范例：java HelloWorld</p>
+</blockquote>
+<h3 id="2-4-HelloWorld案例详解（理解）"><a href="#2-4-HelloWorld案例详解（理解）" class="headerlink" title="2.4 HelloWorld案例详解（理解）"></a>2.4 HelloWorld案例详解（理解）</h3><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202207141725974.jpg"></p>
+<h3 id="2-5-HelloWorld案例常见问题（理解）"><a href="#2-5-HelloWorld案例常见问题（理解）" class="headerlink" title="2.5 HelloWorld案例常见问题（理解）"></a>2.5 HelloWorld案例常见问题（理解）</h3><h4 id="2-5-1-BUG"><a href="#2-5-1-BUG" class="headerlink" title="2.5.1 BUG"></a>2.5.1 BUG</h4><p>在电脑系统或程序中，隐藏着的一些未被发现的缺陷或问题统称为bug（漏洞）。</p>
+<h4 id="2-5-2-BUG的解决"><a href="#2-5-2-BUG的解决" class="headerlink" title="2.5.2 BUG的解决"></a>2.5.2 BUG的解决</h4><p>1、具备识别BUG的能力：多看</p>
+<p>2、具备分析BUG的能力：多思考，多查资料</p>
+<p>3、具备解决BUG的能力：多尝试，多总结</p>
+<h4 id="2-5-3-HelloWorld案例常见问题"><a href="#2-5-3-HelloWorld案例常见问题" class="headerlink" title="2.5.3 HelloWorld案例常见问题"></a>2.5.3 HelloWorld案例常见问题</h4><p>1、非法字符问题。Java中的符号都是英文格式的。</p>
+<p>2、大小写问题。Java语言对大小写敏感（区分大小写）。</p>
+<p>3、在系统中显示文件的扩展名，避免出现HelloWorld.java.txt文件。</p>
+<p>4、编译命令后的java文件名需要带文件后缀.java</p>
+<p>5、运行命令后的class文件名（类名）不带文件后缀</p>
+<h3 id="2-6-Notepad-软件的安装和使用（应用）"><a href="#2-6-Notepad-软件的安装和使用（应用）" class="headerlink" title="2.6 Notepad++软件的安装和使用（应用）"></a>2.6 Notepad++软件的安装和使用（应用）</h3><h4 id="2-6-1-什么要使用Notepad-软件"><a href="#2-6-1-什么要使用Notepad-软件" class="headerlink" title="2.6.1 什么要使用Notepad++软件"></a>2.6.1 什么要使用Notepad++软件</h4><p>Notepad++功能比windows中的自带记事本功能强大，除了可以用来制作一般的纯文字说明文件，也十分适合编写计算机程序代码。Notepad++有行号，能够快速定位问题位置，还有语法高亮度显示、代码折叠等功能。而且它是免费的。</p>
+<h4 id="2-6-2-Notepad-软件安装"><a href="#2-6-2-Notepad-软件安装" class="headerlink" title="2.6.2 Notepad++软件安装"></a>2.6.2 Notepad++软件安装</h4><p>安装：傻瓜式安装，一直下一步即可。建议也安装到统一的开发软件目录下，比如E:\develop。</p>
+<h4 id="2-6-3Notepad-软件配置"><a href="#2-6-3Notepad-软件配置" class="headerlink" title="2.6.3Notepad++软件配置"></a>2.6.3Notepad++软件配置</h4><p>安装完毕之后，为了使用方便，做一个简单的配置：修改默认语言和编码。</p>
+<h2 id="3-java基础语法"><a href="#3-java基础语法" class="headerlink" title="3. java基础语法"></a>3. java基础语法</h2><h3 id="3-1-注释（理解）"><a href="#3-1-注释（理解）" class="headerlink" title="3.1 注释（理解）"></a>3.1 注释（理解）</h3><p>注释是对代码的解释和说明文字，可以提高程序的可读性，因此在程序中添加必要的注释文字十分重要。Java中的注释分为三种：</p>
+<p>单行注释。单行注释的格式是使用//，从//开始至本行结尾的文字将作为注释文字。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 这是单行注释文字</span>
+</code></pre>
+<p>多行注释。多行注释的格式是使用/* 和 */将一段较长的注释括起来。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+这是多行注释文字
+这是多行注释文字
+这是多行注释文字
+*/</span>
+注意：多行注释不能嵌套使用。
+</code></pre>
+<p>文档注释。文档注释以<code>/**</code>开始，以<code>*/</code>结束。（以后讲）</p>
+<h3 id="3-2-关键字（理解）"><a href="#3-2-关键字（理解）" class="headerlink" title="3.2 关键字（理解）"></a>3.2 关键字（理解）</h3><p>关键字是指被java语言赋予了特殊含义的单词。</p>
+<p>关键字的特点：</p>
+<p>​    关键字的字母全部小写。</p>
+<p>​    常用的代码编辑器对关键字都有高亮显示，比如现在我们能看到的public、class、static等。</p>
+<h3 id="3-3-常量（应用）"><a href="#3-3-常量（应用）" class="headerlink" title="3.3 常量（应用）"></a>3.3 常量（应用）</h3><p>常量：在程序运行过程中，其值不可以发生改变的量。</p>
+<p>Java中的常量分类：</p>
+<p>​    字符串常量  用双引号括起来的多个字符（可以包含0个、一个或多个），例如”a”、”abc”、”中国”等</p>
+<p>​    整数常量  整数，例如：-10、0、88等</p>
+<p>​    小数常量  小数，例如：-5.5、1.0、88.88等</p>
+<p>​    字符常量  用单引号括起来的一个字符，例如：’a’、’5’、’B’、’中’等</p>
+<p>​    布尔常量  布尔值，表示真假，只有两个值true和false</p>
+<p>​    空常量  一个特殊的值，空值，值为null</p>
+<p>除空常量外，其他常量均可使用输出语句直接输出。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出一个整数</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token number">5.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出一个小数</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出一个字符</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出boolean值true</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"欢迎来到黑马程序员"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 输出字符串</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="3-4-变量的介绍-理解"><a href="#3-4-变量的介绍-理解" class="headerlink" title="3.4 变量的介绍(理解)"></a>3.4 变量的介绍(理解)</h3><p>变量的定义格式：</p>
+<p>​    数据类型 变量名 = 数据值；</p>
+<p>​    数据类型：为空间中存储的数据加入类型限制。整数？小数？</p>
+<p>​    变量名：自己要为空间起的名字，没有难度</p>
+<p>​    数据值： 空间中要存储的数值，没有难度</p>
+<h3 id="3-5-数据类型（应用）"><a href="#3-5-数据类型（应用）" class="headerlink" title="3.5 数据类型（应用）"></a>3.5 数据类型（应用）</h3><h4 id="3-5-1-计算机存储单元"><a href="#3-5-1-计算机存储单元" class="headerlink" title="3.5.1 计算机存储单元"></a>3.5.1 计算机存储单元</h4><p>我们知道计算机是可以用来存储数据的，但是无论是内存还是硬盘，计算机存储设备的最小信息单元叫“位（bit）”，我们又称之为“比特位”，通常用小写的字母”b”表示。而计算机中最基本的存储单元叫“字节（byte）”，</p>
+<p>通常用大写字母”B”表示，字节是由连续的8个位组成。</p>
+<p>除了字节外还有一些常用的存储单位，其换算单位如下：</p>
+<p>1B（字节） = 8bit</p>
+<p>1KB = 1024B</p>
+<p>1MB = 1024KB</p>
+<p>1GB = 1024MB</p>
+<p>1TB = 1024GB</p>
+<h4 id="3-5-2-Java中的数据类型"><a href="#3-5-2-Java中的数据类型" class="headerlink" title="3.5.2 Java中的数据类型"></a>3.5.2 Java中的数据类型</h4><p>Java是一个强类型语言，Java中的数据必须明确数据类型。在Java中的数据类型包括基本数据类型和引用数据类型两种。</p>
+<p>Java中的基本数据类型：</p>
+<table>
+<thead>
+<tr>
+<th align="left">数据类型</th>
+<th>关键字</th>
+<th>内存占用</th>
+<th align="left">取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">整数类型</td>
+<td>byte</td>
+<td>1</td>
+<td align="left">-128~127</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>short</td>
+<td>2</td>
+<td align="left">-32768~32767</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>int(默认)</td>
+<td>4</td>
+<td align="left">-2的31次方到2的31次方-1</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>long</td>
+<td>8</td>
+<td align="left">-2的63次方到2的63次方-1</td>
+</tr>
+<tr>
+<td align="left">浮点类型</td>
+<td>float</td>
+<td>4</td>
+<td align="left">负数：-3.402823E+38到-1.401298E-45                                                             正数：   1.401298E-45到3.402823E+38</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td>double(默认)</td>
+<td>8</td>
+<td align="left">负数：-1.797693E+308到-4.9000000E-324                                              正数：4.9000000E-324   到1.797693E+308</td>
+</tr>
+<tr>
+<td align="left">字符类型</td>
+<td>char</td>
+<td>2</td>
+<td align="left">0-65535</td>
+</tr>
+<tr>
+<td align="left">布尔类型</td>
+<td>boolean</td>
+<td>1</td>
+<td align="left">true，false</td>
+</tr>
+</tbody></table>
+<p>说明：</p>
+<p>​    e+38表示是乘以10的38次方，同样，e-45表示乘以10的负45次方。</p>
+<p>​    在java中整数默认是int类型，浮点数默认是double类型。</p>
+<h3 id="3-6-变量（应用）"><a href="#3-6-变量（应用）" class="headerlink" title="3.6 变量（应用）"></a>3.6 变量（应用）</h3><h4 id="3-6-1-变量的定义"><a href="#3-6-1-变量的定义" class="headerlink" title="3.6.1 变量的定义"></a>3.6.1 变量的定义</h4><p>变量：在程序运行过程中，其值可以发生改变的量。</p>
+<p>从本质上讲，变量是内存中的一小块区域，其值可以在一定范围内变化。</p>
+<p>变量的定义格式：</p>
+<pre class=" language-java"><code class="language-java">数据类型 变量名 <span class="token operator">=</span> 初始化值<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 声明变量并赋值</span>
+<span class="token keyword">int</span> age <span class="token operator">=</span> <span class="token number">18</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>或者(扩展)</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 先声明，后赋值（使用前赋值即可）</span>
+数据类型 变量名<span class="token punctuation">;</span>
+变量名 <span class="token operator">=</span> 初始化值<span class="token punctuation">;</span>
+<span class="token keyword">double</span> money<span class="token punctuation">;</span>
+money <span class="token operator">=</span> <span class="token number">55.5</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>money<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>还可以(扩展)</p>
+<p>在同一行定义多个同一种数据类型的变量，中间使用逗号隔开。但不建议使用这种方式，降低程序的可读性。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 定义int类型的变量a和b，中间使用逗号隔开</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> c<span class="token punctuation">,</span>d<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 声明int类型的变量c和d，中间使用逗号隔开</span>
+c <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
+d <span class="token operator">=</span> <span class="token number">40</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="3-6-2-变量的修改"><a href="#3-6-2-变量的修改" class="headerlink" title="3.6.2 变量的修改"></a>3.6.2 变量的修改</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+a <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//修改变量的值</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>变量前面不加数据类型时，表示修改已存在的变量的值。</p>
+<h3 id="3-7-变量的注意事项-理解"><a href="#3-7-变量的注意事项-理解" class="headerlink" title="3.7 变量的注意事项(理解)"></a>3.7 变量的注意事项(理解)</h3><ol>
+<li>在同一对花括号中，变量名不能重复。</li>
+<li>变量在使用之前，必须初始化（赋值）。</li>
+<li>定义long类型的变量时，需要在整数的后面加L（大小写均可，建议大写）。因为整数默认是int类型，整数太大可能超出int范围。</li>
+<li>定义float类型的变量时，需要在小数的后面加F（大小写均可，建议大写）。因为浮点数的默认类型是double， double的取值范围是大于float的，类型不兼容。</li>
+</ol>
+<h3 id="3-8-键盘录入（理解）"><a href="#3-8-键盘录入（理解）" class="headerlink" title="3.8 键盘录入（理解）"></a>3.8 键盘录入（理解）</h3><p>我们可以通过 Scanner 类来获取用户的输入。使用步骤如下：</p>
+<p>1、导包。Scanner 类在java.util包下，所以需要将该类导入。导包的语句需要定义在类的上面。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner<span class="token punctuation">;</span> 
+</code></pre>
+<p>2、创建Scanner对象。</p>
+<pre class=" language-java"><code class="language-java">Scanner sc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 创建Scanner对象，sc表示变量名，其他均不可变</span>
+</code></pre>
+<p>3、接收数据</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> i <span class="token operator">=</span> sc<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 表示将键盘录入的值作为int数返回。</span>
+</code></pre>
+<p>示例：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ScannerDemo</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//创建对象</span>
+        Scanner sc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//接收数据</span>
+        <span class="token keyword">int</span> a <span class="token operator">=</span> sc<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//输出数据</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="3-9-标识符（理解）"><a href="#3-9-标识符（理解）" class="headerlink" title="3.9 标识符（理解）"></a>3.9 标识符（理解）</h3><p>标识符是用户编程时使用的名字，用于给类、方法、变量、常量等命名。</p>
+<p>Java中标识符的组成规则：</p>
+<p>​    由字母、数字、下划线“_”、美元符号“$”组成，第一个字符不能是数字。</p>
+<p>​    不能使用java中的关键字作为标识符。    </p>
+<p>​    标识符对大小写敏感（区分大小写）。</p>
+<p>Java中标识符的命名约定：</p>
+<p>​    小驼峰式命名：变量名、方法名</p>
+<p>​        首字母小写，从第二个单词开始每个单词的首字母大写。</p>
+<p>​    大驼峰式命名：类名</p>
+<p>​        每个单词的首字母都大写。</p>
+<p>​    另外，标识符的命名最好可以做到见名知意</p>
+<p>​        例如：username、studentNumber等。</p>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/06/22/3ds21/">undefined<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/07/14/day03-switch-xun-huan-yu-ju/">undefined<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>
