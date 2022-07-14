@@ -6,7 +6,7 @@
   <link href="https://i80980.github.io/atom.xml" rel="self"/>
   
   <link href="https://i80980.github.io/"/>
-  <updated>2022-07-14T09:26:53.556Z</updated>
+  <updated>2022-07-14T09:53:26.091Z</updated>
   <id>https://i80980.github.io/</id>
   
   <author>
@@ -17,32 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://i80980.github.io/2022/07/14/day03-switch-xun-huan-yu-ju/"/>
-    <id>https://i80980.github.io/2022/07/14/day03-switch-xun-huan-yu-ju/</id>
-    <published>2022-07-14T09:31:17.816Z</published>
-    <updated>2022-07-14T09:26:53.556Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;1-switch语句&quot;&gt;&lt;a href=&quot;#1-switch语句&quot; class=&quot;headerlink&quot; title=&quot;1. switch语句&quot;&gt;&lt;/a&gt;1. switch语句&lt;/h2&gt;&lt;h3 id=&quot;1-1-分支语句switch语句&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://i80980.github.io/2022/07/14/day01-java-ji-chu-yu-fa/"/>
-    <id>https://i80980.github.io/2022/07/14/day01-java-ji-chu-yu-fa/</id>
-    <published>2022-07-14T09:30:46.568Z</published>
-    <updated>2022-07-14T09:30:21.594Z</updated>
+    <title>JavaDay01之java基础语法</title>
+    <link href="https://i80980.github.io/2022/07/14/031-javaday01-java-ji-chu-yu-fa/"/>
+    <id>https://i80980.github.io/2022/07/14/031-javaday01-java-ji-chu-yu-fa/</id>
+    <published>2022-07-13T16:00:00.000Z</published>
+    <updated>2022-07-14T09:53:26.091Z</updated>
     
     
       
@@ -55,59 +34,63 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://i80980.github.io/2022/06/22/3ds21/"/>
-    <id>https://i80980.github.io/2022/06/22/3ds21/</id>
-    <published>2022-06-22T09:03:52.894Z</published>
-    <updated>2022-04-04T11:47:22.787Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;下载：https-pan-baidu-com-share-init-surl-hOA73RRdUL8gdKN2xpIbAA&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://i80980.github.io/2022/06/22/ben-ren-xian-shi-shang-wang-sou-suo-liao-jie-jue-fang-fa-shuo-shi-python3/"/>
-    <id>https://i80980.github.io/2022/06/22/ben-ren-xian-shi-shang-wang-sou-suo-liao-jie-jue-fang-fa-shuo-shi-python3/</id>
-    <published>2022-06-22T09:03:52.887Z</published>
-    <updated>2022-04-15T13:08:47.740Z</updated>
+    <title>JavaDay02之java基础语法</title>
+    <link href="https://i80980.github.io/2022/07/14/032-javaday02-java-ji-chu-yu-fa/"/>
+    <id>https://i80980.github.io/2022/07/14/032-javaday02-java-ji-chu-yu-fa/</id>
+    <published>2022-07-13T16:00:00.000Z</published>
+    <updated>2022-07-14T09:53:55.500Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;本人先是上网搜索了解决方法，说是python3.7和Django1.11不兼容。但本机环境为python3.8+Django1.11.6。&lt;/p&gt;
-&lt;p&gt;执行python manage.py runserver报错：&lt;/p&gt;
-&lt;pre class=&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;day02-Java基础语法&quot;&gt;&lt;a href=&quot;#day02-Java基础语法&quot; class=&quot;headerlink&quot; title=&quot;day02 - Java基础语法&quot;&gt;&lt;/a&gt;day02 - Java基础语法&lt;/h1&gt;&lt;h2 id=&quot;1-类型转换&quot;&gt;&lt;a</summary>
         
       
     
     
+    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://i80980.github.io/2022/06/22/1/"/>
-    <id>https://i80980.github.io/2022/06/22/1/</id>
-    <published>2022-06-22T09:03:52.884Z</published>
-    <updated>2022-04-16T08:13:09.427Z</updated>
+    <title>JavaDay03之switch&amp;循环语句</title>
+    <link href="https://i80980.github.io/2022/07/14/033-javaday03-switch-xun-huan-yu-ju/"/>
+    <id>https://i80980.github.io/2022/07/14/033-javaday03-switch-xun-huan-yu-ju/</id>
+    <published>2022-07-13T16:00:00.000Z</published>
+    <updated>2022-07-14T09:54:29.406Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-switch语句&quot;&gt;&lt;a href=&quot;#1-switch语句&quot; class=&quot;headerlink&quot; title=&quot;1. switch语句&quot;&gt;&lt;/a&gt;1. switch语句&lt;/h2&gt;&lt;h3 id=&quot;1-1-分支语句switch语句&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Linux版Pycharm2021.2.3安装教程</title>
+    <link href="https://i80980.github.io/2022/04/16/030-linux-ban-pycharm2021.2.3/"/>
+    <id>https://i80980.github.io/2022/04/16/030-linux-ban-pycharm2021.2.3/</id>
+    <published>2022-04-15T16:00:00.000Z</published>
+    <updated>2022-07-14T09:50:14.410Z</updated>
     
     
       
@@ -119,6 +102,8 @@
       
     
     
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>
@@ -389,6 +374,31 @@
         
         
     <summary type="html">&lt;h1 id=&quot;一、Python概述&quot;&gt;&lt;a href=&quot;#一、Python概述&quot; class=&quot;headerlink&quot; title=&quot;一、Python概述&quot;&gt;&lt;/a&gt;一、Python概述&lt;/h1&gt;&lt;h2 id=&quot;1、计算机资源&quot;&gt;&lt;a href=&quot;#1、计算机资源&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Python3.7和Django1.11不兼容报错</title>
+    <link href="https://i80980.github.io/2022/03/03/029-python3.7-he-django1.11-bu-jian-rong-bao-cuo/"/>
+    <id>https://i80980.github.io/2022/03/03/029-python3.7-he-django1.11-bu-jian-rong-bao-cuo/</id>
+    <published>2022-03-02T16:00:00.000Z</published>
+    <updated>2022-07-14T09:51:37.239Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本人先是上网搜索了解决方法，说是python3.7和Django1.11不兼容。但本机环境为python3.8+Django1.11.6。&lt;/p&gt;
+&lt;p&gt;执行python manage.py runserver报错：&lt;/p&gt;
+&lt;pre class=&quot;</summary>
         
       
     
