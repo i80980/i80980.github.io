@@ -17,21 +17,21 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>JavaDay04之IDEA&数组 - 华佐博客</title>
+  <title>华佐博客</title>
 
   
-    <meta name="description" content="第一部分 : IDEA开发工具参见 ：IEDA的安装请参考文件夹PPT中的 04_IDEA.ppt 1.数组1.1 数组介绍​    数组就是存储数据长度固定的容器，存储多个数据的数据类型要一致。  1.2 数组的定义格式1.2.1 第一种格式​    数据类型[] 数组名 ​    示例： int[] arr;         double[] arr;       char[] arr;  1">
+    <meta name="description" content="第一部分 : IDEA开发工具参见 ：IEDA的安装请参考文件夹PPT中的 04_IDEA.ppt IDEA常用快捷键   快捷键 作用    psvm + 回车 快速生成main方法   sout + 回车 快速生成输出语句   Ctrl  + alt + L 格式化代码   Alt + enter 代码修正提示   Alt + 1 打开 \ 隐藏工程目录结构   Alt +  4 打开 \ 隐">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaDay04之IDEA&amp;数组">
+<meta property="og:title" content="华佐博客">
 <meta property="og:url" content="https://i80980.github.io/2022/07/19/034-javaday04-idea-shu-zu/index.html">
 <meta property="og:site_name" content="华佐博客">
-<meta property="og:description" content="第一部分 : IDEA开发工具参见 ：IEDA的安装请参考文件夹PPT中的 04_IDEA.ppt 1.数组1.1 数组介绍​    数组就是存储数据长度固定的容器，存储多个数据的数据类型要一致。  1.2 数组的定义格式1.2.1 第一种格式​    数据类型[] 数组名 ​    示例： int[] arr;         double[] arr;       char[] arr;  1">
+<meta property="og:description" content="第一部分 : IDEA开发工具参见 ：IEDA的安装请参考文件夹PPT中的 04_IDEA.ppt IDEA常用快捷键   快捷键 作用    psvm + 回车 快速生成main方法   sout + 回车 快速生成输出语句   Ctrl  + alt + L 格式化代码   Alt + enter 代码修正提示   Alt + 1 打开 \ 隐藏工程目录结构   Alt +  4 打开 \ 隐">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202207191518436.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202207191518164.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202207191518012.png">
 <meta property="article:published_time" content="2022-07-18T19:00:00.000Z">
-<meta property="article:modified_time" content="2022-07-19T07:52:54.710Z">
+<meta property="article:modified_time" content="2022-07-19T15:42:12.339Z">
 <meta property="article:author" content="华佐">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202207191518436.png">
@@ -76,7 +76,7 @@
 
 <div class="widgets">
 
-<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-IDEA%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">第一部分 : IDEA开发工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">1.数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%95%B0%E7%BB%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 数组介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 数组的定义格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.2.1 第一种格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.2.2.</span> <span class="toc-text">1.2.2 第二种格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%95%B0%E7%BB%84%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 数组的动态初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.3.1 什么是动态初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text">1.3.2 动态初始化格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3"><span class="toc-number">2.3.3.</span> <span class="toc-text">1.3.3 动态初始化格式详解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E8%AE%BF%E9%97%AE"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 数组元素访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.4.1 什么是索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.4.2.</span> <span class="toc-text">1.4.2访问数组元素格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">2.4.3.</span> <span class="toc-text">1.4.3示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-number">2.5.</span> <span class="toc-text">1.5 内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E5%86%85%E5%AD%98%E6%A6%82%E8%BF%B0"><span class="toc-number">2.5.1.</span> <span class="toc-text">1.5.1 内存概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-java%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-number">2.5.2.</span> <span class="toc-text">1.5.2 java中的内存分配</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-Java%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D-%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE"><span class="toc-number">2.6.</span> <span class="toc-text">1.6 Java内存分配-一个数组内存图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE"><span class="toc-number">2.7.</span> <span class="toc-text">1.7 两个数组内存图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%BB%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%90%8C%E5%86%85%E5%AD%98%E5%9B%BE"><span class="toc-number">2.8.</span> <span class="toc-text">1.8 多个数组指向相同内存图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-%E6%95%B0%E7%BB%84%E7%9A%84%E9%9D%99%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.9.</span> <span class="toc-text">1.9 数组的静态初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-1-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.9.1.</span> <span class="toc-text">1.9.1 什么是静态初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-2-%E9%9D%99%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.9.2.</span> <span class="toc-text">1.9.2 静态初始化格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-3%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">2.9.3.</span> <span class="toc-text">1.9.3示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">2.10.</span> <span class="toc-text">1.10 数组操作的两个常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-10-1-%E7%B4%A2%E5%BC%95%E8%B6%8A%E7%95%8C%E5%BC%82%E5%B8%B8"><span class="toc-number">2.10.1.</span> <span class="toc-text">1.10.1 索引越界异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-10-2-%E7%A9%BA%E6%8C%87%E9%92%88%E5%BC%82%E5%B8%B8"><span class="toc-number">2.10.2.</span> <span class="toc-text">1.10.2 空指针异常</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86"><span class="toc-number">2.11.</span> <span class="toc-text">1.11 数组遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-12-%E6%95%B0%E7%BB%84%E8%8E%B7%E5%8F%96%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">2.12.</span> <span class="toc-text">1.12 数组获取最大值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-13-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%B1%82%E5%92%8C"><span class="toc-number">2.13.</span> <span class="toc-text">1.13 数组元素求和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14-%E6%95%B0%E7%BB%84%E5%9F%BA%E6%9C%AC%E6%9F%A5%E6%89%BE%E3%80%90%E5%BA%94%E7%94%A8%E3%80%91"><span class="toc-number">2.14.</span> <span class="toc-text">1.14 数组基本查找【应用】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-15-%E8%AF%84%E5%A7%94%E6%89%93%E5%88%86%E3%80%90%E5%BA%94%E7%94%A8%E3%80%91"><span class="toc-number">2.15.</span> <span class="toc-text">1.15 评委打分【应用】</span></a></li></ol></li></ol></div></div></div>
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86-IDEA%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="toc-number">1.</span> <span class="toc-text">第一部分 : IDEA开发工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.</span> <span class="toc-text">IDEA常用快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E7%BB%84"><span class="toc-number">3.</span> <span class="toc-text">1.数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%95%B0%E7%BB%84%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.1.</span> <span class="toc-text">1.1 数组介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">1.2 数组的定义格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.2.1.</span> <span class="toc-text">1.2.1 第一种格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.2.2.</span> <span class="toc-text">1.2.2 第二种格式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%95%B0%E7%BB%84%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.3.</span> <span class="toc-text">1.3 数组的动态初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.3.1.</span> <span class="toc-text">1.3.1 什么是动态初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.3.2.</span> <span class="toc-text">1.3.2 动态初始化格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%BC%E5%BC%8F%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.3.3.</span> <span class="toc-text">1.3.3 动态初始化格式详解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E8%AE%BF%E9%97%AE"><span class="toc-number">3.4.</span> <span class="toc-text">1.4 数组元素访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%B4%A2%E5%BC%95"><span class="toc-number">3.4.1.</span> <span class="toc-text">1.4.1 什么是索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2%E8%AE%BF%E9%97%AE%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.4.2.</span> <span class="toc-text">1.4.2访问数组元素格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">3.4.3.</span> <span class="toc-text">1.4.3示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-number">3.5.</span> <span class="toc-text">1.5 内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E5%86%85%E5%AD%98%E6%A6%82%E8%BF%B0"><span class="toc-number">3.5.1.</span> <span class="toc-text">1.5.1 内存概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-java%E4%B8%AD%E7%9A%84%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="toc-number">3.5.2.</span> <span class="toc-text">1.5.2 java中的内存分配</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-Java%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D-%E4%B8%80%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE"><span class="toc-number">3.6.</span> <span class="toc-text">1.6 Java内存分配-一个数组内存图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E5%86%85%E5%AD%98%E5%9B%BE"><span class="toc-number">3.7.</span> <span class="toc-text">1.7 两个数组内存图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8-%E5%A4%9A%E4%B8%AA%E6%95%B0%E7%BB%84%E6%8C%87%E5%90%91%E7%9B%B8%E5%90%8C%E5%86%85%E5%AD%98%E5%9B%BE"><span class="toc-number">3.8.</span> <span class="toc-text">1.8 多个数组指向相同内存图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-%E6%95%B0%E7%BB%84%E7%9A%84%E9%9D%99%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.9.</span> <span class="toc-text">1.9 数组的静态初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-1-%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%99%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.9.1.</span> <span class="toc-text">1.9.1 什么是静态初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-2-%E9%9D%99%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.9.2.</span> <span class="toc-text">1.9.2 静态初始化格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-9-3%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-number">3.9.3.</span> <span class="toc-text">1.9.3示例代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">3.10.</span> <span class="toc-text">1.10 数组操作的两个常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-10-1-%E7%B4%A2%E5%BC%95%E8%B6%8A%E7%95%8C%E5%BC%82%E5%B8%B8"><span class="toc-number">3.10.1.</span> <span class="toc-text">1.10.1 索引越界异常</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-10-2-%E7%A9%BA%E6%8C%87%E9%92%88%E5%BC%82%E5%B8%B8"><span class="toc-number">3.10.2.</span> <span class="toc-text">1.10.2 空指针异常</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-11-%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86"><span class="toc-number">3.11.</span> <span class="toc-text">1.11 数组遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-12-%E6%95%B0%E7%BB%84%E8%8E%B7%E5%8F%96%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">3.12.</span> <span class="toc-text">1.12 数组获取最大值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-13-%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%B1%82%E5%92%8C"><span class="toc-number">3.13.</span> <span class="toc-text">1.13 数组元素求和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-14-%E6%95%B0%E7%BB%84%E5%9F%BA%E6%9C%AC%E6%9F%A5%E6%89%BE%E3%80%90%E5%BA%94%E7%94%A8%E3%80%91"><span class="toc-number">3.14.</span> <span class="toc-text">1.14 数组基本查找【应用】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-15-%E8%AF%84%E5%A7%94%E6%89%93%E5%88%86%E3%80%90%E5%BA%94%E7%94%A8%E3%80%91"><span class="toc-number">3.15.</span> <span class="toc-text">1.15 评委打分【应用】</span></a></li></ol></li></ol></div></div></div>
 
 
 </div>
@@ -92,8 +92,64 @@
 <div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Java%E5%9F%BA%E7%A1%80/">Java基础</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-07-18T19:00:00.000Z">2022-07-19</time></div></div>
 
 <article class='content md post'>
-<h1 class="article-title"><span>JavaDay04之IDEA&数组</span></h1>
+
 <h2 id="第一部分-IDEA开发工具"><a href="#第一部分-IDEA开发工具" class="headerlink" title="第一部分 : IDEA开发工具"></a>第一部分 : IDEA开发工具</h2><p><strong>参见 ：IEDA的安装请参考文件夹PPT中的 04_IDEA.ppt</strong></p>
+<h2 id="IDEA常用快捷键"><a href="#IDEA常用快捷键" class="headerlink" title="IDEA常用快捷键"></a><strong>IDEA</strong>常用快捷键</h2><table>
+<thead>
+<tr>
+<th align="left"><strong>快捷键</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">psvm + 回车</td>
+<td>快速生成main方法</td>
+</tr>
+<tr>
+<td align="left">sout + 回车</td>
+<td>快速生成输出语句</td>
+</tr>
+<tr>
+<td align="left">Ctrl  + alt + L</td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td align="left">Alt + enter</td>
+<td>代码修正提示</td>
+</tr>
+<tr>
+<td align="left">Alt + 1</td>
+<td>打开 \ 隐藏工程目录结构</td>
+</tr>
+<tr>
+<td align="left">Alt +  4</td>
+<td>打开 \ 隐藏控制台</td>
+</tr>
+<tr>
+<td align="left">Ctrl + D</td>
+<td>向下复制一行</td>
+</tr>
+<tr>
+<td align="left">Ctrl  + X</td>
+<td>剪切当前行</td>
+</tr>
+<tr>
+<td align="left">Ctrl  + /</td>
+<td>批量加入单行注释，再按一次就是取消</td>
+</tr>
+<tr>
+<td align="left">Ctrl  + shift + /</td>
+<td>批量加入多行注释，再按一次就是取消</td>
+</tr>
+<tr>
+<td align="left">Alt +  shift + ↑</td>
+<td>上移当前行</td>
+</tr>
+<tr>
+<td align="left">Alt +  shift + ↓</td>
+<td>下移当前行</td>
+</tr>
+</tbody></table>
 <h2 id="1-数组"><a href="#1-数组" class="headerlink" title="1.数组"></a>1.数组</h2><h3 id="1-1-数组介绍"><a href="#1-1-数组介绍" class="headerlink" title="1.1 数组介绍"></a>1.1 数组介绍</h3><p>​    数组就是存储数据长度固定的容器，存储多个数据的数据类型要一致。 </p>
 <h3 id="1-2-数组的定义格式"><a href="#1-2-数组的定义格式" class="headerlink" title="1.2 数组的定义格式"></a>1.2 数组的定义格式</h3><h4 id="1-2-1-第一种格式"><a href="#1-2-1-第一种格式" class="headerlink" title="1.2.1 第一种格式"></a>1.2.1 第一种格式</h4><p>​    数据类型[] 数组名</p>
 <p>​    示例：</p>
@@ -571,7 +627,7 @@
 
 </article>
 
-<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/07/14/033-javaday03-switch-xun-huan-yu-ju/">JavaDay03之switch&循环语句<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/07/19/035-javaday05-fang-fa/">JavaDay05之方法<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/07/19/036-javaday06-debug-ji-chu-lian-xi/">JavaDay06之Debug&基础练习<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2022/07/19/035-javaday05-fang-fa/">JavaDay05之方法<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
 
 
 
