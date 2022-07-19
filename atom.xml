@@ -6,7 +6,7 @@
   <link href="https://i80980.github.io/atom.xml" rel="self"/>
   
   <link href="https://i80980.github.io/"/>
-  <updated>2022-07-14T09:53:26.091Z</updated>
+  <updated>2022-07-19T07:29:11.312Z</updated>
   <id>https://i80980.github.io/</id>
   
   <author>
@@ -15,6 +15,145 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaDay07之面向对象</title>
+    <link href="https://i80980.github.io/2022/07/19/037-javaday07-mian-xiang-dui-xiang/"/>
+    <id>https://i80980.github.io/2022/07/19/037-javaday07-mian-xiang-dui-xiang/</id>
+    <published>2022-07-18T16:00:00.000Z</published>
+    <updated>2022-07-19T07:29:11.312Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-类和对象&quot;&gt;&lt;a href=&quot;#1-类和对象&quot; class=&quot;headerlink&quot; title=&quot;1. 类和对象&quot;&gt;&lt;/a&gt;1. 类和对象&lt;/h2&gt;&lt;p&gt;**面向对象和面向过程的思想对比 : **&lt;/p&gt;
+&lt;p&gt;​    &lt;strong&gt;面向过程</summary>
+        
+      
+    
+    
+    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaDay05之方法</title>
+    <link href="https://i80980.github.io/2022/07/19/035-javaday05-fang-fa/"/>
+    <id>https://i80980.github.io/2022/07/19/035-javaday05-fang-fa/</id>
+    <published>2022-07-18T16:00:00.000Z</published>
+    <updated>2022-07-19T07:22:57.568Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-方法概述&quot;&gt;&lt;a href=&quot;#1-方法概述&quot; class=&quot;headerlink&quot; title=&quot;1. 方法概述&quot;&gt;&lt;/a&gt;1. 方法概述&lt;/h2&gt;&lt;h3 id=&quot;1-1-方法的概念&quot;&gt;&lt;a href=&quot;#1-1-方法的概念&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaDay04之IDEA&amp;数组</title>
+    <link href="https://i80980.github.io/2022/07/19/034-javaday04-idea-shu-zu/"/>
+    <id>https://i80980.github.io/2022/07/19/034-javaday04-idea-shu-zu/</id>
+    <published>2022-07-18T16:00:00.000Z</published>
+    <updated>2022-07-19T07:21:21.339Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;第一部分-IDEA开发工具&quot;&gt;&lt;a href=&quot;#第一部分-IDEA开发工具&quot; class=&quot;headerlink&quot; title=&quot;第一部分 : IDEA开发工具&quot;&gt;&lt;/a&gt;第一部分 : IDEA开发工具&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;参见</summary>
+        
+      
+    
+    
+    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaDay09之ArrayList集合&amp;学生管理系统</title>
+    <link href="https://i80980.github.io/2022/07/19/039-javaday09-arraylist-ji-he-xue-sheng-guan-li-xi-tong/"/>
+    <id>https://i80980.github.io/2022/07/19/039-javaday09-arraylist-ji-he-xue-sheng-guan-li-xi-tong/</id>
+    <published>2022-07-18T16:00:00.000Z</published>
+    <updated>2022-07-19T07:32:49.695Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-ArrayList&quot;&gt;&lt;a href=&quot;#1-ArrayList&quot; class=&quot;headerlink&quot; title=&quot;1.ArrayList&quot;&gt;&lt;/a&gt;1.ArrayList&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;集合和数组的区别 :&lt;/strong&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaDay08之常用API</title>
+    <link href="https://i80980.github.io/2022/07/19/038-javaday08-chang-yong-api/"/>
+    <id>https://i80980.github.io/2022/07/19/038-javaday08-chang-yong-api/</id>
+    <published>2022-07-18T16:00:00.000Z</published>
+    <updated>2022-07-19T07:31:09.353Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-API&quot;&gt;&lt;a href=&quot;#1-API&quot; class=&quot;headerlink&quot; title=&quot;1.API&quot;&gt;&lt;/a&gt;1.API&lt;/h2&gt;&lt;h3 id=&quot;1-1-API概述-帮助文档的使用&quot;&gt;&lt;a href=&quot;#1-1-API概述-帮助文档的使用&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaDay10之Git</title>
+    <link href="https://i80980.github.io/2022/07/19/040-javaday10-git/"/>
+    <id>https://i80980.github.io/2022/07/19/040-javaday10-git/</id>
+    <published>2022-07-18T16:00:00.000Z</published>
+    <updated>2022-07-19T07:37:48.436Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-Git介绍&quot;&gt;&lt;a href=&quot;#1-Git介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Git介绍&quot;&gt;&lt;/a&gt;1.Git介绍&lt;/h2&gt;&lt;h3 id=&quot;1-1版本控制-理解&quot;&gt;&lt;a href=&quot;#1-1版本控制-理解&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Java基础" scheme="https://i80980.github.io/categories/Java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JavaDay01之java基础语法</title>
@@ -334,151 +473,6 @@
     
     
     <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Day02之Python运算符与if结构</title>
-    <link href="https://i80980.github.io/2022/03/03/017-python-ji-chu-02/"/>
-    <id>https://i80980.github.io/2022/03/03/017-python-ji-chu-02/</id>
-    <published>2022-03-02T17:00:00.000Z</published>
-    <updated>2022-04-01T13:03:59.575Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、昨日回顾&quot;&gt;&lt;a href=&quot;#一、昨日回顾&quot; class=&quot;headerlink&quot; title=&quot;一、昨日回顾&quot;&gt;&lt;/a&gt;一、昨日回顾&lt;/h1&gt;&lt;h2 id=&quot;1、回顾昨天的课程内容&quot;&gt;&lt;a href=&quot;#1、回顾昨天的课程内容&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Day01之Python环境搭建与输入输出</title>
-    <link href="https://i80980.github.io/2022/03/03/016-python-ji-chu-01/"/>
-    <id>https://i80980.github.io/2022/03/03/016-python-ji-chu-01/</id>
-    <published>2022-03-02T16:00:00.000Z</published>
-    <updated>2022-04-01T13:00:30.653Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、Python概述&quot;&gt;&lt;a href=&quot;#一、Python概述&quot; class=&quot;headerlink&quot; title=&quot;一、Python概述&quot;&gt;&lt;/a&gt;一、Python概述&lt;/h1&gt;&lt;h2 id=&quot;1、计算机资源&quot;&gt;&lt;a href=&quot;#1、计算机资源&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python3.7和Django1.11不兼容报错</title>
-    <link href="https://i80980.github.io/2022/03/03/029-python3.7-he-django1.11-bu-jian-rong-bao-cuo/"/>
-    <id>https://i80980.github.io/2022/03/03/029-python3.7-he-django1.11-bu-jian-rong-bao-cuo/</id>
-    <published>2022-03-02T16:00:00.000Z</published>
-    <updated>2022-07-14T09:51:37.239Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本人先是上网搜索了解决方法，说是python3.7和Django1.11不兼容。但本机环境为python3.8+Django1.11.6。&lt;/p&gt;
-&lt;p&gt;执行python manage.py runserver报错：&lt;/p&gt;
-&lt;pre class=&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>混沌</title>
-    <link href="https://i80980.github.io/2021/11/24/015-hun-dun/"/>
-    <id>https://i80980.github.io/2021/11/24/015-hun-dun/</id>
-    <published>2021-11-23T16:00:00.000Z</published>
-    <updated>2021-11-24T14:09:48.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;总感觉一天天浑浑噩噩的，心知肚明大一是最闲的时候，正好碰上疫情，一两个月待在寝室了，自己学业反倒照顾不到，反而欠一大屁股帐，尚不且说你超前学习，成效数一数二，你连基本的跟上老师的步伐都做不到……在这疫情两个月，难道你唯一说得出口的是带舍友入坑原神，还让舍友充了两三百了吗？&lt;</summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://i80980.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>观《再见爱人》有感</title>
-    <link href="https://i80980.github.io/2021/11/20/014-zai-jian-ai-ren-you-gan/"/>
-    <id>https://i80980.github.io/2021/11/20/014-zai-jian-ai-ren-you-gan/</id>
-    <published>2021-11-20T04:26:06.000Z</published>
-    <updated>2022-04-11T02:08:57.604Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;节目看完了，最不舍的是王秋雨和郭柯宇。&lt;/p&gt;
-&lt;p&gt;可以说，kk那对是来寻找一个答案，最后找到了，为他们开心；&lt;/p&gt;
-&lt;p&gt;而对王秋雨来说，他确实有缺点，而且这么坦率地暴露在全国观众中，不知道能否再续新婚，年龄大了，离婚也只是妥协，他内心是不愿意的，只为成全他爱的那个人</summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://i80980.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈今后</title>
-    <link href="https://i80980.github.io/2021/11/20/013-jin-tian-bu-zhi-zha-hui-shi-hen-duo-gan-xiang-xie-xie-ba/"/>
-    <id>https://i80980.github.io/2021/11/20/013-jin-tian-bu-zhi-zha-hui-shi-hen-duo-gan-xiang-xie-xie-ba/</id>
-    <published>2021-11-19T16:00:00.000Z</published>
-    <updated>2021-11-20T12:25:20.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天不知咋回事，很多感想，写写吧。&lt;/p&gt;
-&lt;p&gt;我坚持写博客，是因为这完全符合我对程序员的设想，而且这肯定有利于我的&lt;/p&gt;
-&lt;p&gt;我不想想普通大学生一样普普通通过完四年，仅仅完成学业，我想出色，像新闻报道中的那样，有成长，有成就。&lt;/p&gt;
-&lt;p&gt;对我未来的设想哈&lt;/p&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="随笔" scheme="https://i80980.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
