@@ -549,6 +549,25 @@
     
     
     <entry>
+      <title>Autodesk系列软件因C++安装错误而安装失败分析及解决办法</title>
+      <link href="/2021/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/"/>
+      <url>/2021/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/</url>
+      
+        <content type="html"><![CDATA[<p>当Autodesk系列软件报错 因微软运行库安装失败 </p><p>这次找到对应的是Microsoft Visual C++ 2008 安装失败</p><p>单独运行该安装程序 提示错误 如下图所示</p><p><img src="C:\Users\i80980\Desktop\Snipaste_2022-08-27_16-40-29.png" alt="Snipaste_2022-08-27_16-40-29"></p><p>观察发现 Microsoft Visual C++ 2008 的x86 的安装程序 安装能够正常安装</p><p>将x86的复制替换原来x64的安装文件即可 注意更改成 相同的文件名</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件安装经验 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>天水国庆游记</title>
       <link href="/2021/10/02/010-tian-shui-guo-qing-you-ji/"/>
       <url>/2021/10/02/010-tian-shui-guo-qing-you-ji/</url>
