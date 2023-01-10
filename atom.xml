@@ -6,7 +6,7 @@
   <link href="https://i80980.github.io/atom.xml" rel="self"/>
   
   <link href="https://i80980.github.io/"/>
-  <updated>2023-01-10T08:41:34.674Z</updated>
+  <updated>2023-01-10T08:47:53.118Z</updated>
   <id>https://i80980.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://i80980.github.io/2023/01/10/042.clone-fu-wu-qi-zi-dong-ban-yun/"/>
     <id>https://i80980.github.io/2023/01/10/042.clone-fu-wu-qi-zi-dong-ban-yun/</id>
     <published>2023-01-09T16:00:00.000Z</published>
-    <updated>2023-01-10T08:41:34.674Z</updated>
+    <updated>2023-01-10T08:47:53.118Z</updated>
     
     
       
@@ -37,7 +37,33 @@
     
     
     
-    <category term="软件安装经验" scheme="https://i80980.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%BB%8F%E9%AA%8C/"/>
+    <category term="VPS" scheme="https://i80980.github.io/categories/VPS/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>失败的免费V2ray</title>
+    <link href="https://i80980.github.io/2023/01/10/43.shi-bai-de-mian-fei-v2ray/"/>
+    <id>https://i80980.github.io/2023/01/10/43.shi-bai-de-mian-fei-v2ray/</id>
+    <published>2023-01-09T16:00:00.000Z</published>
+    <updated>2023-01-10T09:03:52.564Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本想试着用免费的Hax服务器搭建梯子，结果网速不理想，鼓捣了一天放弃了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&quot;放弃原因&quot;&gt;&lt;a href=&quot;#放弃原因&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="VPS" scheme="https://i80980.github.io/categories/VPS/"/>
     
     
   </entry>
@@ -450,29 +476,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot; title=&quot;一、作业回顾&quot;&gt;&lt;/a&gt;一、作业回顾&lt;/h1&gt;&lt;h2 id=&quot;1、格式化输出与-百分号&quot;&gt;&lt;a href=&quot;#1、格式化输出与-百分号&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Day06之Python中的函数</title>
-    <link href="https://i80980.github.io/2022/03/03/021-python-ji-chu-06/"/>
-    <id>https://i80980.github.io/2022/03/03/021-python-ji-chu-06/</id>
-    <published>2022-03-02T21:00:00.000Z</published>
-    <updated>2022-04-01T13:07:36.535Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot;</summary>
         
       
     

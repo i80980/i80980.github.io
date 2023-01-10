@@ -13,7 +13,26 @@
       
       <categories>
           
-          <category> 软件安装经验 </category>
+          <category> VPS </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>失败的免费V2ray</title>
+      <link href="/2023/01/10/43.shi-bai-de-mian-fei-v2ray/"/>
+      <url>/2023/01/10/43.shi-bai-de-mian-fei-v2ray/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>本想试着用免费的Hax服务器搭建梯子，结果网速不理想，鼓捣了一天放弃了</p></blockquote><h5 id="放弃原因"><a href="#放弃原因" class="headerlink" title="放弃原因"></a>放弃原因</h5><p>1.IPV6的小鸡 即使使用免费的cloudflare提供的IPV4体验也不佳</p><p>2.OpenVZ架构开启BBR困难，即使搭建上了，网速也没有提升，也有可能我方法不对</p><p>总之，我搭建失败了，但还是有参考价值，故作此篇。</p><h5 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h5><p>apt update</p><p>apt upgrade</p><p>wget -qO- <a href="https://cdn.jsdelivr.net/gh/jiaosir-cn/EUserv_Add_Ipv4@main/CDN/___ipv6_add_ipv4.sh">https://cdn.jsdelivr.net/gh/jiaosir-cn/EUserv_Add_Ipv4@main/CDN/___ipv6_add_ipv4.sh</a> | bash</p><p>wg</p><p>//若不行尝试<br>wget -N <a href="https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh">https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh</a> &amp;&amp; bash menu.sh [option] [lisence]</p><p>请选择: 4</p><p>bash menu.sh</p><ol start="4"><li> 打开 WARP (warp o)</li></ol><p>sudo apt update</p><p>sudo apt install ifstat</p><h5 id="安装x-ui"><a href="#安装x-ui" class="headerlink" title="安装x-ui"></a>安装x-ui</h5><p>bash &lt;(curl -Ls <a href="https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh">https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh</a>)</p><h5 id="添加伪装"><a href="#添加伪装" class="headerlink" title="添加伪装"></a><strong>添加伪装</strong></h5><blockquote><p>使用IPv6网络不仅仅是稳定，也能让速度更强劲</p></blockquote><p>1、在CF中DNS中，给域名添加AAAA记录为IPv6地址；</p><p>2、在SSL/TLS中，选择“完全”，然后申请客户端证书；</p><p>3、在Xray面板中，修改入站规则如图：</p><p><img src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301101703772.png" alt="ws.PNG"></p><p>4、完成后，可以使用复制链接或者扫描二维码的方式添加到v2ray客户端，搭建过程全部完成。</p><h5 id="OpenVZ架构一键开启BBR加速"><a href="#OpenVZ架构一键开启BBR加速" class="headerlink" title="OpenVZ架构一键开启BBR加速"></a>OpenVZ架构一键开启BBR加速</h5><table><thead><tr><th>Debian or Ubuntu系统</th><th></th></tr></thead><tbody><tr><td></td><td>适用于单网卡（单IP）服务器：</td></tr><tr><td></td><td>wget  <a href="https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0/tcp_nanqinlang-rinetd-debianorubuntu.sh">https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0/tcp_nanqinlang-rinetd-debianorubuntu.sh</a></td></tr><tr><td></td><td>bash tcp_nanqinlang-rinetd-debianorubuntu.sh</td></tr><tr><td></td><td><span class="hljs-comment">#如果提示only support OpenVZ !，则使用下面这个脚本</span></td></tr><tr><td></td><td>wget <a href="https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0-nocheckvirt/tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt.sh">https://github.com/tcp-nanqinlang/lkl-rinetd/releases/download/1.1.0-nocheckvirt/tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt.sh</a></td></tr><tr><td></td><td>bash tcp_nanqinlang-rinetd-debianorubuntu-nocheckvirt.sh</td></tr></tbody></table><p>打开TUN</p><p><img src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301101643599.png" alt="image-20230102163140408"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> VPS </category>
           
       </categories>
       
