@@ -17,16 +17,22 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>华佐博客</title>
+  <title>初学smali及其语法 - 华佐博客</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="华佐博客">
-<meta property="og:url" content="https://i80980.github.io/page/7/index.html">
+    <meta name="description" content="最近在学逆向，期间讲到smali语法，很重要  初学smali及其语法smali是Dalvik的寄存器语言，smali代码是dex反编译而来的。 关键字    名称 注释    .class 类名   .super 父类名，继承的上级类名名称   .source 源名   .field 变量   .method 方法名   .register 寄存器   .end method 方法名的结束">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学smali及其语法">
+<meta property="og:url" content="https://i80980.github.io/2023/01/10/44.chu-xue-smali-ji-qi-yu-fa/index.html">
 <meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="最近在学逆向，期间讲到smali语法，很重要  初学smali及其语法smali是Dalvik的寄存器语言，smali代码是dex反编译而来的。 关键字    名称 注释    .class 类名   .super 父类名，继承的上级类名名称   .source 源名   .field 变量   .method 方法名   .register 寄存器   .end method 方法名的结束">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301101721353.png">
+<meta property="article:published_time" content="2023-01-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-10T09:21:25.007Z">
 <meta property="article:author" content="华佐">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301101721353.png">
 <meta name="twitter:creator" content="@i80980# for open_graph meta">
   
   
@@ -57,7 +63,7 @@
 
 
   <div class='l_body' id='start'>
-    <aside class='l_left' layout=''>
+    <aside class='l_left' layout='post'>
     
 
 
@@ -66,109 +72,339 @@
 <div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
 <nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
 
-<div class="widgets"><div class='widget-wrap' id='markdown'>
-  <div class='widget-header cap dis-select'>
-    <span class='name'>华佐博客</span>
-  </div>
-  <div class='widget-body fs14'>
-    
-      <p>·欢迎光临小谢的破站，</p>
+<div class="widgets">
 
-    
-      <p>·这是小谢精心经营的小站，</p>
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9D%E5%AD%A6smali%E5%8F%8A%E5%85%B6%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">初学smali及其语法</span></a></li></ol></div></div></div>
 
-    
-      <p>·希望他的拙笔也能帮助到你。</p>
 
-    
-      <p>·本站访问及图片显示速度均和Github访问速度相关~</p>
-
-    
-  </div>
-</div>
 </div>
 
 
     </aside>
-    <div class='l_main list'>
+    <div class='l_main'>
       
-  
-
-<header class="header mobile-only">
-
-<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
-</header>
-
-
 
       
 
 
-  <div class='nav-wrap'>
-  <nav class='sub post cap'>
-    
-      <a class='active' href='/'>近期发布</a>
-    
-    
-      
-        <a href='/categories'>分类</a>
-      
-    
-    
-      
-        <a href='/tagspp'>标签</a>
-      
-    
-    
-      
-        <a href='/archives'>归档</a>
-      
-    
-  </nav>
-</div>
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/smali/">smali</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-01-09T16:00:00.000Z">2023-01-10</time></div></div>
 
-  <div class="post-list post"><a class="post-card post " href="/2021/09/04/006-magisk-mo-kuai-bei-fen/"><article class="md">
-<h2 class="post-title">Magisk模块备份</h2><div class="excerpt"><p>
-若没有刷入Magisk，请参考我另一篇教程
+<article class='content md post'>
+<h1 class="article-title"><span>初学smali及其语法</span></h1>
+<blockquote>
+<p>最近在学<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1701353-1-1.html">逆向</a>，期间讲到smali语法，很重要</p>
+</blockquote>
+<h5 id="初学smali及其语法"><a href="#初学smali及其语法" class="headerlink" title="初学smali及其语法"></a>初学smali及其语法</h5><p>smali是Dalvik的寄存器语言，smali代码是dex反编译而来的。</p>
+<p>关键字</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.class</td>
+<td align="left">类名</td>
+</tr>
+<tr>
+<td align="left">.super</td>
+<td align="left">父类名，继承的上级类名名称</td>
+</tr>
+<tr>
+<td align="left">.source</td>
+<td align="left">源名</td>
+</tr>
+<tr>
+<td align="left">.field</td>
+<td align="left">变量</td>
+</tr>
+<tr>
+<td align="left">.method</td>
+<td align="left">方法名</td>
+</tr>
+<tr>
+<td align="left">.register</td>
+<td align="left">寄存器</td>
+</tr>
+<tr>
+<td align="left">.end method</td>
+<td align="left">方法名的结束</td>
+</tr>
+<tr>
+<td align="left">public</td>
+<td align="left">公有</td>
+</tr>
+<tr>
+<td align="left">protected</td>
+<td align="left">半公开，只有同一家人才能用</td>
+</tr>
+<tr>
+<td align="left">private</td>
+<td align="left">私有，只能自己使用</td>
+</tr>
+<tr>
+<td align="left">.parameter</td>
+<td align="left">方法参数</td>
+</tr>
+<tr>
+<td align="left">.prologue</td>
+<td align="left">方法开始</td>
+</tr>
+<tr>
+<td align="left">.line xxx</td>
+<td align="left">位于第xxx行</td>
+</tr>
+</tbody></table>
+<p>数据类型对应</p>
+<table>
+<thead>
+<tr>
+<th align="left">smali类型</th>
+<th align="left">java类型</th>
+<th align="left">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">V</td>
+<td align="left">void</td>
+<td align="left">无返回值</td>
+</tr>
+<tr>
+<td align="left">Z</td>
+<td align="left">boolean</td>
+<td align="left">布尔值类型，返回0或1</td>
+</tr>
+<tr>
+<td align="left">B</td>
+<td align="left">byte</td>
+<td align="left">字节类型，返回字节</td>
+</tr>
+<tr>
+<td align="left">S</td>
+<td align="left">short</td>
+<td align="left">短整数类型，返回数字</td>
+</tr>
+<tr>
+<td align="left">C</td>
+<td align="left">char</td>
+<td align="left">字符类型，返回字符</td>
+</tr>
+<tr>
+<td align="left">I</td>
+<td align="left">int</td>
+<td align="left">整数类型，返回数字</td>
+</tr>
+<tr>
+<td align="left">J</td>
+<td align="left">long （64位 需要2个寄存器存储）</td>
+<td align="left">长整数类型，返回数字</td>
+</tr>
+<tr>
+<td align="left">F</td>
+<td align="left">float</td>
+<td align="left">单浮点类型，返回数字</td>
+</tr>
+<tr>
+<td align="left">D</td>
+<td align="left">double （64位 需要2个寄存器存储）</td>
+<td align="left">双浮点类型，返回数字</td>
+</tr>
+<tr>
+<td align="left">string</td>
+<td align="left">String</td>
+<td align="left">文本类型，返回字符串</td>
+</tr>
+<tr>
+<td align="left">Lxxx/xxx/xxx</td>
+<td align="left">object</td>
+<td align="left">对象类型，返回对象</td>
+</tr>
+</tbody></table>
+<p>常用指令</p>
+<table>
+<thead>
+<tr>
+<th align="left">关键字</th>
+<th align="left">注释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">const</td>
+<td align="left">重写整数属性，真假属性内容，只能是数字类型</td>
+</tr>
+<tr>
+<td align="left">const-string</td>
+<td align="left">重写字符串内容</td>
+</tr>
+<tr>
+<td align="left">const-wide</td>
+<td align="left">重写长整数类型，多用于修改到期时间。</td>
+</tr>
+<tr>
+<td align="left">return</td>
+<td align="left">返回指令</td>
+</tr>
+<tr>
+<td align="left">if-eq</td>
+<td align="left">全称equal(a=b)，比较寄存器ab内容，相同则跳</td>
+</tr>
+<tr>
+<td align="left">if-ne</td>
+<td align="left">全称not equal(a!=b)，ab内容不相同则跳</td>
+</tr>
+<tr>
+<td align="left">if-eqz</td>
+<td align="left">全称equal zero(a=0)，z即是0的标记，a等于0则跳</td>
+</tr>
+<tr>
+<td align="left">if-nez</td>
+<td align="left">全称not equal zero(a!=0)，a不等于0则跳</td>
+</tr>
+<tr>
+<td align="left">if-ge</td>
+<td align="left">全称greater equal(a&gt;=b)，a大于或等于则跳</td>
+</tr>
+<tr>
+<td align="left">if-le</td>
+<td align="left">全称little equal(a&lt;=b)，a小于或等于则跳</td>
+</tr>
+<tr>
+<td align="left">goto</td>
+<td align="left">强制跳到指定位置</td>
+</tr>
+<tr>
+<td align="left">switch</td>
+<td align="left">分支跳转，一般会有多个分支线，并根据指令跳转到适当位置</td>
+</tr>
+<tr>
+<td align="left">iget</td>
+<td align="left">获取寄存器数据</td>
+</tr>
+</tbody></table>
+<p>其余指令可用语法工具查询</p>
+<p>定位方法：搜索弹窗关键字、抓取按钮id</p>
+<p>例子：</p>
+<pre><code> 复制代码 隐藏代码//一个私有、静态、不可变的方法   方法名
+.method private static final onCreate$lambda-2(Lkotlin/jvm/internal/Ref$IntRef;Lcom/zj/wuaipojie/ui/ChallengeSecond;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/widget/ImageView;Landroid/view/View;)Z //(这里面是方法的参数)这里是方法返回值类型，表示布尔值类型，返回假或真
+    .registers 7  //寄存器数量
 
-A-智能步数管理
-原帖【 智能步数管理-Magisk版本】v3.2
+    .line 33  //代码所在的行数
+    iget p0, p0, Lkotlin/jvm/internal/Ref$IntRef;-&gt;element:I  //读取p0(第一个参数，参考寄存器知识)中element的值赋值给p0
 
-应该是最后一个版本了，一些小bug都...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-09-03T16:00:00.000Z">2021-09-04</time></span><span class="cap breadcrumb">技术分享</span><div>
-</article></a><a class="post-card post " href="/2021/09/04/007-httpcanary-xiao-huang-niao/"><article class="md">
-<h2 class="post-title">HttpCanary小黄鸟安卓11安装证书教程</h2><div class="excerpt"><p>
-参考教程：酷安@夏雨_SummerRain
+    const/4 p5, 0x1  //p5赋值1
 
-B站@凌风依熙
-</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-09-03T16:00:00.000Z">2021-09-04</time></span><span class="cap breadcrumb">技术分享</span><div>
-</article></a><a class="post-card post " href="/2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/"><article class="md">
-<div class="post-cover"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><h2 class="post-title">修补boot获取root刷入magisk教程</h2><div class="excerpt"><p>
-博主手机：Redmi K40 ProMIUI版本：开发版公测21.8.11
+    const/16 v0, 0xa //v0赋值10，在16进制里a表示10
+
+    if-ge p0, v0, :cond_15  //判断p0的值是否大于或等于v0的值(即p0的值是否大于或等于10)，如果大于或等于则跳转到:cond_15
+
+    .line 34  //以下是常见的Toast弹窗代码
+    check-cast p1, Landroid/content/Context; //检查Context对象引用
+
+    const-string p0, "请先获取10个硬币哦" //弹窗文本信息，把""里的字符串数据赋值给p0
+
+    check-cast p0, Ljava/lang/CharSequence; //检查CharSequence对象引用
+
+    invoke-static {p1, p0, p5}, Landroid/widget/Toast;-&gt;makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast; 
+    //将弹窗文本、显示时间等信息传给p1
+
+    move-result-object p0  //结果传递给p0
+
+    invoke-virtual {p0}, Landroid/widget/Toast;-&gt;show()V  //当看到这个Toast;-&gt;show你就应该反应过来这里是弹窗代码
+
+    goto :goto_31  //跳转到:goto_31
+
+    :cond_15 //跳转的一个地址
+
+    invoke-virtual {p1}, Lcom/zj/wuaipojie/ui/ChallengeSecond;-&gt;isvip()Z  //判断isvip方法的返回值是否为真(即结果是否为1)
+
+    move-result p0  //结果赋值给p0
+
+    if-eqz p0, :cond_43 //如果结果为0则跳转cond_43地址
+
+    const p0, 0x7f0d0018  //在arsc中的id索引，这个值可以进行查询
+
+    .line 37
+    invoke-virtual {p2, p0}, Landroid/widget/ImageView;-&gt;setImageResource(I)V //设置图片资源
+
+    const p0, 0x7f0d0008
+
+    .line 38
+    invoke-virtual {p3, p0}, Landroid/widget/ImageView;-&gt;setImageResource(I)V
+
+    const p0, 0x7f0d000a
+
+    .line 39
+    invoke-virtual {p4, p0}, Landroid/widget/ImageView;-&gt;setImageResource(I)V
+
+    .line 40
+    sget-object p0, Lcom/zj/wuaipojie/util/SPUtils;-&gt;INSTANCE:Lcom/zj/wuaipojie/util/SPUtils; 
+
+    check-cast p1, Landroid/content/Context;
+
+    const/4 p2, 0x2 //p2赋值2
+
+    const-string p3, "level" //sp的索引
+
+    invoke-virtual {p0, p1, p3, p2}, Lcom/zj/wuaipojie/util/SPUtils;-&gt;saveInt(Landroid/content/Context;Ljava/lang/String;I)V //写入数据
+
+    goto :goto_50 //跳转地址
+
+    :cond_43
+
+    check-cast p1, Landroid/content/Context;
+
+    const-string p0, "\u8bf7\u5148\u5145\u503c\u5927\u4f1a\u5458\u54e6\uff01" //请先充值大会员哦！
+
+    check-cast p0, Ljava/lang/CharSequence;
+
+    invoke-static {p1, p0, p5}, Landroid/widget/Toast;-&gt;makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+    move-result-object p0
+
+    invoke-virtual {p0}, Landroid/widget/Toast;-&gt;show()V
+
+    :goto_50
+    return p5  //返回p5的值
+.end method //方法结束
+
+//判断是否是大会员的方法
+.method public final isvip()Z
+    .registers 2
+
+    const/4 v0, 0x0 //v0赋值0
+
+    return v0 //返回v0的值
+
+.end method
+</code></pre>
+<p>修改方法：修改判断、强制跳转、修改寄存器的值</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301101721353.png" alt="105642ke3zpmf6lkxeeijr"></p>
 
 
-参考教程:酷安@纱雾XBDJB站@Distress
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
 
-解锁BL在小米官网...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-08-13T16:00:00.000Z">2021-08-14</time></span><div>
-</article></a><a class="post-card post " href="/2021/08/12/004-hexo-wen-zhang-jia-mi/"><article class="md">
-<h2 class="post-title">Hexo文章加密教程</h2><div class="excerpt"><p>有东西被加密了, 请输入密码查看.</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-08-11T16:00:00.000Z">2021-08-12</time></span><span class="cap breadcrumb">技术分享</span><div>
-</article></a><a class="post-card post " href="/2021/08/12/003-suo-gan/"><article class="md">
-<h2 class="post-title">高考假期所感</h2><div class="excerpt"><p>有东西被加密了, 请输入密码查看.</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-08-11T16:00:00.000Z">2021-08-12</time></span><span class="cap breadcrumb">随笔</span><div>
-</article></a><a class="post-card post " href="/2021/08/11/002-hexo-da-jian-jiao-cheng/"><article class="md">
-<h2 class="post-title">Hexo搭建教程</h2><div class="excerpt"><p>在Github创建仓库登录GitHub，点击GitHub中的右上角的 + 创建新仓库（new repository），仓库名应该为：yourname.gi...</p></div><div class="meta cap"><span class="cap" id="post-meta">发布于&nbsp;<time datetime="2021-08-10T16:00:00.000Z">2021-08-11</time></span><span class="cap breadcrumb">技术分享</span><div>
-</article></a></div>
-  
-  <div class='paginator-wrap dis-select'>
-    <a class='paginator prev' href='/page/6/'>
-      <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/f049bbd4e88ec.svg'/>
-    </a>
-    <div class='paginator current'>
-      7<span class='sep'></span>8
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/">Autodesk系列软件因C++安装错误而安装失败分析及解决办法<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2023/01/10/43.shi-bai-de-mian-fei-v2ray/">失败的免费V2ray<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
     </div>
-    <a class='paginator next' href='/page/8/'>
-      <img src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/arrow/064b95430caf4.svg'/>
-    </a>
-  </div>
+    <div class='cmt-body valine'>
+      
 
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
 
 
 
