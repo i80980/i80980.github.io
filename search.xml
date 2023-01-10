@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>Clone服务器自动下载A云盘内容并上传到B云盘</title>
+      <link href="/2023/01/10/042.clone-fu-wu-qi-zi-dong-ban-yun/"/>
+      <url>/2023/01/10/042.clone-fu-wu-qi-zi-dong-ban-yun/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>这篇文章这学期开学初编辑的，现在都快过年了，搁置了好久，一直留在我桌面上，今天清理桌面时才决定该整理整理了</p></blockquote><h2 id="本文目的"><a href="#本文目的" class="headerlink" title="本文目的"></a>本文目的</h2><p>本教程可搭配Hax、Euserv等免费且不限流服务器食用，实现网盘文件搬运，即Clone服务器自动下载A云盘内容并上传到B云盘，配合Alist自建云盘食用更佳。</p><p>Alist云盘相关指令：</p><pre><code>访问地址：http://YOUR_IP:5244/配置文件路径：/opt/alist/data/config.json$查看管理员信息，请执行cd /opt/alist./alist admin查看状态：systemctl status alist启动服务：systemctl start alist重启服务：systemctl restart alist停止服务：systemctl stop alist</code></pre><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><blockquote><p>本教程以Hax免费服务器为例，系统为乌班图20</p></blockquote><h5 id="更新指令"><a href="#更新指令" class="headerlink" title="更新指令"></a>更新指令</h5><pre><code>apt updateapt upgrade</code></pre><h5 id="配置IPV4环境"><a href="#配置IPV4环境" class="headerlink" title="配置IPV4环境"></a>配置IPV4环境</h5><blockquote><p>适用只有IPV6的免费服务器</p></blockquote><pre><code>wget -qO- https://cdn.jsdelivr.net/gh/jiaosir-cn/EUserv_Add_Ipv4@main/CDN/___ipv6_add_ipv4.sh | bashwg//若不行尝试wget -N https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh &amp;&amp; bash menu.shbash menu.sh选择: 44.打开 WARP (warp o)</code></pre><h5 id="下载插件ifstat"><a href="#下载插件ifstat" class="headerlink" title="下载插件ifstat"></a>下载插件ifstat</h5><blockquote><p>ifstat插件可查询服务器实时网速</p></blockquote><pre><code>sudo apt install ifstat</code></pre><h5 id="安装rclone"><a href="#安装rclone" class="headerlink" title="安装rclone"></a>安装rclone</h5><blockquote><p>rclone为搬运插件</p></blockquote><pre><code>//安装rclonecurl https://rclone.org/install.sh | bash//生成 /root/.config/rclone 配置目录rclone confighttp://localhost:53682/上传config文件</code></pre><h5 id="安装aliyundrive-webdav"><a href="#安装aliyundrive-webdav" class="headerlink" title="安装aliyundrive-webdav"></a>安装aliyundrive-webdav</h5><blockquote><p>aliyundrive-webdav为挂载阿里云盘的插件</p></blockquote><pre><code>pip install aliyundrive-webdav</code></pre><h5 id="挂载阿里云盘"><a href="#挂载阿里云盘" class="headerlink" title="挂载阿里云盘"></a>挂载阿里云盘</h5><pre><code>aliyundrive-webdav -I -U 13110420639 -W ali9085 -r 19384c7c32d748b68e47ffa0c36509da --no-redirect aliyundrive-webdav -I -U 13110420639 -W ali9085 -r 328969e67e974ee286f275ccbec9107e --no-redirect  //Euservaliyundrive-webdav -I -U 13110420639 -W ali9085 -r cd9064f63ecf48f89cbf0d1ee8ca88e3 --no-redirect </code></pre><p>Ctrl+A+D ？？？不记得我为什么做这个笔记了，大概是什么有用的快捷键吧</p><h5 id="Rclone搬运指令"><a href="#Rclone搬运指令" class="headerlink" title="Rclone搬运指令"></a>Rclone搬运指令</h5><pre><code>rclone copy rep:rep/Music Share:/Music/ -Prclone copy wp-1:涩图 Share:/涩图/ -Prclone copy rep:rep/PC/sof/软件安装管家（2021-12-19）/ AppOnedrive:/1015/ -Prclone copy rep:rep/PC/sof/软件安装管家（2021-12-19）/ software:/1023/ -P//以下为含阿里云盘搬运的指令rclone --no-update-modtime copy alist:/1019/ Share:软件使用教程 -Prclone --no-update-modtime copy alist:/1020/ stars: -Prclone --no-update-modtime copy alist: AppOnedrive:/ali/ -P</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件安装经验 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Autodesk系列软件因C++安装错误而安装失败分析及解决办法</title>
+      <link href="/2022/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/"/>
+      <url>/2022/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/</url>
+      
+        <content type="html"><![CDATA[<p>当Autodesk系列软件报错 因微软运行库安装失败 </p><p>这次找到对应的是Microsoft Visual C++ 2008 安装失败</p><p>单独运行该安装程序 提示错误 如下图所示</p><p><img src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202208271659593.png" alt="Snipaste_2022-08-27_16-40-29"></p><p>观察发现 Microsoft Visual C++ 2008 的x86 的安装程序 安装能够正常安装</p><p>将x86的复制替换原来x64的安装文件即可 注意更改成 相同的文件名</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件安装经验 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaDay10之Git</title>
       <link href="/2022/07/19/040-javaday10-git/"/>
       <url>/2022/07/19/040-javaday10-git/</url>
@@ -540,25 +578,6 @@
       <categories>
           
           <category> 随笔 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Autodesk系列软件因C++安装错误而安装失败分析及解决办法</title>
-      <link href="/2021/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/"/>
-      <url>/2021/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/</url>
-      
-        <content type="html"><![CDATA[<p>当Autodesk系列软件报错 因微软运行库安装失败 </p><p>这次找到对应的是Microsoft Visual C++ 2008 安装失败</p><p>单独运行该安装程序 提示错误 如下图所示</p><p><img src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202208271659593.png" alt="Snipaste_2022-08-27_16-40-29"></p><p>观察发现 Microsoft Visual C++ 2008 的x86 的安装程序 安装能够正常安装</p><p>将x86的复制替换原来x64的安装文件即可 注意更改成 相同的文件名</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 软件安装经验 </category>
           
       </categories>
       

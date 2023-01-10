@@ -6,7 +6,7 @@
   <link href="https://i80980.github.io/atom.xml" rel="self"/>
   
   <link href="https://i80980.github.io/"/>
-  <updated>2022-07-19T07:53:52.331Z</updated>
+  <updated>2023-01-10T08:33:03.464Z</updated>
   <id>https://i80980.github.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Clone服务器自动下载A云盘内容并上传到B云盘</title>
+    <link href="https://i80980.github.io/2023/01/10/042.clone-fu-wu-qi-zi-dong-ban-yun/"/>
+    <id>https://i80980.github.io/2023/01/10/042.clone-fu-wu-qi-zi-dong-ban-yun/</id>
+    <published>2023-01-09T16:00:00.000Z</published>
+    <updated>2023-01-10T08:33:03.464Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;这篇文章这学期开学初编辑的，现在都快过年了，搁置了好久，一直留在我桌面上，今天清理桌面时才决定该整理整理了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;本文目的&quot;&gt;&lt;a href=&quot;#本文目的&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="软件安装经验" scheme="https://i80980.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Autodesk系列软件因C++安装错误而安装失败分析及解决办法</title>
+    <link href="https://i80980.github.io/2022/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/"/>
+    <id>https://i80980.github.io/2022/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/</id>
+    <published>2022-10-03T16:00:00.000Z</published>
+    <updated>2022-10-17T15:36:09.275Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;当Autodesk系列软件报错 因微软运行库安装失败 &lt;/p&gt;
+&lt;p&gt;这次找到对应的是Microsoft Visual C++ 2008 安装失败&lt;/p&gt;
+&lt;p&gt;单独运行该安装程序 提示错误 如下图所示&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="软件安装经验" scheme="https://i80980.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%BB%8F%E9%AA%8C/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>JavaDay10之Git</title>
@@ -421,52 +473,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Day05之Python中的数据序列</title>
-    <link href="https://i80980.github.io/2022/03/03/020-python-ji-chu-05/"/>
-    <id>https://i80980.github.io/2022/03/03/020-python-ji-chu-05/</id>
-    <published>2022-03-02T20:00:00.000Z</published>
-    <updated>2022-04-01T13:06:48.823Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot; title=&quot;一、作业回顾&quot;&gt;&lt;/a&gt;一、作业回顾&lt;/h1&gt;&lt;h2 id=&quot;1、求幸运数字6&quot;&gt;&lt;a href=&quot;#1、求幸运数字6&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Python基础" scheme="https://i80980.github.io/categories/Python%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Day04之Python数据序列</title>
-    <link href="https://i80980.github.io/2022/03/03/019-python-ji-chu-04/"/>
-    <id>https://i80980.github.io/2022/03/03/019-python-ji-chu-04/</id>
-    <published>2022-03-02T19:00:00.000Z</published>
-    <updated>2022-04-01T13:05:59.625Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、作业回顾&quot;&gt;&lt;a href=&quot;#一、作业回顾&quot; class=&quot;headerlink&quot; title=&quot;一、作业回顾&quot;&gt;&lt;/a&gt;一、作业回顾&lt;/h1&gt;&lt;h2 id=&quot;1、面试题&quot;&gt;&lt;a href=&quot;#1、面试题&quot; class=&quot;headerlink&quot;</summary>
         
       
     

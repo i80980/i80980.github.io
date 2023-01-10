@@ -17,23 +17,20 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" content="#f8f8f8">
-  <title>天水国庆游记 - 华佐博客</title>
+  <title>Clone服务器自动下载A云盘内容并上传到B云盘 - 华佐博客</title>
 
   
-    <meta name="description" content="刚来天水，到处工地的敲打声，还以为这是个还在建设中的城市。 近日深入探索，才发现这是具有文化底蕴的城市。 伏羲庙 伏羲庙确实有许多文化底蕴，值得探索学习，值得一提的是6月份还有一次公祭值得去看看。 天水市博物馆里面有许多文物藏品，  这铜镜虽没看到镜面，但是这么小巧精美，真的想要一个，哈哈 话说以后是不是可以直接从博物馆绕到伏羲庙来逃门票呢，嘻嘻">
+    <meta name="description" content="这篇文章这学期开学初编辑的，现在都快过年了，搁置了好久，一直留在我桌面上，今天清理桌面时才决定该整理整理了  本文目的本教程可搭配Hax、Euserv等免费且不限流服务器食用，实现网盘文件搬运，即Clone服务器自动下载A云盘内容并上传到B云盘，配合Alist自建云盘食用更佳。 Alist云盘相关指令： 访问地址：http:&#x2F;&#x2F;YOUR_IP:5244&#x2F;  配置文件路径：&#x2F;opt&#x2F;alist&#x2F;d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="天水国庆游记">
-<meta property="og:url" content="https://i80980.github.io/2021/10/02/010-tian-shui-guo-qing-you-ji/index.html">
+<meta property="og:title" content="Clone服务器自动下载A云盘内容并上传到B云盘">
+<meta property="og:url" content="https://i80980.github.io/2023/01/10/042.clone-fu-wu-qi-zi-dong-ban-yun/index.html">
 <meta property="og:site_name" content="华佐博客">
-<meta property="og:description" content="刚来天水，到处工地的敲打声，还以为这是个还在建设中的城市。 近日深入探索，才发现这是具有文化底蕴的城市。 伏羲庙 伏羲庙确实有许多文化底蕴，值得探索学习，值得一提的是6月份还有一次公祭值得去看看。 天水市博物馆里面有许多文物藏品，  这铜镜虽没看到镜面，但是这么小巧精美，真的想要一个，哈哈 话说以后是不是可以直接从博物馆绕到伏羲庙来逃门票呢，嘻嘻">
+<meta property="og:description" content="这篇文章这学期开学初编辑的，现在都快过年了，搁置了好久，一直留在我桌面上，今天清理桌面时才决定该整理整理了  本文目的本教程可搭配Hax、Euserv等免费且不限流服务器食用，实现网盘文件搬运，即Clone服务器自动下载A云盘内容并上传到B云盘，配合Alist自建云盘食用更佳。 Alist云盘相关指令： 访问地址：http:&#x2F;&#x2F;YOUR_IP:5244&#x2F;  配置文件路径：&#x2F;opt&#x2F;alist&#x2F;d">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012117524.jpeg">
-<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012118717.jpeg">
-<meta property="article:published_time" content="2021-10-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-01T13:19:14.624Z">
+<meta property="article:published_time" content="2023-01-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-10T08:33:03.464Z">
 <meta property="article:author" content="华佐">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012117524.jpeg">
 <meta name="twitter:creator" content="@i80980# for open_graph meta">
   
   
@@ -75,7 +72,7 @@
 
 <div class="widgets">
 
-<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%8F%E7%BE%B2%E5%BA%99"><span class="toc-number">1.</span> <span class="toc-text">伏羲庙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A9%E6%B0%B4%E5%B8%82%E5%8D%9A%E7%89%A9%E9%A6%86"><span class="toc-number">2.</span> <span class="toc-text">天水市博物馆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text"></span></a></li></ol></div></div></div>
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E7%9B%AE%E7%9A%84"><span class="toc-number">1.</span> <span class="toc-text">本文目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%8C%87%E4%BB%A4"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">更新指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEIPV4%E7%8E%AF%E5%A2%83"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">配置IPV4环境</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6ifstat"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">下载插件ifstat</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85rclone"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">安装rclone</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%89%E8%A3%85aliyundrive-webdav"><span class="toc-number">2.0.0.5.</span> <span class="toc-text">安装aliyundrive-webdav</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%98"><span class="toc-number">2.0.0.6.</span> <span class="toc-text">挂载阿里云盘</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Rclone%E6%90%AC%E8%BF%90%E6%8C%87%E4%BB%A4"><span class="toc-number">2.0.0.7.</span> <span class="toc-text">Rclone搬运指令</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div>
 
 
 </div>
@@ -88,26 +85,95 @@
       
 
 
-<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></div><div id="post-meta">发布于&nbsp;<time datetime="2021-10-01T16:00:00.000Z">2021-10-02</time></div></div>
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E7%BB%8F%E9%AA%8C/">软件安装经验</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-01-09T16:00:00.000Z">2023-01-10</time></div></div>
 
 <article class='content md post'>
-<h1 class="article-title"><span>天水国庆游记</span></h1>
-<p>刚来天水，到处工地的敲打声，还以为这是个还在建设中的城市。</p>
-<p>近日深入探索，才发现这是具有文化底蕴的城市。</p>
-<h2 id="伏羲庙"><a href="#伏羲庙" class="headerlink" title="伏羲庙"></a>伏羲庙</h2><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012117524.jpeg" alt="伏羲庙"></p>
-<p>伏羲庙确实有许多文化底蕴，值得探索学习，值得一提的是6月份还有一次公祭值得去看看。</p>
-<h2 id="天水市博物馆"><a href="#天水市博物馆" class="headerlink" title="天水市博物馆"></a>天水市博物馆</h2><p>里面有许多文物藏品，</p>
-<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012118717.jpeg" alt="IMG_20211001_114730"></p>
-<p>这铜镜虽没看到镜面，但是这么小巧精美，真的想要一个，哈哈</p>
-<p>话说以后是不是可以直接从博物馆绕到伏羲庙来逃门票呢，嘻嘻</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+<h1 class="article-title"><span>Clone服务器自动下载A云盘内容并上传到B云盘</span></h1>
+<blockquote>
+<p>这篇文章这学期开学初编辑的，现在都快过年了，搁置了好久，一直留在我桌面上，今天清理桌面时才决定该整理整理了</p>
+</blockquote>
+<h2 id="本文目的"><a href="#本文目的" class="headerlink" title="本文目的"></a>本文目的</h2><p>本教程可搭配Hax、Euserv等免费且不限流服务器食用，实现网盘文件搬运，即Clone服务器自动下载A云盘内容并上传到B云盘，配合Alist自建云盘食用更佳。</p>
+<p>Alist云盘相关指令：</p>
+<pre><code>访问地址：http://YOUR_IP:5244/
+
+配置文件路径：/opt/alist/data/config.json
+$查看管理员信息，请执行
+cd /opt/alist
+./alist admin
+
+查看状态：systemctl status alist
+启动服务：systemctl start alist
+重启服务：systemctl restart alist
+停止服务：systemctl stop alist
+</code></pre>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><blockquote>
+<p>本教程以Hax免费服务器为例，系统为乌班图20</p>
+</blockquote>
+<h5 id="更新指令"><a href="#更新指令" class="headerlink" title="更新指令"></a>更新指令</h5><pre><code>apt update
+
+apt upgrade
+</code></pre>
+<h5 id="配置IPV4环境"><a href="#配置IPV4环境" class="headerlink" title="配置IPV4环境"></a>配置IPV4环境</h5><blockquote>
+<p>适用只有IPV6的免费服务器</p>
+</blockquote>
+<pre><code>wget -qO- https://cdn.jsdelivr.net/gh/jiaosir-cn/EUserv_Add_Ipv4@main/CDN/___ipv6_add_ipv4.sh | bash
+
+wg//若不行尝试
+
+wget -N https://raw.githubusercontent.com/fscarmen/warp/main/menu.sh &amp;&amp; bash menu.sh
+
+bash menu.sh
+
+选择: 4
+4.打开 WARP (warp o)
+</code></pre>
+<h5 id="下载插件ifstat"><a href="#下载插件ifstat" class="headerlink" title="下载插件ifstat"></a>下载插件ifstat</h5><blockquote>
+<p>ifstat插件可查询服务器实时网速</p>
+</blockquote>
+<pre><code>sudo apt install ifstat
+</code></pre>
+<h5 id="安装rclone"><a href="#安装rclone" class="headerlink" title="安装rclone"></a>安装rclone</h5><blockquote>
+<p>rclone为搬运插件</p>
+</blockquote>
+<pre><code>//安装rclone
+curl https://rclone.org/install.sh | bash
+
+//生成 /root/.config/rclone 配置目录
+rclone config
+
+http://localhost:53682/
+
+上传config文件
+</code></pre>
+<h5 id="安装aliyundrive-webdav"><a href="#安装aliyundrive-webdav" class="headerlink" title="安装aliyundrive-webdav"></a>安装aliyundrive-webdav</h5><blockquote>
+<p>aliyundrive-webdav为挂载阿里云盘的插件</p>
+</blockquote>
+<pre><code>pip install aliyundrive-webdav
+</code></pre>
+<h5 id="挂载阿里云盘"><a href="#挂载阿里云盘" class="headerlink" title="挂载阿里云盘"></a>挂载阿里云盘</h5><pre><code>aliyundrive-webdav -I -U 13110420639 -W ali9085 -r 19384c7c32d748b68e47ffa0c36509da --no-redirect 
+aliyundrive-webdav -I -U 13110420639 -W ali9085 -r 328969e67e974ee286f275ccbec9107e --no-redirect  //Euserv
+aliyundrive-webdav -I -U 13110420639 -W ali9085 -r cd9064f63ecf48f89cbf0d1ee8ca88e3 --no-redirect 
+</code></pre>
+<p>Ctrl+A+D ？？？不记得我为什么做这个笔记了，大概是什么有用的快捷键吧</p>
+<h5 id="Rclone搬运指令"><a href="#Rclone搬运指令" class="headerlink" title="Rclone搬运指令"></a>Rclone搬运指令</h5><pre><code>rclone copy rep:rep/Music Share:/Music/ -P
+rclone copy wp-1:涩图 Share:/涩图/ -P
+rclone copy rep:rep/PC/sof/软件安装管家（2021-12-19）/ AppOnedrive:/1015/ -P
+rclone copy rep:rep/PC/sof/软件安装管家（2021-12-19）/ software:/1023/ -P
+
+//以下为含阿里云盘搬运的指令
+rclone --no-update-modtime copy alist:/1019/ Share:软件使用教程 -P
+rclone --no-update-modtime copy alist:/1020/ stars: -P
+rclone --no-update-modtime copy alist: AppOnedrive:/ali/ -P
+
+</code></pre>
+
 
 <div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
 </div></section></div>
 
 </article>
 
-<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2021/09/26/009-hexo-bei-fen-hui-fu/">Hexo备份恢复<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2021/10/04/011-yi-ren/">一人<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2022/10/04/041.autodesk-yin-c-an-zhuang-shi-bai/">Autodesk系列软件因C++安装错误而安装失败分析及解决办法<span class="note">较早</span></a><div class="line"></div><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
 
 
 
