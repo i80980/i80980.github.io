@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 5.4.2">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://cdn.jsdelivr.net'>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>闲鱼猪手定制与解密 - 华佐博客</title>
+
+  
+    <meta name="description" content="如何定制 fork 本仓库 下载 1.3.9_sub.apk 使用任意反编译工具打开，例如 MT管理器 编辑 classes.dex，全局搜索 REPLACE_ME_TO_YOUR_REPO 将 REPLACE_ME_TO_YOUR_REPO 部分替换为你的仓库地址 jsDelivr 地址 回编译并签名  闲鱼猪手配置文件解密 因为太闲，突然想起这个上古大坑了  众所周知，有个很好用的 Xpose">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闲鱼猪手定制与解密">
+<meta property="og:url" content="https://i80980.github.io/2023/01/12/45.xian-yu-zhu-shou/index.html">
+<meta property="og:site_name" content="华佐博客">
+<meta property="og:description" content="如何定制 fork 本仓库 下载 1.3.9_sub.apk 使用任意反编译工具打开，例如 MT管理器 编辑 classes.dex，全局搜索 REPLACE_ME_TO_YOUR_REPO 将 REPLACE_ME_TO_YOUR_REPO 部分替换为你的仓库地址 jsDelivr 地址 回编译并签名  闲鱼猪手配置文件解密 因为太闲，突然想起这个上古大坑了  众所周知，有个很好用的 Xpose">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517995.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517668.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517171.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517536.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121518743.png">
+<meta property="article:published_time" content="2023-01-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-01-12T07:22:10.000Z">
+<meta property="article:author" content="华佐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517995.png">
+<meta name="twitter:creator" content="@i80980# for open_graph meta">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="华佐博客" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+
+  
+<!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end -->
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+
+<header class="header">
+
+<div class="logo-wrap"><a class="title" href="/"><div class="main"><img no-lazy height="32px" src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202204012153156.jpeg"/ onerror="javascript:this.classList.add('error');this.src='https://cdn.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></div><div class="sub cap">一往无前</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">文章</a><a class="nav-item" href="/time/">时间轴</a><a class="nav-item" href="/contact/">留言板</a><a class="nav-item" href="/about/">关于</a></nav></header>
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">本文目录</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%9A%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">如何定制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%97%B2%E9%B1%BC%E7%8C%AA%E6%89%8B%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%A7%A3%E5%AF%86"><span class="toc-number">2.</span> <span class="toc-text">闲鱼猪手配置文件解密</span></a></li></ol></div></div></div>
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">华佐博客</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E9%80%86%E5%90%91/">逆向</a></div><div id="post-meta">发布于&nbsp;<time datetime="2023-01-11T16:00:00.000Z">2023-01-12</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>闲鱼猪手定制与解密</span></h1>
+<h5 id="如何定制"><a href="#如何定制" class="headerlink" title="如何定制"></a>如何定制</h5><ul>
+<li>fork 本仓库</li>
+<li>下载 <a target="_blank" rel="noopener" href="https://github.com/azwhikaru/fish_helper_config/blob/main/1.3.9_sub.apk">1.3.9_sub.apk</a></li>
+<li>使用任意反编译工具打开，例如 <a target="_blank" rel="noopener" href="https://www.coolapk.com/apk/21048">MT管理器</a></li>
+<li>编辑 classes.dex，全局搜索 <code>REPLACE_ME_TO_YOUR_REPO</code></li>
+<li>将 <code>REPLACE_ME_TO_YOUR_REPO</code> 部分替换为<del>你的仓库地址</del> jsDelivr 地址</li>
+<li>回编译并签名</li>
+</ul>
+<h5 id="闲鱼猪手配置文件解密"><a href="#闲鱼猪手配置文件解密" class="headerlink" title="闲鱼猪手配置文件解密"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/azwhikaru/p/17045056.html">闲鱼猪手配置文件解密</a></h5><blockquote>
+<p>因为太闲，突然想起这个上古大坑了</p>
+</blockquote>
+<p>众所周知，有个很好用的 Xposed 模块叫闲鱼猪手，可惜不知道什么原因，作者已经跑路了，好在原作者是把配置文件放在 Gitee 上的，通过 Commit 记录抢救回了作者的最后一次更新。</p>
+<p>作者的加密比较狠，不仅配置文件是加密的，连 APK 本身都经过混淆，加密的配置文件长这样</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517995.png" alt="image.png"></p>
+<p>因为后缀是 Json，所以猜测 APP 内部获取完在线配置文件后会解密，然后按照 JSON 格式来解析。那么就开始反编译 APK 吧</p>
+<p>Jadx 的反混淆是一如既往的弱鸡，啥也看不出来</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517668.png" alt="image.png"></p>
+<p>但是之前替换配置文件 URL 的时候已经找到了定义 URL 的地方，这也是一个突破口，因为解密部分总在获取 URL 内容之后</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517171.png" alt="image.png"></p>
+<p>这里继续用一个反混淆比较强的工具: Jeb 来继续反编译。虽然还是有很多鬼画符，但是 Jeb 至少可以反编译出人话了</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121517536.png" alt="image.png"></p>
+<p>鬼画符自然是看不懂的，也不需要看懂，我们只需要知道大致的逻辑就行了</p>
+<p>在一个 IF 语句下面发现了 “解密失败” 的提示，那么解密部分肯定在这块 IF 之上咯，上面果然发现了处理解密的部分</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://raw.githubusercontent.com/i80980/tuchuang_1/main/202301121518743.png" alt="image.png"></p>
+<p>把这块单独拎出来看看</p>
+<pre class=" language-java"><code class="language-java">label_235<span class="token operator">:</span>
+    String v1_5 <span class="token operator">=</span> s9<span class="token punctuation">.</span>ۥ۠ۦ<span class="token punctuation">(</span>v1_4<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// GET 请求获取配置文件</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>TextUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>v1_5<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">goto</span> label_369<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 跳获取配置失败</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"content"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> v4_1 <span class="token operator">=</span> v1_5<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    dq<span class="token punctuation">.</span>ۥۣ۟<span class="token punctuation">(</span>v4_1<span class="token punctuation">,</span> <span class="token string">"this as java.lang.String).toCharArray()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    StringBuilder v5 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 解密部分</span>
+    <span class="token keyword">int</span> v6 <span class="token operator">=</span> v4_1<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> v7 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>v7 <span class="token operator">&lt;</span> v6<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">char</span> v12_1 <span class="token operator">=</span> v4_1<span class="token punctuation">[</span>v7<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token operator">++</span>v7<span class="token punctuation">;</span>
+        v5<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">(</span>v12_1 <span class="token operator">-</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 12</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>解密部分还是很简单的，就是单纯把每个字符减了 12。用 Python 或者 Java 重写这部分，就是</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># Python</span>
+
+encFile <span class="token operator">=</span> open<span class="token punctuation">(</span><span class="token string">"C:\\Users\\Ayabe\\Downloads\\debug\\a7.8.50.json"</span><span class="token punctuation">,</span> <span class="token string">"rb"</span><span class="token punctuation">)</span>
+decFile <span class="token operator">=</span> <span class="token string">"C:\\Users\\Ayabe\\Downloads\\debug\\a7.8.50_decrypt.json"</span>
+
+data <span class="token operator">=</span> encFile<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+encFile<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+str <span class="token operator">=</span> data<span class="token punctuation">.</span>decode<span class="token punctuation">(</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span>
+charArray <span class="token operator">=</span> list<span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+
+v5 <span class="token operator">=</span> <span class="token string">""</span>
+v6 <span class="token operator">=</span> len<span class="token punctuation">(</span>charArray<span class="token punctuation">)</span>
+v7 <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">while</span> v7 <span class="token operator">&lt;</span> v6<span class="token punctuation">:</span>
+    v12_1 <span class="token operator">=</span> charArray<span class="token punctuation">[</span>v7<span class="token punctuation">]</span>
+    v7 <span class="token operator">+=</span> <span class="token number">1</span>
+    v5 <span class="token operator">+=</span> chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>v12_1<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">12</span><span class="token punctuation">)</span>
+
+<span class="token keyword">with</span> open<span class="token punctuation">(</span>decFile<span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>v5<span class="token punctuation">)</span>
+<span class="token operator">//</span> Java
+
+public <span class="token keyword">class</span> <span class="token class-name">main</span> <span class="token punctuation">{</span>
+    public static void main<span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> throws IOException <span class="token punctuation">{</span>
+        File encFile <span class="token operator">=</span> new File<span class="token punctuation">(</span><span class="token string">"C:\\Users\\Ayabe\\Downloads\\debug\\a7.8.50.json"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        FileInputStream fileInputStream <span class="token operator">=</span> new FileInputStream<span class="token punctuation">(</span>encFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        byte<span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> new byte<span class="token punctuation">[</span><span class="token punctuation">(</span>int<span class="token punctuation">)</span> encFile<span class="token punctuation">.</span>length<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        fileInputStream<span class="token punctuation">.</span>read<span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        fileInputStream<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String str <span class="token operator">=</span> new String<span class="token punctuation">(</span>data<span class="token punctuation">,</span> StandardCharsets<span class="token punctuation">.</span>UTF_8<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        char<span class="token punctuation">[</span><span class="token punctuation">]</span> charArray <span class="token operator">=</span> str<span class="token punctuation">.</span>toCharArray<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        StringBuilder v5 <span class="token operator">=</span> new StringBuilder<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        int v6 <span class="token operator">=</span> charArray<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        int v7 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>v7 <span class="token operator">&lt;</span> v6<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            char v12_1 <span class="token operator">=</span> charArray<span class="token punctuation">[</span>v7<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token operator">+</span><span class="token operator">+</span>v7<span class="token punctuation">;</span>
+            v5<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span><span class="token punctuation">(</span>v12_1 <span class="token operator">-</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span>println<span class="token punctuation">(</span>v5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这样我们就可以得到解密的 Json 配置文件了</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"BottomPanelCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.idlefish.fun.view.panel.BottomPanel"</span><span class="token punctuation">,</span>
+    <span class="token property">"mBottomPanelClsInitList"</span><span class="token operator">:</span> <span class="token string">"b"</span><span class="token punctuation">,</span>
+    <span class="token property">"mBottomPanelClsClick"</span><span class="token operator">:</span> <span class="token string">"a"</span><span class="token punctuation">,</span>
+    <span class="token property">"BaseCellCls"</span><span class="token operator">:</span> <span class="token string">"com.tmall.wireless.tangram3.structure.BaseCell"</span><span class="token punctuation">,</span>
+    <span class="token property">"vBaseCellClsJsonObj"</span><span class="token operator">:</span> <span class="token string">"n"</span><span class="token punctuation">,</span>
+    <span class="token property">"VideoUGCFeedPlayPluginCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.homeai.dovecontainer.VideoUGCFeedPlayPlugin"</span><span class="token punctuation">,</span>
+    <span class="token property">"mVideoUGCFeedPlayPluginClsShowVideo"</span><span class="token operator">:</span> <span class="token string">"a"</span><span class="token punctuation">,</span>
+    <span class="token property">"FullVideoViewCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.homeai.view.video.FullVideoView"</span><span class="token punctuation">,</span>
+    <span class="token property">"ImmersiveComponentViewHolderCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.homeai.dovecontainer.immersive.ImmersiveComponent$ViewHolder"</span><span class="token punctuation">,</span>
+    <span class="token property">"SaveImageUtilsCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.fleamarket.user.util.SaveImageUtils"</span><span class="token punctuation">,</span>
+    <span class="token property">"mSaveImageUtilsClsSameBitmap"</span><span class="token operator">:</span> <span class="token string">"a"</span><span class="token punctuation">,</span>
+    <span class="token property">"DxHomeTitleBarCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.fleamarket.home.dx.home.recommend.ui.HomeTitleBar"</span><span class="token punctuation">,</span>
+    <span class="token property">"PowerHomeTitleBarCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.idlefish.home.power.home.HomeTitleBar"</span><span class="token punctuation">,</span>
+    <span class="token property">"mHomeTitleBarClsAddBarRight"</span><span class="token operator">:</span> <span class="token string">"addBarRight"</span><span class="token punctuation">,</span>
+    <span class="token property">"SplashAdRequestHelperCls1"</span><span class="token operator">:</span> <span class="token string">"com.alimm.xadsdk.business.splashad.SplashAdRequestHelper$1"</span><span class="token punctuation">,</span>
+    <span class="token property">"mSplashAdRequestHelperCls1OnSuccess"</span><span class="token operator">:</span> <span class="token string">"onSuccess"</span><span class="token punctuation">,</span>
+    <span class="token property">"TBSwipeRefreshLayoutCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.idlefish.home.power.ui.TBSwipeRefreshLayout"</span><span class="token punctuation">,</span>
+    <span class="token property">"MainActivityCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.idlefish.maincontainer.activity.MainActivity"</span><span class="token punctuation">,</span>
+    <span class="token property">"TBSoundPlayerCls"</span><span class="token operator">:</span> <span class="token string">"com.taobao.tao.util.TBSoundPlayer"</span><span class="token punctuation">,</span>
+    <span class="token property">"mTBSoundPlayerClsPlayScene"</span><span class="token operator">:</span> <span class="token string">"a"</span><span class="token punctuation">,</span>
+    <span class="token property">"MtopContextCls"</span><span class="token operator">:</span> <span class="token string">"mtopsdk.framework.domain.MtopContext"</span><span class="token punctuation">,</span>
+    <span class="token property">"mMtopContextClsMtopResponse"</span><span class="token operator">:</span> <span class="token string">"c"</span><span class="token punctuation">,</span>
+    <span class="token property">"FishFlutterBoostActivityCls"</span><span class="token operator">:</span> <span class="token string">"com.idlefish.flutterbridge.flutterboost.boost.FishFlutterBoostActivity"</span><span class="token punctuation">,</span>
+    <span class="token property">"vFlutterView"</span><span class="token operator">:</span> <span class="token string">"c"</span><span class="token punctuation">,</span>
+    <span class="token property">"vBottomPanelClsMenuItems"</span><span class="token operator">:</span> <span class="token string">"a"</span><span class="token punctuation">,</span>
+    <span class="token property">"CardSign"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"RP"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>接下来阅读</span></section><section class="body fs14"><a id="next" href="/2023/01/10/042.clone-fu-wu-qi-zi-dong-ban-yun/">Clone服务器自动下载A云盘内容并上传到B云盘<span class="note">较早</span></a><div class="line"></div><a id="prev" href="/2023/05/24/046-mo-ban/">xx<span class="note">较新</span></a><div class="line"></div><a id="more" href="/archives">检索全部文章</a></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md reveal' id="comments">
+    <div class='cmt-title cap theme'>
+      快来参与讨论吧
+    </div>
+    <div class='cmt-body valine'>
+      
+
+<div id="valine_container" class="valine_thread"><svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+
+    </div>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<p>本站由 <a href="https://i80980.github.io/">@华佐</a> 创建，使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2" title="v1.5.2">Stellar</a> 作为主题。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.5.2';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js',
+    sitesjs: '/js/plugins/sites.js',
+    friendsjs: '/js/plugins/friends.js',
+  };
+
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://cdn.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function getEmojiMaps() {
+    function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+    }
+    var emojiMaps = {};
+    for (var i = 1; i <= 54; i++) {
+      emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+    }
+    for (var i = 1; i <= 101; i++) {
+      emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+    }
+    for (var i = 1; i <= 116; i++) {
+      emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+    }
+    for (var i = 1; i <= 125; i++) {
+      emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+    }
+    for (var i = 1; i <= 4; i++) {
+      emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+    }
+    return emojiMaps;
+  }
+  function load_comment(){
+    if(!document.getElementById("valine_container"))return;
+    stellar.loadScript('https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js', {defer:true}).then(function () {
+      const el = document.getElementById("valine_container");
+      var path = el.getAttribute('comment_id');
+      const placeholder = "";
+      if (!path) {
+        path = decodeURI(window.location.pathname);
+      }
+      var valine = new Valine();
+      valine.init(Object.assign({"js":"https://cdn.jsdelivr.net/gh/XuxuGood/simple-blog-cdn@main/js/Valine.min.js","appId":"orWnaTOe0PfVgO0DPyyfJgcT-gzGzoHsz","appKey":"jFXOYkDsKjXXbdIfbbx2q7yc","placeholder":null,"requiredFields":["nick","mail"],"enableQQ":true,"recordIP":false,"avatar":"robohash","pageSize":10,"lang":"zh-cn","highlight":true,"mathJax":false,"tagMeta":["博主","小伙伴","访客"],"metaPlaceholder":{"nick":"昵称/QQ号(必填)","mail":"邮箱（必填，完全保密）","link":"网址(https://)"},"master":["6783037F2DF30EAB99F9FC256157D875"],"friends":["6783037F2DF30EAB99F9FC256157D875"]}, {
+        el: '#valine_container',
+        path: path,
+        placeholder: placeholder,
+        emojiCDN: 'https://cdn.jsdelivr.net/gh/volantis-x/cdn-emoji/valine/',
+        emojiMaps: getEmojiMaps(),
+      }));
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOM fully loaded and parsed');
+    load_comment();
+  });
+
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+<!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/post/mima.jpg" alt="/post/mima.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-12</span><a class="blog-slider__title" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">Hexo文章加密教程</a><div class="blog-slider__text">Hexo文章加密教程</div><a class="blog-slider__button" href="2021/08/12/004-hexo-wen-zhang-jia-mi/">详情</a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms"><div class="blog-slider__img"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg" alt="https://gitee.com/i80980/picture-1/raw/master/%E5%B0%8F%E7%B1%B3%E8%A7%A3%E9%94%81.jpg"/></div><div class="blog-slider__content"><span class="blog-slider__code">2021-08-14</span><a class="blog-slider__title" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">修补boot获取root刷入magisk教程</a><div class="blog-slider__text">修补boot获取root刷入magisk教程</div><a class="blog-slider__button" href="2021/08/14/005-xiu-bu-boot-fang-fa-huo-qu-root-shua-ru-magisk-jiao-cheng/">详情</a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><!-- hexo injector body_end end --></body>
+</html>
